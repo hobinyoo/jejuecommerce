@@ -46,7 +46,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <p>
-          Get started by editing&nbsp;
+          Get started test by editing&nbsp;
           <code className={styles.code}>pages/index.tsx</code>
         </p>
         <input
