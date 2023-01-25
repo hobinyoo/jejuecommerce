@@ -1,6 +1,12 @@
 // import ImageGallery from 'react-image-gallery'
 import Carousel from 'nuka-carousel/lib/carousel'
 import Image from 'next/image'
+import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
+import CustomEditor from '@components/Editor'
+import { useRouter } from 'next/router'
+import { convertFromRaw, convertToRaw, EditorState } from 'draft-js'
+
 const images = [
   {
     original: 'https://picsum.photos/id/1018/1000/600/',
@@ -32,34 +38,35 @@ const images = [
   },
 ]
 
-import React, { useState } from 'react'
-import Head from 'next/head'
-
 export default function Products() {
-  //   return <ImageGallery items={images} />
   const [index, setIndex] = useState(0)
+  const router = useRouter()
+  const { id: productId } = router.query
+
+  const [editorState, SetEditorState] = useState<EditorState | undefined>(
+    undefined
+  )
+
+  useEffect(() => {
+    if (productId != null) {
+      fetch(`http://localhost:3000/api/get-product?id=${productId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.items.contents) {
+            SetEditorState(
+              EditorState.createWithContent(
+                convertFromRaw(JSON.parse(data.items.contents))
+              )
+            )
+          } else {
+            SetEditorState(EditorState.createEmpty())
+          }
+        })
+    }
+  }, [productId])
 
   return (
     <>
-      <Head>
-        <meta
-          property="og:url"
-          content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html"
-        />
-        <meta property="og:type" content="article" />
-        <meta
-          property="og:title"
-          content="When Great Minds Don’t Think Alike"
-        />
-        <meta
-          property="og:description"
-          content="How much does culture influence creative thinking?"
-        />
-        <meta
-          property="og:image"
-          content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg"
-        />
-      </Head>
       <Carousel
         animation="fade"
         withoutControls={true}
@@ -85,6 +92,9 @@ export default function Products() {
           </div>
         ))}
       </div>
+      {editorState != null && (
+        <CustomEditor editorState={editorState} readOnly />
+      )}
     </>
   )
 }

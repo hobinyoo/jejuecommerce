@@ -1,6 +1,12 @@
 // import ImageGallery from 'react-image-gallery'
 import Carousel from 'nuka-carousel/lib/carousel'
 import Image from 'next/image'
+import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
+import CustomEditor from '@components/Editor'
+import { useRouter } from 'next/router'
+import { convertFromRaw, convertToRaw, EditorState } from 'draft-js'
+
 const images = [
   {
     original: 'https://picsum.photos/id/1018/1000/600/',
@@ -32,14 +38,50 @@ const images = [
   },
 ]
 
-import React, { useState } from 'react'
-import Head from 'next/head'
-import CustomEditor from '@components/Editor'
-
 export default function Products() {
-  //   return <ImageGallery items={images} />
   const [index, setIndex] = useState(0)
+  const router = useRouter()
+  const { id: productId } = router.query
 
+  const [editorState, SetEditorState] = useState<EditorState | undefined>(
+    undefined
+  )
+
+  useEffect(() => {
+    if (productId != null) {
+      fetch(`http://localhost:3000/api/get-product?id=${productId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.items.contents) {
+            SetEditorState(
+              EditorState.createWithContent(
+                convertFromRaw(JSON.parse(data.items.contents))
+              )
+            )
+          } else {
+            SetEditorState(EditorState.createEmpty())
+          }
+        })
+    }
+  }, [productId])
+
+  const handleSave = () => {
+    if (editorState) {
+      fetch('http://localhost:3000/api/update-product', {
+        method: 'POST',
+        body: JSON.stringify({
+          id: productId,
+          contents: JSON.stringify(
+            convertToRaw(editorState.getCurrentContent())
+          ),
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          alert('Sucess')
+        })
+    }
+  }
   return (
     <>
       <Carousel
@@ -67,7 +109,14 @@ export default function Products() {
           </div>
         ))}
       </div>
-      <CustomEditor />
+      {editorState != null && (
+        <CustomEditor
+          editorState={editorState}
+          onEditorStateChange={SetEditorState}
+          onSave={handleSave}
+          readOnly={false}
+        />
+      )}
     </>
   )
 }
