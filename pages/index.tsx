@@ -20,8 +20,9 @@ export default function Home() {
   //     .then((res) => res.json())
   //     .then((data) => setProducts(data.items))
   // }, [])
+
   useEffect(() => {
-    fetch('api/get-products')
+    fetch('http://localhost:3000/api/get-products')
       .then((res) => res.json())
       .then((data) => setProducts(data.items))
   }, [])
@@ -32,7 +33,7 @@ export default function Home() {
       alert('name을 넣어주세요')
       return
     }
-    fetch(`api/add-item?name=${inputRef.current.value}`)
+    fetch(`http://localhost:3000/api/add-item?name=${inputRef.current.value}`)
       .then((res) => res.json())
       .then((data) => alert(data.message))
   }
