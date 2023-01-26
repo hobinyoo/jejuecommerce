@@ -1,30 +1,29 @@
 import { useEffect, useState, useCallback } from 'react'
 import { products } from '@prisma/client'
 import Image from 'next/image'
-import { it } from 'node:test'
+import { Pagination } from '@mantine/core'
 const TAKE = 9
 export default function Products() {
-  const [skip, setSkip] = useState(0)
+  const [activePage, setPage] = useState(1)
+  const [total, setTotal] = useState(0)
   const [products, setProducts] = useState<products[]>([])
 
   useEffect(() => {
+    fetch('http://localhost:3000/api/get-products-count')
+      .then((res) => res.json())
+      .then((data) => setTotal(Math.ceil(data.items / TAKE)))
     //skip은 0 skip은 아무것도 안한다 take는 9개씩
-    fetch(`api/get-products?skip=0&take=${TAKE}`)
+    fetch(`http://localhost:3000/api/get-products?skip=0&take=${TAKE}`)
       .then((res) => res.json())
       .then((data) => setProducts(data.items))
   }, [])
 
-  const getProducts = useCallback(() => {
-    const next = skip + TAKE
-    fetch(`api/get-products?skip=${next}&take=${TAKE}`)
+  useEffect(() => {
+    const skip = TAKE * (activePage - 1)
+    fetch(`http://localhost:3000/api/get-products?skip=${skip}&take=${TAKE}`)
       .then((res) => res.json())
-      .then((data) => {
-        const list = products.concat(data.items)
-        setProducts(list)
-      })
-    setSkip(next)
-  }, [skip, products])
-
+      .then((data) => setProducts(data.items))
+  }, [activePage])
   return (
     <div className="px-36 mt-36 mb-36">
       {products && (
@@ -56,12 +55,14 @@ export default function Products() {
           })}
         </div>
       )}
-      <button
-        className="w-full rounded mt-20 bg-zinc-200 p-4"
-        onClick={getProducts}
-      >
-        더보기
-      </button>
+      <div className="w-full flex mt-5">
+        <Pagination
+          className="m-auto"
+          page={activePage}
+          onChange={setPage}
+          total={total}
+        />
+      </div>
     </div>
   )
 }

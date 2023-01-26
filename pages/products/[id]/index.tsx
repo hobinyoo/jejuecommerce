@@ -52,6 +52,7 @@ export default function Products() {
       fetch(`http://localhost:3000/api/get-product?id=${productId}`)
         .then((res) => res.json())
         .then((data) => {
+          console.log(data)
           if (data.items.contents) {
             SetEditorState(
               EditorState.createWithContent(

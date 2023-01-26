@@ -12,6 +12,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mantine/core": "^5.10.2",
+    "@mantine/hooks": "^5.10.2",
     "@next/font": "13.1.0",
     "@prisma/client": "3.3.0",
     "@types/node": "18.11.17",
