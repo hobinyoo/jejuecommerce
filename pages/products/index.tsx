@@ -1,8 +1,9 @@
 import { useEffect, useState, useCallback } from 'react'
 import { products } from '@prisma/client'
 import Image from 'next/image'
-import { it } from 'node:test'
-const TAKE = 9
+
+import { CATEGORY_MAP, TAKE } from 'constants/products'
+
 export default function Products() {
   const [skip, setSkip] = useState(0)
   const [products, setProducts] = useState<products[]>([])
@@ -49,7 +50,7 @@ export default function Products() {
                   </span>
                 </div>
                 <span className="text-zinc-400">
-                  {item.category_id === 1 && '의류'}
+                  {CATEGORY_MAP[item.category_id - 1]}
                 </span>
               </div>
             )
