@@ -6,8 +6,10 @@ import { CATEGORY_MAP, FILTERS, TAKE } from 'constants/products'
 import Search from '../../public/Search.svg'
 import useDebounce from 'hooks/useDebounce'
 import { useQuery } from '@tanstack/react-query'
+import { useSession } from 'next-auth/react'
 
 export default function Products() {
+  const { data: session } = useSession()
   const [activePage, setPage] = useState(1)
   const [selectedCategory, setCategory] = useState<string>('-1')
   const [selectedFilter, setFilter] = useState<string | null>(FILTERS[0].value)
@@ -58,7 +60,7 @@ export default function Products() {
   //     `http://localhost:3000/api/get-products?skip=${skip}&take=${TAKE}&category=${selectedCategory}&orderBy=${selectedFilter}&contains=${debouncedKeyword}`
   //   )
   //     .then((res) => res.json())
-  //     .then((data) => setProducts(data.items)) 
+  //     .then((data) => setProducts(data.items))
   // }, [activePage, selectedCategory, selectedFilter, debouncedKeyword])
 
   //한번 조회한 내용은 다시 조회하지 않는다 이미 조회한 캐싱은 가지고 있어서 그대로 사용 다시 조회하지 않음! 좋네..
@@ -86,6 +88,7 @@ export default function Products() {
   }
   return (
     <div className="px-36 mt-36 mb-36">
+      {session && <p> 안녕하세요. {session.user?.name}님</p>}
       <div className="mb-4">
         <Input
           icon={<Search />}
