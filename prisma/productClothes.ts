@@ -455,8 +455,7 @@ const hoodie = [
   },
   {
     name: `hoodie 10`,
-    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean
-  }! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean ${1}! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
     category_id: 5,
     image_url:
       'https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PN50K_NM5PN50K_hover.jpg?browse',
