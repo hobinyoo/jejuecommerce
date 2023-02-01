@@ -374,8 +374,7 @@ const cap = [
 const hoodie = [
   {
     name: `hoodie 1`,
-    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean
-  }! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean ${1}! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
     category_id: 5,
     image_url:
       'https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PN50K_NM5PN50K_hover.jpg?browse',
@@ -383,8 +382,7 @@ const hoodie = [
   },
   {
     name: `hoodie 2`,
-    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean
-  }! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean ${1}! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
     category_id: 5,
     image_url:
       'https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PN50K_NM5PN50K_hover.jpg?browse',
@@ -392,8 +390,7 @@ const hoodie = [
   },
   {
     name: `hoodie 3`,
-    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean
-  }! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean ${1}! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
     category_id: 5,
     image_url:
       'https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PN50K_NM5PN50K_hover.jpg?browse',
@@ -401,8 +398,7 @@ const hoodie = [
   },
   {
     name: `hoodie 4`,
-    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean
-  }! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean ${1}! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
     category_id: 5,
     image_url:
       'https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PN50K_NM5PN50K_hover.jpg?browse',
@@ -419,8 +415,7 @@ const hoodie = [
   },
   {
     name: `hoodie 6`,
-    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean
-  }! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean ${1}! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
     category_id: 5,
     image_url:
       'https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PN50K_NM5PN50K_hover.jpg?browse',
@@ -428,8 +423,7 @@ const hoodie = [
   },
   {
     name: `hoodie 7`,
-    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean
-  }! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean ${1}! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
     category_id: 5,
     image_url:
       'https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PN50K_NM5PN50K_hover.jpg?browse',
@@ -437,8 +431,7 @@ const hoodie = [
   },
   {
     name: `hoodie 8`,
-    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean
-  }! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean ${1}! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
     category_id: 5,
     image_url:
       'https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PN50K_NM5PN50K_hover.jpg?browse',
@@ -446,8 +439,7 @@ const hoodie = [
   },
   {
     name: `hoodie 9`,
-    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean
-  }! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+    contents: `{"blocks":[{"key":"3dee5","text":"This is a DarkJean ${1}! i did it!!","type":"unordered-list-item","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
     category_id: 5,
     image_url:
       'https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PN50K_NM5PN50K_hover.jpg?browse',
