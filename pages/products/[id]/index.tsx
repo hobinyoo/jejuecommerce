@@ -6,7 +6,7 @@ import CustomEditor from '@components/Editor'
 import { useRouter } from 'next/router'
 import { convertFromRaw, EditorState } from 'draft-js'
 import { GetServerSidePropsContext } from 'next'
-import { products } from '@prisma/client'
+import { Cart, products } from '@prisma/client'
 import { format } from 'date-fns'
 import { CATEGORY_MAP } from 'constants/products'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
@@ -16,6 +16,7 @@ import IconHeartbeat from '../../../public/Heartbeat.svg'
 import IconShoppingCart from '../../../public/ShoppingCart.svg'
 import { useSession } from 'next-auth/react'
 import { CountControl } from '@components/CountControl'
+import { CART_QUERY_KEY } from 'pages/cart'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const product = await fetch(
@@ -55,6 +56,7 @@ export default function Products(props: {
       .then((data) => data.items)
   )
 
+  //장바구니 등록
   const { mutate, isLoading } = useMutation<unknown, unknown, string, any>(
     (productId: string) =>
       fetch('/api/update-wishlist', {
@@ -92,6 +94,32 @@ export default function Products(props: {
     }
   )
 
+  //Cart에서 id와 userId는 빼고 타입을 만들겠다
+  const { mutate: addCart } = useMutation<
+    unknown,
+    unknown,
+    Omit<Cart, 'id' | 'userId'>,
+    any
+  >(
+    (item) =>
+      fetch('/api/add-cart', {
+        method: 'POST',
+        body: JSON.stringify({ item }),
+      })
+        .then((res) => res.json())
+        .then((data) => data.items),
+    {
+      onMutate: () => {
+        queryClient.invalidateQueries([CART_QUERY_KEY])
+      },
+      onSuccess: () => {
+        router.push('/cart')
+      },
+    }
+  )
+
+  const product = props.product
+
   const validate = (type: 'cart' | 'order') => {
     alert('장바구니로 이동')
     if (quantity == null) {
@@ -99,11 +127,14 @@ export default function Products(props: {
       return
     }
     //TODO: 장바구니에 등록하는 기능추가
-
-    router.push('/cart')
+    if (type === 'cart') {
+      addCart({
+        productId: product.id,
+        quantity: quantity,
+        amount: product.price * quantity,
+      })
+    }
   }
-
-  const product = props.product
 
   const isWished =
     wishlist != null && productId != null

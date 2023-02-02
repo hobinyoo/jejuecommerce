@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import IconHome from '../public/Home.svg'
 import IconShoppingCart from '../public/ShoppingCart.svg'
+import IconHeart from '../public/Heart.svg'
 import IconUser from '../public/User.svg'
 export default function Header() {
   const { data: session } = useSession()
@@ -13,6 +14,7 @@ export default function Header() {
       <div className="w-full flex h-50 items-center">
         <IconHome onClick={() => router.push('/')} />
         <span className="m-auto" />
+        <IconHeart className="mr-4" onClick={() => router.push('/wishlist')} />
         <IconShoppingCart
           className="mr-4"
           onClick={() => router.push('/cart')}
