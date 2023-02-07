@@ -41,9 +41,12 @@ export default function CommentItem({ item }: { item: CommentItemType }) {
         />
       </div>
       <div style={{ display: 'flex' }}>
-        {item.images?.split(',').map((image, idx) => (
-          <AutoSizeImage key={idx} src={image} size={150} />
-        ))}
+        {item.images &&
+          item.images
+            ?.split(',')
+            .map((image, idx) => (
+              <AutoSizeImage key={idx} src={image} size={150} />
+            ))}
       </div>
     </Wrapper>
   )
