@@ -22,12 +22,12 @@ import CommentItem from '@components/CommentItem'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const product = await fetch(
-    `https://next-commerce-7i9t.vercel.app/api/get-product?id=${context.params?.id}`
+    `${process.env.NEXTAUTH_URL}/api/get-product?id=${context.params?.id}`
   )
     .then((res) => res.json())
     .then((data) => data.items)
   const comments = await fetch(
-    `https://next-commerce-7i9t.vercel.app/api/get-comments?productId=${context.params?.id}`
+    `${process.env.NEXTAUTH_URL}/api/get-comments?productId=${context.params?.id}`
   )
     .then((res) => res.json())
     .then((data) => data.items)
