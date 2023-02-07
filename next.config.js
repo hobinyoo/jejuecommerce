@@ -6,7 +6,12 @@ const nextConfig = {
     emotion: true,
   },
   images: {
-    domains: ['picsum.photos', 'image.thenorthfacekorea.co.kr', 'lh3.googleusercontent.com'],
+    domains: [
+      'picsum.photos',
+      'image.thenorthfacekorea.co.kr',
+      'lh3.googleusercontent.com',
+      'i.ibb.co',
+    ],
   },
   webpack: (config) => {
     // 아래를 추가합니다.
