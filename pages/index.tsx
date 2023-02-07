@@ -27,9 +27,9 @@ export default function Home() {
     unknown,
     categories[]
   >({
-    queryKey: ['http://localhost:3000/api/get-categories'],
+    queryKey: ['/api/get-categories'],
     queryFn: () =>
-      fetch('http://localhost:3000/api/get-categories').then((res) =>
+      fetch('/api/get-categories').then((res) =>
         res.json()
       ),
     select: (data) => data.items,
@@ -46,11 +46,11 @@ export default function Home() {
 
   const { data: total } = useQuery({
     queryKey: [
-      `http://localhost:3000/api/get-products-count?category=${selectedCategory}&contains=${debouncedKeyword}`,
+      `/api/get-products-count?category=${selectedCategory}&contains=${debouncedKeyword}`,
     ],
     queryFn: () =>
       fetch(
-        `http://localhost:3000/api/get-products-count?category=${selectedCategory}&contains=${debouncedKeyword}`
+        `/api/get-products-count?category=${selectedCategory}&contains=${debouncedKeyword}`
       ).then((res) => res.json()),
     select: (data) => Math.ceil(data.items / TAKE),
   })
@@ -70,13 +70,13 @@ export default function Home() {
     products[]
   >({
     queryKey: [
-      `http://localhost:3000/api/get-products?skip=${
+      `/api/get-products?skip=${
         TAKE * (activePage - 1)
       }&take=${TAKE}&category=${selectedCategory}&orderBy=${selectedFilter}&contains=${debouncedKeyword}`,
     ],
     queryFn: () =>
       fetch(
-        `http://localhost:3000/api/get-products?skip=${
+        `/api/get-products?skip=${
           TAKE * (activePage - 1)
         }&take=${TAKE}&category=${selectedCategory}&orderBy=${selectedFilter}&contains=${debouncedKeyword}`
       ).then((res) => res.json()),

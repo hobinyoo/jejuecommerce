@@ -22,12 +22,12 @@ import CommentItem from '@components/CommentItem'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const product = await fetch(
-    `http://localhost:3000/api/get-product?id=${context.params?.id}`
+    `/api/get-product?id=${context.params?.id}`
   )
     .then((res) => res.json())
     .then((data) => data.items)
   const comments = await fetch(
-    `http://localhost:3000/api/get-comments?productId=${context.params?.id}`
+    `/api/get-comments?productId=${context.params?.id}`
   )
     .then((res) => res.json())
     .then((data) => data.items)
@@ -40,7 +40,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 export interface CommentItemType extends Comment, OrderItem {}
-const WISHLIST_QUERY_KEY = 'http://localhost:3000/api/get-wishlist'
+const WISHLIST_QUERY_KEY = '/api/get-wishlist'
 export default function Products(props: {
   product: products & { images: string[] }
   comments: CommentItemType[]

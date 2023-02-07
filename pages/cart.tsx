@@ -46,12 +46,12 @@ export default function CartPage() {
     products[]
   >({
     queryKey: [
-      `http://localhost:3000/api/get-products?skip=0 
+      `/api/get-products?skip=0 
       &take=3`,
     ],
     queryFn: () =>
       fetch(
-        `http://localhost:3000/api/get-products?skip=0 
+        `/api/get-products?skip=0 
       &take=3`
       ).then((res) => res.json()),
     select: (data) => data.items,

@@ -49,7 +49,7 @@ export default function Products() {
 
   useEffect(() => {
     if (productId != null) {
-      fetch(`http://localhost:3000/api/get-product?id=${productId}`)
+      fetch(`/api/get-product?id=${productId}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.items.contents) {
@@ -67,7 +67,7 @@ export default function Products() {
 
   const handleSave = () => {
     if (editorState) {
-      fetch('http://localhost:3000/api/update-product', {
+      fetch('/api/update-product', {
         method: 'POST',
         body: JSON.stringify({
           id: productId,
