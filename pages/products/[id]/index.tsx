@@ -21,7 +21,9 @@ import { ORDER_QUERY_KEY } from 'pages/my'
 import CommentItem from '@components/CommentItem'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const product = await fetch(`/api/get-product?id=${context.params?.id}`)
+  const product = await fetch(
+    `https://next-commerce-7i9t.vercel.app/api/get-product?id=${context.params?.id}`
+  )
     .then((res) => res.json())
     .then((data) => data.items)
   const comments = await fetch(
@@ -29,6 +31,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   )
     .then((res) => res.json())
     .then((data) => data.items)
+
   return {
     props: {
       product: { ...product, images: [product.image_url, product.image_url] },
@@ -38,8 +41,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 export interface CommentItemType extends Comment, OrderItem {}
-const WISHLIST_QUERY_KEY =
-  'https://next-commerce-7i9t.vercel.app/api/get-wishlist'
+const WISHLIST_QUERY_KEY = '/api/get-wishlist'
 export default function Products(props: {
   product: products & { images: string[] }
   comments: CommentItemType[]

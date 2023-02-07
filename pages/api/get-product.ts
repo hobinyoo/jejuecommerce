@@ -26,7 +26,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const { id } = req.query
-
+  console.log(id, '맞음?')
   if (id == null) {
     res.status(400).json({ message: 'no id' })
     return
