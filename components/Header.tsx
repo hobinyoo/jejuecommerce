@@ -6,6 +6,7 @@ import IconHome from '../public/Home.svg'
 import IconShoppingCart from '../public/ShoppingCart.svg'
 import IconHeart from '../public/Heart.svg'
 import IconUser from '../public/User.svg'
+
 export default function Header() {
   const { data: session } = useSession()
   const router = useRouter()

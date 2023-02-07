@@ -3,7 +3,7 @@ import IconX from '../public/X.svg'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { Badge, Button } from '@mantine/core'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { OrderItem, Orders } from '@prisma/client'
 import { useRouter } from 'next/router'
 import { format } from 'date-fns'
@@ -34,8 +34,6 @@ const ORDER_STATUS_MAP = [
 export const ORDER_QUERY_KEY = '/api/get-order'
 
 export default function MyPage() {
-  const router = useRouter()
-
   const { data } = useQuery<{ items: OrderDetail[] }, unknown, OrderDetail[]>({
     queryKey: [ORDER_QUERY_KEY],
     queryFn: () =>
@@ -65,7 +63,50 @@ export default function MyPage() {
 }
 
 const DetailItem = (props: OrderDetail) => {
-  const handlePayment = () => {}
+  const queryClient = useQueryClient()
+  const STATUS_QUERY_KEY = '/api/update-status'
+
+  const { mutate: updateStatus } = useMutation<unknown, unknown, Number, any>(
+    (orderItemIds) =>
+      fetch(STATUS_QUERY_KEY, {
+        method: 'POST',
+        body: JSON.stringify({ orderItemIds }),
+      })
+        .then((res) => res.json())
+        .then((data) => data.items),
+    {
+      onMutate: async (orderItemIds) => {
+        //바로 반영
+
+        await queryClient.cancelQueries([ORDER_QUERY_KEY])
+        // Snapshot the previous value
+        const previous = queryClient.getQueryData([ORDER_QUERY_KEY])
+
+        // Optimistically update to the new value
+        queryClient.setQueryData<OrderDetail[]>([ORDER_QUERY_KEY], (old) =>
+          old
+            ? old.filter((id) =>
+                id.orderItemIds == String(orderItemIds) ? (id.status = 5) : 0
+              )
+            : []
+        )
+        // Return a context object with the snapshotted value
+        return { previous }
+      },
+      onError: (__, _, context) => {
+        queryClient.setQueryData([ORDER_QUERY_KEY], context.previous)
+      },
+      onSuccess: () => {
+        //invalidateQueries는 useQuery에서 사용되는 queryKey의 캐시 데이터를 제거해줍니다.
+        //데이터가 새롭게 추가 되었을 때 다시 서버에서 데이터를 가져옴
+        queryClient.invalidateQueries([ORDER_QUERY_KEY])
+      },
+    }
+  )
+
+  const handlePayment = () => {
+    updateStatus(props.id)
+  }
   return (
     <div
       className="w-full flex flex-col p-4 rounded-md mb-8"
@@ -154,7 +195,7 @@ const Item = (props: OrderItemDetail & { status: number }) => {
       </div>
       <div className="flex flex-col ml-auto space-x-4">
         <span>{amount.toLocaleString('ko-kr')} 원</span>
-        {props.status === 0 && (
+        {props.status === 5 && (
           <Button
             style={{
               backgroundColor: 'black',

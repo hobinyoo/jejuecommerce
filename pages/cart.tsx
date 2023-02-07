@@ -72,6 +72,7 @@ export default function CartPage() {
         .then((data) => data.items),
     {
       onMutate: () => {
+        //invalidateQueries는 useQuery에서 사용되는 queryKey의 캐시 데이터를 제거해줍니다. 무조건 새로운 데이터
         queryClient.invalidateQueries(['/api/add-order'])
       },
       onSuccess: () => {
@@ -262,6 +263,7 @@ const Item = (props: CartItem) => {
         queryClient.setQueryData([CART_QUERY_KEY], context.previous)
       },
       onSuccess: () => {
+        //기존에 있는 쿼리를 다시 부르게 만드는 상태
         queryClient.invalidateQueries([CART_QUERY_KEY])
       },
     }

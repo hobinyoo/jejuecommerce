@@ -97,10 +97,11 @@ export default function Home() {
         <Select value={selectedFilter} onChange={setFilter} data={FILTERS} />
       </div>
       {categories && (
-        <div className="mb-4">
+        <div className="mb-4 flex md:justify-end justify-center">
           <SegmentedControl
             value={selectedCategory}
             onChange={setCategory}
+            size="sm"
             data={[
               { label: 'ALL', value: '-1' },
               ...(categories &&
@@ -114,12 +115,12 @@ export default function Home() {
         </div>
       )}
       {products && (
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
           {products.map((item) => {
             return (
               <div
                 key={item.id}
-                style={{ maxWidth: 310 }}
+                style={{ maxWidth: 310, margin: 'auto' }}
                 onClick={() => router.push(`/products/${item.id}`)}
               >
                 <Image

@@ -22,7 +22,7 @@ export default function App({
           <title>Commerce Service</title>
           <meta name="description" content="commerce service" />
         </Head>
-        <div className="px-36">
+        <div className="md:px-36 px-9">
           <Header />
           <Component {...pageProps} />
         </div>

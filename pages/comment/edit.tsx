@@ -84,7 +84,7 @@ export default function CommentEdit() {
         }),
       })
         .then((res) => res.json())
-        .then((data) => {
+        .then((__) => {
           alert('Sucess')
           router.back()
         })
