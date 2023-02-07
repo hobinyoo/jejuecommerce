@@ -10,15 +10,15 @@ import { Cart, OrderItem, products, Comment } from '@prisma/client'
 import { format } from 'date-fns'
 import { CATEGORY_MAP } from 'constants/products'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { Button, validateJson } from '@mantine/core'
+import { Button} from '@mantine/core'
 import IconHeart from '../../../public/Heart.svg'
 import IconHeartbeat from '../../../public/Heartbeat.svg'
 import IconShoppingCart from '../../../public/ShoppingCart.svg'
 import { useSession } from 'next-auth/react'
 import { CountControl } from '@components/CountControl'
 import { CART_QUERY_KEY } from 'pages/cart'
-import { ORDER_QUERY_KEY } from 'pages/my'
 import CommentItem from '@components/CommentItem'
+import Head from 'next/head'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const product = await fetch(
@@ -189,6 +189,10 @@ export default function Products(props: {
     <>
       {product != null && productId != null ? (
         <div className="flex flex-row">
+          <Head>
+            <title>{product.name}</title>
+            <meta name="description" content="commerce service" />
+          </Head>
           <div style={{ maxWidth: 600, marginRight: 52 }}>
             <Carousel
               animation="fade"

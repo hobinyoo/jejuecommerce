@@ -2,7 +2,6 @@
 import Carousel from 'nuka-carousel/lib/carousel'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import Head from 'next/head'
 import CustomEditor from '@components/Editor'
 import { useRouter } from 'next/router'
 import { convertFromRaw, convertToRaw, EditorState } from 'draft-js'

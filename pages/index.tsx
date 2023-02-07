@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import { categories, products } from '@prisma/client'
 import Image from 'next/image'
 import { Input, Pagination, SegmentedControl, Select } from '@mantine/core'
@@ -28,10 +28,7 @@ export default function Home() {
     categories[]
   >({
     queryKey: ['/api/get-categories'],
-    queryFn: () =>
-      fetch('/api/get-categories').then((res) =>
-        res.json()
-      ),
+    queryFn: () => fetch('/api/get-categories').then((res) => res.json()),
     select: (data) => data.items,
   })
 
@@ -87,7 +84,7 @@ export default function Home() {
     setKeyword(e.target.value)
   }
   return (
-    <div className="mt-36 mb-36"> 
+    <div className="mt-36 mb-36">
       <div className="mb-4">
         <Input
           icon={<Search />}

@@ -7,9 +7,9 @@ import styled from '@emotion/styled'
 import { Button } from '@mantine/core'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Cart, OrderItem, products } from '@prisma/client'
-import { CATEGORY_MAP, TAKE } from 'constants/products'
-import { Router, useRouter } from 'next/router'
-import { ORDER_QUERY_KEY } from './my'
+import { CATEGORY_MAP } from 'constants/products'
+import { useRouter } from 'next/router'
+
 interface CartItem extends Cart {
   name: string
   price: number
@@ -225,7 +225,7 @@ const Item = (props: CartItem) => {
         // Return a context object with the snapshotted value
         return { previous }
       },
-      onError: (error, _, context) => {
+      onError: (__, _, context) => {
         queryClient.setQueryData([CART_QUERY_KEY], context.previous)
       },
       onSuccess: () => {
@@ -258,7 +258,7 @@ const Item = (props: CartItem) => {
         // Return a context object with the snapshotted value
         return { previous }
       },
-      onError: (error, _, context) => {
+      onError: (__, _, context) => {
         queryClient.setQueryData([CART_QUERY_KEY], context.previous)
       },
       onSuccess: () => {

@@ -1,4 +1,3 @@
-import { authOption } from './auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient, Cart } from '@prisma/client'
 import { getSession } from 'next-auth/react'

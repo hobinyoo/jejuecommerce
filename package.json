@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "typecheck":"tsc --noEmit -p tsconfig.json"
+    
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
