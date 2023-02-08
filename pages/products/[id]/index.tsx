@@ -10,7 +10,7 @@ import { Cart, OrderItem, products, Comment } from '@prisma/client'
 import { format } from 'date-fns'
 import { CATEGORY_MAP } from 'constants/products'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { Button} from '@mantine/core'
+import { Button } from '@mantine/core'
 import IconHeart from '../../../public/Heart.svg'
 import IconHeartbeat from '../../../public/Heartbeat.svg'
 import IconShoppingCart from '../../../public/ShoppingCart.svg'
@@ -69,7 +69,7 @@ export default function Products(props: {
   )
 
   //장바구니 등록
-  const { mutate, isLoading } = useMutation<unknown, unknown, string, any>(
+  const { mutate } = useMutation<unknown, unknown, string, any>(
     (productId: string) =>
       fetch('/api/update-wishlist', {
         method: 'POST',
@@ -97,7 +97,7 @@ export default function Products(props: {
         // Return a context object with the snapshotted value
         return { previous }
       },
-      onError: (error, _, context) => {
+      onError: (__, _, context) => {
         queryClient.setQueryData([WISHLIST_QUERY_KEY], context.previous)
       },
       onSuccess: () => {
