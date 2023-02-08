@@ -76,7 +76,7 @@ export default function Products() {
         }),
       })
         .then((res) => res.json())
-        .then((data) => {
+        .then((__) => {
           alert('Sucess')
         })
     }
