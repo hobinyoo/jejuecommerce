@@ -120,7 +120,7 @@ export default function Home() {
             return (
               <div
                 key={item.id}
-                style={{ maxWidth: 310, margin: 'auto' }}
+                style={{ maxWidth: 310, margin: 'auto', cursor: 'pointer' }}
                 onClick={() => router.push(`/products/${item.id}`)}
               >
                 <Image
