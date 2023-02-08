@@ -66,7 +66,7 @@ const DetailItem = (props: OrderDetail) => {
   const queryClient = useQueryClient()
   const STATUS_QUERY_KEY = '/api/update-status'
 
-  const { mutate: updateStatus } = useMutation<unknown, unknown, Number, any>(
+  const { mutate: updateStatus } = useMutation<unknown, unknown, number, any>(
     (orderItemIds) =>
       fetch(STATUS_QUERY_KEY, {
         method: 'POST',
@@ -76,21 +76,24 @@ const DetailItem = (props: OrderDetail) => {
         .then((data) => data.items),
     {
       onMutate: async (orderItemIds) => {
-        //바로 반영
-
+        // 해당 query의 refetch를 취소 optimistic update가 이뤄지기전에
+        // 실제로 서버에서 가져온 데이터가 화면에 오버라이트를 방지하기 위함
         await queryClient.cancelQueries([ORDER_QUERY_KEY])
-        // Snapshot the previous value
+
+        //현재의 값을 가져옴
         const previous = queryClient.getQueryData([ORDER_QUERY_KEY])
 
-        // Optimistically update to the new value
+        // 현재 값에 새로운 값을 update or edit optimistic update
         queryClient.setQueryData<OrderDetail[]>([ORDER_QUERY_KEY], (old) =>
           old
-            ? old.filter((id) =>
-                id.orderItemIds == String(orderItemIds) ? (id.status = 5) : 0
+            ? old.filter((item) =>
+                item.orderItemIds == String(orderItemIds)
+                  ? { ...item, status: 5 }
+                  : 0
               )
             : []
         )
-        // Return a context object with the snapshotted value
+        // 이전 값을 반환 onError 핸들링
         return { previous }
       },
       onError: (__, _, context) => {
@@ -103,9 +106,48 @@ const DetailItem = (props: OrderDetail) => {
       },
     }
   )
+  const { mutate: deleteOrder } = useMutation<unknown, unknown, number, any>(
+    (orderItemIds) =>
+      fetch('/api/delete-order', {
+        method: 'POST',
+        body: JSON.stringify({ orderItemIds }),
+      })
+        .then((res) => res.json())
+        .then((data) => data.items),
+    {
+      onMutate: async (id) => {
+        //찜하기 업데이트 바로 반영
+        await queryClient.cancelQueries([ORDER_QUERY_KEY])
+
+        // Snapshot the previous value
+        const previous = queryClient.getQueryData([ORDER_QUERY_KEY])
+
+        // Optimistically update to the new value
+        queryClient.setQueryData<OrderDetail[]>([ORDER_QUERY_KEY], (old) =>
+          old?.filter((c) => c.id !== id)
+        )
+
+        // Return a context object with the snapshotted value
+        return { previous }
+      },
+      onError: (__, _, context) => {
+        queryClient.setQueryData([ORDER_QUERY_KEY], context.previous)
+      },
+      onSuccess: () => {
+        //기존에 있는 쿼리를 다시 부르게 만드는 상태
+        queryClient.invalidateQueries([ORDER_QUERY_KEY])
+      },
+    }
+  )
+
 
   const handlePayment = () => {
     updateStatus(props.id)
+  }
+
+  const handleDelete = () => {
+    alert('주문내역 삭제')
+    deleteOrder(props.id)
   }
   return (
     <div
@@ -117,7 +159,7 @@ const DetailItem = (props: OrderDetail) => {
           <Badge color={props.status === 0 ? 'red' : ''} className="mb-2">
             {ORDER_STATUS_MAP[props.status + 1]}
           </Badge>
-          <IconX className="ml-auto" />
+          <IconX className="ml-auto" onClick={handleDelete} />
         </div>
 
         {props.orderItems.map((orderItem, idx) => (

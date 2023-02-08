@@ -42,6 +42,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 export interface CommentItemType extends Comment, OrderItem {}
 const WISHLIST_QUERY_KEY = '/api/get-wishlist'
+
 export default function Products(props: {
   product: products & { images: string[] }
   comments: CommentItemType[]
@@ -257,7 +258,7 @@ export default function Products(props: {
                 onClick={() => {
                   if (session == null) {
                     alert('로그인이 필요해요')
-                    router.push('auth/login')
+                    router.push('/auth/login')
                     return
                   }
                   validate('cart')
@@ -303,7 +304,7 @@ export default function Products(props: {
               onClick={() => {
                 if (session == null) {
                   alert('로그인이 필요해요')
-                  router.push('auth/login')
+                  router.push('/auth/login')
                   return
                 }
                 validate('order')
