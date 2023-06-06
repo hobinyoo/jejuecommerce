@@ -11,7 +11,7 @@ import Button from '@components/cs/Button'
 import Input from '@components/cs/Input'
 import { css } from '@emotion/react'
 
-const SignUp = () => {
+const SignIn = () => {
   const [phoneNumber, setPhoneNumber] = useState('+821050556365')
   const [verificationCode, setVerificationCode] = useState('')
   const [verificationId, setVerificationId] = useState('')
@@ -60,11 +60,6 @@ const SignUp = () => {
     <>
       <Header />
       <div css={signUpContainer}>
-        <Input
-          name="name"
-          placeholder="이름"
-          style={{ marginBottom: '1rem' }}
-        />
         <Input name="phoneNumber" placeholder="핸드폰 번호" />
         <Button id="sign-in-button" onClick={sendPhoneNumber} css={button}>
           인증요청
@@ -90,4 +85,4 @@ const signUpContainer = css`
 const button = css`
   margin: 1rem 0;
 `
-export default SignUp
+export default SignIn

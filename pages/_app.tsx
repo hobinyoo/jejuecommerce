@@ -2,12 +2,12 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { QueryClient } from '@tanstack/query-core'
-import { SessionProvider } from 'next-auth/react'
-import Header from '@components/Header'
+import Header from '@components/cs/MainHeader'
 import Head from 'next/head'
+import styled from '@emotion/styled'
 export default function App({
   Component,
-  pageProps: { session, ...pageProps },
+  pageProps: { ...pageProps },
 }: AppProps) {
   const queryClinet = new QueryClient({
     defaultOptions: {
@@ -16,17 +16,19 @@ export default function App({
   })
 
   return (
-    <SessionProvider session={session}>
-      <QueryClientProvider client={queryClinet}>
-        <Head>
-          <title>Commerce Service</title>
-          <meta name="description" content="commerce service" />
-        </Head>
-        <div className="md:px-36 px-9">
-          <Header />
-          <Component {...pageProps} />
-        </div>
-      </QueryClientProvider>
-    </SessionProvider>
+    <QueryClientProvider client={queryClinet}>
+      <Head>
+        <title>Korea Beef Soup</title>
+        <meta name="description" content="Korea Beef Soup" />
+      </Head>
+      <Container>
+        <Component {...pageProps} />
+      </Container>
+    </QueryClientProvider>
   )
 }
+
+const Container = styled.div`
+  padding-left: 2rem;
+  padding-right: 2rem;
+`
