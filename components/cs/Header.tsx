@@ -9,7 +9,15 @@ const Header = () => {
   return (
     <div css={container}>
       <ArrowBackIcon css={arrowIcon} onClick={() => router.back()} />
-      <p>{router?.pathname === '/signUp' ? '회원가입' : '로그인'}</p>
+      <p>
+        {router?.pathname === '/signUp'
+          ? '회원가입'
+          : router?.pathname === '/signIn'
+          ? '로그인'
+          : router?.pathname === '/order'
+          ? '주문하기'
+          : '주문내역'}
+      </p>
       <p>{''}</p>
     </div>
   )

@@ -8,13 +8,15 @@ import {
 } from 'firebase/auth'
 import Header from '@components/cs/Header'
 import Button from '@components/cs/Button'
-import Input from '@components/cs/Input'
 import { css } from '@emotion/react'
+import InputText from '@components/cs/InputText'
 
 const SignUp = () => {
-  const [phoneNumber, setPhoneNumber] = useState('+821050556365')
-  const [verificationCode, setVerificationCode] = useState('')
-  const [verificationId, setVerificationId] = useState('')
+  const [name, setName] = useState<string>('')
+  const [validName, seteValidName] = useState<boolean>(false)
+  const [phoneNumber, setPhoneNumber] = useState<string>('+821050556365')
+  const [verificationCode, setVerificationCode] = useState<string>('')
+  const [verificationId, setVerificationId] = useState<string>('')
 
   const sendPhoneNumber = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(
@@ -60,24 +62,20 @@ const SignUp = () => {
     <>
       <Header />
       <div css={signUpContainer}>
-        <Input
-          name="name"
-          placeholder="이름"
-          style={{ marginBottom: '1rem' }}
-        />
-        <Input name="phoneNumber" placeholder="핸드폰 번호" />
+        <InputText name="name" placeholder="이름" setInputText={setName} />
+        {/* <InputText name="phoneNumber" placeholder="핸드폰 번호" setInputText={setPhoneNumber} />
         <Button id="sign-in-button" onClick={sendPhoneNumber} css={button}>
           인증요청
         </Button>
 
-        <Input
+        <InputText
           name="verifyNumber"
           placeholder="인증 번호"
-          onChange={(e) => setVerificationCode(e.target.value)}
+          setInputText={setVerificationCode}
         />
         <Button onClick={confirmNumber} css={button}>
           확인
-        </Button>
+        </Button> */}
       </div>
     </>
   )

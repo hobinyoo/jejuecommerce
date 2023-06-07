@@ -8,6 +8,7 @@ type Props = {
   openDrawer: boolean
   setOpenDrawer: React.Dispatch<React.SetStateAction<boolean>>
 }
+
 const MenuDrawer = ({ openDrawer, setOpenDrawer }: Props) => {
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {

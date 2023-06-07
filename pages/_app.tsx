@@ -5,10 +5,9 @@ import { QueryClient } from '@tanstack/query-core'
 import Header from '@components/cs/MainHeader'
 import Head from 'next/head'
 import styled from '@emotion/styled'
-export default function App({
-  Component,
-  pageProps: { ...pageProps },
-}: AppProps) {
+import { css } from '@emotion/react'
+
+const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
   const queryClinet = new QueryClient({
     defaultOptions: {
       queries: { staleTime: Infinity },
@@ -21,14 +20,15 @@ export default function App({
         <title>Korea Beef Soup</title>
         <meta name="description" content="Korea Beef Soup" />
       </Head>
-      <Container>
+      <div css={container}>
         <Component {...pageProps} />
-      </Container>
+      </div>
     </QueryClientProvider>
   )
 }
 
-const Container = styled.div`
-  padding-left: 2rem;
-  padding-right: 2rem;
+const container = css`
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 `
+export default App
