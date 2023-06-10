@@ -1,7 +1,8 @@
+import { CountControl } from '@components/CountControl'
 import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 
 type Props = {
   orderVisible: boolean
@@ -10,12 +11,21 @@ type Props = {
 
 const OrderModal = ({ orderVisible, setOrderVisible }: Props) => {
   const router = useRouter()
+  const [quantity, setQuantity] = useState<number | undefined>(1)
+
   return (
     <div css={overlay} onClick={() => setOrderVisible(false)}>
       <div css={orderModal}>
-        <Button onClick={() => router.push('/order')} order>
-          주문하기
-        </Button>
+        <div css={modalInner}>
+          <div className="text-lg">
+           
+          </div>
+          <span>수량</span>
+          <CountControl value={quantity} setValue={setQuantity} max={200} />
+          <Button onClick={() => router.push('/order')} order>
+            주문하기
+          </Button>
+        </div>
       </div>
     </div>
   )
@@ -39,5 +49,9 @@ const orderModal = css`
   bottom: 0;
   border-top-left-radius: 21px;
   border-top-right-radius: 21px;
+`
+
+const modalInner = css`
+  padding: 2rem;
 `
 export default OrderModal

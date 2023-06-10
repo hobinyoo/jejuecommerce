@@ -28,9 +28,10 @@ const button = css`
 `
 
 const orderButton = css`
-  width: 100%;
+  width: calc(100% - 4rem);
   position: absolute;
   bottom: 0;
+  margin-bottom: 2rem;
 `
 
 export default Button

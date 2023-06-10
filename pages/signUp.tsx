@@ -5,6 +5,7 @@ import {
   RecaptchaVerifier,
   signInWithCredential,
   signInWithPhoneNumber,
+  signOut,
 } from 'firebase/auth'
 import Header from '@components/cs/Header'
 import Button from '@components/cs/Button'
@@ -17,39 +18,68 @@ import {
 } from 'function/vaildation'
 import ErrorMessage from '@components/cs/Error'
 import { isEmpty } from 'lodash'
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  setDoc,
+} from 'firebase/firestore'
+import { useRouter } from 'next/router'
+import { UsersProps } from 'types/types'
 
 const SignUp = () => {
+  const router = useRouter()
+
   const [name, setName] = useState<string>('')
   const [phoneNumber, setPhoneNumber] = useState<string>('')
   const [verificationCode, setVerificationCode] = useState<string>('')
   const [verificationId, setVerificationId] = useState<string>('')
   const [requestCode, setRequestCode] = useState<boolean>(false)
 
-  const sendPhoneNumber = () => {
-    //TODO: users의 id안에 있는 모든 phoneNumber를 조회하여 대조한다 이미 있는 번호라면 알려주기
-    const koreaPhoneNumber = phoneNumber.replace(/^0/, '+82')
-    setRequestCode(true)
-    const appVerifier = new RecaptchaVerifier(
-      'sign-in-button',
-      {
-        size: 'invisible',
-      },
-      auth
-    )
+  // const user = auth.currentUser
 
-    signInWithPhoneNumber(auth, koreaPhoneNumber, appVerifier)
-      .then((confirmationResult: any) => {
-        // SMS sent. Prompt user to type the code from the message, then sign the
-        // user in with confirmationResult.confirm(code).
-        setVerificationId(confirmationResult.verificationId)
-        // ...
+  const sendPhoneNumber = async () => {
+    const usersInfo: UsersProps[] = []
+    const board = collection(db, 'users')
+    const querySnapshot = await getDocs(
+      query(board, orderBy('timestamp', 'desc'))
+    )
+    querySnapshot.forEach((doc: any) => {
+      usersInfo.push({
+        id: doc.id,
+        name: doc.data().name,
+        phoneNumber: doc.data().phoneNumber,
       })
-      .catch((error) => {
-        console.log(error)
-        // Error; SMS not sent
-        // ...
-      })
+    })
+
+    for (const user of usersInfo) {
+      if (user.phoneNumber === phoneNumber) {
+        alert('이미 존재하는 번호입니다.')
+        router.push('/signIn')
+        //TODO: 로그인 화면으로 이동 로직
+      } else {
+        const koreaPhoneNumber = phoneNumber.replace(/^0/, '+82')
+        setRequestCode(true)
+        const appVerifier = new RecaptchaVerifier(
+          'sign-in-button',
+          {
+            size: 'invisible',
+          },
+          auth
+        )
+
+        signInWithPhoneNumber(auth, koreaPhoneNumber, appVerifier)
+          .then((confirmationResult: any) => {
+            setVerificationId(confirmationResult.verificationId)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+    }
   }
 
   const confirmNumber = () => {
@@ -65,6 +95,7 @@ const SignUp = () => {
         await setDoc(doc(db, 'users', userUid), {
           name: name,
           phoneNumber: phoneNumber,
+          timestamp: new Date(),
         })
       })
       .catch((error) => {
@@ -98,19 +129,22 @@ const SignUp = () => {
         </Button>
         <br />
         {/* 인증번호 */}
-        <>
-          인증번호:
-          <InputText
-            name="verificationCode"
-            placeholder="인증 번호"
-            setInputText={setVerificationCode}
-          />
-          {!isEmpty(verificationCode) &&
-            !verificationValidation(verificationCode) && <ErrorMessage />}
-          <Button onClick={confirmNumber} css={button}>
-            확인
-          </Button>
-        </>
+        {requestCode && (
+          <>
+            인증번호:
+            <InputText
+              name="verificationCode"
+              placeholder="인증 번호"
+              setInputText={setVerificationCode}
+            />
+            {!isEmpty(verificationCode) &&
+              !verificationValidation(verificationCode) && <ErrorMessage />}
+            <Button onClick={confirmNumber} css={button}>
+              확인
+            </Button>
+          </>
+        )}
+        {/* <button onClick={() => signOut(auth)}>로그아웃</button> */}
       </div>
     </>
   )
