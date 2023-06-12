@@ -2,20 +2,18 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { QueryClient } from '@tanstack/query-core'
-import Header from '@components/cs/MainHeader'
 import Head from 'next/head'
-import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 
 const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
-  const queryClinet = new QueryClient({
+  const queryClient = new QueryClient({
     defaultOptions: {
       queries: { staleTime: Infinity },
     },
   })
 
   return (
-    <QueryClientProvider client={queryClinet}>
+    <QueryClientProvider client={queryClient}>
       <Head>
         <title>Korea Beef Soup</title>
         <meta name="description" content="Korea Beef Soup" />

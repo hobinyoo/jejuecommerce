@@ -112,7 +112,9 @@ const SignUp = () => {
         {/* 이름 */}
         이름:
         <InputText name="name" placeholder="이름" setInputText={setName} />
-        {!isEmpty(name) && !nameValidation(name) && <ErrorMessage name />}
+        {!isEmpty(name) && !nameValidation(name) && (
+          <ErrorMessage message={'2-4 글자의 이름을 입력해주세요.'} />
+        )}
         <br />
         {/* 핸드폰 번호 */}
         핸드폰 번호:
@@ -122,7 +124,7 @@ const SignUp = () => {
           setInputText={setPhoneNumber}
         />
         {!isEmpty(phoneNumber) && !phoneValidation(phoneNumber) && (
-          <ErrorMessage phone />
+          <ErrorMessage message={'올바른 번호를 입력해주세요'} />
         )}
         <Button id="sign-in-button" onClick={sendPhoneNumber} css={button}>
           인증요청
@@ -138,7 +140,9 @@ const SignUp = () => {
               setInputText={setVerificationCode}
             />
             {!isEmpty(verificationCode) &&
-              !verificationValidation(verificationCode) && <ErrorMessage />}
+              !verificationValidation(verificationCode) && (
+                <ErrorMessage message={'6자리 번호를 입력해주세요'} />
+              )}
             <Button onClick={confirmNumber} css={button}>
               확인
             </Button>

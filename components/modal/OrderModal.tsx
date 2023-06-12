@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import MenuControl from '@components/MenuControl'
 import IconX from '../../public/X.svg'
+import { auth } from '@firebase/initFirebase'
 type Props = {
   orderVisible: boolean
   setOrderVisible: Dispatch<SetStateAction<boolean>>
@@ -12,6 +13,8 @@ type Props = {
 
 const OrderModal = ({ orderVisible, setOrderVisible }: Props) => {
   const router = useRouter()
+  const userId = auth.currentUser?.uid
+
   const [quantity, setQuantity] = useState<number | undefined>(1)
   const [menu, setMenu] = useState<string | undefined>('한우 소고기 국밥')
 
@@ -32,14 +35,16 @@ const OrderModal = ({ orderVisible, setOrderVisible }: Props) => {
 
           <Button
             onClick={() =>
-              router.push(`/order?menu=${menu}&quantity=${quantity}`)
+              router.push(
+                `/order?menu=${menu}&quantity=${quantity}&userId=${userId}`
+              )
             }
             order
           >
             주문하기
           </Button>
 
-          <div>가격: {quantity && quantity * 9000} </div>
+          <div>가격: {quantity && quantity * 11000} </div>
         </div>
       </div>
     </div>

@@ -1,16 +1,115 @@
 import Header from '@components/Header'
+import InputText from '@components/InputText'
+import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import DaumPostcode from 'react-daum-postcode'
+import PayMent from './payment'
 
 const Order = () => {
   const router = useRouter()
-  console.log(router.query)
+
+  const [name, setName] = useState<string>('')
+  const [phoneNumber, setPhoneNumber] = useState<string>('')
+  const [address, setAddress] = useState<string>('')
+  const [addressDetail, setAddressDetail] = useState<string>('')
+  const [postCode, setPostCode] = useState<string>('')
+
+  const [openPostcode, setOpenPostcode] = React.useState<boolean>(false)
+
+  useEffect(() => {
+    if (router.query.userId) {
+      fetch(`/api/beef/get-oneUserInfo?id=${router.query.userId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setName(data.items.name)
+          setPhoneNumber(data.items.phoneNumber)
+          setAddress(data.items.address ?? '')
+          setAddressDetail(data.items.addressDetail ?? '')
+          setPostCode(data.items.postCode ?? '')
+        })
+        .catch((error) => console.error(error))
+    }
+  }, [router.query.userId])
+
+  const handle = {
+    // 버튼 클릭 이벤트
+    clickButton: () => {
+      setOpenPostcode((current) => !current)
+    },
+
+    // 주소 선택 이벤트
+    selectAddress: (data: any) => {
+      setAddress(data.address)
+      setPostCode(data.zonecode)
+      setOpenPostcode(false)
+    },
+  }
   return (
     <div>
       <Header />
-      <div>주문하기</div>
+      <div css={container}>
+        <div>상품명: {router.query.menu}</div>
+        <div>수량: {router.query.quantity}개</div>
+        <div>총 가격: {Number(router.query.quantity) * 11000} 원</div>
+        <br />
+        <div>받는 사람</div>
+        <br />
+        <div>이름:</div>
+        <InputText
+          name="name"
+          placeholder="이름"
+          setInputText={setName}
+          inputText={name}
+        />
+        <br />
+        <div>핸드폰번호:</div>
+        <InputText
+          name="phoneNumber"
+          placeholder="핸드폰 번호"
+          setInputText={setPhoneNumber}
+          inputText={phoneNumber}
+        />
+        <br />
+        <div css={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div>주소: {address}</div>
+          <button onClick={handle.clickButton}>주소찾기</button>
+        </div>
+        <div>상세주소:</div>
+        <InputText
+          name="addressDetail"
+          placeholder="상세주소"
+          setInputText={setAddressDetail}
+          inputText={addressDetail}
+        />
+        <div>우편번호: {postCode}</div>
+        {openPostcode && (
+          <DaumPostcode
+            onComplete={handle.selectAddress} // 값을 선택할 경우 실행되는 이벤트
+            autoClose={false} // 값을 선택할 경우 사용되는 DOM을 제거하여 자동 닫힘 설정
+            defaultQuery="판교역로 235" // 팝업을 열때 기본적으로 입력되는 검색어
+          />
+        )}
+      </div>
+      <PayMent
+        uid={typeof router.query.userId === 'string' ? router.query.userId : ''}
+        menu={typeof router.query.menu === 'string' ? router.query.menu : ''}
+        quantity={
+          typeof router.query.quantity === 'string' ? router.query.quantity : ''
+        }
+        totalPrice={Number(router.query.quantity) * 11000}
+        name={name}
+        phoneNumber={phoneNumber}
+        address={address}
+        addressDetail={addressDetail}
+        postCode={postCode}
+      />
     </div>
   )
 }
 
+const container = css`
+  display: flex;
+  flex-direction: column;
+`
 export default Order

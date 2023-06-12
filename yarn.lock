@@ -4702,6 +4702,11 @@
   "resolved" "https://registry.npmjs.org/quick-lru/-/quick-lru-5.1.1.tgz"
   "version" "5.1.1"
 
+"react-daum-postcode@^3.1.1":
+  "integrity" "sha512-IFlC8XBSK+uobSIBHaWlxeecYpv9RhCFNu4YJ3+CrfGyEVdc4+yaaUH6BIfJbTZOybVx0V3s4nUeAEsssXBNJg=="
+  "resolved" "https://registry.npmjs.org/react-daum-postcode/-/react-daum-postcode-3.1.1.tgz"
+  "version" "3.1.1"
+
 "react-dom@^15.3.0 || ^16.0.0 || ^17.0.1 || ^18.0.0", "react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^17.0.0 || ^18.0.0", "react-dom@^17.0.2 || ^18", "react-dom@^18.2.0", "react-dom@>=0.14.0", "react-dom@>=16.6.0", "react-dom@>=16.8.0", "react-dom@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", "react-dom@18.2.0":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"

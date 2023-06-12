@@ -97,7 +97,7 @@ const SignIn = () => {
           setInputText={setPhoneNumber}
         />
         {!isEmpty(phoneNumber) && !phoneValidation(phoneNumber) && (
-          <ErrorMessage phone />
+          <ErrorMessage message={'올바른 번호를 입력해주세요'} />
         )}
         <Button id="sign-in-button" onClick={sendPhoneNumber} css={button}>
           인증요청
@@ -113,7 +113,9 @@ const SignIn = () => {
               setInputText={setVerificationCode}
             />
             {!isEmpty(verificationCode) &&
-              !verificationValidation(verificationCode) && <ErrorMessage />}
+              !verificationValidation(verificationCode) && (
+                <ErrorMessage message={'6자리 번호를 입력해주세요'} />
+              )}
             <Button onClick={confirmNumber} css={button}>
               확인
             </Button>
