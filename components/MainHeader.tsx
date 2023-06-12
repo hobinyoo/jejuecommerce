@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { css } from '@emotion/react'
-import MenuDrawer from '../navigation/Drawer'
-import { auth, db } from '../../firebase/initFirebase'
+import MenuDrawer from '../components/navigation/Drawer'
+import { auth, db } from '../firebase/initFirebase'
 import { doc, getDoc } from 'firebase/firestore'
 import { isEmpty } from 'lodash'
 

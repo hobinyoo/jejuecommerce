@@ -1,5 +1,5 @@
-import Button from '@components/cs/Button'
-import Header from '@components/cs/MainHeader'
+import Button from '@components/Button'
+import Header from '@components/MainHeader'
 import OrderModal from '@components/modal/OrderModal'
 import { css } from '@emotion/react'
 import React, { useState } from 'react'
@@ -31,7 +31,6 @@ const Main = () => {
 const container = css`
   width: 100%;
   height: 100vh;
-  position: relative;
 `
 
 export default Main

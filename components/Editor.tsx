@@ -4,7 +4,7 @@ import { EditorProps } from 'react-draft-wysiwyg'
 import styled from '@emotion/styled'
 import { EditorState } from 'draft-js'
 import { Dispatch, SetStateAction } from 'react'
-import Button from './cs/Button'
+import Button from './Button'
 const Editor = dynamic<EditorProps>(
   () => import('react-draft-wysiwyg').then((module) => module.Editor),
   {

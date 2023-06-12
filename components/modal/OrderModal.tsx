@@ -1,9 +1,10 @@
 import { CountControl } from '@components/CountControl'
-import Button from '@components/cs/Button'
+import Button from '@components/Button'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { Dispatch, SetStateAction, useState } from 'react'
-
+import MenuControl from '@components/MenuControl'
+import IconX from '../../public/X.svg'
 type Props = {
   orderVisible: boolean
   setOrderVisible: Dispatch<SetStateAction<boolean>>
@@ -12,19 +13,33 @@ type Props = {
 const OrderModal = ({ orderVisible, setOrderVisible }: Props) => {
   const router = useRouter()
   const [quantity, setQuantity] = useState<number | undefined>(1)
+  const [menu, setMenu] = useState<string | undefined>('한우 소고기 국밥')
 
   return (
-    <div css={overlay} onClick={() => setOrderVisible(false)}>
+    <div css={overlay}>
       <div css={orderModal}>
         <div css={modalInner}>
-          <div className="text-lg">
-           
+          <div
+            css={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}
+          >
+            <IconX onClick={() => setOrderVisible(false)} />
           </div>
-          <span>수량</span>
+
+          <div style={{ marginTop: '1rem' }}>메뉴를 선택해주세요.</div>
+          <MenuControl value={menu} setValue={setMenu} />
+          <div style={{ marginTop: '1rem' }}>수량:</div>
           <CountControl value={quantity} setValue={setQuantity} max={200} />
-          <Button onClick={() => router.push('/order')} order>
+
+          <Button
+            onClick={() =>
+              router.push(`/order?menu=${menu}&quantity=${quantity}`)
+            }
+            order
+          >
             주문하기
           </Button>
+
+          <div>가격: {quantity && quantity * 9000} </div>
         </div>
       </div>
     </div>

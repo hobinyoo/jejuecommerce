@@ -7,16 +7,16 @@ import {
   signInWithPhoneNumber,
   signOut,
 } from 'firebase/auth'
-import Header from '@components/cs/Header'
-import Button from '@components/cs/Button'
+import Header from '@components/Header'
+import Button from '@components/Button'
 import { css } from '@emotion/react'
-import InputText from '@components/cs/InputText'
+import InputText from '@components/InputText'
 import {
   nameValidation,
   phoneValidation,
   verificationValidation,
 } from 'function/vaildation'
-import ErrorMessage from '@components/cs/Error'
+import ErrorMessage from '@components/Error'
 import { isEmpty } from 'lodash'
 import {
   addDoc,
