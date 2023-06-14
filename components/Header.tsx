@@ -16,7 +16,11 @@ const Header = () => {
           ? '로그인'
           : router?.pathname === '/order'
           ? '주문하기'
-          : '주문내역'}
+          : router?.pathname === '/orderDetail'
+          ? '주문내역'
+          : router?.pathname === '/comment'
+          ? '후기작성'
+          : null}
       </p>
       <p>{''}</p>
     </div>

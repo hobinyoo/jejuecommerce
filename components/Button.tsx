@@ -28,7 +28,7 @@ const button = css`
 `
 
 const orderButton = css`
-  width: calc(100% - 4rem);
+  width: calc(100% - 3rem);
   position: absolute;
   bottom: 0;
   margin-bottom: 2rem;

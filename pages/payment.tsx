@@ -52,7 +52,7 @@ const PayMent = ({
       address: address,
       addressDetail: addressDetail,
       postCode: postCode,
-      status: '배송준비',
+      status: '상품준비',
       timestamp: new Date(),
     })
 
