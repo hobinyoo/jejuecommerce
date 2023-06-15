@@ -4,15 +4,15 @@ import { css } from '@emotion/react'
 type ButtonProps = {
   children: ReactNode
   onClick: () => void
-  order?: boolean
+  bottom?: boolean
   id?: string
 }
 
-const Button = ({ id, children, onClick, order = false }: ButtonProps) => {
+const Button = ({ id, children, onClick, bottom = false }: ButtonProps) => {
   return (
     <button
       id={id ?? ''}
-      css={order ? [button, orderButton] : button}
+      css={bottom ? [button, bottomButton] : button}
       onClick={onClick}
     >
       {children}
@@ -27,7 +27,7 @@ const button = css`
   color: white;
 `
 
-const orderButton = css`
+const bottomButton = css`
   width: calc(100% - 3rem);
   position: absolute;
   bottom: 0;

@@ -1,4 +1,4 @@
-export type UsersProps = {
+export interface UsersProps {
   id: string
   name: string
   phoneNumber: string
@@ -7,7 +7,7 @@ export type UsersProps = {
   postCode?: string
 }
 
-export type OrderProps = {
+export interface OrderProps {
   address: string
   addressDetail: string
   menu: string
@@ -15,9 +15,23 @@ export type OrderProps = {
   phoneNumber: string
   postCode: string
   quantity: string
-  timestamp: Date
+  timestamp: {
+    seconds: number
+  }
   totalPrice: string
   status: string
   uid: string
   id: string
+}
+
+export interface CommentProps {
+  menu: string
+  content: string
+  rating: number
+  images: string[]
+  uid: string
+  id: string
+  commentTimestamp: {
+    seconds: number
+  }
 }

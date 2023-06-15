@@ -2,17 +2,14 @@ import Header from '@components/Header'
 import React, { useRef, useState } from 'react'
 import { Rating } from '@mantine/core'
 import TextArea from '@components/TextArea'
-import { storage } from '@firebase/initFirebase'
-import {
-  ref,
-  getDownloadURL,
-  listAll,
-  uploadBytes,
-  uploadString,
-} from 'firebase/storage'
+import { db, storage } from '@firebase/initFirebase'
+import { getDownloadURL, ref, uploadString } from 'firebase/storage'
 import AutoSizeImage from '@components/AutoSizeImage'
-import router, { useRouter } from 'next/router'
+import router from 'next/router'
 import Button from '@components/Button'
+import { css } from '@emotion/react'
+import { isEmpty } from 'lodash'
+import { doc, updateDoc } from 'firebase/firestore'
 
 const Comment = () => {
   const [rating, setRating] = useState<number>(0)
@@ -21,38 +18,55 @@ const Comment = () => {
   const [images, setImages] = useState<string[]>([])
   const { orderId } = router.query
 
-  const [selectedImages, setSelectedImages] = useState<string[]>([])
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.files) {
       const fileArr = e.currentTarget.files
 
       let fileURLs: string[] = []
       let file: File
-      let filesLength = fileArr.length > 10 ? 10 : fileArr.length
+      let filesLength = fileArr.length > 6 ? 6 : fileArr.length
 
       for (let i = 0; i < filesLength; i++) {
         let fileReader = new FileReader()
         file = fileArr[i]
         fileReader.onload = () => {
           fileURLs[i] = fileReader.result as string
-          setSelectedImages((prev) => [...fileURLs])
+          setImages((prev) => [...fileURLs])
         }
         fileReader.readAsDataURL(file)
       }
     }
   }
 
-  const postHandler = async () => {
-    selectedImages.map((image, index) => {
-      const imageRef = ref(storage, `images/${orderId}/image${index}`)
+  const saveComment = async () => {
+    if (!isEmpty(images) && typeof orderId === 'string') {
+      const imagesArray: string[] = []
+      images.map((image, index) => {
+        const imageRef = ref(storage, `images/${orderId}/image${index}`)
 
-      uploadString(imageRef, image, 'data_url').then(async (snapshot: any) => {
-        console.log('ok')
+        uploadString(imageRef, image, 'data_url').then(
+          async (snapshot: any) => {
+            const downloadURL = await getDownloadURL(snapshot.ref)
+            imagesArray.push(downloadURL)
+            await updateDoc(doc(db, 'orders', orderId), {
+              images: imagesArray,
+              commentTimestamp: new Date(),
+            })
+          }
+        )
       })
-    })
+    }
+    if (typeof orderId === 'string') {
+      await updateDoc(doc(db, 'orders', orderId), {
+        rating: rating,
+        content: content,
+      })
+    }
+    alert('저장되었습니다.')
+    router.push('/main')
   }
   return (
-    <div css={{ width: '100%' }}>
+    <div css={container}>
       <Header />
       <input
         ref={inputRef}
@@ -61,22 +75,33 @@ const Comment = () => {
         multiple
         onChange={handleChange}
       />
-      <Button onClick={postHandler}>저장</Button>
+
       <div style={{ display: 'flex' }}>
         {images &&
           images.length > 0 &&
-          images.map((image, idx) => <AutoSizeImage key={idx} src={image} />)}
+          images.map((image, idx) => (
+            <AutoSizeImage key={idx} src={image} size={200} />
+          ))}
       </div>
       <Rating value={rating} onChange={setRating} size="md" />
       <br />
-      <TextArea
-        name="content"
-        placeholder="후기를 작성해주세요."
-        content={content}
-        setContent={setContent}
-      />
+      <div>
+        <TextArea
+          name="content"
+          placeholder="후기를 작성해주세요."
+          content={content}
+          setContent={setContent}
+        />
+      </div>
+      <Button bottom onClick={saveComment}>
+        저장
+      </Button>
     </div>
   )
 }
 
+const container = css`
+  width: 100%;
+  height: 100vh;
+`
 export default Comment

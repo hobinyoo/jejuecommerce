@@ -36,7 +36,7 @@ export default function CommentEdit() {
         })
     }
   }, [orderItemId])
-  console.log(rate, images)
+
   const handleChange = () => {
     if (
       inputRef.current &&

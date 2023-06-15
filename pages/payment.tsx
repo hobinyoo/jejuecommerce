@@ -67,7 +67,7 @@ const PayMent = ({
     })
   }
   return (
-    <Button onClick={handleClick} order>
+    <Button onClick={handleClick} bottom>
       결제하기
     </Button>
   )

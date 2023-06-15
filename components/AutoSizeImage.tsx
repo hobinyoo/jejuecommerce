@@ -25,4 +25,6 @@ const AutoSizeImageWrapper = styled.div<{ size: number }>`
   width: ${(props) => (props.size ? `${props.size}px` : '500px')};
   height: ${(props) => (props.size ? `${props.size}px` : '500px')};
   position: relative;
+  display: 'flex';
+  width: '100%';
 `

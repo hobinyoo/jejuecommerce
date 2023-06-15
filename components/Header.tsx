@@ -20,6 +20,8 @@ const Header = () => {
           ? '주문내역'
           : router?.pathname === '/comment'
           ? '후기작성'
+          : router?.pathname === '/admin'
+          ? '관리자'
           : null}
       </p>
       <p>{''}</p>

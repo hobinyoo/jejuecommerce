@@ -39,7 +39,7 @@ const OrderModal = ({ orderVisible, setOrderVisible }: Props) => {
                 `/order?menu=${menu}&quantity=${quantity}&userId=${userId}`
               )
             }
-            order
+            bottom
           >
             주문하기
           </Button>
