@@ -1,5 +1,6 @@
 import Button from '@components/Button'
 import Header from '@components/Header'
+import { auth } from '@firebase/initFirebase'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { OrderProps } from 'types/types'
@@ -10,7 +11,7 @@ const OrderDetail = () => {
   const [data, setData] = useState<OrderProps[]>([])
   useEffect(() => {
     if (router.query.userId) {
-      fetch(`/api/beef/get-orderDetail?id=${router.query.userId}`)
+      fetch(`/api/get-orderDetail?id=${router.query.userId}`)
         .then((res) => res.json())
         .then((data) => {
           setData(data.items)

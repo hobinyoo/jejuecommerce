@@ -1,26 +1,18 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { collection, getDocs, query, orderBy, where } from 'firebase/firestore'
-import { db } from '../../../firebase/initFirebase'
+import { collection, getDocs, query, orderBy } from 'firebase/firestore'
+import { db } from '@firebase/initFirebase'
 import { OrderProps } from 'types/types'
-import { time } from 'console'
-import { compareTimestamps } from 'function/date'
 
-async function getDates(date: number) {
+async function getOrderDetail(id: string) {
   try {
     const ordersInfo: OrderProps[] = []
-    const boardRef = collection(db, 'orders')
+    const board = collection(db, 'orders')
     const querySnapshot = await getDocs(
-      query(boardRef, orderBy('timestamp', 'desc'))
+      query(board, orderBy('timestamp', 'desc'))
     )
-
     querySnapshot.forEach((doc) => {
-      const isSameDate = compareTimestamps(
-        doc.data().timestamp.seconds * 1000,
-        date
-      )
-
-      if (isSameDate) {
+      if (doc.data().uid === id) {
         ordersInfo.push({
           address: doc.data().address,
           addressDetail: doc.data().addressDetail,
@@ -32,8 +24,6 @@ async function getDates(date: number) {
           status: doc.data().status,
           timestamp: doc.data().timestamp,
           totalPrice: doc.data().totalPrice,
-          prepareShipping: doc.data().prepareShipping,
-          carrierCode: doc.data().carrierCode,
           uid: doc.data().uid,
           id: doc.id,
         })
@@ -55,10 +45,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { date } = JSON.parse(req.body)
+  const { id } = req.query
+
+  if (id == null) {
+    res.status(400).json({ message: 'Failed' })
+  }
   try {
-    const getDateOrderInfo = await getDates(date)
-    res.status(200).json({ items: getDateOrderInfo, message: 'Success' })
+    const myOrderDetail = await getOrderDetail(String(id))
+    res.status(200).json({ items: myOrderDetail, message: 'Success' })
   } catch (error) {
     res.status(400).json({ message: 'Failed' })
   }

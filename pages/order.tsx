@@ -19,7 +19,7 @@ const Order = () => {
 
   useEffect(() => {
     if (router.query.userId) {
-      fetch(`/api/beef/get-oneUserInfo?id=${router.query.userId}`)
+      fetch(`/api/get-oneUserInfo?id=${router.query.userId}`)
         .then((res) => res.json())
         .then((data) => {
           setName(data.items.name)

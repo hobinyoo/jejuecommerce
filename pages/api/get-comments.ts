@@ -1,38 +1,36 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
+import { collection, getDocs, query, orderBy } from 'firebase/firestore'
+import { db } from '@firebase/initFirebase'
+import { CommentProps } from 'types/types'
+import { isEmpty } from 'lodash'
 
-const prisma = new PrismaClient()
-
-async function getComments(productId: number) {
+async function getComments() {
   try {
-    // orders 테이블에서 나의 주문들을 조회한다.
+    const comments: CommentProps[] = []
+    const boardRef = collection(db, 'orders')
+    const querySnapshot = await getDocs(
+      query(boardRef, orderBy('timestamp', 'desc'))
+    )
 
-    const orderItems = await prisma.orderItem.findMany({
-      where: {
-        productId,
-      },
-    })
-    console.log(orderItems)
-
-    let response = []
-    // orderItem을 기반으로 Comment을 조회한다.
-    for (const orderItem of orderItems) {
-      const res = await prisma.comment.findUnique({
-        where: {
-          orderItemId: orderItem.id,
-        },
-      })
-      if (res) {
-        response.push({ ...orderItem, ...res })
+    querySnapshot.forEach((doc) => {
+      if (!isEmpty(doc.data().content)) {
+        comments.push({
+          menu: doc.data().menu,
+          content: doc.data().content,
+          rating: doc.data().rating,
+          images: doc.data().images,
+          commentTimestamp: doc.data().commentTimestamp,
+          uid: doc.data().uid,
+          id: doc.id,
+        })
       }
-    }
-
-    console.log(response)
-    return response
+    })
+    return comments
   } catch (error) {
     console.error(error)
   }
 }
+
 type Data = {
   items?: any
   message: string
@@ -42,15 +40,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { productId } = req.query
-  if (productId == null) {
-    res.status(200).json({ items: [], message: 'no productId' })
-    return
-  }
-
   try {
-    const wishlist = await getComments(Number(productId))
-    res.status(200).json({ items: wishlist, message: 'Success' })
+    const comments = await getComments()
+    res.status(200).json({ items: comments, message: 'Success' })
   } catch (error) {
     res.status(400).json({ message: 'Failed' })
   }

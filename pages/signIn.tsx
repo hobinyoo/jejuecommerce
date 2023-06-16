@@ -51,7 +51,7 @@ const SignIn = () => {
           },
           auth
         )
-
+        console.log(appVerifier)
         signInWithPhoneNumber(auth, koreaPhoneNumber, appVerifier)
           .then((confirmationResult: any) => {
             setVerificationId(confirmationResult.verificationId)
@@ -76,14 +76,12 @@ const SignIn = () => {
       .then((userCredential) => {
         // User signed in successfully
         alert('로그인에 성공!')
-        router.push('/main')
+        router.push('/')
       })
       .catch((error) => {
         console.error(error)
       })
   }
-
-  // todo: https://firebase.google.com/docs/auth/admin/verify-id-tokens?hl=ko#web 에서 토큰 관리
 
   return (
     <>
@@ -121,7 +119,6 @@ const SignIn = () => {
             </Button>
           </>
         )}
-        <button onClick={() => signOut(auth)}>로그아웃</button>
       </div>
     </>
   )

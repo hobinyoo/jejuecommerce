@@ -3,11 +3,17 @@ import React from 'react'
 import Divider from '@mui/material/Divider'
 import { useRouter } from 'next/router'
 import { auth } from '@firebase/initFirebase'
+import { signOut } from 'firebase/auth'
 
 const DrawerList = () => {
   const router = useRouter()
+  const user = auth.currentUser
 
-  const userId = auth.currentUser?.uid
+  const handleLogout = () => {
+    signOut(auth)
+    window.location.replace('/')
+  }
+
   return (
     <>
       <div
@@ -26,14 +32,24 @@ const DrawerList = () => {
         css={{
           width: '13rem',
           padding: '1rem',
-          display: 'flex',
-          justifyContent: 'space-between',
         }}
       >
-        <Button onClick={() => router.push(`/orderDetail?userId=${userId}`)}>
+        <Button onClick={() => router.push(`/orderDetail?userId=${user?.uid}`)}>
           주문내역
         </Button>
       </div>
+      <Divider />
+      {user && (
+        <div
+          css={{
+            width: '13rem',
+            padding: '1rem',
+          }}
+        >
+          <Button onClick={handleLogout}>로그아웃</Button>
+        </div>
+      )}
+
       <Divider />
     </>
   )

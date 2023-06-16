@@ -1,18 +1,25 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { collection, getDocs, query, orderBy } from 'firebase/firestore'
-import { db } from '../../../firebase/initFirebase'
+import { collection, getDocs, query, orderBy, where } from 'firebase/firestore'
+import { db } from '@firebase/initFirebase'
 import { OrderProps } from 'types/types'
+import { compareTimestamps } from 'function/date'
 
-async function getOrderDetail(id: string) {
+async function getDates(date: number) {
   try {
     const ordersInfo: OrderProps[] = []
-    const board = collection(db, 'orders')
+    const boardRef = collection(db, 'orders')
     const querySnapshot = await getDocs(
-      query(board, orderBy('timestamp', 'desc'))
+      query(boardRef, orderBy('timestamp', 'desc'))
     )
+
     querySnapshot.forEach((doc) => {
-      if (doc.data().uid === id) {
+      const isSameDate = compareTimestamps(
+        doc.data().timestamp.seconds * 1000,
+        date
+      )
+
+      if (isSameDate) {
         ordersInfo.push({
           address: doc.data().address,
           addressDetail: doc.data().addressDetail,
@@ -24,6 +31,8 @@ async function getOrderDetail(id: string) {
           status: doc.data().status,
           timestamp: doc.data().timestamp,
           totalPrice: doc.data().totalPrice,
+          prepareShipping: doc.data().prepareShipping,
+          carrierCode: doc.data().carrierCode,
           uid: doc.data().uid,
           id: doc.id,
         })
@@ -45,14 +54,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { id } = req.query
-
-  if (id == null) {
-    res.status(400).json({ message: 'Failed' })
-  }
+  const { date } = JSON.parse(req.body)
   try {
-    const myOrderDetail = await getOrderDetail(String(id))
-    res.status(200).json({ items: myOrderDetail, message: 'Success' })
+    const getDateOrderInfo = await getDates(date)
+    res.status(200).json({ items: getDateOrderInfo, message: 'Success' })
   } catch (error) {
     res.status(400).json({ message: 'Failed' })
   }

@@ -1,35 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
-import jwtDecode from 'jwt-decode'
+import { signInWithPhoneNumber } from 'firebase/auth'
 
-const prisma = new PrismaClient()
-
-async function signUp(credential: string) {
-  const decoded: { name: string; email: string; picture: string } =
-    jwtDecode(credential)
-
+async function signUp(phoneNumber: string) {
+   
   try {
-    //upsert는 있으면 update 없으면 생성
-    const response = await prisma.user.upsert({
-      where: {
-        email: decoded.email,
-      },
-      update: {
-        name: decoded.name,
-        image: decoded.picture,
-      },
-      create: {
-        email: decoded.email,
-        name: decoded.name,
-        image: decoded.picture,
-      },
-    })
 
-    console.log(response)
-    return response
-  } catch (error) {
-    console.error(error)
-  }
+  } catch (e) {}
 }
 type Data = {
   items?: any
@@ -38,12 +14,12 @@ type Data = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data> 
+  res: NextApiResponse<Data>
 ) {
-  const { credential } = req.query
+  const { phoneNumber } = JSON.parse(req.body)
 
   try {
-    const products = await signUp(String(credential))
+    const products = await signUp(String(phoneNumber))
     res.status(200).json({ items: products, message: 'Success' })
   } catch (error) {
     res.status(400).json({ message: 'Failed' })
