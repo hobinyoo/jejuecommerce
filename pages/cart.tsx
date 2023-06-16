@@ -96,7 +96,7 @@ export default function CartPage() {
   }
   return (
     <div>
-      <span className="text-2xl mb-3">Cart({data ? data.length : 0})</span>
+         <span className="text-2xl mb-3">Cart({data ? data.length : 0})</span>
       <div className="flex ">
         <div className="flex flex-col p-4 spcace-y-4 flex-1">
           {data ? (

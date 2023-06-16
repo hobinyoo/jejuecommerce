@@ -11,6 +11,7 @@ const nextConfig = {
       'image.thenorthfacekorea.co.kr',
       'lh3.googleusercontent.com',
       'i.ibb.co',
+      'firebasestorage.googleapis.com'
     ],
   },
   webpack: (config) => {

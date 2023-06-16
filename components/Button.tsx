@@ -1,10 +1,37 @@
-import styled from '@emotion/styled'
+import React, { ReactNode } from 'react'
+import { css } from '@emotion/react'
 
-const Button = styled.button`
+type ButtonProps = {
+  children: ReactNode
+  onClick: () => void
+  bottom?: boolean
+  id?: string
+}
+
+const Button = ({ id, children, onClick, bottom = false }: ButtonProps) => {
+  return (
+    <button
+      id={id ?? ''}
+      css={bottom ? [button, bottomButton] : button}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  )
+}
+
+const button = css`
   padding: 8px;
   border-radius: 8px;
   background-color: black;
-  color: white; 
+  color: white;
 `
+
+const bottomButton = css`
+  width: calc(100% - 3rem);
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 2rem;
+`
+
 export default Button
- 

@@ -1,38 +1,42 @@
-import { useSession } from 'next-auth/react'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
+import { css } from '@emotion/react'
 import React from 'react'
-import IconHome from '../public/Home.svg'
-import IconShoppingCart from '../public/ShoppingCart.svg'
-import IconHeart from '../public/Heart.svg'
-import IconUser from '../public/User.svg'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { useRouter } from 'next/router'
 
-export default function Header() {
-  const { data: session } = useSession()
+const Header = () => {
   const router = useRouter()
+
   return (
-    <div className="mt-12 mb-12">
-      <div className="w-full flex h-50 items-center">
-        <IconHome onClick={() => router.push('/')} />
-        <span className="m-auto" />
-        <IconHeart className="mr-4" onClick={() => router.push('/wishlist')} />
-        <IconShoppingCart
-          className="mr-4"
-          onClick={() => router.push('/cart')}
-        />
-        {session ? (
-          <Image
-            src={session.user?.image!}
-            width={30}
-            height={30}
-            style={{ borderRadius: '50%' }}
-            alt="profile"
-            onClick={() => router.push('/my')}
-          />
-        ) : (
-          <IconUser onClick={() => router.push('/auth/login')} />
-        )}
-      </div>
+    <div css={container}>
+      <ArrowBackIcon css={arrowIcon} onClick={() => router.back()} />
+      <p>
+        {router?.pathname === '/signUp'
+          ? '회원가입'
+          : router?.pathname === '/signIn'
+          ? '로그인'
+          : router?.pathname === '/order'
+          ? '주문하기'
+          : router?.pathname === '/orderDetail'
+          ? '주문내역'
+          : router?.pathname === '/comment'
+          ? '후기작성'
+          : router?.pathname === '/admin'
+          ? '관리자'
+          : null}
+      </p>
+      <p>{''}</p>
     </div>
   )
 }
+const container = css`
+  width: 100%;
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+const arrowIcon = css`
+  width: 1.5rem;
+  height: 1.5rem;
+`
+export default Header
