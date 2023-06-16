@@ -56,7 +56,7 @@ const Admin = () => {
       })
       .catch((error) => console.error(error))
   }
-  console.log('gd')
+  console.log('gddd')
   return (
     <div>
       <Header />
