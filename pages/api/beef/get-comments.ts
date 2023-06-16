@@ -10,12 +10,7 @@ async function getComments() {
     const comments: CommentProps[] = []
     const boardRef = collection(db, 'orders')
     const querySnapshot = await getDocs(
-      query(
-        boardRef,
-        orderBy('timestamp', 'desc')
-        // where('name', '==', '유호빈')
-        // TODO: 나중에 날짜를 비교해서 날짜 같은 것끼리 묶어줘야함
-      )
+      query(boardRef, orderBy('timestamp', 'desc'))
     )
 
     querySnapshot.forEach((doc) => {

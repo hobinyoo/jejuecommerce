@@ -22,6 +22,8 @@ export interface OrderProps {
   status: string
   uid: string
   id: string
+  carrierCode?: string
+  prepareShipping?: boolean
 }
 
 export interface CommentProps {

@@ -7,6 +7,7 @@ type InputProps = {
   inputText?: string
   setInputText: Dispatch<SetStateAction<string>>
   placeholder: string
+  disabled?: boolean
 }
 
 const InputText = ({
@@ -14,6 +15,7 @@ const InputText = ({
   placeholder,
   inputText,
   setInputText,
+  disabled = false,
 }: InputProps) => {
   return (
     <input
@@ -22,6 +24,7 @@ const InputText = ({
       value={isEmpty(inputText) ? undefined : inputText}
       placeholder={placeholder}
       onChange={(e) => setInputText(e.target.value)}
+      disabled={disabled}
     />
   )
 }

@@ -8,7 +8,6 @@ import { compareTimestamps } from 'function/date'
 
 async function getDates(date: number) {
   try {
-    console.log(date)
     const ordersInfo: OrderProps[] = []
     const boardRef = collection(db, 'orders')
     const querySnapshot = await getDocs(
@@ -20,7 +19,7 @@ async function getDates(date: number) {
         doc.data().timestamp.seconds * 1000,
         date
       )
-      console.log(isSameDate)
+
       if (isSameDate) {
         ordersInfo.push({
           address: doc.data().address,
@@ -33,6 +32,8 @@ async function getDates(date: number) {
           status: doc.data().status,
           timestamp: doc.data().timestamp,
           totalPrice: doc.data().totalPrice,
+          prepareShipping: doc.data().prepareShipping,
+          carrierCode: doc.data().carrierCode,
           uid: doc.data().uid,
           id: doc.id,
         })
