@@ -17,7 +17,7 @@ const Admin = () => {
     .reduce((prev, curr) => prev + curr, 0)
 
   useEffect(() => {
-    fetch(`/api/beef/get-dates`, {
+    fetch(`/api/get-dates`, {
       method: 'POST',
       body: JSON.stringify({
         date: value?.getTime(),
@@ -31,7 +31,7 @@ const Admin = () => {
   }, [value])
 
   const prepareShipping = (orderId: string) => {
-    fetch(`/api/beef/update-carrierCode`, {
+    fetch(`/api/update-carrierCode`, {
       method: 'POST',
       body: JSON.stringify({
         carrierCode: carrierCode,
@@ -41,7 +41,7 @@ const Admin = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.message === 'Success') {
-          fetch(`/api/beef/get-dates`, {
+          fetch(`/api/get-dates`, {
             method: 'POST',
             body: JSON.stringify({
               date: value?.getTime(),

@@ -1,11 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { auth, db } from '../firebase/initFirebase'
 import {
   PhoneAuthProvider,
   RecaptchaVerifier,
   signInWithCredential,
   signInWithPhoneNumber,
-  signOut,
 } from 'firebase/auth'
 import Header from '@components/Header'
 import Button from '@components/Button'
@@ -96,6 +95,8 @@ const SignUp = () => {
           phoneNumber: phoneNumber,
           timestamp: new Date(),
         })
+        alert('회원가입을 축하합니다!')
+        router.push('/')
       })
       .catch((error) => {
         console.error(error)
@@ -147,7 +148,6 @@ const SignUp = () => {
             </Button>
           </>
         )}
-        {/* <button onClick={() => signOut(auth)}>로그아웃</button> */}
       </div>
     </>
   )
