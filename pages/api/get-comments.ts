@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiResponse } from 'next'
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 import { db } from '@firebase/initFirebase'
 import { CommentProps } from 'types/types'
@@ -37,7 +37,7 @@ type Data = {
 }
 
 export default async function handler(
-  req: NextApiRequest,
+  // req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
   try {

@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { collection, getDocs, query, orderBy, where } from 'firebase/firestore'
+import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 import { db } from '@firebase/initFirebase'
 import { OrderProps } from 'types/types'
 import { compareTimestamps } from 'function/date'

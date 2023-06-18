@@ -3,12 +3,10 @@ import Header from '@components/MainHeader'
 import Review from '@components/Review'
 import OrderModal from '@components/modal/OrderModal'
 import { css } from '@emotion/react'
-import { auth } from '@firebase/initFirebase'
 import React, { useState } from 'react'
 
 const Main = () => {
   const [orderVisible, setOrderVisible] = useState<boolean>(false)
-  const test = auth.currentUser
 
   return (
     <div css={container}>

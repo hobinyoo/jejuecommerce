@@ -1,6 +1,5 @@
 import Button from '@components/Button'
 import Header from '@components/Header'
-import { auth } from '@firebase/initFirebase'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { OrderProps } from 'types/types'

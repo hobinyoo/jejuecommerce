@@ -5,7 +5,7 @@ import TextArea from '@components/TextArea'
 import { db, storage } from '@firebase/initFirebase'
 import { getDownloadURL, ref, uploadString } from 'firebase/storage'
 import AutoSizeImage from '@components/AutoSizeImage'
-import router from 'next/router'
+import { useRouter } from 'next/router'
 import Button from '@components/Button'
 import { css } from '@emotion/react'
 import { isEmpty } from 'lodash'
@@ -16,7 +16,8 @@ const Comment = () => {
   const [content, setContent] = useState<string>('')
   const inputRef = useRef<HTMLInputElement>(null)
   const [images, setImages] = useState<string[]>([])
-  const { orderId } = router.query
+  const router = useRouter()
+  const orderId = router.query.orderId
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.files) {
@@ -31,7 +32,7 @@ const Comment = () => {
         file = fileArr[i]
         fileReader.onload = () => {
           fileURLs[i] = fileReader.result as string
-          setImages((prev) => [...fileURLs])
+          setImages(() => [...fileURLs])
         }
         fileReader.readAsDataURL(file)
       }
@@ -61,9 +62,9 @@ const Comment = () => {
         rating: rating,
         content: content,
       })
+      alert('저장되었습니다.')
+      router.push('/main')
     }
-    alert('저장되었습니다.')
-    router.push('/main')
   }
   return (
     <div css={container}>

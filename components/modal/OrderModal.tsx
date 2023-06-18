@@ -11,7 +11,7 @@ type Props = {
   setOrderVisible: Dispatch<SetStateAction<boolean>>
 }
 
-const OrderModal = ({ orderVisible, setOrderVisible }: Props) => {
+const OrderModal = ({ setOrderVisible }: Props) => {
   const router = useRouter()
   const userId = auth.currentUser?.uid
 

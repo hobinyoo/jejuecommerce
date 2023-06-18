@@ -1,11 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { auth, db } from '../firebase/initFirebase'
 import {
   PhoneAuthProvider,
   RecaptchaVerifier,
   signInWithCredential,
   signInWithPhoneNumber,
-  signOut,
 } from 'firebase/auth'
 import Header from '@components/Header'
 import Button from '@components/Button'
@@ -51,7 +50,7 @@ const SignIn = () => {
           },
           auth
         )
-        console.log(appVerifier)
+
         signInWithPhoneNumber(auth, koreaPhoneNumber, appVerifier)
           .then((confirmationResult: any) => {
             setVerificationId(confirmationResult.verificationId)
@@ -73,7 +72,7 @@ const SignIn = () => {
     )
 
     signInWithCredential(auth, credential)
-      .then((userCredential) => {
+      .then(() => {
         // User signed in successfully
         alert('로그인에 성공!')
         router.push('/')
