@@ -31,6 +31,7 @@ const SignIn = () => {
     const querySnapshot = await getDocs(
       query(board, orderBy('timestamp', 'desc'))
     )
+
     querySnapshot.forEach((doc: any) => {
       usersInfo.push({
         id: doc.id,
@@ -39,29 +40,31 @@ const SignIn = () => {
       })
     })
 
-    for (const user of usersInfo) {
-      if (user.phoneNumber === phoneNumber) {
-        const koreaPhoneNumber = phoneNumber.replace(/^0/, '+82')
-        setRequestCode(true)
-        const appVerifier = new RecaptchaVerifier(
-          'sign-in-button',
-          {
-            size: 'invisible',
-          },
-          auth
-        )
+    const findUser = usersInfo.find(
+      (value) => value.phoneNumber === phoneNumber
+    )
 
-        signInWithPhoneNumber(auth, koreaPhoneNumber, appVerifier)
-          .then((confirmationResult: any) => {
-            setVerificationId(confirmationResult.verificationId)
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      } else {
-        alert('회원가입 후 이용해주세요')
-        router.push('/signUp')
-      }
+    if (findUser) {
+      const koreaPhoneNumber = phoneNumber.replace(/^0/, '+82')
+      setRequestCode(true)
+      const appVerifier = new RecaptchaVerifier(
+        'sign-in-button',
+        {
+          size: 'invisible',
+        },
+        auth
+      )
+
+      signInWithPhoneNumber(auth, koreaPhoneNumber, appVerifier)
+        .then((confirmationResult: any) => {
+          setVerificationId(confirmationResult.verificationId)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    } else {
+      alert('회원가입 후 이용해주세요')
+      router.push('/signUp')
     }
   }
 
