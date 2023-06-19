@@ -37,8 +37,6 @@ const SignUp = () => {
   const [verificationId, setVerificationId] = useState<string>('')
   const [requestCode, setRequestCode] = useState<boolean>(false)
 
-  // const user = auth.currentUser
-
   const sendPhoneNumber = async () => {
     const usersInfo: UsersProps[] = []
     const board = collection(db, 'users')
@@ -53,30 +51,32 @@ const SignUp = () => {
       })
     })
 
-    for (const user of usersInfo) {
-      if (user.phoneNumber === phoneNumber) {
-        alert('이미 존재하는 번호입니다.')
-        router.push('/signIn')
-        //TODO: 로그인 화면으로 이동 로직
-      } else {
-        const koreaPhoneNumber = phoneNumber.replace(/^0/, '+82')
-        setRequestCode(true)
-        const appVerifier = new RecaptchaVerifier(
-          'sign-in-button',
-          {
-            size: 'invisible',
-          },
-          auth
-        )
+    const findUser = usersInfo.find(
+      (value) => value.phoneNumber === phoneNumber
+    )
 
-        signInWithPhoneNumber(auth, koreaPhoneNumber, appVerifier)
-          .then((confirmationResult: any) => {
-            setVerificationId(confirmationResult.verificationId)
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      }
+    if (findUser) {
+      alert('이미 존재하는 번호입니다.')
+      router.push('/signIn')
+      //TODO: 로그인 화면으로 이동 로직
+    } else {
+      const koreaPhoneNumber = phoneNumber.replace(/^0/, '+82')
+      setRequestCode(true)
+      const appVerifier = new RecaptchaVerifier(
+        'sign-in-button',
+        {
+          size: 'invisible',
+        },
+        auth
+      )
+
+      signInWithPhoneNumber(auth, koreaPhoneNumber, appVerifier)
+        .then((confirmationResult: any) => {
+          setVerificationId(confirmationResult.verificationId)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
 
@@ -88,6 +88,7 @@ const SignUp = () => {
 
     signInWithCredential(auth, credential)
       .then(async (userCredential) => {
+        console.log(userCredential)
         // User signed in successfully
         const userUid = userCredential.user.uid
         await setDoc(doc(db, 'users', userUid), {
@@ -102,8 +103,6 @@ const SignUp = () => {
         console.error(error)
       })
   }
-
-  // todo: https://firebase.google.com/docs/auth/admin/verify-id-tokens?hl=ko#web 에서 토큰 관리
 
   return (
     <>

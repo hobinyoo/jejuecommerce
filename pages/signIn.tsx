@@ -31,7 +31,6 @@ const SignIn = () => {
     const querySnapshot = await getDocs(
       query(board, orderBy('timestamp', 'desc'))
     )
-
     querySnapshot.forEach((doc: any) => {
       usersInfo.push({
         id: doc.id,
@@ -75,7 +74,7 @@ const SignIn = () => {
     )
 
     signInWithCredential(auth, credential)
-      .then(() => {
+      .then((_userCredential) => {
         // User signed in successfully
         alert('로그인에 성공!')
         router.push('/')

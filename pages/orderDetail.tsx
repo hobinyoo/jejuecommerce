@@ -44,7 +44,7 @@ const OrderDetail = () => {
             <div>우편번호: {value.postCode}</div>
             <div css={{ display: 'flex', justifyContent: 'space-between' }}>
               <div>배송현황: {value.status}</div>
-              {value.status === '상품준비' && (
+              {value.status === '배송준비' && (
                 <Button
                   onClick={() => router.push(`/comment?orderId=${value.id}`)}
                 >
