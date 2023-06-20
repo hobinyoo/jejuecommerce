@@ -63,7 +63,7 @@ const Comment = () => {
         content: content,
       })
       alert('저장되었습니다.')
-      router.push('/')
+      window.location.replace('/')
     }
   }
   return (

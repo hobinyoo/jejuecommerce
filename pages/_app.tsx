@@ -5,6 +5,8 @@ import Head from 'next/head'
 import { css } from '@emotion/react'
 import { Global } from '@emotion/react'
 import { GlobalStyle } from 'styles/globalStyle'
+import wrapper from '../store/index'
+
 const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -20,7 +22,6 @@ const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
       </Head>
       <Global styles={GlobalStyle} />
       <div css={container}>
-
         <Component {...pageProps} />
       </div>
     </QueryClientProvider>
@@ -31,4 +32,4 @@ const container = css`
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 `
-export default App
+export default wrapper.withRedux(App)

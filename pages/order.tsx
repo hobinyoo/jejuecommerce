@@ -4,7 +4,7 @@ import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import DaumPostcode from 'react-daum-postcode'
-import PayMent from './payment'
+import PayMents from './payments'
 
 const Order = () => {
   const router = useRouter()
@@ -91,7 +91,7 @@ const Order = () => {
           />
         )}
       </div>
-      <PayMent
+      <PayMents
         uid={typeof router.query.userId === 'string' ? router.query.userId : ''}
         menu={typeof router.query.menu === 'string' ? router.query.menu : ''}
         quantity={

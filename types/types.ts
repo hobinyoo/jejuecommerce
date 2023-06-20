@@ -37,3 +37,15 @@ export interface CommentProps {
     seconds: number
   }
 }
+
+export interface PayMentsProps {
+  uid: string
+  menu: string
+  quantity: string
+  totalPrice: number
+  name: string
+  phoneNumber: string
+  address: string
+  addressDetail: string
+  postCode: string
+}

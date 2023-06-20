@@ -8,7 +8,7 @@ import { getStorage } from 'firebase/storage'
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: 'AIzaSyBlBu54n6be6jUTffcPdBvvc570luJSFvE',
   authDomain: 'beefsoup-2bb29.firebaseapp.com',

@@ -24,8 +24,14 @@ const DrawerList = () => {
           justifyContent: 'space-between',
         }}
       >
-        <Button onClick={() => router.push('/signUp')}>가입하기</Button>
-        <Button onClick={() => router.push('/signIn')}>로그인</Button>
+        {user ? (
+          <Button onClick={handleLogout}>로그아웃</Button>
+        ) : (
+          <>
+            <Button onClick={() => router.push('/signUp')}>가입하기</Button>
+            <Button onClick={() => router.push('/signIn')}>로그인</Button>
+          </>
+        )}
       </div>
       <Divider />
       <div
@@ -39,16 +45,6 @@ const DrawerList = () => {
         </Button>
       </div>
       <Divider />
-      {user && (
-        <div
-          css={{
-            width: '13rem',
-            padding: '1rem',
-          }}
-        >
-          <Button onClick={handleLogout}>로그아웃</Button>
-        </div>
-      )}
 
       <Divider />
     </>

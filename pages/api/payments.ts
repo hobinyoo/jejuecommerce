@@ -24,5 +24,5 @@ export default async function handler(
   }).then((res) => res.json())
 
   //TODO: DB 처리
-  res.redirect(`/paymentRedirect?orderId=${orderId}`)
+  res.redirect(`/paymentsRedirect?orderId=${orderId}`)
 }

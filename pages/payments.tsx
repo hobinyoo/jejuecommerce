@@ -3,19 +3,9 @@ import { loadTossPayments } from '@tosspayments/payment-sdk'
 import Button from '@components/Button'
 import { doc, setDoc, updateDoc } from 'firebase/firestore'
 import { db } from '@firebase/initFirebase'
+import { PayMentsProps } from 'types/types'
 
-interface PayMentProps {
-  uid: string
-  menu: string
-  quantity: string
-  totalPrice: number
-  name: string
-  phoneNumber: string
-  address: string
-  addressDetail: string
-  postCode: string
-}
-const PayMent = ({
+const PayMents = ({
   uid,
   menu,
   quantity,
@@ -25,10 +15,7 @@ const PayMent = ({
   address,
   addressDetail,
   postCode,
-}: PayMentProps) => {
-  //TODO: 개인 db안에 주소 정보를 입력해주어야하고 orderId를 생성하여 orders에 orderId로
-  //누가 뭐를 얼마나 시켰는지 저장해주어야한다.
-
+}: PayMentsProps) => {
   const orderId = Math.random().toString(36).slice(2)
 
   const handleClick = async () => {
@@ -62,8 +49,8 @@ const PayMent = ({
       amount: totalPrice,
       orderId: orderId,
       orderName: menu,
-      successUrl: `${window.location.origin}/api/payment`,
-      failUrl: `${window.location.origin}/api/payments/fail`,
+      successUrl: `${window.location.origin}/api/payments`,
+      failUrl: `${window.location.origin}/api/paymentsFail`,
     })
   }
   return (
@@ -73,4 +60,4 @@ const PayMent = ({
   )
 }
 
-export default PayMent
+export default PayMents

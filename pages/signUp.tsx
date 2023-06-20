@@ -88,7 +88,6 @@ const SignUp = () => {
 
     signInWithCredential(auth, credential)
       .then(async (userCredential) => {
-        console.log(userCredential)
         // User signed in successfully
         const userUid = userCredential.user.uid
         await setDoc(doc(db, 'users', userUid), {
