@@ -7,6 +7,7 @@ import { Global } from '@emotion/react'
 import { GlobalStyle } from 'styles/globalStyle'
 import wrapper from '../store/index'
 import AuthProvider from '@components/Auth'
+import { useEffect } from 'react'
 
 const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
   const queryClient = new QueryClient({
@@ -14,6 +15,10 @@ const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
       queries: { staleTime: Infinity },
     },
   })
+  useEffect(() => {
+    let vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+  }, [])
 
   return (
     <AuthProvider>
@@ -34,5 +39,7 @@ const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
 const container = css`
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 100);;
 `
 export default wrapper.withRedux(App)
