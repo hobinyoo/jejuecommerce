@@ -51,7 +51,6 @@ const Comment = () => {
             imagesArray.push(downloadURL)
             await updateDoc(doc(db, 'orders', orderId), {
               images: imagesArray,
-              commentTimestamp: new Date(),
             })
           }
         )
@@ -61,6 +60,7 @@ const Comment = () => {
       await updateDoc(doc(db, 'orders', orderId), {
         rating: rating,
         content: content,
+        commentTimestamp: new Date(),
       })
       alert('저장되었습니다.')
       window.location.replace('/')
