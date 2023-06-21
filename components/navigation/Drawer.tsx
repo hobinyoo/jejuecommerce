@@ -4,12 +4,13 @@ import MenuIcon from '@mui/icons-material/Menu'
 import { css } from '@emotion/react'
 import DrawerList from './DrawerList'
 
-type Props = {
+interface Props {
+  uid: string
   openDrawer: boolean
   setOpenDrawer: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const MenuDrawer = ({ openDrawer, setOpenDrawer }: Props) => {
+const MenuDrawer = ({ openDrawer, setOpenDrawer, uid }: Props) => {
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -34,7 +35,7 @@ const MenuDrawer = ({ openDrawer, setOpenDrawer }: Props) => {
           onClose={toggleDrawer(false)}
           onOpen={toggleDrawer(true)}
         >
-          <DrawerList />
+          <DrawerList uid={uid} />
         </SwipeableDrawer>
       </React.Fragment>
     </div>

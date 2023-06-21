@@ -56,38 +56,35 @@ const PaymentsRedirect = () => {
         'Content-Type': 'application/json',
       },
     }).then((res) => res.json())
-    setCompletePaymentsInfo({
-      orderName: payments.orderName,
-      orderId: payments.orderId,
-      number: payments.card.number,
-      amount: payments.card.amount,
-      approvedAt: payments.approvedAt,
-    })
+
+    if (payments.card?.number) {
+      setCompletePaymentsInfo({
+        orderName: payments.orderName,
+        orderId: payments.orderId,
+        number: payments.card.number,
+        amount: payments.card.amount,
+        approvedAt: payments.approvedAt,
+      })
+    }
   }, [basicToken, url])
 
   useEffect(() => {
     completePayments()
-    const timeout = setTimeout(() => {
-      // 원하는 이동 로직을 작성합니다.
-      // 예시로 콘솔에 "이동합니다!"를 출력하는 로직을 작성했습니다.
-      console.log('이동합니다!')
-      return () => {
-        clearTimeout(timeout)
-      }
-    }, 5000) // 5초 대기
   }, [completePayments])
 
   return (
     <div css={{ marginTop: '2rem' }}>
       <h1>결제가 완료되었습니다</h1>
+
       <ul css={{ marginTop: '2rem' }}>
-        <li>결제 상품: {completePaymentsInfo.orderName}</li>
-        <li>주문번호: {completePaymentsInfo.orderId} </li>
+        <li>결제 상품: {completePaymentsInfo?.orderName}</li>
+        <li>주문번호: {completePaymentsInfo?.orderId} </li>
         <li>카드회사: {'토스뱅크'}</li>
-        <li>카드번호: {completePaymentsInfo.number}</li>
-        <li>결제금액: {completePaymentsInfo.amount}</li>
-        <li>결제승인날짜: {completePaymentsInfo.approvedAt}</li>
+        <li>카드번호: {completePaymentsInfo?.number}</li>
+        <li>결제금액: {completePaymentsInfo?.amount}</li>
+        <li>결제승인날짜: {completePaymentsInfo?.approvedAt}</li>
       </ul>
+
       <Timer />
     </div>
   )

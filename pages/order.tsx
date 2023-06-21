@@ -18,8 +18,8 @@ const Order = () => {
   const [openPostcode, setOpenPostcode] = React.useState<boolean>(false)
 
   useEffect(() => {
-    if (router.query.userId) {
-      fetch(`/api/get-oneUserInfo?id=${router.query.userId}`)
+    if (router.query.uid) {
+      fetch(`/api/get-oneUserInfo?id=${router.query.uid}`)
         .then((res) => res.json())
         .then((data) => {
           setName(data.items.name)
@@ -30,7 +30,7 @@ const Order = () => {
         })
         .catch((error) => console.error(error))
     }
-  }, [router.query.userId])
+  }, [router.query.uid])
 
   const handle = {
     // 버튼 클릭 이벤트
@@ -92,7 +92,7 @@ const Order = () => {
         )}
       </div>
       <PayMents
-        uid={typeof router.query.userId === 'string' ? router.query.userId : ''}
+        uid={typeof router.query.uid === 'string' ? router.query.uid : ''}
         menu={typeof router.query.menu === 'string' ? router.query.menu : ''}
         quantity={
           typeof router.query.quantity === 'string' ? router.query.quantity : ''

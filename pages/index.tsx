@@ -1,16 +1,40 @@
 import Button from '@components/Button'
-import Header from '@components/MainHeader'
+import MainHeader from '@components/MainHeader'
 import Review from '@components/Review'
 import OrderModal from '@components/modal/OrderModal'
 import { css } from '@emotion/react'
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import React, { useState } from 'react'
+import nookies from 'nookies'
 
-const Main = () => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  try {
+    const user = nookies.get(ctx)
+    return {
+      props: { user },
+    }
+  } catch (err) {
+    console.log(err)
+
+    ctx.res.writeHead(302, { Location: '/signIn' })
+    ctx.res.end()
+
+    // `as never` prevents inference issues
+    // with InferGetServerSidePropsType.
+    // The props returned here don't matter because we've
+    // already redirected the user.
+    return { props: {} as never }
+  }
+}
+
+const Main = ({
+  user,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [orderVisible, setOrderVisible] = useState<boolean>(false)
 
   return (
     <div css={container}>
-      <Header />
+      <MainHeader uid={user.uid} />
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div>main</div>
         <div>후기</div>
@@ -23,6 +47,7 @@ const Main = () => {
 
       {orderVisible && (
         <OrderModal
+          uid={user.uid}
           orderVisible={orderVisible}
           setOrderVisible={setOrderVisible}
         />

@@ -4,16 +4,23 @@ import Divider from '@mui/material/Divider'
 import { useRouter } from 'next/router'
 import { auth } from '@firebase/initFirebase'
 import { signOut } from 'firebase/auth'
+import { isEmpty } from 'lodash'
 
-const DrawerList = () => {
+interface Props {
+  uid: string
+}
+
+const DrawerList = ({ uid }: Props) => {
   const router = useRouter()
-  const user = auth.currentUser
 
   const handleLogout = () => {
     signOut(auth)
     window.location.replace('/')
   }
 
+  const handleMyOrder = () => {
+    router.push(`/orderDetail?uid=${uid}`)
+  }
   return (
     <>
       <div
@@ -24,7 +31,7 @@ const DrawerList = () => {
           justifyContent: 'space-between',
         }}
       >
-        {user ? (
+        {!isEmpty(uid) ? (
           <Button onClick={handleLogout}>로그아웃</Button>
         ) : (
           <>
@@ -40,12 +47,18 @@ const DrawerList = () => {
           padding: '1rem',
         }}
       >
-        <Button onClick={() => router.push(`/orderDetail?userId=${user?.uid}`)}>
-          주문내역
-        </Button>
+        <Button onClick={handleMyOrder}>주문내역</Button>
       </div>
       <Divider />
 
+      <div
+        css={{
+          width: '13rem',
+          padding: '1rem',
+        }}
+      >
+        <Button onClick={() => router.push('/admin')}>관리자</Button>
+      </div>
       <Divider />
     </>
   )

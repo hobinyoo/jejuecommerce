@@ -74,8 +74,9 @@ const SignIn = () => {
     )
 
     signInWithCredential(auth, credential)
-      .then((_userCredential) => {
+      .then(async (_userCredential) => {
         // User signed in successfully
+
         alert('로그인에 성공!')
         router.push('/')
       })

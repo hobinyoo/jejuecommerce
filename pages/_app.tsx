@@ -6,6 +6,7 @@ import { css } from '@emotion/react'
 import { Global } from '@emotion/react'
 import { GlobalStyle } from 'styles/globalStyle'
 import wrapper from '../store/index'
+import AuthProvider from '@components/Auth'
 
 const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
   const queryClient = new QueryClient({
@@ -15,16 +16,18 @@ const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
   })
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Head>
-        <title>Korea Beef Soup</title>
-        <meta name="description" content="Korea Beef Soup" />
-      </Head>
-      <Global styles={GlobalStyle} />
-      <div css={container}>
-        <Component {...pageProps} />
-      </div>
-    </QueryClientProvider>
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <Head>
+          <title>Korea Beef Soup</title>
+          <meta name="description" content="Korea Beef Soup" />
+        </Head>
+        <Global styles={GlobalStyle} />
+        <div css={container}>
+          <Component {...pageProps} />
+        </div>
+      </QueryClientProvider>
+    </AuthProvider>
   )
 }
 

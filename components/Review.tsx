@@ -26,7 +26,14 @@ const Review = () => {
           }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 
           return (
-            <div key={index}>
+            <div
+              css={{
+                border: '1px solid black',
+                padding: '0.5rem',
+                margin: '1rem 0',
+              }}
+              key={index}
+            >
               {comment.images &&
                 comment.images.map((image, imageIndex) => {
                   return (
@@ -46,8 +53,15 @@ const Review = () => {
                 {comment.content}
               </div>
               <div>
-                <span css={{ marginRight: '0.3rem' }}>작성날짜:</span>
-                {formattedDate}
+                <span
+                  css={{
+                    marginRight: '0.3rem',
+                    color: 'gray',
+                    fontSize: '0.9rem',
+                  }}
+                >
+                  작성날짜: {formattedDate}
+                </span>
               </div>
             </div>
           )

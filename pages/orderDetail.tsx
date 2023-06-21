@@ -9,15 +9,15 @@ const OrderDetail = () => {
 
   const [data, setData] = useState<OrderProps[]>([])
   useEffect(() => {
-    if (router.query.userId) {
-      fetch(`/api/get-orderDetail?id=${router.query.userId}`)
+    if (router.query.uid) {
+      fetch(`/api/get-orderDetail?id=${router.query.uid}`)
         .then((res) => res.json())
         .then((data) => {
           setData(data.items)
         })
         .catch((error) => console.error(error))
     }
-  }, [router.query.userId])
+  }, [router.query.uid])
 
   return (
     <div css={{ overflowY: 'auto' }}>

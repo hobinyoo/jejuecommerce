@@ -47,6 +47,7 @@ const useStyles = createStyles((theme) => ({
     paddingLeft: `${theme.spacing.sm}px !important`,
     height: 28,
     flex: 1,
+    fontSize: '0.9rem'
   },
 }))
 

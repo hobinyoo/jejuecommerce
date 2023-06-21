@@ -5,15 +5,15 @@ import { useRouter } from 'next/router'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import MenuControl from '@components/MenuControl'
 import IconX from '../../public/X.svg'
-import { auth } from '@firebase/initFirebase'
-type Props = {
+
+interface Props {
+  uid: string
   orderVisible: boolean
   setOrderVisible: Dispatch<SetStateAction<boolean>>
 }
 
-const OrderModal = ({ setOrderVisible }: Props) => {
+const OrderModal = ({ setOrderVisible, uid }: Props) => {
   const router = useRouter()
-  const userId = auth.currentUser?.uid
 
   const [quantity, setQuantity] = useState<number | undefined>(1)
   const [menu, setMenu] = useState<string | undefined>('한우 소고기 국밥')
@@ -35,9 +35,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
 
           <Button
             onClick={() =>
-              router.push(
-                `/order?menu=${menu}&quantity=${quantity}&userId=${userId}`
-              )
+              router.push(`/order?menu=${menu}&quantity=${quantity}&uid=${uid}`)
             }
             bottom
           >
