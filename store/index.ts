@@ -7,11 +7,8 @@ import rootReducer from './reducer'
 const isDev = process.env.NODE_ENV === 'development'
 
 const makeStore = () => {
-  // const middleware = getDefaultMiddleware();
   const store = configureStore({
     reducer: rootReducer,
-    //   middleware,
-    /* custom middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(사용자 정의)  */
     devTools: isDev,
   })
   return store
