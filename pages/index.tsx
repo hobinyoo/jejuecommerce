@@ -39,11 +39,8 @@ const Main = ({
         <div>main</div>
         <div>후기</div>
         <Review />
+        <Button onClick={() => setOrderVisible(true)}>주문하기</Button>
       </div>
-
-      <Button onClick={() => setOrderVisible(true)} bottom>
-        주문하기
-      </Button>
 
       {orderVisible && (
         <OrderModal
