@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { PayMentProps } from 'types/types'
+import { PayMentsProps } from 'types/types'
 
 const initialState = {
-  paymentInfo: {} as PayMentProps,
+  paymentInfo: {} as PayMentsProps,
 }
 
 export const paymentSlice = createSlice({
@@ -10,7 +10,6 @@ export const paymentSlice = createSlice({
   initialState,
   reducers: {
     setPayMentInfo(state, action) {
-      console.log(action.payload, '하이')
       state.paymentInfo = action.payload
     },
   },
