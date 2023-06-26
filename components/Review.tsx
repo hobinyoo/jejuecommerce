@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { CommentProps } from 'types/types'
 import AutoSizeImage from './AutoSizeImage'
 import { Rating } from '@mantine/core'
+import { useQuery } from '@tanstack/react-query'
 
 const Review = () => {
-  const [comments, setComments] = useState<CommentProps[]>([])
-
-  useEffect(() => {
-    fetch(`/api/get-comments`)
-      .then((res) => res.json())
-      .then((data) => {
-        setComments(data.items)
-      })
-      .catch((error) => console.error(error))
-  }, [])
+  const { data } = useQuery<{ items: CommentProps[] }, unknown, CommentProps[]>(
+    {
+      queryKey: [`/api/get-comments`],
+      queryFn: () =>
+        fetch(`/api/get-comments`).then((res) =>
+          res.json().then((data) => data.items)
+        ),
+    }
+  )
 
   return (
     <>
-      {comments &&
-        comments.map((comment, index) => {
+      {data &&
+        data.map((comment, index) => {
           const commentTimestamp = comment.commentTimestamp?.seconds
           const date = new Date(commentTimestamp * 1000)
 

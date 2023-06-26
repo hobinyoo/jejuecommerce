@@ -40,6 +40,6 @@ const container = css`
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   width: 100%;
-  height: calc(var(--vh, 1vh) * 100);;
+  height: calc(var(--vh, 1vh) * 100); ;
 `
 export default wrapper.withRedux(App)
