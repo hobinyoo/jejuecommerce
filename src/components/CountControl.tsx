@@ -5,8 +5,8 @@ import {
   NumberInputHandlers,
   ActionIcon,
 } from '@mantine/core'
-import IconPlus from '../public/IconPlus.svg'
-import IconMinus from '../public/IconMinus.svg'
+import IconPlus from '/public/IconPlus.svg'
+import IconMinus from '/public/IconMinus.svg'
 
 const useStyles = createStyles((theme) => ({
   wrapper: {

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { DatePicker } from '@mantine/dates'
 import { Group } from '@mantine/core'
 import { OrderProps } from 'types/types'
-import { getDate } from 'function/date'
+import { getDate } from 'src/function/date'
 import InputText from '@components/InputText'
 import Button from '@components/Button'
 

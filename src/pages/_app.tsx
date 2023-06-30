@@ -2,12 +2,12 @@ import type { AppProps } from 'next/app'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { QueryClient } from '@tanstack/query-core'
 import Head from 'next/head'
-import { css } from '@emotion/react'
 import { Global } from '@emotion/react'
 import { GlobalStyle } from 'styles/globalStyle'
 import wrapper from '../store/index'
-import AuthProvider from '@components/Auth'
+import AuthProvider from 'src/components/Auth'
 import { useEffect } from 'react'
+import Layout from '@components/Layout'
 
 const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
   const queryClient = new QueryClient({
@@ -28,18 +28,12 @@ const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
           <meta name="description" content="Korea Beef Soup" />
         </Head>
         <Global styles={GlobalStyle} />
-        <div css={container}>
+        <Layout>
           <Component {...pageProps} />
-        </div>
+        </Layout>
       </QueryClientProvider>
     </AuthProvider>
   )
 }
 
-const container = css`
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  width: 100%;
-  height: calc(var(--vh, 1vh) * 100); ;
-`
 export default wrapper.withRedux(App)

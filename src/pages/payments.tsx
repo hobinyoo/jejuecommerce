@@ -2,7 +2,7 @@ import React from 'react'
 import { loadTossPayments } from '@tosspayments/payment-sdk'
 import Button from '@components/Button'
 import { doc, setDoc, updateDoc } from 'firebase/firestore'
-import { db } from '@firebase/initFirebase'
+import { db } from 'src/firebase/initFirebase'
 import { PayMentsProps } from 'types/types'
 
 const PayMents = ({

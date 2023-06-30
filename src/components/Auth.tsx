@@ -1,4 +1,4 @@
-import { auth } from '@firebase/initFirebase'
+import { auth } from 'src/firebase/initFirebase'
 import nookies from 'nookies'
 import { createContext, useEffect, useState } from 'react'
 

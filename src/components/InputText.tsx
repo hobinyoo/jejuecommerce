@@ -21,7 +21,7 @@ const InputText = ({
     <input
       css={input}
       name={name}
-      value={isEmpty(inputText) ? undefined : inputText}
+      value={inputText}
       placeholder={placeholder}
       onChange={(e) => setInputText(e.target.value)}
       disabled={disabled}

@@ -4,7 +4,7 @@ import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import MenuControl from '@components/MenuControl'
-import IconX from '../../public/X.svg'
+import IconX from '/public/X.svg'
 
 interface Props {
   uid: string
@@ -35,7 +35,11 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
 
           <Button
             onClick={() =>
-              router.push(`/order?menu=${menu}&quantity=${quantity}&uid=${uid}`)
+              router.push(
+                `/order/${menu}/${quantity}`,
+                undefined,
+                { shallow: true }
+              )
             }
             bottom
           >

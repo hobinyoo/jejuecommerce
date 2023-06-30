@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
-import { db } from '@firebase/initFirebase'
-import { CommentProps } from 'types/types'
 import { isEmpty } from 'lodash'
 
 async function getComments() {

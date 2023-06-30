@@ -14,7 +14,7 @@ import {
   nameValidation,
   phoneValidation,
   verificationValidation,
-} from 'function/vaildation'
+} from 'src/function/vaildation'
 import ErrorMessage from '@components/Error'
 import { isEmpty } from 'lodash'
 import {

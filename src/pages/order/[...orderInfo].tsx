@@ -4,33 +4,67 @@ import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import DaumPostcode from 'react-daum-postcode'
-import PayMents from './payments'
 
-const Order = () => {
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
+import nookies from 'nookies'
+import PayMents from '../payments'
+
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  try {
+    const user = nookies.get(ctx)
+    const res = await fetch(
+      `http://localhost:3000/api/get-oneUserInfo?id=${user.uid}`
+    )
+    const data = await res.json()
+
+    return {
+      props: { data },
+    }
+  } catch (err) {
+    console.log(err)
+
+    ctx.res.writeHead(302, { Location: '/signIn' })
+    ctx.res.end()
+
+    // `as never` prevents inference issues
+    // with InferGetServerSidePropsType.
+    // The props returned here don't matter because we've
+    // already redirected the user.
+    return { props: {} as never }
+  }
+}
+
+const Order = ({
+  data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter()
 
-  const [name, setName] = useState<string>('')
-  const [phoneNumber, setPhoneNumber] = useState<string>('')
-  const [address, setAddress] = useState<string>('')
-  const [addressDetail, setAddressDetail] = useState<string>('')
-  const [postCode, setPostCode] = useState<string>('')
+  const [name, setName] = useState<string>(data.items.name ?? '')
+  const [phoneNumber, setPhoneNumber] = useState<string>(
+    data.items.phoneNumber ?? ''
+  )
+  const [address, setAddress] = useState<string>(data.items.address ?? '')
+  const [addressDetail, setAddressDetail] = useState<string>(
+    data.items.addressDetail ?? ''
+  )
+  const [postCode, setPostCode] = useState<string>(data.items.postCode ?? '')
+  const [openPostcode, setOpenPostcode] = useState<boolean>(false)
+  const { orderInfo } = router.query
 
-  const [openPostcode, setOpenPostcode] = React.useState<boolean>(false)
-
-  useEffect(() => {
-    if (router.query.uid) {
-      fetch(`/api/get-oneUserInfo?id=${router.query.uid}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setName(data.items.name)
-          setPhoneNumber(data.items.phoneNumber)
-          setAddress(data.items.address ?? '')
-          setAddressDetail(data.items.addressDetail ?? '')
-          setPostCode(data.items.postCode ?? '')
-        })
-        .catch((error) => console.error(error))
-    }
-  }, [router.query.uid])
+  // useEffect(() => {
+  //   if (user.uid) {
+  //     fetch(`/api/get-oneUserInfo?id=${user.uid}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setName(data.items.name)
+  //         setPhoneNumber(data.items.phoneNumber)
+  //         setAddress(data.items.address ?? '')
+  //         setAddressDetail(data.items.addressDetail ?? '')
+  //         setPostCode(data.items.postCode ?? '')
+  //       })
+  //       .catch((error) => console.error(error))
+  //   }
+  // }, [user.uid])
 
   const handle = {
     // 버튼 클릭 이벤트
@@ -49,9 +83,9 @@ const Order = () => {
     <div>
       <Header />
       <div css={container}>
-        <div>상품명: {router.query.menu}</div>
-        <div>수량: {router.query.quantity}개</div>
-        <div>총 가격: {Number(router.query.quantity) * 11000} 원</div>
+        <div>상품명: {orderInfo && orderInfo[0]}</div>
+        <div>수량: {orderInfo && orderInfo[1]}개</div>
+        <div>총 가격: {Number(orderInfo && orderInfo[1]) * 11000} 원</div>
         <br />
         <div>받는 사람</div>
         <br />

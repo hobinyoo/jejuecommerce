@@ -5,6 +5,7 @@ import { Rating } from '@mantine/core'
 import { useQuery } from '@tanstack/react-query'
 
 const Review = () => {
+  //인자값 순서대로 data안에 있는 item 타입, error 타입, queryFn 반환 타입
   const { data } = useQuery<{ items: CommentProps[] }, unknown, CommentProps[]>(
     {
       queryKey: [`/api/get-comments`],

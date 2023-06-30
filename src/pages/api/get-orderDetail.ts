@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
-import { db } from '@firebase/initFirebase'
+import { db } from 'src/firebase/initFirebase'
 import { OrderProps } from 'types/types'
 
 async function getOrderDetail(id: string) {

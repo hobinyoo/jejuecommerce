@@ -2,7 +2,7 @@ import Button from '@components/Button'
 import React from 'react'
 import Divider from '@mui/material/Divider'
 import { useRouter } from 'next/router'
-import { auth } from '@firebase/initFirebase'
+import { auth } from 'src/firebase/initFirebase'
 import { signOut } from 'firebase/auth'
 import { isEmpty } from 'lodash'
 
