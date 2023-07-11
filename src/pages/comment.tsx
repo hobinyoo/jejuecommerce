@@ -1,12 +1,12 @@
-import Header from '@components/Header'
+import Header from '@components/cs/Header'
 import React, { useRef, useState } from 'react'
 import { Rating } from '@mantine/core'
-import TextArea from '@components/TextArea'
+import TextArea from '@components/cs/TextArea'
 import { db, storage } from 'src/firebase/initFirebase'
 import { getDownloadURL, ref, uploadString } from 'firebase/storage'
-import AutoSizeImage from '@components/AutoSizeImage'
+import AutoSizeImage from '@components/cs/AutoSizeImage'
 import { useRouter } from 'next/router'
-import Button from '@components/Button'
+import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import { isEmpty } from 'lodash'
 import { doc, updateDoc } from 'firebase/firestore'
@@ -81,7 +81,7 @@ const Comment = () => {
         {images &&
           images.length > 0 &&
           images.map((image, idx) => (
-            <AutoSizeImage key={idx} src={image} size={200} />
+            <AutoSizeImage key={idx} src={image} width={100} height={100} />
           ))}
       </div>
       <Rating value={rating} onChange={setRating} size="md" />

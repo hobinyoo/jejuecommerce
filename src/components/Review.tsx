@@ -1,6 +1,6 @@
 import React from 'react'
 import { CommentProps } from 'types/types'
-import AutoSizeImage from './AutoSizeImage'
+import AutoSizeImage from './cs/AutoSizeImage'
 import { Rating } from '@mantine/core'
 import { useQuery } from '@tanstack/react-query'
 

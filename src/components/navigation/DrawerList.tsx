@@ -1,4 +1,4 @@
-import Button from '@components/Button'
+import Button from '@components/cs/Button'
 import React from 'react'
 import Divider from '@mui/material/Divider'
 import { useRouter } from 'next/router'

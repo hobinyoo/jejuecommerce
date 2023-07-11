@@ -1,5 +1,5 @@
-import Button from '@components/Button'
-import Header from '@components/Header'
+import Button from '@components/cs/Button'
+import Header from '@components/cs/Header'
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'

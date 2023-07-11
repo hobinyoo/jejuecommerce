@@ -7,7 +7,7 @@ import { GlobalStyle } from 'styles/globalStyle'
 import wrapper from '../store/index'
 import AuthProvider from 'src/components/Auth'
 import { useEffect } from 'react'
-import Layout from '@components/Layout'
+import Layout from '@components/cs/Layout'
 
 const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
   const queryClient = new QueryClient({

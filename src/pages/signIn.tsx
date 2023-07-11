@@ -6,11 +6,14 @@ import {
   signInWithCredential,
   signInWithPhoneNumber,
 } from 'firebase/auth'
-import Header from '@components/Header'
-import Button from '@components/Button'
+import Header from '@components/cs/Header'
+import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
-import InputText from '@components/InputText'
-import { phoneValidation, verificationValidation } from 'src/function/vaildation'
+import InputText from '@components/cs/InputText'
+import {
+  phoneValidation,
+  verificationValidation,
+} from 'src/function/vaildation'
 import ErrorMessage from '@components/Error'
 import { isEmpty } from 'lodash'
 import { collection, getDocs, orderBy, query } from 'firebase/firestore'

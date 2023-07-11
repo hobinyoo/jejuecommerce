@@ -38,4 +38,28 @@ export const GlobalStyle = css`
   body {
     overflow-x: hidden;
   }
+
+  @font-face {
+    font-family: 'PretendardRegular';
+    font-weight: 400;
+    font-style: normal;
+    src: url('/fonts/woff2/Pretendard-Regular.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'PretendardBold';
+    font-weight: 500;
+    font-style: normal;
+    src: url('/fonts/woff2/Pretendard-Bold.woff2') format('woff2');
+  }
 `
+export const toSize = (
+  windowWidth: number,
+  windowHeight: number,
+  input: number
+) => {
+  const scaleVertical = windowHeight / 760
+  const scaleHorizontal = windowWidth / 360
+  const ratio = windowWidth / windowHeight
+  const scale = ratio < 0.6 ? scaleHorizontal : scaleVertical
+  return Math.trunc(scale * input)
+}

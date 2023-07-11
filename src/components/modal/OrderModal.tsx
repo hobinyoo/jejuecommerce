@@ -1,5 +1,5 @@
 import { CountControl } from '@components/CountControl'
-import Button from '@components/Button'
+import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { Dispatch, SetStateAction, useState } from 'react'
@@ -35,11 +35,9 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
 
           <Button
             onClick={() =>
-              router.push(
-                `/order/${menu}/${quantity}`,
-                undefined,
-                { shallow: true }
-              )
+              router.push(`/order/${menu}/${quantity}`, undefined, {
+                shallow: true,
+              })
             }
             bottom
           >

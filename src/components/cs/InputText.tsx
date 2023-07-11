@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from 'react'
 import { css } from '@emotion/react'
 import { isEmpty } from 'lodash'
 
-type InputProps = {
+interface Props {
   name: string
   inputText?: string
   setInputText: Dispatch<SetStateAction<string>>
@@ -16,7 +16,7 @@ const InputText = ({
   inputText,
   setInputText,
   disabled = false,
-}: InputProps) => {
+}: Props) => {
   return (
     <input
       css={input}

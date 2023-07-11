@@ -1,17 +1,15 @@
 import React, { ReactNode } from 'react'
 import { css } from '@emotion/react'
 
-type LayoutProps = {
+interface Props {
   children: ReactNode
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children }: Props) => {
   return <div css={container}>{children}</div>
 }
 
 const container = css`
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
   width: 100%;
   height: calc(var(--vh, 1vh) * 100); ;
 `

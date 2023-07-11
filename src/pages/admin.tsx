@@ -1,11 +1,11 @@
-import Header from '@components/Header'
+import Header from '@components/cs/Header'
 import React, { useEffect, useState } from 'react'
 import { DatePicker } from '@mantine/dates'
 import { Group } from '@mantine/core'
 import { OrderProps } from 'types/types'
 import { getDate } from 'src/function/date'
-import InputText from '@components/InputText'
-import Button from '@components/Button'
+import InputText from '@components/cs/InputText'
+import Button from '@components/cs/Button'
 
 const Admin = () => {
   const [value, setValue] = useState<Date | null>(new Date())

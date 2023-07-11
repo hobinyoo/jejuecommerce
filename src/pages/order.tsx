@@ -1,5 +1,5 @@
-import Header from '@components/Header'
-import InputText from '@components/InputText'
+import Header from '@components/cs/Header'
+import InputText from '@components/cs/InputText'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'

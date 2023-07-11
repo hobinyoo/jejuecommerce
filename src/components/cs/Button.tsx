@@ -1,14 +1,14 @@
 import React, { ReactNode } from 'react'
 import { css } from '@emotion/react'
 
-type ButtonProps = {
+interface Props {
   children: ReactNode
   onClick: () => void
   bottom?: boolean
   id?: string
 }
 
-const Button = ({ id, children, onClick, bottom = false }: ButtonProps) => {
+const Button = ({ id, children, onClick, bottom = false }: Props) => {
   return (
     <button
       id={id ?? ''}

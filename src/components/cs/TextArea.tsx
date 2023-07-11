@@ -2,19 +2,14 @@ import React, { Dispatch, SetStateAction } from 'react'
 import { css } from '@emotion/react'
 import { isEmpty } from 'lodash'
 
-type TextAreaProps = {
+interface Props {
   name: string
   content?: string
   setContent: Dispatch<SetStateAction<string>>
   placeholder: string
 }
 
-const TextArea = ({
-  name,
-  placeholder,
-  content,
-  setContent,
-}: TextAreaProps) => {
+const TextArea = ({ name, placeholder, content, setContent }: Props) => {
   return (
     <textarea
       css={textarea}
