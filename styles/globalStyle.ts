@@ -47,9 +47,28 @@ export const GlobalStyle = css`
   }
   @font-face {
     font-family: 'PretendardBold';
-    font-weight: 500;
+    font-weight: 700;
     font-style: normal;
     src: url('/fonts/woff2/Pretendard-Bold.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'RIDIBatang';
+    src: url('/fonts/woff/RIDIBatang.woff') format('woff');
+    font-weight: 400;
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'GodoM';
+    font-weight: 400;
+    font-style: normal;
+    src: url('/fonts/woff/GodoM.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'GodoB';
+    font-weight: 700;
+    font-style: normal;
+    src: url('/fonts/woff/GodoB.woff') format('woff');
   }
 `
 export const toSize = (

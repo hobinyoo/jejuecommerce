@@ -8,9 +8,13 @@ import React, { useEffect, useState } from 'react'
 import nookies from 'nookies'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import { toSize } from 'styles/globalStyle'
-import CSText from '@components/cs/Text'
+import CSText from '@components/cs/CSText'
 import { RootState, useAppDispatch, useAppSelector } from 'src/store'
 import { setWindowSize } from 'src/store/features/windowSizeSlice'
+import MainSection from '@components/main/MainSection'
+import Line from '@components/cs/Line'
+import StrengthSection from '@components/main/StrengthSection'
+import StrengthSectionTwo from '@components/main/StrengthSectionTwo'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -38,35 +42,31 @@ const Main = ({
   const [orderVisible, setOrderVisible] = useState<boolean>(false)
 
   useEffect(() => {
-    const handleResize = () => {
-      dispatch(
-        setWindowSize({
-          width: window.innerWidth,
-          height: window.innerHeight,
-        })
-      )
-    }
-    handleResize() // 컴포넌트가 처음 마운트될 때 초기 윈도우 크기 설정
-    window.addEventListener('resize', handleResize) // 윈도우 크기 변경 이벤트 처리
-    return () => {
-      window.removeEventListener('resize', handleResize) // 컴포넌트 언마운트 시 이벤트 리스너 제거
+    if (typeof window === 'object') {
+      const handleResize = () => {
+        dispatch(
+          setWindowSize({
+            width: window.innerWidth,
+            height: window.innerHeight,
+          })
+        )
+      }
+      handleResize() // 컴포넌트가 처음 마운트될 때 초기 윈도우 크기 설정
+      window.addEventListener('resize', handleResize) // 윈도우 크기 변경 이벤트 처리
+      return () => {
+        window.removeEventListener('resize', handleResize) // 컴포넌트 언마운트 시 이벤트 리스너 제거
+      }
     }
   }, [])
 
   return (
     <div css={container}>
       <MainHeader windowWidth={width} windowHeight={height} uid={user.uid} />
-      <div style={{ backgroundColor: '#fffcf7' }}>
-        <div css={mainSection}>
-          <AutoSizeImage
-            src={'/images/main_img@3x.png'}
-            width={toSize(width, height, 360)}
-            height={toSize(width, height, 360)}
-          />
-          <CSText>한우 소고기 국밥</CSText>
-          {/* <CSText>깊고 시원한 한우 소고기 국밥</CSText>
-          <CSText>한우소고기국밥</CSText> */}
-        </div>
+      <div css={{ backgroundColor: '#fffcf7' }}>
+        <MainSection />
+        <Line />
+        <StrengthSection />
+        <StrengthSectionTwo />
       </div>
 
       {/* 
@@ -88,13 +88,9 @@ const Main = ({
 
 const container = css`
   width: 100%;
+  height: 100%;
   display: 'flex';
   flex-direction: column;
-`
-
-const mainSection = css`
-  width: 100%;
-  justify-content: center;
 `
 
 export default Main
