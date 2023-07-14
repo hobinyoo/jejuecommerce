@@ -10,6 +10,10 @@ const StrengthSection = () => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
+
+  const getSize = (input: number) => {
+    return toSize(width, height, input)
+  }
   return (
     <div css={container}>
       <div css={strength}>
@@ -93,14 +97,14 @@ const StrengthSection = () => {
           aging,
           {
             backgroundColor: '#c79c89',
-            height: toSize(width, height, 160),
-            marginTop: toSize(width, height, 50),
+            height: `${getSize(160)}px`,
+            marginTop: `${getSize(50)}px`,
             display: 'flex',
             whiteSpace: 'pre-line',
           },
         ]}
       >
-        <div css={[agingText, { padding: toSize(width, height, 20) }]}>
+        <div css={[agingText, { padding: `${getSize(20)}px` }]}>
           <CSText
             size={16}
             fontFamily={'RIDIBatang'}
@@ -135,7 +139,7 @@ const StrengthSection = () => {
             {'자랑합니다.'}
           </CSText>
         </div>
-        <div css={[agingImage, { marginTop: toSize(width, height, 20) }]}>
+        <div css={[agingImage, { marginTop: `${getSize(20)}px` }]}>
           <AutoSizeImage
             src={'/images/img_01@3x.png'}
             width={toSize(width, height, 160)}
@@ -145,8 +149,8 @@ const StrengthSection = () => {
       </div>
       <div
         css={{
-          marginTop: toSize(width, height, 10),
-          marginLeft: toSize(width, height, 20),
+          marginTop: `${getSize(10)}px`,
+          marginLeft: `${getSize(20)}px`,
         }}
       >
         <CSText

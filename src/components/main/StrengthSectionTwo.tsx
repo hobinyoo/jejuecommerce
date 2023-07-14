@@ -10,12 +10,16 @@ const StrengthSectionTwo = () => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
+  const getSize = (input: number) => {
+    return toSize(width, height, input)
+  }
+
   return (
     <div css={container}>
       <div
         css={[
           beefStrength,
-          { marginTop: toSize(width, height, 80), whiteSpace: 'pre-line' },
+          { marginTop: `${getSize(80)}px`, whiteSpace: 'pre-line' },
         ]}
       >
         <AutoSizeImage
@@ -188,14 +192,14 @@ const StrengthSectionTwo = () => {
             {'을 줄 수 있습니다.'}
           </CSSpan>
         </CSText>
-        <div css={[beefContainer, { marginBottom: toSize(width, height, 50) }]}>
+        <div css={[beefContainer, { marginBottom: `${getSize(50)}px` }]}>
           <div css={beefInner}>
             <div
               css={[
                 beefLogo,
                 {
-                  marginTop: toSize(width, height, 30),
-                  marginRight: toSize(width, height, 20),
+                  marginTop: `${getSize(30)}px`,
+                  marginRight: `${getSize(20)}px`,
                 },
               ]}
             >
@@ -266,8 +270,8 @@ const StrengthSectionTwo = () => {
         css={[
           beefStrengthTwo,
           {
-            height: toSize(width, height, 204),
-            marginBottom: toSize(width, height, 50),
+            height: `${getSize(204)}px`,
+            marginBottom: `${getSize(50)}px`,
             display: 'flex',
             whiteSpace: 'pre-line',
           },
@@ -279,7 +283,7 @@ const StrengthSectionTwo = () => {
               css={[
                 beefStrengthTwoImage,
                 {
-                  marginLeft: toSize(width, height, 20),
+                  marginLeft: `${getSize(20)}px`,
                 },
               ]}
             >
@@ -295,7 +299,7 @@ const StrengthSectionTwo = () => {
           css={[
             beefStrengthTwoTextContainer,
             {
-              padding: toSize(width, height, 20),
+              padding: `${getSize(20)}px`,
             },
           ]}
         >
@@ -353,7 +357,7 @@ const StrengthSectionTwo = () => {
       </div>
       <div
         css={[
-          beefStrengthTwoImageSceond,
+          beefStrengthTwoImageSecond,
           { marginBottom: toSize(width, height, 60) },
         ]}
       >
@@ -412,7 +416,7 @@ const beefStrengthTwoImage = css`
 const beefStrengthTwoTextContainer = css`
   width: 50%;
 `
-const beefStrengthTwoImageSceond = css`
+const beefStrengthTwoImageSecond = css`
   width: 100%;
   display: flex;
   justify-content: center;

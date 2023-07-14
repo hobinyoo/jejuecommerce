@@ -15,6 +15,8 @@ import MainSection from '@components/main/MainSection'
 import Line from '@components/cs/Line'
 import StrengthSection from '@components/main/StrengthSection'
 import StrengthSectionTwo from '@components/main/StrengthSectionTwo'
+import MenuPoint from '@components/main/MenuPoint'
+import Method from '@components/main/Method'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -57,7 +59,7 @@ const Main = ({
         window.removeEventListener('resize', handleResize) // 컴포넌트 언마운트 시 이벤트 리스너 제거
       }
     }
-  }, [])
+  }, [dispatch])
 
   return (
     <div css={container}>
@@ -67,6 +69,8 @@ const Main = ({
         <Line />
         <StrengthSection />
         <StrengthSectionTwo />
+        <MenuPoint />
+        <Method />
       </div>
 
       {/* 

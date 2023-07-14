@@ -10,12 +10,16 @@ const MainSection = () => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
+
+  const getSize = (input: number) => {
+    return toSize(width, height, input)
+  }
   return (
     <div css={container}>
       <AutoSizeImage
         src={'/images/main_img@3x.png'}
-        width={toSize(width, height, 360)}
-        height={toSize(width, height, 360)}
+        width={getSize(360)}
+        height={getSize(360)}
       />
       <CSText
         size={24}

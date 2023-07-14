@@ -7,17 +7,16 @@ interface Props {
   width: number
   height: number
   onClick?: () => void
-  absolute?: boolean
 }
 
-const AutoSizeImage = ({ src, width, height, onClick, absolute }: Props) => {
+const AutoSizeImage = ({ src, width, height, onClick }: Props) => {
   return (
     <div
       css={[
         imageWrapper,
         {
-          width: width,
-          height: height,
+          width: `${width}px`,
+          height: `${height}px`,
           position: 'relative',
         },
       ]}
