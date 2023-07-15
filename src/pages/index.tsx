@@ -18,6 +18,7 @@ import DeliveryInformSection from '@components/main/DeliveryInformSection'
 import MenuPointSection from '@components/main/MenuPointSection'
 import MethodSection from '@components/main/MethodSection'
 import StrengthTwoSection from '@components/main/StrengthTwoSection'
+import ChangeRefundSection from '@components/main/ChangeRefundSection'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -73,6 +74,8 @@ const Main = ({
         <MenuPointSection />
         <MethodSection />
         <DeliveryInformSection />
+        <Line />
+        <ChangeRefundSection />
         <Line />
       </div>
 
