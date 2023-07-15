@@ -15,7 +15,7 @@ const StrengthSection = () => {
     return toSize(width, height, input)
   }
   return (
-    <div css={container}>
+    <div css={[container, { marginTop: `${getSize(30)}px` }]}>
       <div css={strength}>
         <AutoSizeImage
           src={'/images/ico_point@3x.png'}
@@ -213,7 +213,6 @@ const aging = css`
 const agingText = css`
   width: 50%;
 `
-
 const agingImage = css`
   width: 50%;
 `

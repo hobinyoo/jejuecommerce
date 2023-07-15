@@ -14,9 +14,10 @@ import { setWindowSize } from 'src/store/features/windowSizeSlice'
 import MainSection from '@components/main/MainSection'
 import Line from '@components/cs/Line'
 import StrengthSection from '@components/main/StrengthSection'
-import StrengthSectionTwo from '@components/main/StrengthSectionTwo'
-import MenuPoint from '@components/main/MenuPoint'
-import Method from '@components/main/Method'
+import DeliveryInformSection from '@components/main/DeliveryInformSection'
+import MenuPointSection from '@components/main/MenuPointSection'
+import MethodSection from '@components/main/MethodSection'
+import StrengthTwoSection from '@components/main/StrengthTwoSection'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -68,9 +69,11 @@ const Main = ({
         <MainSection />
         <Line />
         <StrengthSection />
-        <StrengthSectionTwo />
-        <MenuPoint />
-        <Method />
+        <StrengthTwoSection />
+        <MenuPointSection />
+        <MethodSection />
+        <DeliveryInformSection />
+        <Line />
       </div>
 
       {/* 

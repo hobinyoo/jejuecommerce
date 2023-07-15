@@ -6,7 +6,7 @@ import React from 'react'
 import { RootState, useAppSelector } from 'src/store'
 import { toSize } from 'styles/globalStyle'
 
-const StrengthSectionTwo = () => {
+const StrengthTwoSection = () => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
@@ -211,8 +211,8 @@ const StrengthSectionTwo = () => {
             </div>
             <div
               css={{
-                marginTop: toSize(width, height, 38),
-                marginLeft: toSize(width, height, 20),
+                marginTop: `${getSize(38)}px`,
+                marginLeft: `${getSize(20)}px`,
                 whiteSpace: 'pre-line',
               }}
             >
@@ -421,4 +421,4 @@ const beefStrengthTwoImageSecond = css`
   display: flex;
   justify-content: center;
 `
-export default StrengthSectionTwo
+export default StrengthTwoSection

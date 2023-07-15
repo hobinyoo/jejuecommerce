@@ -15,7 +15,7 @@ const MainSection = () => {
     return toSize(width, height, input)
   }
   return (
-    <div css={container}>
+    <div css={[container, { marginBottom: `${getSize(30)}px` }]}>
       <AutoSizeImage
         src={'/images/main_img@3x.png'}
         width={getSize(360)}

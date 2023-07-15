@@ -11,8 +11,6 @@ const Line = () => {
       css={{
         width: '100%',
         height: toSize(width, height, 10),
-        marginTop: toSize(width, height, 30),
-        marginBottom: toSize(width, height, 30),
         backgroundColor: '#f5f0e8',
       }}
     />
