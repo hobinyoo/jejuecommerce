@@ -2,7 +2,7 @@ import Header from '@components/cs/Header'
 import InputText from '@components/cs/InputText'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import DaumPostcode from 'react-daum-postcode'
 
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
