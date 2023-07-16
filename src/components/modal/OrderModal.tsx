@@ -12,7 +12,7 @@ interface Props {
   setOrderVisible: Dispatch<SetStateAction<boolean>>
 }
 
-const OrderModal = ({ setOrderVisible, uid }: Props) => {
+const OrderModal = ({ setOrderVisible }: Props) => {
   const router = useRouter()
 
   const [quantity, setQuantity] = useState<number | undefined>(1)
