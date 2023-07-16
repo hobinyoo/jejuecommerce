@@ -76,9 +76,10 @@ export const toSize = (
   windowHeight: number,
   input: number
 ) => {
+  const windowWidthDetection = windowWidth > 500 ? 500 : windowWidth
   const scaleVertical = windowHeight / 760
-  const scaleHorizontal = windowWidth / 360
-  const ratio = windowWidth / windowHeight
+  const scaleHorizontal = windowWidthDetection / 360
+  const ratio = windowWidthDetection / windowHeight
   const scale = ratio < 0.6 ? scaleHorizontal : scaleVertical
   return Math.trunc(scale * input)
 }

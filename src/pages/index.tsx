@@ -1,6 +1,5 @@
 import Button from '@components/cs/Button'
 import MainHeader from '@components/cs/MainHeader'
-import Review from '@components/Review'
 import OrderModal from '@components/modal/OrderModal'
 import { css } from '@emotion/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
@@ -19,6 +18,9 @@ import MenuPointSection from '@components/main/MenuPointSection'
 import MethodSection from '@components/main/MethodSection'
 import StrengthTwoSection from '@components/main/StrengthTwoSection'
 import ChangeRefundSection from '@components/main/ChangeRefundSection'
+import NotationsSection from '@components/main/NotationsSection'
+import SellerInfoSection from '@components/main/SellerInfoSection'
+import ReviewSection from '@components/main/ReviewSection'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -64,7 +66,7 @@ const Main = ({
   }, [dispatch])
 
   return (
-    <div css={container}>
+    <div css={[container, { width: width > 500 ? '500px' : '100%' }]}>
       <MainHeader windowWidth={width} windowHeight={height} uid={user.uid} />
       <div css={{ backgroundColor: '#fffcf7' }}>
         <MainSection />
@@ -77,13 +79,14 @@ const Main = ({
         <Line />
         <ChangeRefundSection />
         <Line />
+        <NotationsSection />
+        <Line />
+        <SellerInfoSection />
+        <Line />
+        <ReviewSection />
       </div>
 
-      {/* 
-      <div>main</div>
-      <div>후기</div>
-      <Review />
-      <Button onClick={() => setOrderVisible(true)}>주문하기</Button> */}
+      {/* <Button onClick={() => setOrderVisible(true)}>주문하기</Button> */}
 
       {orderVisible && (
         <OrderModal
@@ -97,7 +100,6 @@ const Main = ({
 }
 
 const container = css`
-  width: 100%;
   height: 100%;
   display: 'flex';
   flex-direction: column;
