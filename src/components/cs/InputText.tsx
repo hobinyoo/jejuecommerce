@@ -1,6 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import { css } from '@emotion/react'
-import { isEmpty } from 'lodash'
 
 interface Props {
   name: string
