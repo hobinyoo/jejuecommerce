@@ -17,6 +17,7 @@ import ChangeRefundSection from '@components/main/ChangeRefundSection'
 import NotationsSection from '@components/main/NotationsSection'
 import SellerInfoSection from '@components/main/SellerInfoSection'
 import ReviewSection from '@components/main/ReviewSection'
+import Button from '@components/cs/Button'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -64,7 +65,7 @@ const Main = ({
   return (
     <div css={[container, { width: width > 500 ? '500px' : '100%' }]}>
       <MainHeader windowWidth={width} windowHeight={height} uid={user.uid} />
-      <div css={{ backgroundColor: '#fffcf7' }}>
+      <div css={content}>
         <MainSection />
         <Line />
         <StrengthSection />
@@ -82,7 +83,9 @@ const Main = ({
         <ReviewSection />
       </div>
 
-      {/* <Button onClick={() => setOrderVisible(true)}>주문하기</Button> */}
+      <div css={buttonWrapper}>
+        <Button onClick={() => setOrderVisible(true)}>구매하기</Button>
+      </div>
 
       {orderVisible && (
         <OrderModal
@@ -101,4 +104,14 @@ const container = css`
   flex-direction: column;
 `
 
+const content = css`
+  background-color: #fffcf7;
+`
+
+const buttonWrapper = css`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+`
 export default Main

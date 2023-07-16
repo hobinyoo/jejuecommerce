@@ -83,3 +83,8 @@ export const toSize = (
   const scale = ratio < 0.6 ? scaleHorizontal : scaleVertical
   return Math.trunc(scale * input)
 }
+
+export const toHeightSize = (windowHeight: number, input: number) => {
+  const scaleVertical = windowHeight / 760
+  return Math.trunc(scaleVertical * input)
+}

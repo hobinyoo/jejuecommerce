@@ -55,7 +55,7 @@ const ReviewSection = () => {
           const formattedDate = `${date.getFullYear()}-${
             date.getMonth() + 1
           }-${date.getDate()}`
-          console.log(comment.id)
+
           return (
             <div
               css={[
@@ -129,7 +129,6 @@ const ReviewSection = () => {
             </div>
           )
         })}
-        
     </div>
   )
 }

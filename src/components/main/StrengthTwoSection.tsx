@@ -115,7 +115,7 @@ const StrengthTwoSection = () => {
           color={'#3e3737'}
           lineHeight={1.33}
         >
-          {'소고기 국밥은 기름진 사골이나 고기를'}
+          {'소고기 국밥은 사골과 고기를'}
         </CSText>
         <CSText
           size={15}

@@ -32,25 +32,25 @@ const MenuDrawer = ({
 
       setOpenDrawer(open)
     }
-
+  const ref = React.useRef<any>()
+  console.log(ref.current)
   return (
     <div>
-      <React.Fragment>
-        <AutoSizeImage
-          src={'/images/gnb_menu@3x.png'}
-          width={toSize(windowWidth, windowHeight, 30)}
-          height={toSize(windowWidth, windowHeight, 30)}
-          onClick={() => setOpenDrawer(!openDrawer)}
-        />
-        <SwipeableDrawer
-          anchor={'right'}
-          open={openDrawer}
-          onClose={toggleDrawer(false)}
-          onOpen={toggleDrawer(true)}
-        >
-          <DrawerList uid={uid} />
-        </SwipeableDrawer>
-      </React.Fragment>
+      <AutoSizeImage
+        src={'/images/gnb_menu@3x.png'}
+        width={toSize(windowWidth, windowHeight, 30)}
+        height={toSize(windowWidth, windowHeight, 30)}
+        onClick={() => setOpenDrawer(!openDrawer)}
+      />
+      <SwipeableDrawer
+        anchor={'right'}
+        open={openDrawer}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
+        ref={ref}
+      >
+        <DrawerList uid={uid} />
+      </SwipeableDrawer>
     </div>
   )
 }

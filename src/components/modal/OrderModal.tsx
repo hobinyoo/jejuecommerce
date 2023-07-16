@@ -1,10 +1,15 @@
-import { CountControl } from '@components/CountControl'
 import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import MenuControl from '@components/MenuControl'
 import IconX from '/public/X.svg'
+import { RootState, useAppSelector } from 'src/store'
+import { toHeightSize, toSize } from 'styles/globalStyle'
+import CSText from '@components/cs/CSText'
+import PackagingControl from '@components/PackagingControl'
+import CSSpan from '@components/cs/CSSpan'
+import CountControl from '@components/CountControl'
 
 interface Props {
   uid: string
@@ -15,36 +20,126 @@ interface Props {
 const OrderModal = ({ setOrderVisible }: Props) => {
   const router = useRouter()
 
-  const [quantity, setQuantity] = useState<number | undefined>(1)
-  const [menu, setMenu] = useState<string | undefined>('한우 소고기 국밥')
+  const [quantity, setQuantity] = useState<number>(1)
+  const [packaging, setPackaging] = useState<string>('하나로 포장해주세요')
 
+  const { width, height } = useAppSelector(
+    (state: RootState) => state.windowSize.windowSize
+  )
+  const getSize = (input: number) => {
+    return toSize(width, height, input)
+  }
   return (
     <div css={overlay}>
-      <div css={orderModal}>
-        <div css={modalInner}>
-          <div
-            css={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}
+      <div css={[orderModal, { height: `${toHeightSize(height, 540)}px` }]}>
+        <div
+          css={{
+            position: 'absolute',
+            top: `${getSize(14)}px`,
+            right: `${getSize(14)}px`,
+          }}
+        >
+          <IconX onClick={() => setOrderVisible(false)} />
+        </div>
+        <div css={{ padding: `0 ${getSize(20)}px` }}>
+          <CSText
+            size={15}
+            fontFamily={'PretendardBold'}
+            color={'#000'}
+            lineHeight={1.25}
+            marginTop={30}
           >
-            <IconX onClick={() => setOrderVisible(false)} />
+            {'메뉴'}
+          </CSText>
+          <MenuControl />
+          <CSText
+            size={15}
+            fontFamily={'PretendardBold'}
+            color={'#000'}
+            lineHeight={1.25}
+            marginTop={20}
+          >
+            {'포장 방법을 선택해주세요.'}
+          </CSText>
+          <PackagingControl packaging={packaging} setPackaging={setPackaging} />
+          <div
+            css={[
+              decideQuantity,
+              {
+                width: `${getSize(320)}px`,
+                height: `${getSize(80)}px`,
+                marginTop: `${getSize(20)}px`,
+                padding: `0 ${getSize(20)}px`,
+              },
+            ]}
+          >
+            <CSText
+              size={13}
+              fontFamily={'PretendardRegular'}
+              color={'#000'}
+              lineHeight={1.15}
+              marginTop={13}
+            >
+              {'한우 소고기 국밥(1300g)'}
+              <span
+                css={[
+                  line,
+                  {
+                    fontSize: `${getSize(10)}px`,
+                    margin: `0 ${getSize(10)}px`,
+                    lineHeight: 1.15,
+                  },
+                ]}
+              />
+              <CSSpan
+                size={13}
+                fontFamily={'PretendardRegular'}
+                color={'#000'}
+                lineHeight={1.15}
+              >
+                {packaging}
+              </CSSpan>
+            </CSText>
+            <CountControl quantity={quantity} setQuantity={setQuantity} />
           </div>
-
-          <div style={{ marginTop: '1rem' }}>메뉴를 선택해주세요.</div>
-          <MenuControl value={menu} setValue={setMenu} />
-          <div style={{ marginTop: '1rem' }}>수량:</div>
-          <CountControl value={quantity} setValue={setQuantity} max={200} />
-
+          <div
+            css={[
+              price,
+              {
+                width: `${getSize(320)}px`,
+                height: `${getSize(60)}px`,
+                padding: `0 ${getSize(20)}px`,
+              },
+            ]}
+          >
+            <CSText
+              size={13}
+              fontFamily={'PretendardRegular'}
+              color={'#000'}
+              lineHeight={1.18}
+            >
+              {'총 가격'}
+            </CSText>
+            <CSText
+              size={17}
+              fontFamily={'PretendardBold'}
+              color={'#000'}
+              lineHeight={1.18}
+            >
+              {quantity && quantity * 11000}원
+            </CSText>
+          </div>
+        </div>
+        <div css={buttonWrapper}>
           <Button
             onClick={() =>
-              router.push(`/order/${menu}/${quantity}`, undefined, {
+              router.push(`/order/한우 소고기 국밥/${quantity}`, undefined, {
                 shallow: true,
               })
             }
-            bottom
           >
             주문하기
           </Button>
-
-          <div>가격: {quantity && quantity * 11000} </div>
         </div>
       </div>
     </div>
@@ -63,15 +158,32 @@ const overlay = css`
 `
 const orderModal = css`
   width: 100%;
-  height: 418px;
   background-color: white;
   position: absolute;
   bottom: 0;
-  border-top-left-radius: 21px;
-  border-top-right-radius: 21px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  z-index: 9999;
+`
+const decideQuantity = css`
+  background-color: #f6f6f6;
+  border: solid 1px #ececec;
+`
+const line = css`
+  border: solid 1px #9e9795;
+`
+const price = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: solid 1px #ececec;
+  border-right: solid 1px #ececec;
+  border-bottom: solid 1px #ececec;
 `
 
-const modalInner = css`
-  padding: 2rem;
+const buttonWrapper = css`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 `
 export default OrderModal

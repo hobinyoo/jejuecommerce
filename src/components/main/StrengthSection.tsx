@@ -159,7 +159,7 @@ const StrengthSection = () => {
           color={'#3e3737'}
           lineHeight={1.33}
         >
-          {'저희 가게는 고객님께'}
+          {'저희 국밥은 고객님께'}
         </CSText>
         <CSText
           size={15}
