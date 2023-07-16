@@ -1,7 +1,5 @@
 import * as React from 'react'
 import SwipeableDrawer from '@mui/material/SwipeableDrawer'
-import MenuIcon from '@mui/icons-material/Menu'
-import { css } from '@emotion/react'
 import DrawerList from './DrawerList'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import { toSize } from 'styles/globalStyle'
@@ -44,21 +42,17 @@ const MenuDrawer = ({
           height={toSize(windowWidth, windowHeight, 30)}
           onClick={() => setOpenDrawer(!openDrawer)}
         />
-        {/* <SwipeableDrawer
+        <SwipeableDrawer
           anchor={'right'}
           open={openDrawer}
           onClose={toggleDrawer(false)}
           onOpen={toggleDrawer(true)}
         >
           <DrawerList uid={uid} />
-        </SwipeableDrawer> */}
+        </SwipeableDrawer>
       </React.Fragment>
     </div>
   )
 }
 
-const menuIcon = css`
-  width: 2rem;
-  height: 2rem;
-`
 export default MenuDrawer

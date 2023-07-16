@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { PayMentsProps } from 'types/types'
 
 interface WindowProps {
   width: number

@@ -2,7 +2,7 @@ import Button from '@components/cs/Button'
 import Header from '@components/cs/Header'
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { OrderProps } from 'types/types'
 
 const OrderDetail = () => {
