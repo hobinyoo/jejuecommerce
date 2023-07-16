@@ -13,7 +13,7 @@ interface Props {
   windowHeight: number
 }
 const MainHeader = ({ uid, windowWidth, windowHeight }: Props) => {
-  const [name, setName] = useState('')
+  const [_name, setName] = useState('')
   const [openDrawer, setOpenDrawer] = useState<boolean>(false)
 
   const getUser = useCallback(async () => {
