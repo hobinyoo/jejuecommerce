@@ -12,6 +12,7 @@ interface Props {
   marginRight?: number
   color?: string
   lineHeight?: number
+  textDecoration?: string
 }
 
 const CSText = ({
@@ -24,6 +25,7 @@ const CSText = ({
   marginRight,
   color,
   lineHeight,
+  textDecoration,
 }: Props) => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
@@ -45,6 +47,7 @@ const CSText = ({
             : 0,
           color: color ? color : '#000',
           lineHeight: lineHeight ? lineHeight : 1,
+          textDecoration: textDecoration ? textDecoration : 'none',
         },
       ]}
     >

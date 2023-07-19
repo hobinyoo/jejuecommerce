@@ -84,7 +84,15 @@ const Main = ({
       </div>
 
       <div css={buttonWrapper}>
-        <Button onClick={() => setOrderVisible(true)}>구매하기</Button>
+        <Button
+          onClick={() => setOrderVisible(true)}
+          btnHeight={50}
+          backgroundColor={'#000'}
+          fontSize={17}
+          fontColor={'#fff'}
+        >
+          구매하기
+        </Button>
       </div>
 
       {orderVisible && (

@@ -137,6 +137,11 @@ const OrderModal = ({ setOrderVisible }: Props) => {
                 shallow: true,
               })
             }
+            btnHeight={50}
+            backgroundColor={'#000'}
+            fontColor={'#fff'}
+            fontSize={17}
+            borderRadius={4}
           >
             주문하기
           </Button>

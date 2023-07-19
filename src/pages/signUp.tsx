@@ -6,7 +6,6 @@ import {
   signInWithCredential,
   signInWithPhoneNumber,
 } from 'firebase/auth'
-import Header from '@components/cs/Header'
 import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import InputText from '@components/cs/InputText'
@@ -27,15 +26,29 @@ import {
 } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import { UsersProps } from 'types/types'
+import { useAppSelector, RootState } from 'src/store'
+import { toSize } from 'styles/globalStyle'
+import MainHeader from '@components/cs/MainHeader'
+import CSText from '@components/cs/CSText'
+import SignUpModal from '@components/modal/SignUpModal'
 
 const SignUp = () => {
   const router = useRouter()
 
+  const { width, height } = useAppSelector(
+    (state: RootState) => state.windowSize.windowSize
+  )
+
+  const getSize = (input: number) => {
+    return toSize(width, height, input)
+  }
   const [name, setName] = useState<string>('')
   const [phoneNumber, setPhoneNumber] = useState<string>('')
   const [verificationCode, setVerificationCode] = useState<string>('')
   const [verificationId, setVerificationId] = useState<string>('')
+
   const [requestCode, setRequestCode] = useState<boolean>(false)
+  const [modalVisible, setModalVisible] = useState<boolean>(false)
 
   const sendPhoneNumber = async () => {
     const usersInfo: UsersProps[] = []
@@ -95,8 +108,7 @@ const SignUp = () => {
           phoneNumber: phoneNumber,
           timestamp: new Date(),
         })
-        alert('회원가입을 축하합니다!')
-        router.push('/')
+        setModalVisible(true)
       })
       .catch((error) => {
         console.error(error)
@@ -104,34 +116,84 @@ const SignUp = () => {
   }
 
   return (
-    <>
-      <Header />
-      <div css={signUpContainer}>
-        {/* 이름 */}
-        이름:
-        <InputText name="name" placeholder="이름" setInputText={setName} />
+    <div css={container}>
+      <MainHeader windowWidth={width} windowHeight={height} uid={''} />
+      <div
+        css={[
+          signUp,
+          {
+            padding: `0 ${getSize(20)}px`,
+          },
+        ]}
+      >
+        <CSText
+          size={13}
+          fontFamily={'PretendardRegular'}
+          color={'#000'}
+          marginTop={30}
+          marginBottom={8}
+          lineHeight={1.15}
+        >
+          {'이름'}
+        </CSText>
+        <InputText
+          name="name"
+          placeholder="이름을 입력해주세요."
+          setInputText={setName}
+          inputText={name}
+        />
         {!isEmpty(name) && !nameValidation(name) && (
           <ErrorMessage message={'2-4 글자의 이름을 입력해주세요.'} />
         )}
-        <br />
-        {/* 핸드폰 번호 */}
-        핸드폰 번호:
-        <InputText
-          name="phoneNumber"
-          placeholder="핸드폰 번호"
-          setInputText={setPhoneNumber}
-        />
+        <CSText
+          size={13}
+          fontFamily={'PretendardRegular'}
+          color={'#000'}
+          marginTop={30}
+          marginBottom={8}
+          lineHeight={1.15}
+        >
+          {'핸드폰 번호'}
+        </CSText>
+        <div css={phone}>
+          <InputText
+            name="phoneNumber"
+            placeholder="핸드폰 번호를 입력해주세요."
+            setInputText={setPhoneNumber}
+            inputText={phoneNumber}
+            signUpCertification
+          />
+
+          <Button
+            id="sign-in-button"
+            onClick={sendPhoneNumber}
+            btnWidth={100}
+            btnHeight={46}
+            backgroundColor={'#fff'}
+            fontColor={'#000'}
+            fontSize={14}
+            borderRadius={4}
+          >
+            인증요청
+          </Button>
+        </div>
         {!isEmpty(phoneNumber) && !phoneValidation(phoneNumber) && (
           <ErrorMessage message={'올바른 번호를 입력해주세요'} />
         )}
-        <Button id="sign-in-button" onClick={sendPhoneNumber} css={button}>
-          인증요청
-        </Button>
-        <br />
+
         {/* 인증번호 */}
         {requestCode && (
           <>
-            인증번호:
+            <CSText
+              size={13}
+              fontFamily={'PretendardRegular'}
+              color={'#000'}
+              marginTop={10}
+              marginBottom={8}
+              lineHeight={1.15}
+            >
+              {'인증번호'}
+            </CSText>
             <InputText
               name="verificationCode"
               placeholder="인증 번호"
@@ -141,21 +203,52 @@ const SignUp = () => {
               !verificationValidation(verificationCode) && (
                 <ErrorMessage message={'6자리 번호를 입력해주세요'} />
               )}
-            <Button onClick={confirmNumber} css={button}>
-              확인
-            </Button>
           </>
         )}
       </div>
-    </>
+      <div css={button}>
+        <Button
+          onClick={confirmNumber}
+          btnHeight={46}
+          backgroundColor={
+            verificationValidation(verificationCode) ? '#000' : '#b9b9b9'
+          }
+          fontColor={
+            verificationValidation(verificationCode) ? '#fff' : '#8b8b8b'
+          }
+          fontSize={15}
+          borderColor={
+            verificationValidation(verificationCode) ? '#000' : '#b9b9b9'
+          }
+        >
+          {'회원가입'}
+        </Button>
+      </div>
+
+      {modalVisible && <SignUpModal setSignVisible={setModalVisible} />}
+    </div>
   )
 }
+const container = css`
+  width: 100%;
+`
 
-const signUpContainer = css`
+const signUp = css`
+  width: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
 `
+
+const phone = css`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`
+
 const button = css`
-  margin: 1rem 0;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 `
 export default SignUp

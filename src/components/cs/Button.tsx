@@ -7,17 +7,29 @@ import CSText from './CSText'
 interface Props {
   children: ReactNode
   onClick: () => void
-  bottom?: boolean
   id?: string
-  signUp?: boolean
+  marginTop?: number
+  btnWidth?: number
+  btnHeight: number
+  backgroundColor: string
+  fontSize: number
+  fontColor: string
+  borderRadius?: number
+  borderColor?: string
 }
 
 const Button = ({
   id,
   children,
   onClick,
-  bottom = false,
-  signUp = false,
+  marginTop,
+  btnWidth,
+  btnHeight,
+  backgroundColor,
+  fontSize,
+  fontColor,
+  borderRadius,
+  borderColor,
 }: Props) => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
@@ -32,17 +44,21 @@ const Button = ({
       css={[
         button,
         {
-          width: signUp ? `${getSize(80)}px` : '100%',
-          height: signUp ? `${getSize(30)}px` : `${getSize(50)}px`,
-          borderRadius: signUp ? `${getSize(4)}px` : 'none',
+          width: btnWidth ? `${getSize(btnWidth)}px` : '100%',
+          height: `${getSize(btnHeight)}px`,
+
+          borderRadius: borderRadius ? `${getSize(borderRadius)}px` : 'none',
+          marginTop: marginTop ? `${getSize(marginTop)}px` : 0,
+          backgroundColor: backgroundColor,
+          border: `1px solid ${borderColor ? borderColor : 'black'}`,
         },
       ]}
       onClick={onClick}
     >
       <CSText
-        size={17}
+        size={fontSize}
         fontFamily={'PretendardRegular'}
-        color={'#fff'}
+        color={fontColor}
         lineHeight={1.18}
       >
         {children}
@@ -52,11 +68,9 @@ const Button = ({
 }
 
 const button = css`
-  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
 `
 
 export default Button

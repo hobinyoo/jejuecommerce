@@ -10,6 +10,7 @@ interface Props {
   setOpenDrawer: React.Dispatch<React.SetStateAction<boolean>>
   windowWidth: number
   windowHeight: number
+  name: string
 }
 
 const MenuDrawer = ({
@@ -18,6 +19,7 @@ const MenuDrawer = ({
   uid,
   windowWidth,
   windowHeight,
+  name,
 }: Props) => {
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -33,7 +35,7 @@ const MenuDrawer = ({
       setOpenDrawer(open)
     }
   const ref = React.useRef<any>()
-  console.log(ref.current)
+
   return (
     <div>
       <AutoSizeImage
@@ -49,7 +51,7 @@ const MenuDrawer = ({
         onOpen={toggleDrawer(true)}
         ref={ref}
       >
-        <DrawerList uid={uid} />
+        <DrawerList uid={uid} name={name} />
       </SwipeableDrawer>
     </div>
   )
