@@ -35,9 +35,13 @@ const PackagingControl = ({ packaging, setPackaging }: Props) => {
           {
             width: `${getSize(320)}px`,
             height: `${getSize(46)}px`,
-            borderRadius: `${getSize(4)}px`,
             marginTop: `${getSize(12)}px`,
             padding: `0 ${getSize(20)}px`,
+            border: 'solid 1px #ececec',
+            borderTopLeftRadius: `${getSize(4)}px`,
+            borderTopRightRadius: `${getSize(4)}px`,
+            borderBottomRightRadius: openBox ? 'none' : `${getSize(4)}px`,
+            borderBottomLeftRadius: openBox ? 'none' : `${getSize(4)}px`,
           },
         ]}
       >
@@ -49,17 +53,46 @@ const PackagingControl = ({ packaging, setPackaging }: Props) => {
         >
           {'포장 방법 선택'}
         </CSText>
-        <AutoSizeImage
-          src={'/images/dropdown@3x.png'}
-          width={getSize(30)}
-          height={getSize(30)}
-        />
+        {openBox ? (
+          <AutoSizeImage
+            src={'/images/dropdown_up@3x.png'}
+            width={getSize(30)}
+            height={getSize(30)}
+          />
+        ) : (
+          <AutoSizeImage
+            src={'/images/dropdown@3x.png'}
+            width={getSize(30)}
+            height={getSize(30)}
+          />
+        )}
       </div>
       {openBox &&
         packagingMethod.map((value, index) => {
           return (
             <div key={index} onClick={() => selectMethod(value)}>
-              {value}
+              <div
+                css={[
+                  menuBox,
+                  {
+                    width: `${getSize(320)}px`,
+                    height: `${getSize(46)}px`,
+                    padding: `0 ${getSize(20)}px`,
+                    borderLeft: 'solid 1px #ececec',
+                    borderRight: 'solid 1px #ececec',
+                    borderBottom: 'solid 1px #ececec',
+                  },
+                ]}
+              >
+                <CSText
+                  size={14}
+                  fontFamily={'PretendardRegular'}
+                  color={'#000'}
+                  lineHeight={1.14}
+                >
+                  {value}
+                </CSText>
+              </div>
             </div>
           )
         })}
@@ -72,6 +105,5 @@ const menuBox = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: solid 1px #ececec;
 `
 export default PackagingControl

@@ -34,7 +34,7 @@ const DrawerList = ({ uid, name }: Props) => {
   const handleMyOrder = () => {
     router.push(`/orderDetail?uid=${uid}`)
   }
-  console.log(name)
+
   return (
     <div
       css={{

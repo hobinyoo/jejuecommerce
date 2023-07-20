@@ -43,6 +43,7 @@ const InputText = ({
           paddingLeft: `${getSize(20)}px`,
           border: `solid 1px ${isEmpty(inputText) ? '#ececec' : '#000'} `,
           marginTop: marginTop ? `${getSize(marginTop)}px` : 0,
+          borderRadius: `${getSize(4)}px`,
         },
       ]}
       name={name}

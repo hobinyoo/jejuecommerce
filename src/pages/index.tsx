@@ -2,10 +2,9 @@ import MainHeader from '@components/cs/MainHeader'
 import OrderModal from '@components/modal/OrderModal'
 import { css } from '@emotion/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import nookies from 'nookies'
-import { RootState, useAppDispatch, useAppSelector } from 'src/store'
-import { setWindowSize } from 'src/store/features/windowSizeSlice'
+import { RootState, useAppSelector } from 'src/store'
 import MainSection from '@components/main/MainSection'
 import Line from '@components/cs/Line'
 import StrengthSection from '@components/main/StrengthSection'
@@ -38,48 +37,29 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 const Main = ({
   user,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const dispatch = useAppDispatch()
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
   const [orderVisible, setOrderVisible] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (typeof window === 'object') {
-      const handleResize = () => {
-        dispatch(
-          setWindowSize({
-            width: window.innerWidth,
-            height: window.innerHeight,
-          })
-        )
-      }
-      handleResize() // 컴포넌트가 처음 마운트될 때 초기 윈도우 크기 설정
-      window.addEventListener('resize', handleResize) // 윈도우 크기 변경 이벤트 처리
-      return () => {
-        window.removeEventListener('resize', handleResize) // 컴포넌트 언마운트 시 이벤트 리스너 제거
-      }
-    }
-  }, [dispatch])
 
   return (
     <div css={[container, { width: width > 500 ? '500px' : '100%' }]}>
       <MainHeader windowWidth={width} windowHeight={height} uid={user.uid} />
       <div css={content}>
         <MainSection />
-        <Line />
+        <Line backgroundColor={'#f5f0e8'} />
         <StrengthSection />
         <StrengthTwoSection />
         <MenuPointSection />
         <MethodSection />
         <DeliveryInformSection />
-        <Line />
+        <Line backgroundColor={'#f5f0e8'} />
         <ChangeRefundSection />
-        <Line />
+        <Line backgroundColor={'#f5f0e8'} />
         <NotationsSection />
-        <Line />
+        <Line backgroundColor={'#f5f0e8'} />
         <SellerInfoSection />
-        <Line />
+        <Line backgroundColor={'#f5f0e8'} />
         <ReviewSection />
       </div>
 

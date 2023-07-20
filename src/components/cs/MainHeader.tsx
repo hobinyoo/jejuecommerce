@@ -57,23 +57,25 @@ const MainHeader = ({ uid, windowWidth, windowHeight }: Props) => {
             onClick={() => router.back()}
           />
         )}
-        {router.pathname === '/signUp' && (
-          <CSText
-            size={18}
-            fontFamily={'PretendardRegular'}
-            color={'#000'}
-            lineHeight={1.17}
-            marginLeft={10}
-          >
-            {'회원가입'}
-          </CSText>
-        )}
+
+        <CSText
+          size={18}
+          fontFamily={'PretendardRegular'}
+          color={'#000'}
+          lineHeight={1.17}
+          marginLeft={10}
+        >
+          {router.pathname === '/signUp'
+            ? '회원가입'
+            : router.route.split('/')[1] === 'order'
+            ? '주문하기'
+            : router.route.split('/')[1] === 'orderDetail'
+            ? '주문내역'
+            : ''}
+        </CSText>
       </div>
 
       <div css={menu}>
-        {/* {!isEmpty(name) && (
-          <div style={{ marginRight: '1rem' }}>{name}님! 환영합니다.</div>
-        )} */}
         <MenuDrawer
           openDrawer={openDrawer}
           setOpenDrawer={setOpenDrawer}
@@ -93,6 +95,7 @@ const container = css`
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
+  border-bottom: solid 1px #f2f2f2;
 `
 const text = css`
   display: flex;

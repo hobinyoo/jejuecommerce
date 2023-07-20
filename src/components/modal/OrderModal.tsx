@@ -141,7 +141,6 @@ const OrderModal = ({ setOrderVisible }: Props) => {
             backgroundColor={'#000'}
             fontColor={'#fff'}
             fontSize={17}
-            borderRadius={4}
           >
             주문하기
           </Button>

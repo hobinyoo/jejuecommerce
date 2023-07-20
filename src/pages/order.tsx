@@ -7,6 +7,9 @@ import DaumPostcode from 'react-daum-postcode'
 import PayMents from './payments'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import nookies from 'nookies'
+import MainHeader from '@components/cs/MainHeader'
+import { useAppSelector, RootState } from 'src/store'
+import { toSize } from 'styles/globalStyle'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -40,6 +43,13 @@ const Order = ({
   const [postCode, setPostCode] = useState<string>('')
   const [openPostcode, setOpenPostcode] = useState<boolean>(false)
 
+  const { width, height } = useAppSelector(
+    (state: RootState) => state.windowSize.windowSize
+  )
+  const getSize = (input: number) => {
+    return toSize(width, height, input)
+  }
+
   useEffect(() => {
     if (user.uid) {
       fetch(`/api/get-oneUserInfo?id=${user.uid}`)
@@ -70,7 +80,7 @@ const Order = ({
   }
   return (
     <div>
-      <Header />
+      <MainHeader windowWidth={width} windowHeight={height} uid={''} />
       <div css={container}>
         <div>상품명: {router.query.menu}</div>
         <div>수량: {router.query.quantity}개</div>

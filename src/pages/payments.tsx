@@ -54,7 +54,13 @@ const PayMents = ({
     })
   }
   return (
-    <Button onClick={handleClick} bottom>
+    <Button
+      onClick={handleClick}
+      btnHeight={50}
+      backgroundColor={'#000'}
+      fontColor={'#fff'}
+      fontSize={17}
+    >
       결제하기
     </Button>
   )
