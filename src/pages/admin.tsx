@@ -103,7 +103,15 @@ const Admin = () => {
                   disabled={value.prepareShipping}
                 />
                 {!value.prepareShipping && (
-                  <Button onClick={() => prepareShipping(value.id)}>
+                  <Button
+                    btnWidth={125}
+                    btnHeight={46}
+                    backgroundColor={'#000'}
+                    fontColor={'#fff'}
+                    fontSize={14}
+                    borderRadius={4}
+                    onClick={() => prepareShipping(value.id)}
+                  >
                     배송준비완료
                   </Button>
                 )}
