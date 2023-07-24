@@ -7,7 +7,6 @@ import {
   signInWithPhoneNumber,
 } from 'firebase/auth'
 
-import Header from '@components/cs/Header'
 import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import InputText from '@components/cs/InputText'
