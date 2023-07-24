@@ -1,4 +1,3 @@
-import Header from '@components/cs/Header'
 import InputText from '@components/cs/InputText'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
@@ -9,7 +8,6 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import nookies from 'nookies'
 import MainHeader from '@components/cs/MainHeader'
 import { useAppSelector, RootState } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -46,9 +44,9 @@ const Order = ({
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
+  // const getSize = (input: number) => {
+  //   return toSize(width, height, input)
+  // }
 
   useEffect(() => {
     if (user.uid) {

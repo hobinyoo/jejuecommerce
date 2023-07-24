@@ -1,10 +1,7 @@
-import Header from '@components/cs/Header'
 import InputText from '@components/cs/InputText'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import DaumPostcode from 'react-daum-postcode'
-
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import nookies from 'nookies'
 import PayMents from '../payments'
@@ -18,15 +15,16 @@ import ErrorMessage from '@components/Error'
 import { nameValidation, phoneValidation } from 'src/function/vaildation'
 import Button from '@components/cs/Button'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
+import PostModal from '@components/modal/PostModal'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const user = nookies.get(ctx)
     const res = await fetch(
-      `http://localhost:3000/api/get-oneUserInfo?id=${user.uid}`
+      `https://www.koreanbeefricesoup.com/api/get-oneUserInfo?id=${user.uid}`
     )
-    const data = await res.json()
-
+    let data = await res.json()
+    data.uid = user.uid
     return {
       props: { data },
     }
@@ -36,10 +34,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     ctx.res.writeHead(302, { Location: '/signIn' })
     ctx.res.end()
 
-    // `as never` prevents inference issues
-    // with InferGetServerSidePropsType.
-    // The props returned here don't matter because we've
-    // already redirected the user.
     return { props: {} as never }
   }
 }
@@ -66,37 +60,22 @@ const Order = ({
   const [postCode, setPostCode] = useState<string>(data.items.postCode ?? '')
   const [carrierRequest, setCarrierRequest] = useState<string>('')
 
-  const [openPostcode, setOpenPostcode] = useState<boolean>(false)
   const [selectPayMethod, setSelectPayMethod] = useState<string>('카드 결제')
 
+  const [postVisible, setPostVisible] = useState<boolean>(false)
   const { orderInfo } = router.query
-
-  // useEffect(() => {
-  //   if (user.uid) {
-  //     fetch(`/api/get-oneUserInfo?id=${user.uid}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setName(data.items.name)
-  //         setPhoneNumber(data.items.phoneNumber)
-  //         setAddress(data.items.address ?? '')
-  //         setAddressDetail(data.items.addressDetail ?? '')
-  //         setPostCode(data.items.postCode ?? '')
-  //       })
-  //       .catch((error) => console.error(error))
-  //   }
-  // }, [user.uid])
 
   const handle = {
     // 버튼 클릭 이벤트
     clickButton: () => {
-      setOpenPostcode((current) => !current)
+      setPostVisible(true)
     },
 
     // 주소 선택 이벤트
     selectAddress: (data: any) => {
       setAddress(data.address)
       setPostCode(data.zonecode)
-      setOpenPostcode(false)
+      setPostVisible(false)
     },
   }
 
@@ -267,7 +246,7 @@ const Order = ({
             fontSize={14}
             borderRadius={4}
           >
-            주소 찾기
+            {'주소 찾기'}
           </Button>
         </div>
         {!isEmpty(phoneNumber) && !phoneValidation(phoneNumber) && (
@@ -351,31 +330,19 @@ const Order = ({
           )
         })}
       </div>
-
-      {/* <div>
-        <InputText
-          name="addressDetail"
-          placeholder="상세주소"
-          setInputText={setAddressDetail}
-          inputText={addressDetail}
+      {postVisible && (
+        <PostModal
+          setPostVisible={setPostVisible}
+          setAddress={setAddress}
+          setPostCode={setPostCode}
         />
-        <div>우편번호: {postCode}</div>
-        {openPostcode && (
-          <DaumPostcode
-            onComplete={handle.selectAddress} // 값을 선택할 경우 실행되는 이벤트
-            autoClose={false} // 값을 선택할 경우 사용되는 DOM을 제거하여 자동 닫힘 설정
-            defaultQuery="판교역로 235" // 팝업을 열때 기본적으로 입력되는 검색어
-          />
-        )}
-      </div> */}
+      )}
 
       <PayMents
-        uid={typeof router.query.uid === 'string' ? router.query.uid : ''}
-        menu={typeof router.query.menu === 'string' ? router.query.menu : ''}
-        quantity={
-          typeof router.query.quantity === 'string' ? router.query.quantity : ''
-        }
-        totalPrice={Number(router.query.quantity) * 11000}
+        uid={data.uid}
+        menu={'한우 소고기 국밥'}
+        quantity={String(orderInfo && orderInfo[1])}
+        totalPrice={Number(orderInfo && orderInfo[1]) * 11000 + 3000}
         name={name}
         phoneNumber={phoneNumber}
         address={address}

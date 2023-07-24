@@ -94,7 +94,13 @@ const Comment = () => {
           setContent={setContent}
         />
       </div>
-      <Button bottom onClick={saveComment}>
+      <Button
+        btnHeight={50}
+        backgroundColor={'#000'}
+        fontColor={'#fff'}
+        fontSize={17}
+        onClick={saveComment}
+      >
         저장
       </Button>
     </div>

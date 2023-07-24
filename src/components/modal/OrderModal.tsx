@@ -21,7 +21,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
   const router = useRouter()
 
   const [quantity, setQuantity] = useState<number>(1)
-  const [packaging, setPackaging] = useState<string>('하나로 포장해주세요')
+  const [packaging, setPackaging] = useState<string>('포장 방법 선택')
 
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize

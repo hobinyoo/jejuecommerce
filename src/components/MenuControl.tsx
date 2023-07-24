@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
-import React, { Dispatch, SetStateAction } from 'react'
-
+import React from 'react'
 import { useAppSelector, RootState } from 'src/store'
 import { toSize } from 'styles/globalStyle'
 import CSText from './cs/CSText'

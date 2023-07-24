@@ -55,6 +55,7 @@ const ReviewSection = () => {
           const formattedDate = `${date.getFullYear()}-${
             date.getMonth() + 1
           }-${date.getDate()}`
+          // console.log(data.length)
 
           return (
             <div

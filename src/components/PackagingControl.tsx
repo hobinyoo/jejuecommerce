@@ -11,7 +11,7 @@ interface Props {
   setPackaging: Dispatch<SetStateAction<string>>
 }
 
-const PackagingControl = ({ packaging, setPackaging }: Props) => {
+const PackagingControl = ({ setPackaging }: Props) => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
