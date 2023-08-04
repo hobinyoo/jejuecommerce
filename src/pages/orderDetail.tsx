@@ -29,7 +29,7 @@ const OrderDetail = () => {
         res.json().then((data) => data.items)
       ),
   })
-  console.log(data)
+
   return (
     <div css={{ overflowY: 'auto' }}>
       <MainHeader windowWidth={width} windowHeight={height} uid={''} />
