@@ -71,6 +71,8 @@ const MainHeader = ({ uid, windowWidth, windowHeight }: Props) => {
             ? '주문하기'
             : router.route.split('/')[1] === 'orderDetail'
             ? '주문내역'
+            : router.route.split('/')[1] === 'comment'
+            ? '후기작성'
             : ''}
         </CSText>
       </div>

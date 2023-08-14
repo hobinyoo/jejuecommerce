@@ -1,4 +1,3 @@
-import Header from '@components/cs/Header'
 import React, { useRef, useState } from 'react'
 import { Rating } from '@mantine/core'
 import TextArea from '@components/cs/TextArea'
@@ -10,6 +9,10 @@ import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import { isEmpty } from 'lodash'
 import { doc, updateDoc } from 'firebase/firestore'
+import MainHeader from '@components/cs/MainHeader'
+import { useAppSelector, RootState } from 'src/store'
+import CSText from '@components/cs/CSText'
+import { toSize } from 'styles/globalStyle'
 
 const Comment = () => {
   const [rating, setRating] = useState<number>(0)
@@ -19,6 +22,13 @@ const Comment = () => {
   const router = useRouter()
   const orderId = router.query.orderId
 
+  const { width, height } = useAppSelector(
+    (state: RootState) => state.windowSize.windowSize
+  )
+
+  const getSize = (input: number) => {
+    return toSize(width, height, input)
+  }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.files) {
       const fileArr = e.currentTarget.files
@@ -68,7 +78,35 @@ const Comment = () => {
   }
   return (
     <div css={container}>
-      <Header />
+      <MainHeader windowWidth={width} windowHeight={height} uid={''} />
+      <div
+        css={[
+          ratingContainer,
+          {
+            height: `${getSize(114)}px`,
+          },
+        ]}
+      >
+        <CSText
+          size={17}
+          fontFamily={'PretendardRegular'}
+          color={'#000'}
+          lineHeight={1.18}
+          marginTop={30}
+          marginBottom={10}
+        >
+          {'상품에 만족하셨나요?'}
+        </CSText>
+        <Rating value={rating} onChange={setRating} size="lg" />
+      </div>
+      <CSText
+        size={17}
+        fontFamily={'PretendardRegular'}
+        color={'#000'}
+        lineHeight={1.18}
+      >
+        {'후기를 적어주세요'}
+      </CSText>
       <input
         ref={inputRef}
         type="file"
@@ -84,7 +122,7 @@ const Comment = () => {
             <AutoSizeImage key={idx} src={image} width={100} height={100} />
           ))}
       </div>
-      <Rating value={rating} onChange={setRating} size="md" />
+
       <br />
       <div>
         <TextArea
@@ -110,5 +148,13 @@ const Comment = () => {
 const container = css`
   width: 100%;
   height: 100vh;
+`
+
+const ratingContainer = css`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: solid 1px #f2f2f2;
 `
 export default Comment
