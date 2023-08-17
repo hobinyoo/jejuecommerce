@@ -8,7 +8,6 @@ const nextConfig = {
   images: {
     domains: [
       'firebasestorage.googleapis.com',
-      'koreanbeefricesoup.com',
     ],
   },
   webpack: (config) => {

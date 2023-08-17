@@ -20,13 +20,14 @@ const ReviewSection = () => {
   //인자값 순서대로 data안에 있는 item 타입, error 타입, queryFn 반환 타입
   const { data } = useQuery<{ items: CommentProps[] }, unknown, CommentProps[]>(
     {
-      queryKey: ['/api/get-comments'],
+      queryKey: ['https://www.koreanbeefricesoup.com/api/get-comments'],
       queryFn: () =>
-        fetch('/api/get-comments').then((res) =>
+        fetch('https://www.koreanbeefricesoup.com/api/get-comments').then((res) =>
           res.json().then((data) => data.items)
         ),
     }
   )
+
   return (
     <div
       css={[

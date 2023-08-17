@@ -76,6 +76,7 @@ const Comment = () => {
       window.location.replace('/')
     }
   }
+
   return (
     <div css={container}>
       <MainHeader windowWidth={width} windowHeight={height} uid={''} />
