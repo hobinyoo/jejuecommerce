@@ -20,9 +20,9 @@ const ReviewSection = () => {
   //인자값 순서대로 data안에 있는 item 타입, error 타입, queryFn 반환 타입
   const { data } = useQuery<{ items: CommentProps[] }, unknown, CommentProps[]>(
     {
-      queryKey: ['https://www.koreanbeefricesoup.com/api/get-comments'],
+      queryKey: ['/api/get-comments'],
       queryFn: () =>
-        fetch('https://www.koreanbeefricesoup.com/api/get-comments').then((res) =>
+        fetch('/api/get-comments').then((res) =>
           res.json().then((data) => data.items)
         ),
     }
@@ -55,7 +55,6 @@ const ReviewSection = () => {
           const formattedDate = `${date.getFullYear()}-${
             date.getMonth() + 1
           }-${date.getDate()}`
-          // console.log(data.length)
 
           return (
             <div
