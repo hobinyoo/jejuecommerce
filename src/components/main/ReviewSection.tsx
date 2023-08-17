@@ -3,7 +3,7 @@ import { CommentProps } from 'types/types'
 
 import { Rating } from '@mantine/core'
 import { useQuery } from '@tanstack/react-query'
-// import AutoSizeImage from '@components/cs/AutoSizeImage'
+import AutoSizeImage from '@components/cs/AutoSizeImage'
 import { css } from '@emotion/react'
 import CSText from '@components/cs/CSText'
 import { RootState, useAppSelector } from 'src/store'
@@ -117,19 +117,19 @@ const ReviewSection = () => {
                 {comment.images &&
                   comment.images.map((image, imageIndex) => {
                     return (
-                      // <AutoSizeImage
-                      //   key={imageIndex}
-                      //   src={image}
-                      //   width={getSize(80)}
-                      //   height={getSize(80)}
-                      // />
-
-                      <img
+                      <AutoSizeImage
                         key={imageIndex}
                         src={image}
-                        alt="test"
-                        css={{ width: '80px', height: '80px' }}
+                        width={getSize(80)}
+                        height={getSize(80)}
                       />
+
+                      // <img
+                      //   key={imageIndex}
+                      //   src={image}
+                      //   alt="test"
+                      //   css={{ width: '80px', height: '80px' }}
+                      // />
                     )
                   })}
               </div>
