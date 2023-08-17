@@ -17,7 +17,6 @@ const AutoSizeImage = ({ src, width, height, onClick }: Props) => {
         {
           width: `${width}px`,
           height: `${height}px`,
-          position: 'relative',
         },
       ]}
       onClick={onClick}
@@ -28,6 +27,7 @@ const AutoSizeImage = ({ src, width, height, onClick }: Props) => {
 }
 
 const imageWrapper = css`
-  display: 'flex';
+  display: flex;
+  position: relative;
 `
 export default AutoSizeImage
