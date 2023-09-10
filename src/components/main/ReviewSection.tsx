@@ -27,7 +27,7 @@ const ReviewSection = () => {
         ),
     }
   )
-  console.log('test')
+
   return (
     <div
       css={[

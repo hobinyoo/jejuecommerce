@@ -1,6 +1,7 @@
 export interface UsersProps {
   id: string
-  name: string
+  name?: string
+  email?: string
   phoneNumber: string
   address?: string
   addressDetail?: string

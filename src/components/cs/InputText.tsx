@@ -3,6 +3,7 @@ import { css } from '@emotion/react'
 import { useAppSelector, RootState } from 'src/store'
 import { toSize } from 'styles/globalStyle'
 import { isEmpty } from 'lodash'
+import { unlink } from 'fs'
 
 interface Props {
   name: string
@@ -15,6 +16,7 @@ interface Props {
   marginLeft?: number
   marginRight?: number
   signUpCertification?: boolean
+  passwordType?: boolean
 }
 
 const InputText = ({
@@ -25,6 +27,7 @@ const InputText = ({
   disabled = false,
   marginTop,
   signUpCertification,
+  passwordType,
 }: Props) => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
@@ -46,6 +49,7 @@ const InputText = ({
           borderRadius: `${getSize(4)}px`,
         },
       ]}
+      type={passwordType ? 'password' : 'text'}
       name={name}
       value={inputText}
       placeholder={placeholder}
