@@ -9,9 +9,10 @@ import { useRouter } from 'next/router'
 
 interface Props {
   setNotiVisible: Dispatch<SetStateAction<boolean>>
+  setOrderVisible: Dispatch<SetStateAction<boolean>>
 }
 
-const NotiModal = ({ setNotiVisible }: Props) => {
+const NotiModal = ({ setNotiVisible, setOrderVisible }: Props) => {
   const router = useRouter()
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
@@ -23,8 +24,9 @@ const NotiModal = ({ setNotiVisible }: Props) => {
     signIn: () => {
       router.push('/signIn')
     },
-    signUp: () => {
-      router.push('/signUp')
+    notMember: () => {
+      setNotiVisible(false)
+      setOrderVisible(true)
     },
   }
 
@@ -51,15 +53,6 @@ const NotiModal = ({ setNotiVisible }: Props) => {
           <IconX onClick={() => setNotiVisible(false)} />
         </div>
 
-        <CSText
-          size={20}
-          fontFamily={'PretendardRegular'}
-          color={'#000'}
-          lineHeight={1.5}
-          marginTop={50}
-        >
-          {'로그인 후 이용해주세요!'}
-        </CSText>
         <div
           css={[
             btnWrapper,
@@ -77,19 +70,21 @@ const NotiModal = ({ setNotiVisible }: Props) => {
             fontColor={'#fff'}
             fontSize={14}
             borderRadius={4}
+            marginTop={40}
           >
-            {'로그인'}
+            {'회원주문'}
           </Button>
           <Button
-            onClick={handle.signUp}
+            onClick={handle.notMember}
             btnWidth={125}
             btnHeight={46}
             backgroundColor={'#fff'}
             fontColor={'#000'}
             fontSize={14}
             borderRadius={4}
+            marginTop={20}
           >
-            {'회원가입'}
+            {'비회원주문'}
           </Button>
         </div>
       </div>
@@ -119,8 +114,7 @@ const container = css`
 
 const btnWrapper = css`
   display: flex;
-  position: absolute;
-  justify-content: space-between;
-  bottom: 0;
+  flex-direction: column;
+  align-items: center;
 `
 export default NotiModal

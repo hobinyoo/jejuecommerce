@@ -5,6 +5,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { orderId, paymentKey, amount } = req.query
+
   const secretKey = 'test_sk_aBX7zk2yd8yoAolYXpvVx9POLqKQ'
 
   const url = 'https://api.tosspayments.com/v1/payments/confirm'

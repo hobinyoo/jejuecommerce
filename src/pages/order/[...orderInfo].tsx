@@ -21,7 +21,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const user = nookies.get(ctx)
     const res = await fetch(
-      `https://www.koreanbeefricesoup.com/api/get-oneUserInfo?id=${user.uid}`
+      `http://localhost:3000/api/get-oneUserInfo?id=${user.uid}`
     )
     let data = await res.json()
     data.uid = user.uid
@@ -49,15 +49,15 @@ const Order = ({
   const getSize = (input: number) => {
     return toSize(width, height, input)
   }
-  const [name, setName] = useState<string>(data.items.name ?? '')
+  const [name, setName] = useState<string>(data.items?.name ?? '')
   const [phoneNumber, setPhoneNumber] = useState<string>(
-    data.items.phoneNumber ?? ''
+    data.items?.phoneNumber ?? ''
   )
-  const [address, setAddress] = useState<string>(data.items.address ?? '')
+  const [address, setAddress] = useState<string>(data.items?.address ?? '')
   const [addressDetail, setAddressDetail] = useState<string>(
-    data.items.addressDetail ?? ''
+    data.items?.addressDetail ?? ''
   )
-  const [postCode, setPostCode] = useState<string>(data.items.postCode ?? '')
+  const [postCode, setPostCode] = useState<string>(data.items?.postCode ?? '')
   const [carrierRequest, setCarrierRequest] = useState<string>('')
 
   const [selectPayMethod, setSelectPayMethod] = useState<string>('카드 결제')
@@ -249,9 +249,6 @@ const Order = ({
             {'주소 찾기'}
           </Button>
         </div>
-        {!isEmpty(phoneNumber) && !phoneValidation(phoneNumber) && (
-          <ErrorMessage message={'올바른 번호를 입력해주세요'} />
-        )}
         <InputText
           name="address"
           placeholder=""

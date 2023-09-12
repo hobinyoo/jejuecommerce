@@ -20,6 +20,7 @@ import Button from '@components/cs/Button'
 import { toSize } from 'styles/globalStyle'
 import NotiModal from '@components/modal/NotiModal'
 import { isEmpty } from 'lodash'
+import { or } from 'firebase/firestore'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -89,11 +90,16 @@ const Main = ({
           fontSize={17}
           fontColor={'#fff'}
         >
-          구매하기
+          {'구매하기'}
         </Button>
       </div>
 
-      {notiVisible && <NotiModal setNotiVisible={setNotiVisible} />}
+      {notiVisible && (
+        <NotiModal
+          setNotiVisible={setNotiVisible}
+          setOrderVisible={setOrderVisible}
+        />
+      )}
 
       {orderVisible && (
         <OrderModal

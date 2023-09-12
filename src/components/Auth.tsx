@@ -8,7 +8,7 @@ const AuthContext = createContext<{ uid: string }>({
 
 const AuthProvider = ({ children }: any) => {
   const [uid, setUid] = useState<string>('')
-
+  
   useEffect(() => {
     return auth.onAuthStateChanged(async (user) => {
       if (!user) {

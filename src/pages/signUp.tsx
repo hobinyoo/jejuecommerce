@@ -12,14 +12,7 @@ import {
 } from 'src/function/vaildation'
 import ErrorMessage from '@components/Error'
 import { isEmpty } from 'lodash'
-import {
-  collection,
-  doc,
-  getDocs,
-  orderBy,
-  query,
-  setDoc,
-} from 'firebase/firestore'
+import { doc, setDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import { useAppSelector, RootState } from 'src/store'
 import { toSize } from 'styles/globalStyle'
@@ -90,25 +83,9 @@ const SignUp = () => {
 
   const signUp = async () => {
     if (fillUserInfo()) {
-      const usersInfo: { email: string }[] = []
-      const board = collection(db, 'users')
-      const querySnapshot = await getDocs(
-        query(board, orderBy('timestamp', 'desc'))
-      )
-      querySnapshot.forEach((doc: any) => {
-        usersInfo.push({
-          email: doc.data().email,
-        })
-      })
-
-      const findUser = usersInfo.find((value) => value.email === email)
-
-      if (findUser) {
-        alert('이미 등록된 이메일 입니다.')
-        router.push('/signIn')
-      } else {
-        await createUserWithEmailAndPassword(auth, email, password)
-          .then(async (userCredential) => {
+      try {
+        await createUserWithEmailAndPassword(auth, email, password).then(
+          async (userCredential) => {
             // User signed in successfully
             const userUid = userCredential.user.uid
             await setDoc(doc(db, 'users', userUid), {
@@ -121,10 +98,21 @@ const SignUp = () => {
               timestamp: new Date(),
             })
             setModalVisible(true)
-          })
-          .catch((error) => {
-            console.error(error)
-          })
+          }
+        )
+      } catch (err: any) {
+        switch (err.code) {
+          case 'auth/weak-password':
+            alert('비밀번호는 6자리 이상이어야 합니다')
+            break
+          case 'auth/invalid-email':
+            alert('잘못된 이메일 주소입니다')
+            break
+          case 'auth/email-already-in-use':
+            alert('이미 가입되어 있는 계정입니다')
+            router.push('/signIn')
+            break
+        }
       }
     }
   }
@@ -171,7 +159,7 @@ const SignUp = () => {
         </CSText>
         <InputText
           name="password"
-          placeholder="비밀번호를 입력해주세요."
+          placeholder="6자리 이상의 비밀번호를 입력해주세요."
           passwordType
           setInputText={setPassword}
           inputText={password}

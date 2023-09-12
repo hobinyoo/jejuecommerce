@@ -1,28 +1,18 @@
 import React, { useState } from 'react'
-import { auth, db } from '../firebase/initFirebase'
-import {
-  PhoneAuthProvider,
-  RecaptchaVerifier,
-  signInWithCredential,
-  signInWithPhoneNumber,
-} from 'firebase/auth'
-
+import { auth } from '../firebase/initFirebase'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import InputText from '@components/cs/InputText'
-import {
-  phoneValidation,
-  verificationValidation,
-} from 'src/function/vaildation'
+import { emailValidation, passwordValidation } from 'src/function/vaildation'
 import ErrorMessage from '@components/Error'
 import { isEmpty } from 'lodash'
-import { collection, getDocs, orderBy, query } from 'firebase/firestore'
 import { useRouter } from 'next/router'
-import { UsersProps } from 'types/types'
 import { useAppSelector, RootState } from 'src/store'
 import MainHeader from '@components/cs/MainHeader'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import { toSize } from 'styles/globalStyle'
+import CSText from '@components/cs/CSText'
 
 const SignIn = () => {
   const router = useRouter()
@@ -34,66 +24,28 @@ const SignIn = () => {
   const getSize = (input: number) => {
     return toSize(width, height, input)
   }
-  const [phoneNumber, setPhoneNumber] = useState<string>('')
-  const [verificationCode, setVerificationCode] = useState<string>('')
-  const [verificationId, setVerificationId] = useState<string>('')
-  const [requestCode, setRequestCode] = useState<boolean>(false)
 
-  const sendPhoneNumber = async () => {
-    const usersInfo: UsersProps[] = []
-    const board = collection(db, 'users')
-    const querySnapshot = await getDocs(
-      query(board, orderBy('timestamp', 'desc'))
-    )
-    querySnapshot.forEach((doc: any) => {
-      usersInfo.push({
-        id: doc.id,
-        name: doc.data().name,
-        phoneNumber: doc.data().phoneNumber,
-      })
-    })
-    const findUser = usersInfo.find(
-      (value) => value.phoneNumber === phoneNumber
-    )
-    if (findUser) {
-      const koreaPhoneNumber = phoneNumber.replace(/^0/, '+82')
-      setRequestCode(true)
-      const appVerifier = new RecaptchaVerifier(
-        'sign-in-button',
-        {
-          size: 'invisible',
-        },
-        auth
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+
+  const signIn = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password).then(
+        async (_userCredential) => {
+          alert('로그인 성공')
+          window.location.replace('/')
+        }
       )
-      signInWithPhoneNumber(auth, koreaPhoneNumber, appVerifier)
-        .then((confirmationResult: any) => {
-          setVerificationId(confirmationResult.verificationId)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    } else {
-      alert('회원가입 후 이용해주세요')
-      router.push('/signUp')
+    } catch (err: any) {
+      switch (err.code) {
+        case 'auth/user-not-found':
+          alert('잘못된 이메일 주소입니다.')
+          break
+        case 'auth/wrong-password':
+          alert('올바른 비밀번호를 입력해주세요.')
+          break
+      }
     }
-  }
-
-  const confirmNumber = () => {
-    const credential = PhoneAuthProvider.credential(
-      verificationId,
-      verificationCode
-    )
-
-    signInWithCredential(auth, credential)
-      .then(async (_userCredential) => {
-        // User signed in successfully
-
-        alert('로그인에 성공!')
-        router.push('/')
-      })
-      .catch((error) => {
-        console.error(error)
-      })
   }
 
   return (
@@ -101,7 +53,7 @@ const SignIn = () => {
       <MainHeader windowWidth={width} windowHeight={height} uid={''} />
       <div
         css={[
-          signIn,
+          signInWrapper,
           {
             padding: `0 ${getSize(30)}px`,
             height: `calc(100vh - ${getSize(60)}px)`,
@@ -115,47 +67,63 @@ const SignIn = () => {
             height={getSize(45)}
           />
         </div>
+
         <div css={inputWrapper}>
+          <CSText
+            size={13}
+            fontFamily={'PretendardRegular'}
+            color={'#000'}
+            marginTop={30}
+            marginBottom={8}
+            lineHeight={1.15}
+          >
+            {'이메일'}
+          </CSText>
           <InputText
-            name="phoneNumber"
+            name=""
             placeholder="핸드폰 번호로 로그인 해주세요."
-            setInputText={setPhoneNumber}
-            inputText={phoneNumber}
-            marginTop={70}
+            setInputText={setEmail}
+            inputText={email}
           />
-          {!isEmpty(phoneNumber) && !phoneValidation(phoneNumber) && (
-            <ErrorMessage message={'올바른 핸드폰 번호를 입력해주세요.'} />
+          {!isEmpty(email) && !emailValidation(email) && (
+            <ErrorMessage message={'이메일 형식의 아이디를 입력해주세요.'} />
           )}
-        </div>
-
-        {requestCode && (
-          <div css={inputWrapper}>
-            <InputText
-              name="verificationCode"
-              placeholder="인증 번호"
-              setInputText={setVerificationCode}
-              inputText={verificationCode}
-              marginTop={10}
+          <CSText
+            size={13}
+            fontFamily={'PretendardRegular'}
+            color={'#000'}
+            marginTop={30}
+            marginBottom={8}
+            lineHeight={1.15}
+          >
+            {'비밀번호'}
+          </CSText>
+          <InputText
+            name=""
+            placeholder="비밀번호를 입력해주세요."
+            setInputText={setPassword}
+            inputText={password}
+            passwordType
+          />
+          {!isEmpty(password) && !passwordValidation(password) && (
+            <ErrorMessage
+              message={'비밀번호에는 영문과 숫자가 포함 되어야 합니다.'}
             />
-            {!isEmpty(verificationCode) &&
-              !verificationValidation(verificationCode) && (
-                <ErrorMessage message={'6자리 번호를 입력해주세요'} />
-              )}
+          )}
+          <div>
+            <Button
+              onClick={signIn}
+              btnHeight={46}
+              backgroundColor={'#000'}
+              fontColor={'#fff'}
+              fontSize={14}
+              borderRadius={4}
+              marginTop={30}
+            >
+              로그인
+            </Button>
           </div>
-        )}
-
-        <Button
-          id="sign-in-button"
-          onClick={requestCode ? confirmNumber : sendPhoneNumber}
-          marginTop={10}
-          btnHeight={46}
-          backgroundColor={'#000'}
-          fontColor={'#fff'}
-          fontSize={14}
-          borderRadius={4}
-        >
-          {requestCode ? '로그인 하기' : '인증 요청'}
-        </Button>
+        </div>
 
         <div
           css={{
@@ -183,7 +151,7 @@ const SignIn = () => {
 const container = css`
   width: 100%;
 `
-const signIn = css`
+const signInWrapper = css`
   width: 100%;
   display: flex;
   flex: 1;
