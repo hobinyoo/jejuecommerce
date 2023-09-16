@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
-import { loadTossPayments } from '@tosspayments/payment-sdk'
+
 import Button from '@components/cs/Button'
-import { doc, setDoc, updateDoc } from 'firebase/firestore'
+import { doc, setDoc } from 'firebase/firestore'
 import { db } from 'src/firebase/initFirebase'
 import { PayMentsProps } from 'types/types'
 import {
@@ -9,8 +9,11 @@ import {
   loadPaymentWidget,
   ANONYMOUS,
 } from '@tosspayments/payment-widget-sdk'
+import { nanoid } from 'nanoid'
+import { useRouter } from 'next/router'
+
 const PayMents = ({
-  uid,
+  email,
   menu,
   quantity,
   totalPrice,
@@ -19,10 +22,16 @@ const PayMents = ({
   address,
   addressDetail,
   postCode,
+  carrierRequest,
 }: PayMentsProps) => {
+  const router = useRouter()
+
   const orderId = Math.random().toString(36).slice(2)
+
   const paymentWidgetRef = useRef<PaymentWidgetInstance | null>(null)
-  const price = 50_000
+  const paymentMethodsWidgetRef = useRef<ReturnType<
+    PaymentWidgetInstance['renderPaymentMethods']
+  > | null>(null)
 
   useEffect(() => {
     ;(async () => {
@@ -31,44 +40,71 @@ const PayMents = ({
         ANONYMOUS
       )
 
-      paymentWidget.renderPaymentMethods('#payment-widget', price)
+      // ------  결제위젯 렌더링 ------
+      // https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액-옵션
+      const paymentMethodsWidget = paymentWidget.renderPaymentMethods(
+        '#payment-widget',
+        { value: totalPrice }
+      )
+
+      // ------  이용약관 렌더링 ------
+      // https://docs.tosspayments.com/reference/widget-sdk#renderagreement선택자
+      paymentWidget.renderAgreement('#agreement')
 
       paymentWidgetRef.current = paymentWidget
+      paymentMethodsWidgetRef.current = paymentMethodsWidget
     })()
-  }, [])
+  }, [totalPrice])
 
   const handleClick = async () => {
-    const tossPayments = await loadTossPayments(
-      'test_ck_XjExPeJWYVQNYYg1yqxr49R5gvNL'
-    )
+    const paymentWidget = paymentWidgetRef.current
 
-    // await setDoc(doc(db, 'orders', orderId), {
-    //   uid: uid,
-    //   menu: menu,
-    //   quantity: quantity,
-    //   totalPrice: totalPrice,
-    //   name: name,
-    //   phoneNumber: phoneNumber,
-    //   address: address,
-    //   addressDetail: addressDetail,
-    //   postCode: postCode,
-    //   status: '상품준비',
-    //   timestamp: new Date(),
-    // })
+    const paymentAgreement = paymentWidget
+      ?.renderAgreement('#agreement')
+      .getAgreementStatus().agreedRequiredTerms
 
-    //TODO: fail시 orderId 값 삭제하고 주문페이지로 돌아가자
-    //첫번째 인자값은 결제 방법
-    await tossPayments.requestPayment('계좌이체', {
-      amount: totalPrice,
-      orderId: orderId,
-      orderName: menu,
-      successUrl: `${window.location.origin}/api/payments`,
-      failUrl: `${window.location.origin}/api/paymentsFail`,
-    })
+    if (paymentAgreement) {
+      await paymentWidget
+        ?.requestPayment({
+          orderId: orderId,
+          orderName: menu,
+          customerName: name,
+          successUrl: `${window.location.origin}/api/payments`,
+          failUrl: `${window.location.origin}/api/paymentsFail`,
+        })
+        .then(
+          async () =>
+            await setDoc(doc(db, 'orders', orderId), {
+              menu: menu,
+              quantity: quantity,
+              totalPrice: totalPrice,
+              name: name,
+              phoneNumber: phoneNumber,
+              address: address,
+              addressDetail: addressDetail,
+              postCode: postCode,
+              carrierRequest: carrierRequest,
+            })
+        )
+        .catch((error) => {
+          // 에러 처리: 에러 목록을 확인하세요
+          // https://docs.tosspayments.com/reference/error-codes#failurl로-전달되는-에러
+          if (error.code === 'USER_CANCEL') {
+            alert('메인화면으로 이동합니다.')
+            router.push('/')
+          } else if (error.code === 'INVALID_CARD_COMPANY') {
+            // 유효하지 않은 카드 코드에 대한 에러 처리
+            alert('카드 번호가 유효하지 않습니다. 재입력 해주세요.')
+          }
+        })
+    } else {
+      alert('필수약관에 동의해주세요.')
+    }
   }
   return (
     <div>
-      <div id="payment-widget" />
+      <div id="payment-widget" style={{ width: '100%' }} />
+      <div id="agreement" style={{ width: '100%' }} />
       <Button
         onClick={handleClick}
         btnHeight={50}

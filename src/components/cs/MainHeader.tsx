@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
 import { css } from '@emotion/react'
 import MenuDrawer from '@components/navigation/Drawer'
 import { db } from '@firebase/initFirebase'
@@ -13,8 +19,14 @@ interface Props {
   uid: string
   windowWidth: number
   windowHeight: number
+  setOrderDetailVisible?: Dispatch<SetStateAction<boolean>>
 }
-const MainHeader = ({ uid, windowWidth, windowHeight }: Props) => {
+const MainHeader = ({
+  uid,
+  windowWidth,
+  windowHeight,
+  setOrderDetailVisible,
+}: Props) => {
   const [name, setName] = useState('')
   const [openDrawer, setOpenDrawer] = useState<boolean>(false)
   const router = useRouter()
@@ -85,6 +97,7 @@ const MainHeader = ({ uid, windowWidth, windowHeight }: Props) => {
           windowWidth={windowWidth}
           windowHeight={windowHeight}
           name={name}
+          setOrderDetailVisible={setOrderDetailVisible}
         />
       </div>
     </div>

@@ -145,7 +145,7 @@ const SignUp = () => {
           inputText={email}
         />
         {!isEmpty(email) && !emailValidation(email) && (
-          <ErrorMessage message={'이메일 형식의 아이디를 입력해주세요'} />
+          <ErrorMessage message={'이메일 형식의 아이디를 입력해주세요.'} />
         )}
         <CSText
           size={13}

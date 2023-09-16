@@ -1,5 +1,5 @@
 import Button from '@components/cs/Button'
-import React from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 import Divider from '@mui/material/Divider'
 import { useRouter } from 'next/router'
 import { auth } from 'src/firebase/initFirebase'
@@ -14,9 +14,16 @@ import AutoSizeImage from '@components/cs/AutoSizeImage'
 interface Props {
   uid: string
   name: string
+  setOpenDrawer: Dispatch<SetStateAction<boolean>>
+  setOrderDetailVisible: Dispatch<SetStateAction<boolean>> | undefined
 }
 
-const DrawerList = ({ uid, name }: Props) => {
+const DrawerList = ({
+  uid,
+  name,
+  setOpenDrawer,
+  setOrderDetailVisible,
+}: Props) => {
   const router = useRouter()
 
   const { width, height } = useAppSelector(
@@ -32,7 +39,12 @@ const DrawerList = ({ uid, name }: Props) => {
   }
 
   const handleMyOrder = () => {
-    router.push(`/orderDetail?uid=${uid}`)
+    if (uid) {
+      router.push(`/orderDetail?uid=${uid}`)
+    } else {
+      setOpenDrawer(false)
+      setOrderDetailVisible && setOrderDetailVisible(true)
+    }
   }
 
   return (

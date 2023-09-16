@@ -3,11 +3,13 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer'
 import DrawerList from './DrawerList'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import { toSize } from 'styles/globalStyle'
+import { Dispatch, SetStateAction } from 'react'
 
 interface Props {
   uid: string
   openDrawer: boolean
-  setOpenDrawer: React.Dispatch<React.SetStateAction<boolean>>
+  setOpenDrawer: Dispatch<SetStateAction<boolean>>
+  setOrderDetailVisible: Dispatch<SetStateAction<boolean>> | undefined
   windowWidth: number
   windowHeight: number
   name: string
@@ -16,6 +18,7 @@ interface Props {
 const MenuDrawer = ({
   openDrawer,
   setOpenDrawer,
+  setOrderDetailVisible,
   uid,
   windowWidth,
   windowHeight,
@@ -51,7 +54,12 @@ const MenuDrawer = ({
         onOpen={toggleDrawer(true)}
         ref={ref}
       >
-        <DrawerList uid={uid} name={name} />
+        <DrawerList
+          uid={uid}
+          name={name}
+          setOpenDrawer={setOpenDrawer}
+          setOrderDetailVisible={setOrderDetailVisible}
+        />
       </SwipeableDrawer>
     </div>
   )

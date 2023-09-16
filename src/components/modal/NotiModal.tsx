@@ -3,8 +3,7 @@ import { css } from '@emotion/react'
 import React, { Dispatch, SetStateAction } from 'react'
 import IconX from '/public/X.svg'
 import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
-import CSText from '@components/cs/CSText'
+import { modalContainer, modalOverlay, toSize } from 'styles/globalStyle'
 import { useRouter } from 'next/router'
 
 interface Props {
@@ -31,10 +30,10 @@ const NotiModal = ({ setNotiVisible, setOrderVisible }: Props) => {
   }
 
   return (
-    <div css={overlay}>
+    <div css={modalOverlay}>
       <div
         css={[
-          container,
+          modalContainer,
           {
             padding: `${getSize(20)}px`,
             width: `${getSize(300)}px`,
@@ -91,26 +90,6 @@ const NotiModal = ({ setNotiVisible, setOrderVisible }: Props) => {
     </div>
   )
 }
-
-const overlay = css`
-  position: fixed; /* 화면에 고정 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 투명한 검은 배경 */
-  z-index: 9999; /* 다른 요소들보다 위에 나타나도록 높은 값 설정 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-const container = css`
-  background-color: #fff;
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`
 
 const btnWrapper = css`
   display: flex;

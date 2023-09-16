@@ -13,6 +13,7 @@ interface Props {
   color?: string
   lineHeight?: number
   textDecoration?: string
+  onClick?: () => void
 }
 
 const CSText = ({
@@ -26,6 +27,7 @@ const CSText = ({
   color,
   lineHeight,
   textDecoration,
+  onClick,
 }: Props) => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
@@ -33,6 +35,7 @@ const CSText = ({
 
   return (
     <div
+      onClick={onClick}
       css={[
         {
           fontSize: `${toSize(width, height, size)}px`,

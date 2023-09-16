@@ -14,7 +14,6 @@ import { isEmpty } from 'lodash'
 import ErrorMessage from '@components/Error'
 import { nameValidation, phoneValidation } from 'src/function/vaildation'
 import Button from '@components/cs/Button'
-import AutoSizeImage from '@components/cs/AutoSizeImage'
 import PostModal from '@components/modal/PostModal'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
@@ -60,8 +59,6 @@ const Order = ({
   const [postCode, setPostCode] = useState<string>(data.items?.postCode ?? '')
   const [carrierRequest, setCarrierRequest] = useState<string>('')
 
-  const [selectPayMethod, setSelectPayMethod] = useState<string>('카드 결제')
-
   const [postVisible, setPostVisible] = useState<boolean>(false)
   const { orderInfo } = router.query
 
@@ -89,7 +86,6 @@ const Order = ({
     { title: '배송비', content: '3000원' },
   ]
 
-  const payMethod = ['카드 결제', '계좌 이체', '에스크로 결제']
   return (
     <div css={container}>
       <MainHeader windowWidth={width} windowHeight={height} uid={''} />
@@ -167,7 +163,6 @@ const Order = ({
       <div
         css={{
           padding: `0 ${getSize(20)}px`,
-          marginBottom: `${getSize(51)}px`,
         }}
       >
         <CSText
@@ -279,53 +274,6 @@ const Order = ({
           setInputText={setCarrierRequest}
           inputText={carrierRequest}
         />
-        <CSText
-          size={13}
-          fontFamily={'PretendardRegular'}
-          color={'#000'}
-          marginTop={30}
-          lineHeight={1.15}
-        >
-          {'결제 방식 선택'}
-        </CSText>
-        {payMethod.map((value, index) => {
-          return (
-            <div
-              key={index}
-              onClick={() => setSelectPayMethod(value)}
-              css={[
-                pay,
-                {
-                  marginTop: `${getSize(14)}px`,
-                },
-              ]}
-            >
-              {selectPayMethod === value ? (
-                <AutoSizeImage
-                  src="/images/btn_radio_on@3x.png"
-                  width={getSize(18)}
-                  height={getSize(18)}
-                />
-              ) : (
-                <AutoSizeImage
-                  src="/images/btn_radio_off@3x.png"
-                  width={getSize(18)}
-                  height={getSize(18)}
-                />
-              )}
-
-              <CSText
-                size={14}
-                fontFamily={'PretendardRegular'}
-                color={'#000'}
-                lineHeight={1.14}
-                marginLeft={12}
-              >
-                {value}
-              </CSText>
-            </div>
-          )
-        })}
       </div>
       {postVisible && (
         <PostModal
@@ -336,7 +284,6 @@ const Order = ({
       )}
 
       <PayMents
-        uid={data.uid}
         menu={'한우 소고기 국밥'}
         quantity={String(orderInfo && orderInfo[1])}
         totalPrice={Number(orderInfo && orderInfo[1]) * 11000 + 3000}
@@ -345,6 +292,7 @@ const Order = ({
         address={address}
         addressDetail={addressDetail}
         postCode={postCode}
+        carrierRequest={carrierRequest}
       />
     </div>
   )
@@ -370,10 +318,6 @@ const findAddress = css`
   width: 100%;
   display: flex;
   justify-content: space-between;
-`
-const pay = css`
-  width: 100%;
-  display: flex;
 `
 
 export default Order

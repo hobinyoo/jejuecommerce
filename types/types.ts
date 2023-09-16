@@ -40,7 +40,7 @@ export interface CommentProps {
 }
 
 export interface PayMentsProps {
-  uid: string
+  email?: string
   menu: string
   quantity: string
   totalPrice: number
@@ -49,4 +49,5 @@ export interface PayMentsProps {
   address: string
   addressDetail: string
   postCode: string
+  carrierRequest: string
 }

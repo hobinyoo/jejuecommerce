@@ -71,6 +71,7 @@ export const GlobalStyle = css`
     src: url('/fonts/woff/GodoB.woff') format('woff');
   }
 `
+
 export const toSize = (
   windowWidth: number,
   windowHeight: number,
@@ -88,3 +89,23 @@ export const toHeightSize = (windowHeight: number, input: number) => {
   const scaleVertical = windowHeight / 760
   return Math.trunc(scaleVertical * input)
 }
+
+export const modalOverlay = css`
+  position: fixed; /* 화면에 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 투명한 검은 배경 */
+  z-index: 9999; /* 다른 요소들보다 위에 나타나도록 높은 값 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+export const modalContainer = css`
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`

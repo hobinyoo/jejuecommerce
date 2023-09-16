@@ -21,6 +21,7 @@ import { toSize } from 'styles/globalStyle'
 import NotiModal from '@components/modal/NotiModal'
 import { isEmpty } from 'lodash'
 import { or } from 'firebase/firestore'
+import OrderDetailModal from '@components/modal/OrderDetailModal'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -45,6 +46,7 @@ const Main = ({
     (state: RootState) => state.windowSize.windowSize
   )
   const [orderVisible, setOrderVisible] = useState<boolean>(false)
+  const [orderDetailVisible, setOrderDetailVisible] = useState<boolean>(false)
   const [notiVisible, setNotiVisible] = useState<boolean>(false)
 
   const getSize = (input: number) => {
@@ -63,7 +65,12 @@ const Main = ({
         },
       ]}
     >
-      <MainHeader windowWidth={width} windowHeight={height} uid={user.uid} />
+      <MainHeader
+        windowWidth={width}
+        windowHeight={height}
+        uid={user.uid}
+        setOrderDetailVisible={setOrderDetailVisible}
+      />
       <MainSection />
       <Line backgroundColor={'#f5f0e8'} />
       <StrengthSection />
@@ -107,6 +114,10 @@ const Main = ({
           orderVisible={orderVisible}
           setOrderVisible={setOrderVisible}
         />
+      )}
+
+      {orderDetailVisible && (
+        <OrderDetailModal setOrderDetailVisible={setOrderDetailVisible} />
       )}
     </div>
   )
