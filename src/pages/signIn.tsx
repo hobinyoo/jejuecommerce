@@ -28,22 +28,37 @@ const SignIn = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
+  const fillUserInfo = () => {
+    if (
+      !isEmpty(email) &&
+      !isEmpty(password) &&
+      emailValidation(email) &&
+      passwordValidation(password)
+    ) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   const signIn = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password).then(
-        async (_userCredential) => {
-          alert('로그인 성공')
-          window.location.replace('/')
+    if (fillUserInfo()) {
+      try {
+        await signInWithEmailAndPassword(auth, email, password).then(
+          async (_userCredential) => {
+            alert('로그인 성공')
+            window.location.replace('/')
+          }
+        )
+      } catch (err: any) {
+        switch (err.code) {
+          case 'auth/user-not-found':
+            alert('잘못된 이메일 주소입니다.')
+            break
+          case 'auth/wrong-password':
+            alert('올바른 비밀번호를 입력해주세요.')
+            break
         }
-      )
-    } catch (err: any) {
-      switch (err.code) {
-        case 'auth/user-not-found':
-          alert('잘못된 이메일 주소입니다.')
-          break
-        case 'auth/wrong-password':
-          alert('올바른 비밀번호를 입력해주세요.')
-          break
       }
     }
   }
@@ -114,13 +129,13 @@ const SignIn = () => {
             <Button
               onClick={signIn}
               btnHeight={46}
-              backgroundColor={'#000'}
-              fontColor={'#fff'}
-              fontSize={14}
-              borderRadius={4}
+              backgroundColor={fillUserInfo() ? '#000' : '#b9b9b9'}
+              fontColor={fillUserInfo() ? '#fff' : '#8b8b8b'}
+              fontSize={15}
+              borderColor={fillUserInfo() ? '#000' : '#b9b9b9'}
               marginTop={30}
             >
-              로그인
+              {'로그인'}
             </Button>
           </div>
         </div>

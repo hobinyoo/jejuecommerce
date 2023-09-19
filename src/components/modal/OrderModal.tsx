@@ -20,6 +20,7 @@ interface Props {
 const OrderModal = ({ setOrderVisible }: Props) => {
   const router = useRouter()
 
+  const [selectMenu, setSelectMenu] = useState<string>('메뉴 선택')
   const [quantity, setQuantity] = useState<number>(1)
   const [packaging, setPackaging] = useState<string>('포장 방법 선택')
 
@@ -51,7 +52,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
           >
             {'메뉴'}
           </CSText>
-          <MenuControl />
+          <MenuControl selectMenu={selectMenu} setSelectMenu={setSelectMenu} />
           <CSText
             size={15}
             fontFamily={'PretendardBold'}

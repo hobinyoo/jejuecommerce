@@ -79,7 +79,7 @@ const DrawerList = ({
             marginLeft={10}
             marginRight={26}
           >
-            {isEmpty(name) ? '로그인 하기' : name}
+            {isEmpty(name) ? '로그인' : name}
           </CSText>
         </div>
 
