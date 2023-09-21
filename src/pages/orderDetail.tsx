@@ -35,7 +35,6 @@ const OrderDetail = () => {
       <MainHeader windowWidth={width} windowHeight={height} uid={''} />
       {data &&
         data.map((value, index) => {
-          console.log(value.carrierRequest)
           return (
             <div key={index}>
               <div
@@ -220,6 +219,27 @@ const OrderDetail = () => {
                     </CSText>
                   </div>
                 </div>
+                <div css={[carrierInfo, { marginTop: ` ${getSize(20)}px` }]}>
+                  <div css={{ width: `${getSize(78)}px` }}>
+                    <CSText
+                      size={15}
+                      fontFamily={'PretendardRegular'}
+                      color={'#8b8b8b'}
+                      lineHeight={1.2}
+                    >
+                      {'우편 번호'}
+                    </CSText>
+                  </div>
+                  <CSText
+                    size={15}
+                    fontFamily={'PretendardRegular'}
+                    color={'#000'}
+                    lineHeight={1.2}
+                    marginLeft={31}
+                  >
+                    {value.postCode}
+                  </CSText>
+                </div>
                 <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
                   <div css={{ width: `${getSize(78)}px` }}>
                     <CSText
@@ -262,7 +282,7 @@ const OrderDetail = () => {
                     {value.status === 'DONE' && '상품준비'}
                   </CSText>
                 </div>
-                {value.status === '상품준비' && (
+                {value.status === 'DONE' && (
                   <div css={[btnWrapper, { marginTop: `${getSize(30)}px` }]}>
                     <Button
                       btnWidth={155}
