@@ -13,18 +13,19 @@ export interface OrderProps {
   addressDetail: string
   menu: string
   name: string
+  carrierRequest: string
+  method: string
   phoneNumber: string
   postCode: string
   quantity: string
-  timestamp: {
-    seconds: number
-  }
+  timestamp: string
   totalPrice: string
   status: string
-  uid: string
+  uid?: string
   id: string
   carrierCode?: string
   prepareShipping?: boolean
+  receipt: string
 }
 
 export interface CommentProps {
@@ -40,6 +41,7 @@ export interface CommentProps {
 }
 
 export interface PayMentsProps {
+  uid?: string
   email?: string
   menu: string
   quantity: string

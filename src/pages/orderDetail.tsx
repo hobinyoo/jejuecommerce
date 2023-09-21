@@ -35,15 +35,7 @@ const OrderDetail = () => {
       <MainHeader windowWidth={width} windowHeight={height} uid={''} />
       {data &&
         data.map((value, index) => {
-          const commentTimestamp = value.timestamp?.seconds
-          const date = new Date(commentTimestamp * 1000)
-
-          const formattedDate = `${date.getFullYear()}.${
-            date.getMonth() + 1 < 10
-              ? `0${date.getMonth() + 1}`
-              : date.getMonth() + 1
-          }.${date.getDate()}`
-
+          console.log(value.carrierRequest)
           return (
             <div key={index}>
               <div
@@ -74,7 +66,7 @@ const OrderDetail = () => {
                       color={'#8b8b8b'}
                       lineHeight={1.15}
                     >
-                      {formattedDate}
+                      {value.timestamp}
                     </CSSpan>
                   </CSText>
                 </div>
@@ -236,7 +228,7 @@ const OrderDetail = () => {
                       color={'#8b8b8b'}
                       lineHeight={1.2}
                     >
-                      {'배송요청사항'}
+                      {'배송 요청사항'}
                     </CSText>
                   </div>
                   <CSText
@@ -246,7 +238,7 @@ const OrderDetail = () => {
                     lineHeight={1.2}
                     marginLeft={31}
                   >
-                    {value.name}
+                    {value.carrierRequest}
                   </CSText>
                 </div>
                 <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
@@ -267,7 +259,7 @@ const OrderDetail = () => {
                     lineHeight={1.2}
                     marginLeft={31}
                   >
-                    {value.status}
+                    {value.status === 'DONE' && '상품준비'}
                   </CSText>
                 </div>
                 {value.status === '상품준비' && (

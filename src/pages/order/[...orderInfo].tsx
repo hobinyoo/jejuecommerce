@@ -155,7 +155,10 @@ const Order = ({
             lineHeight={1.2}
             marginBottom={5}
           >
-            {Number(orderInfo && orderInfo[1]) * 11000 + 3000}원
+            {!isEmpty(data.items?.email)
+              ? (Number(orderInfo && orderInfo[1]) * 11000 + 3000) * 0.9
+              : Number(orderInfo && orderInfo[1]) * 11000 + 3000}
+            원
           </CSText>
         </div>
       </div>
@@ -284,6 +287,7 @@ const Order = ({
       )}
 
       <PayMents
+        uid={data.uid ?? ''}
         menu={'한우 소고기 국밥'}
         quantity={String(orderInfo && orderInfo[1])}
         totalPrice={Number(orderInfo && orderInfo[1]) * 11000 + 3000}

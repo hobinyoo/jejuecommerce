@@ -26,6 +26,9 @@ async function getOrderDetail(id: string) {
           totalPrice: doc.data().totalPrice,
           uid: doc.data().uid,
           id: doc.id,
+          carrierRequest: doc.data().carrierRequest,
+          method: doc.data().method,
+          receipt: doc.data().receipt,
         })
       }
     })

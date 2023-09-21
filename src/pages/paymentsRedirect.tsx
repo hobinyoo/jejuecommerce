@@ -38,6 +38,7 @@ const PaymentsRedirect = () => {
         status: payments.status,
         timestamp: format(new Date(payments.approvedAt), 'yyyy/MM/dd HH:mm:ss'),
         method: payments.method,
+        receipt: payments.receipt.url,
       })
 
       setPaymentInfo({

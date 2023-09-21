@@ -9,11 +9,10 @@ import {
   loadPaymentWidget,
   ANONYMOUS,
 } from '@tosspayments/payment-widget-sdk'
-import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
 
 const PayMents = ({
-  email,
+  uid,
   menu,
   quantity,
   totalPrice,
@@ -75,6 +74,7 @@ const PayMents = ({
         .then(
           async () =>
             await setDoc(doc(db, 'orders', orderId), {
+              uid: uid,
               menu: menu,
               quantity: quantity,
               totalPrice: totalPrice,
