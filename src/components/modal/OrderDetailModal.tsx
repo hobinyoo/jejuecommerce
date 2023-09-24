@@ -33,6 +33,7 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
       setOrderDetailVisible(false)
     },
     orderDetail: () => {
+      //TODO: 데이터가 있으면 배열에 담아서 redirect로 params에 데이터 보내고 없으면 message로 정보 없다고 전달!
       fetch('/api/get-notUserInfo', {
         method: 'POST',
         body: JSON.stringify({
@@ -42,7 +43,9 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
+          if (isEmpty(data.items)) {
+            alert('해당 정보를 찾을 수 없습니다.')
+          }
         })
         .catch((error) => console.error(error))
     },

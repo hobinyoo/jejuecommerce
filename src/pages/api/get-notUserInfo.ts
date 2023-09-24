@@ -10,6 +10,7 @@ import {
   where,
 } from 'firebase/firestore'
 import { db } from 'src/firebase/initFirebase'
+import { isEmpty } from 'lodash'
 
 async function getNotUserInfo(name: string, phoneNumber: string) {
   try {
@@ -23,7 +24,13 @@ async function getNotUserInfo(name: string, phoneNumber: string) {
       )
     )
 
-    querySnapshot.forEach((doc) => console.log(doc.data()))
+    if (querySnapshot.empty) {
+      return null
+    }
+
+    querySnapshot.forEach((doc) => {
+      console.log(doc.data())
+    })
   } catch (error) {
     console.error(error)
   }

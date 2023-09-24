@@ -20,7 +20,6 @@ import Button from '@components/cs/Button'
 import { toSize } from 'styles/globalStyle'
 import NotiModal from '@components/modal/NotiModal'
 import { isEmpty } from 'lodash'
-import { or } from 'firebase/firestore'
 import OrderDetailModal from '@components/modal/OrderDetailModal'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {

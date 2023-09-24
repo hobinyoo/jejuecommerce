@@ -13,8 +13,8 @@ export interface OrderProps {
   addressDetail: string
   menu: string
   name: string
-  carrierRequest: string
-  method: string
+  carrierRequest?: string
+  method?: string
   phoneNumber: string
   postCode: string
   quantity: string
@@ -25,7 +25,7 @@ export interface OrderProps {
   id: string
   carrierCode?: string
   prepareShipping?: boolean
-  receipt: string
+  receipt?: string
 }
 
 export interface CommentProps {
@@ -35,9 +35,7 @@ export interface CommentProps {
   images: string[]
   uid: string
   id: string
-  commentTimestamp: {
-    seconds: number
-  }
+  commentTimestamp: string
 }
 
 export interface PayMentsProps {

@@ -49,13 +49,6 @@ const ReviewSection = () => {
       </CSText>
       {data &&
         data.map((comment, index) => {
-          const commentTimestamp = comment.commentTimestamp?.seconds
-          const date = new Date(commentTimestamp * 1000)
-
-          const formattedDate = `${date.getFullYear()}-${
-            date.getMonth() + 1
-          }-${date.getDate()}`
-
           return (
             <div
               css={[
@@ -84,7 +77,7 @@ const ReviewSection = () => {
                   color={'#9e9795'}
                   lineHeight={1.67}
                 >
-                  {formattedDate}
+                  {comment.commentTimestamp}
                 </CSText>
               </div>
               <CSText

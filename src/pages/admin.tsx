@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { DatePicker } from '@mantine/dates'
 import { Group } from '@mantine/core'
 import { OrderProps } from 'types/types'
-import { getDate } from 'src/function/date'
 import InputText from '@components/cs/InputText'
 import Button from '@components/cs/Button'
 
@@ -65,8 +64,6 @@ const Admin = () => {
       </Group>
       {data &&
         data.map((value, index) => {
-          const todayDate = getDate(value.timestamp.seconds)
-
           return (
             <div
               key={index}
@@ -86,7 +83,7 @@ const Admin = () => {
               <div>주소: {value.address}</div>
               <div>상세주소: {value.addressDetail}</div>
               <div>우편번호: {value.postCode}</div>
-              <div>주문날짜: {todayDate}</div>
+              <div>주문날짜: {value.timestamp}</div>
               <div>배송코드:</div>
               <div
                 css={{
@@ -99,7 +96,7 @@ const Admin = () => {
                   name="carrerCode"
                   placeholder="배송 송장"
                   setInputText={setCarrierCode}
-                  inputText={value.carrierCode ?? ''}
+                  inputText={value.carrierCode ?? carrierCode}
                   disabled={value.prepareShipping}
                 />
                 {!value.prepareShipping && (

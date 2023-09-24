@@ -13,6 +13,7 @@ import MainHeader from '@components/cs/MainHeader'
 import { useAppSelector, RootState } from 'src/store'
 import CSText from '@components/cs/CSText'
 import { toSize } from 'styles/globalStyle'
+import { format } from 'date-fns'
 
 const Comment = () => {
   const [rating, setRating] = useState<number>(0)
@@ -52,6 +53,7 @@ const Comment = () => {
   const saveComment = async () => {
     if (!isEmpty(images) && typeof orderId === 'string') {
       const imagesArray: string[] = []
+
       images.map((image, index) => {
         const imageRef = ref(storage, `images/${orderId}/image${index}`)
 
@@ -70,7 +72,7 @@ const Comment = () => {
       await updateDoc(doc(db, 'orders', orderId), {
         rating: rating,
         content: content,
-        commentTimestamp: new Date(),
+        commentTimestamp: format(new Date(), 'yyyy/MM/dd HH:mm:ss'),
       })
       alert('저장되었습니다.')
       window.location.replace('/')
@@ -112,7 +114,7 @@ const Comment = () => {
         ref={inputRef}
         type="file"
         accept="image/*"
-        multiple
+        // multiple
         onChange={handleChange}
       />
 

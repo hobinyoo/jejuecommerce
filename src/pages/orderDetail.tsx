@@ -6,6 +6,7 @@ import Line from '@components/cs/Line'
 import MainHeader from '@components/cs/MainHeader'
 import { css } from '@emotion/react'
 import { useQuery } from '@tanstack/react-query'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useAppSelector, RootState } from 'src/store'
@@ -279,26 +280,49 @@ const OrderDetail = () => {
                     lineHeight={1.2}
                     marginLeft={31}
                   >
-                    {value.status === 'DONE' && '상품준비'}
+                    {value.status === 'DONE' ? '상품준비' : value.status}
                   </CSText>
                 </div>
-                {value.status === 'DONE' && (
-                  <div css={[btnWrapper, { marginTop: `${getSize(30)}px` }]}>
-                    <Button
-                      btnWidth={155}
-                      btnHeight={46}
-                      fontSize={14}
-                      backgroundColor={'#fff'}
-                      fontColor={'#000'}
-                      borderRadius={4}
-                      onClick={() =>
-                        router.push(`/comment?orderId=${value.id}`)
-                      }
+                <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
+                  <div css={{ width: `${getSize(78)}px` }}>
+                    <CSText
+                      size={15}
+                      fontFamily={'PretendardRegular'}
+                      color={'#8b8b8b'}
+                      lineHeight={1.2}
                     >
-                      후기작성
-                    </Button>
+                      {'영수증'}
+                    </CSText>
                   </div>
-                )}
+                  {value.receipt && (
+                    <Link href={value.receipt}>
+                      <CSText
+                        size={15}
+                        fontFamily={'PretendardRegular'}
+                        color={'blue'}
+                        lineHeight={1.2}
+                        marginLeft={31}
+                        textDecoration={'underline'}
+                      >
+                        {'영수증'}
+                      </CSText>
+                    </Link>
+                  )}
+                </div>
+
+                <div css={[btnWrapper, { marginTop: `${getSize(30)}px` }]}>
+                  <Button
+                    btnWidth={155}
+                    btnHeight={46}
+                    fontSize={14}
+                    backgroundColor={'#fff'}
+                    fontColor={'#000'}
+                    borderRadius={4}
+                    onClick={() => router.push(`/comment?orderId=${value.id}`)}
+                  >
+                    후기작성
+                  </Button>
+                </div>
               </div>
               <Line backgroundColor={'#f5f0e8'} />
             </div>

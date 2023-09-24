@@ -3,7 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 import { db } from 'src/firebase/initFirebase'
 import { OrderProps } from 'types/types'
-import { compareTimestamps } from 'src/function/date'
 
 async function getDates(date: number) {
   try {
@@ -14,10 +13,13 @@ async function getDates(date: number) {
     )
 
     querySnapshot.forEach((doc) => {
-      const isSameDate = compareTimestamps(
-        doc.data().timestamp.seconds * 1000,
-        date
-      )
+      const dateArray = doc.data().timestamp.split(/[ /:]/).map(Number)
+      const [year, month, day] = dateArray.slice(0, 3)
+
+      const isSameDate =
+        new Date(date).getFullYear() === year &&
+        new Date(date).getMonth() + 1 === month &&
+        new Date(date).getDate() === day
 
       if (isSameDate) {
         ordersInfo.push({
@@ -33,7 +35,6 @@ async function getDates(date: number) {
           totalPrice: doc.data().totalPrice,
           prepareShipping: doc.data().prepareShipping,
           carrierCode: doc.data().carrierCode,
-          uid: doc.data().uid,
           id: doc.id,
         })
       }
