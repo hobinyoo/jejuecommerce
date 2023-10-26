@@ -55,12 +55,7 @@ const Button = ({
       ]}
       onClick={onClick}
     >
-      <CSText
-        size={fontSize}
-        fontFamily={'PretendardRegular'}
-        color={fontColor}
-        lineHeight={1.18}
-      >
+      <CSText size={fontSize} color={fontColor} lineHeight={1.18}>
         {children}
       </CSText>
     </button>

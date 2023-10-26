@@ -53,19 +53,9 @@ const OrderDetail = () => {
                   >
                     {'주문 상품'}
                   </CSText>
-                  <CSText
-                    size={13}
-                    fontFamily={'PretendardRegular'}
-                    color={'#8b8b8b'}
-                    lineHeight={1.15}
-                  >
+                  <CSText size={13} color={'#8b8b8b'} lineHeight={1.15}>
                     {'주문일 : '}
-                    <CSSpan
-                      size={13}
-                      fontFamily={'PretendardRegular'}
-                      color={'#8b8b8b'}
-                      lineHeight={1.15}
-                    >
+                    <CSSpan size={13} color={'#8b8b8b'} lineHeight={1.15}>
                       {value.timestamp}
                     </CSSpan>
                   </CSText>
@@ -83,35 +73,23 @@ const OrderDetail = () => {
                     </CSText>
                     <CSText
                       size={15}
-                      fontFamily={'PretendardRegular'}
                       color={'#000'}
                       lineHeight={1.2}
                       marginTop={12}
                     >
                       {'주문수량 : '}
-                      <CSSpan
-                        size={15}
-                        fontFamily={'PretendardRegular'}
-                        color={'#000'}
-                        lineHeight={1.2}
-                      >
+                      <CSSpan size={15} color={'#000'} lineHeight={1.2}>
                         {`${value.quantity}개`}
                       </CSSpan>
                     </CSText>
                     <CSText
                       size={15}
-                      fontFamily={'PretendardRegular'}
                       color={'#000'}
                       lineHeight={1.2}
                       marginTop={12}
                     >
                       {'총 가격 : '}
-                      <CSSpan
-                        size={15}
-                        fontFamily={'PretendardRegular'}
-                        color={'#000'}
-                        lineHeight={1.2}
-                      >
+                      <CSSpan size={15} color={'#000'} lineHeight={1.2}>
                         {`${value.totalPrice}원`}
                       </CSSpan>
                     </CSText>
@@ -143,19 +121,13 @@ const OrderDetail = () => {
                 </CSText>
                 <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
                   <div css={{ width: `${getSize(78)}px` }}>
-                    <CSText
-                      size={15}
-                      fontFamily={'PretendardRegular'}
-                      color={'#8b8b8b'}
-                      lineHeight={1.2}
-                    >
+                    <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
                       {'받는 사람'}
                     </CSText>
                   </div>
 
                   <CSText
                     size={15}
-                    fontFamily={'PretendardRegular'}
                     color={'#000'}
                     lineHeight={1.2}
                     marginLeft={31}
@@ -165,18 +137,12 @@ const OrderDetail = () => {
                 </div>
                 <div css={[carrierInfo, { marginTop: ` ${getSize(20)}px` }]}>
                   <div css={{ width: `${getSize(78)}px` }}>
-                    <CSText
-                      size={15}
-                      fontFamily={'PretendardRegular'}
-                      color={'#8b8b8b'}
-                      lineHeight={1.2}
-                    >
+                    <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
                       {'핸드폰 번호'}
                     </CSText>
                   </div>
                   <CSText
                     size={15}
-                    fontFamily={'PretendardRegular'}
                     color={'#000'}
                     lineHeight={1.2}
                     marginLeft={31}
@@ -186,12 +152,7 @@ const OrderDetail = () => {
                 </div>
                 <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
                   <div css={{ width: `${getSize(78)}px` }}>
-                    <CSText
-                      size={15}
-                      fontFamily={'PretendardRegular'}
-                      color={'#8b8b8b'}
-                      lineHeight={1.2}
-                    >
+                    <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
                       {'주소'}
                     </CSText>
                   </div>
@@ -202,38 +163,22 @@ const OrderDetail = () => {
                       marginLeft: `${getSize(31)}px`,
                     }}
                   >
-                    <CSText
-                      size={15}
-                      fontFamily={'PretendardRegular'}
-                      color={'#000'}
-                      lineHeight={1.2}
-                    >
+                    <CSText size={15} color={'#000'} lineHeight={1.2}>
                       {value.address}
                     </CSText>
-                    <CSText
-                      size={15}
-                      fontFamily={'PretendardRegular'}
-                      color={'#000'}
-                      lineHeight={1.2}
-                    >
+                    <CSText size={15} color={'#000'} lineHeight={1.2}>
                       {value.addressDetail}
                     </CSText>
                   </div>
                 </div>
                 <div css={[carrierInfo, { marginTop: ` ${getSize(20)}px` }]}>
                   <div css={{ width: `${getSize(78)}px` }}>
-                    <CSText
-                      size={15}
-                      fontFamily={'PretendardRegular'}
-                      color={'#8b8b8b'}
-                      lineHeight={1.2}
-                    >
+                    <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
                       {'우편 번호'}
                     </CSText>
                   </div>
                   <CSText
                     size={15}
-                    fontFamily={'PretendardRegular'}
                     color={'#000'}
                     lineHeight={1.2}
                     marginLeft={31}
@@ -243,18 +188,12 @@ const OrderDetail = () => {
                 </div>
                 <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
                   <div css={{ width: `${getSize(78)}px` }}>
-                    <CSText
-                      size={15}
-                      fontFamily={'PretendardRegular'}
-                      color={'#8b8b8b'}
-                      lineHeight={1.2}
-                    >
+                    <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
                       {'배송 요청사항'}
                     </CSText>
                   </div>
                   <CSText
                     size={15}
-                    fontFamily={'PretendardRegular'}
                     color={'#000'}
                     lineHeight={1.2}
                     marginLeft={31}
@@ -264,18 +203,12 @@ const OrderDetail = () => {
                 </div>
                 <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
                   <div css={{ width: `${getSize(78)}px` }}>
-                    <CSText
-                      size={15}
-                      fontFamily={'PretendardRegular'}
-                      color={'#8b8b8b'}
-                      lineHeight={1.2}
-                    >
+                    <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
                       {'배송현황'}
                     </CSText>
                   </div>
                   <CSText
                     size={15}
-                    fontFamily={'PretendardRegular'}
                     color={'#000'}
                     lineHeight={1.2}
                     marginLeft={31}
@@ -285,12 +218,7 @@ const OrderDetail = () => {
                 </div>
                 <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
                   <div css={{ width: `${getSize(78)}px` }}>
-                    <CSText
-                      size={15}
-                      fontFamily={'PretendardRegular'}
-                      color={'#8b8b8b'}
-                      lineHeight={1.2}
-                    >
+                    <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
                       {'영수증'}
                     </CSText>
                   </div>
@@ -298,7 +226,6 @@ const OrderDetail = () => {
                     <Link href={value.receipt}>
                       <CSText
                         size={15}
-                        fontFamily={'PretendardRegular'}
                         color={'blue'}
                         lineHeight={1.2}
                         marginLeft={31}

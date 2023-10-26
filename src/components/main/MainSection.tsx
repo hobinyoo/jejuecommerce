@@ -14,8 +14,14 @@ const MainSection = () => {
   const getSize = (input: number) => {
     return toSize(width, height, input)
   }
+
   return (
-    <div css={[container, { marginBottom: `${getSize(30)}px` }]}>
+    <div
+      css={[
+        container,
+        { marginBottom: `${getSize(30)}px`, textAlign: 'center' },
+      ]}
+    >
       <AutoSizeImage
         src={'/images/main_img@3x.png'}
         width={getSize(360)}
@@ -23,58 +29,26 @@ const MainSection = () => {
       />
       <CSText
         size={24}
-        fontFamily={'PretendardBold'}
+        fontFamily={'SeoulHangangEB'}
         color={'#3e3737'}
-        marginTop={20}
-        marginLeft={20}
         lineHeight={0.83}
+        marginTop={30}
       >
-        한우 소고기 국밥
+        달인의 가마솥 한우곰탕
       </CSText>
-      <CSText
-        size={15}
-        fontFamily={'PretendardRegular'}
-        color={'#9e9795'}
-        marginTop={10}
-        marginLeft={20}
-        lineHeight={1.33}
-      >
-        깊고 시원한 한우 소고기 국밥
+      <CSText size={13} color={'#9e9795'} marginTop={20} lineHeight={1.38}>
+        집에서도 즐기는 달인의 가마솥
       </CSText>
-      <div css={{ display: 'flex' }}>
-        <CSText
-          size={20}
-          fontFamily={'PretendardBold'}
-          color={'#3e3737'}
-          marginTop={15}
-          marginLeft={20}
-        >
-          11,000
-          <CSSpan
-            size={20}
-            fontFamily={'PretendardRegular'}
-            color={'#3e3737'}
-            marginTop={15}
-          >
-            원
-          </CSSpan>
-          <CSSpan
-            size={16}
-            fontFamily={'PretendardRegular'}
-            color={'#3e3737'}
-            marginTop={18}
-            marginLeft={6}
-          >
-            (1300g)
-          </CSSpan>
-        </CSText>
-      </div>
+      <CSText size={13} color={'#9e9795'} lineHeight={1.38}>
+        {'#한우곰탕 #한우설렁탕 #육우갈비탕'}
+      </CSText>
     </div>
   )
 }
 
 const container = css`
   width: 100%;
+  justify-content: center;
 `
 
 export default MainSection

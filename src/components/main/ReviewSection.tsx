@@ -71,12 +71,7 @@ const ReviewSection = () => {
                 ]}
               >
                 <Rating value={comment.rating} size={'xs'} />
-                <CSText
-                  size={12}
-                  fontFamily={'PretendardRegular'}
-                  color={'#9e9795'}
-                  lineHeight={1.67}
-                >
+                <CSText size={12} color={'#9e9795'} lineHeight={1.67}>
                   {comment.commentTimestamp}
                 </CSText>
               </div>
@@ -98,12 +93,7 @@ const ReviewSection = () => {
                 }}
               >
                 <div css={{ width: `${getSize(180)}px` }}>
-                  <CSText
-                    size={13}
-                    fontFamily={'PretendardRegular'}
-                    color={'#9e9795'}
-                    lineHeight={1.54}
-                  >
+                  <CSText size={13} color={'#9e9795'} lineHeight={1.54}>
                     {comment.content}
                   </CSText>
                 </div>

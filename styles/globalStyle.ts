@@ -70,6 +70,12 @@ export const GlobalStyle = css`
     font-style: normal;
     src: url('/fonts/woff/GodoB.woff') format('woff');
   }
+  @font-face {
+    font-family: 'SeoulHangangEB';
+    font-weight: 700;
+    font-style: normal;
+    src: url('/fonts/woff/SeoulHangangEB.woff') format('woff');
+  }
 `
 
 export const toSize = (

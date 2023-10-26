@@ -85,7 +85,6 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
           </CSText>
           <CSText
             size={13}
-            fontFamily={'PretendardRegular'}
             color={'#000'}
             marginTop={30}
             marginBottom={8}
@@ -104,7 +103,6 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
           )}
           <CSText
             size={13}
-            fontFamily={'PretendardRegular'}
             color={'#000'}
             marginTop={30}
             marginBottom={8}
@@ -137,7 +135,6 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
         <CSText
           onClick={handle.signIn}
           size={12}
-          fontFamily={'PretendardRegular'}
           color={'#000'}
           marginTop={30}
           marginBottom={8}

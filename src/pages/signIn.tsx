@@ -86,7 +86,6 @@ const SignIn = () => {
         <div css={inputWrapper}>
           <CSText
             size={13}
-            fontFamily={'PretendardRegular'}
             color={'#000'}
             marginTop={30}
             marginBottom={8}
@@ -105,7 +104,6 @@ const SignIn = () => {
           )}
           <CSText
             size={13}
-            fontFamily={'PretendardRegular'}
             color={'#000'}
             marginTop={30}
             marginBottom={8}

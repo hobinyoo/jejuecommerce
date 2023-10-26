@@ -48,22 +48,11 @@ const StrengthSection = () => {
           lineHeight={1.33}
         >
           {'공릉동 한우 소고기 국밥'}
-          <CSSpan
-            size={15}
-            fontFamily={'PretendardRegular'}
-            color={'#3e3737'}
-            marginTop={11}
-            lineHeight={1.33}
-          >
+          <CSSpan size={15} color={'#3e3737'} marginTop={11} lineHeight={1.33}>
             {'은 오랜시간을 투자하여'}
           </CSSpan>
         </CSText>
-        <CSText
-          size={15}
-          fontFamily={'PretendardRegular'}
-          color={'#3e3737'}
-          lineHeight={1.33}
-        >
+        <CSText size={15} color={'#3e3737'} lineHeight={1.33}>
           {'푹끓인 사골 베이스에 한우소고기와 우거지 등의'}
         </CSText>
         <CSText
@@ -81,12 +70,7 @@ const StrengthSection = () => {
           >
             {'최상의 맛을 '}
           </CSSpan>
-          <CSSpan
-            size={15}
-            fontFamily={'PretendardRegular'}
-            color={'#3e3737'}
-            lineHeight={1.33}
-          >
+          <CSSpan size={15} color={'#3e3737'} lineHeight={1.33}>
             {'구현했습니다.'}
           </CSSpan>
         </CSText>
@@ -153,12 +137,7 @@ const StrengthSection = () => {
           marginLeft: `${getSize(20)}px`,
         }}
       >
-        <CSText
-          size={15}
-          fontFamily={'PretendardRegular'}
-          color={'#3e3737'}
-          lineHeight={1.33}
-        >
+        <CSText size={15} color={'#3e3737'} lineHeight={1.33}>
           {'저희 국밥은 고객님께'}
         </CSText>
         <CSText
@@ -168,12 +147,7 @@ const StrengthSection = () => {
           lineHeight={1.33}
         >
           {'최상의 만족'}
-          <CSSpan
-            size={16}
-            fontFamily={'PretendardRegular'}
-            color={'#3e3737'}
-            lineHeight={1.33}
-          >
+          <CSSpan size={16} color={'#3e3737'} lineHeight={1.33}>
             {'을 선사하고자'}
           </CSSpan>
         </CSText>
@@ -184,12 +158,7 @@ const StrengthSection = () => {
           lineHeight={1.33}
         >
           {'최선을 다할 것'}
-          <CSSpan
-            size={16}
-            fontFamily={'PretendardRegular'}
-            color={'#3e3737'}
-            lineHeight={1.33}
-          >
+          <CSSpan size={16} color={'#3e3737'} lineHeight={1.33}>
             {'을 약속드립니다.'}
           </CSSpan>
         </CSText>

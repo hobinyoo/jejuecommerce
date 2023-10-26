@@ -72,7 +72,6 @@ const DrawerList = ({
         <div onClick={() => router.push('/signIn')}>
           <CSText
             size={15}
-            fontFamily={'PretendardRegular'}
             color={'#3e3737'}
             lineHeight={1.25}
             marginTop={32}
@@ -94,12 +93,7 @@ const DrawerList = ({
               fontSize={13}
               borderRadius={4}
             >
-              <CSText
-                size={13}
-                fontFamily={'PretendardRegular'}
-                color={'#fff'}
-                lineHeight={1.54}
-              >
+              <CSText size={13} color={'#fff'} lineHeight={1.54}>
                 {'회원가입'}
               </CSText>
             </Button>
@@ -128,7 +122,6 @@ const DrawerList = ({
 
         <CSText
           size={15}
-          fontFamily={'PretendardRegular'}
           color={'#3e3737'}
           lineHeight={1.25}
           marginTop={20}
@@ -160,7 +153,6 @@ const DrawerList = ({
 
         <CSText
           size={15}
-          fontFamily={'PretendardRegular'}
           color={'#3e3737'}
           lineHeight={1.25}
           marginTop={20}
@@ -183,7 +175,6 @@ const DrawerList = ({
       >
         <CSText
           size={15}
-          fontFamily={'PretendardRegular'}
           color={'#3e3737'}
           lineHeight={1.33}
           textDecoration={'underline'}

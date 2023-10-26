@@ -52,12 +52,7 @@ const CountControl = ({ quantity, setQuantity }: Props) => {
           },
         ]}
       >
-        <CSText
-          size={14}
-          fontFamily={'PretendardRegular'}
-          color={'#000'}
-          lineHeight={1.14}
-        >
+        <CSText size={14} color={'#000'} lineHeight={1.14}>
           {quantity}
         </CSText>
       </div>

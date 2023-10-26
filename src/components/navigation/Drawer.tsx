@@ -42,7 +42,7 @@ const MenuDrawer = ({
   return (
     <div>
       <AutoSizeImage
-        src={'/images/gnb_menu@3x.png'}
+        src={'/images/menuIcon.png'}
         width={toSize(windowWidth, windowHeight, 30)}
         height={toSize(windowWidth, windowHeight, 30)}
         onClick={() => setOpenDrawer(!openDrawer)}

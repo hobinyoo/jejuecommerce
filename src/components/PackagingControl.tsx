@@ -45,12 +45,7 @@ const PackagingControl = ({ setPackaging }: Props) => {
           },
         ]}
       >
-        <CSText
-          size={14}
-          fontFamily={'PretendardRegular'}
-          color={'#000'}
-          lineHeight={1.14}
-        >
+        <CSText size={14} color={'#000'} lineHeight={1.14}>
           {'포장 방법 선택'}
         </CSText>
         {openBox ? (
@@ -84,12 +79,7 @@ const PackagingControl = ({ setPackaging }: Props) => {
                   },
                 ]}
               >
-                <CSText
-                  size={14}
-                  fontFamily={'PretendardRegular'}
-                  color={'#000'}
-                  lineHeight={1.14}
-                >
+                <CSText size={14} color={'#000'} lineHeight={1.14}>
                   {value}
                 </CSText>
               </div>

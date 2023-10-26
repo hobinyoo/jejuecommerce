@@ -130,7 +130,6 @@ const SignUp = () => {
       >
         <CSText
           size={13}
-          fontFamily={'PretendardRegular'}
           color={'#000'}
           marginTop={30}
           marginBottom={8}
@@ -149,7 +148,6 @@ const SignUp = () => {
         )}
         <CSText
           size={13}
-          fontFamily={'PretendardRegular'}
           color={'#000'}
           marginTop={30}
           marginBottom={8}
@@ -171,7 +169,6 @@ const SignUp = () => {
         )}
         <CSText
           size={13}
-          fontFamily={'PretendardRegular'}
           color={'#000'}
           marginTop={30}
           marginBottom={8}
@@ -191,7 +188,6 @@ const SignUp = () => {
         )}
         <CSText
           size={13}
-          fontFamily={'PretendardRegular'}
           color={'#000'}
           marginTop={30}
           marginBottom={8}
@@ -210,7 +206,6 @@ const SignUp = () => {
         )}
         <CSText
           size={13}
-          fontFamily={'PretendardRegular'}
           color={'#000'}
           marginTop={30}
           marginBottom={8}
@@ -231,7 +226,6 @@ const SignUp = () => {
         )}
         <CSText
           size={13}
-          fontFamily={'PretendardRegular'}
           color={'#000'}
           marginTop={30}
           marginBottom={8}

@@ -39,12 +39,7 @@ const NotationsSection = () => {
         lineHeight={1.25}
       >
         {'제품표기사항 '}
-        <CSSpan
-          size={16}
-          fontFamily={'PretendardRegular'}
-          color={'#3e3737'}
-          lineHeight={1.25}
-        >
+        <CSSpan size={16} color={'#3e3737'} lineHeight={1.25}>
           {'(식재료원산지)'}
         </CSSpan>
       </CSText>
@@ -72,12 +67,7 @@ const NotationsSection = () => {
                   padding: `${getSize(15)}px`,
                 }}
               >
-                <CSText
-                  size={13}
-                  fontFamily={'PretendardRegular'}
-                  color={'#9e9795'}
-                  lineHeight={1.54}
-                >
+                <CSText size={13} color={'#9e9795'} lineHeight={1.54}>
                   {'국내산'}
                 </CSText>
               </td>

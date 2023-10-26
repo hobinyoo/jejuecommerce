@@ -7,11 +7,9 @@ import nookies from 'nookies'
 import { RootState, useAppSelector } from 'src/store'
 import MainSection from '@components/main/MainSection'
 import Line from '@components/cs/Line'
-import StrengthSection from '@components/main/StrengthSection'
 import DeliveryInformSection from '@components/main/DeliveryInformSection'
 import MenuPointSection from '@components/main/MenuPointSection'
 import MethodSection from '@components/main/MethodSection'
-import StrengthTwoSection from '@components/main/StrengthTwoSection'
 import ChangeRefundSection from '@components/main/ChangeRefundSection'
 import NotationsSection from '@components/main/NotationsSection'
 import SellerInfoSection from '@components/main/SellerInfoSection'
@@ -21,6 +19,9 @@ import { toSize } from 'styles/globalStyle'
 import NotiModal from '@components/modal/NotiModal'
 import { isEmpty } from 'lodash'
 import OrderDetailModal from '@components/modal/OrderDetailModal'
+import AutoSizeImage from '@components/cs/AutoSizeImage'
+import CSText from '@components/cs/CSText'
+import HistoryEffection from '@components/main/HistoryEffection'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -71,9 +72,35 @@ const Main = ({
         setOrderDetailVisible={setOrderDetailVisible}
       />
       <MainSection />
-      <Line backgroundColor={'#f5f0e8'} />
-      <StrengthSection />
-      <StrengthTwoSection />
+      <AutoSizeImage
+        src={'/images/jejupic.png'}
+        width={getSize(360)}
+        height={getSize(240)}
+      />
+      <div css={{ backgroundColor: 'yellow' }}>영상</div>
+      <div
+        css={{
+          width: '100%',
+          height: `${getSize(100)}px`,
+          backgroundColor: 'black',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+        }}
+      >
+        <CSText size={12} color={'#fffcf7'} lineHeight={1.33}>
+          {'달인의 가마솥 브랜드 설명 \n 가게 소개 세줄 \n  가게 소개 세줄'}
+        </CSText>
+        <CSText size={12} color={'#fffcf7'} lineHeight={1.33}>
+          {'달인의 가마솥 브랜드 설명 \n  가게 소개 세줄'}
+        </CSText>
+        <CSText size={12} color={'#fffcf7'} lineHeight={1.33}>
+          {'달인의 가마솥 브랜드 설명 \n 가게 소개 세줄 \n  가게 소개 세줄'}
+        </CSText>
+      </div>
+      {/* <StrengthSection /> */}
+      <HistoryEffection />
       <MenuPointSection />
       <MethodSection />
       <DeliveryInformSection />
@@ -92,9 +119,10 @@ const Main = ({
             isEmpty(user.uid) ? setNotiVisible(true) : setOrderVisible(true)
           }
           btnHeight={50}
-          backgroundColor={'#000'}
+          backgroundColor={'#15c9de'}
           fontSize={17}
           fontColor={'#fff'}
+          borderColor={'#15c9de'}
         >
           {'구매하기'}
         </Button>
@@ -126,7 +154,7 @@ const container = css`
   height: 100%;
   display: 'flex';
   flex-direction: column;
-  background-color: #fffcf7;
+  background-color: #fff;
 `
 
 const buttonWrapper = css`

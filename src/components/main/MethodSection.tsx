@@ -77,18 +77,12 @@ const MethodSection = () => {
                     },
                   ]}
                 >
-                  <CSText
-                    size={10}
-                    fontFamily={'PretendardRegular'}
-                    color={'#fff'}
-                    lineHeight={1.8}
-                  >
+                  <CSText size={10} color={'#fff'} lineHeight={1.8}>
                     {value}
                   </CSText>
                 </div>
                 <CSText
                   size={13}
-                  fontFamily={'PretendardRegular'}
                   color={'#000'}
                   lineHeight={1.38}
                   marginTop={6}
@@ -110,12 +104,7 @@ const MethodSection = () => {
                   lineHeight={1.38}
                 >
                   {'뚝빼기에 담아 중불'}
-                  <CSSpan
-                    size={13}
-                    fontFamily={'PretendardRegular'}
-                    color={'#000'}
-                    lineHeight={1.38}
-                  >
+                  <CSSpan size={13} color={'#000'} lineHeight={1.38}>
                     {'로 끓여줍니다.'}
                   </CSSpan>
                 </CSText>
@@ -132,18 +121,12 @@ const MethodSection = () => {
                     },
                   ]}
                 >
-                  <CSText
-                    size={10}
-                    fontFamily={'PretendardRegular'}
-                    color={'#fff'}
-                    lineHeight={1.8}
-                  >
+                  <CSText size={10} color={'#fff'} lineHeight={1.8}>
                     {value}
                   </CSText>
                 </div>
                 <CSText
                   size={13}
-                  fontFamily={'PretendardRegular'}
                   color={'#000'}
                   lineHeight={1.38}
                   marginTop={6}
@@ -158,12 +141,7 @@ const MethodSection = () => {
                     {'청양고추 및 대파를'}
                   </CSSpan>
                 </CSText>
-                <CSText
-                  size={13}
-                  fontFamily={'PretendardRegular'}
-                  color={'#000'}
-                  lineHeight={1.38}
-                >
+                <CSText size={13} color={'#000'} lineHeight={1.38}>
                   {'넣어주세요.'}
                 </CSText>
               </div>
@@ -179,30 +157,19 @@ const MethodSection = () => {
                     },
                   ]}
                 >
-                  <CSText
-                    size={10}
-                    fontFamily={'PretendardRegular'}
-                    color={'#fff'}
-                    lineHeight={1.8}
-                  >
+                  <CSText size={10} color={'#fff'} lineHeight={1.8}>
                     {value}
                   </CSText>
                 </div>
                 <CSText
                   size={13}
-                  fontFamily={'PretendardRegular'}
                   color={'#000'}
                   lineHeight={1.38}
                   marginTop={6}
                 >
                   {'냉장고 3~4일 냉동실에는'}
                 </CSText>
-                <CSText
-                  size={13}
-                  fontFamily={'PretendardRegular'}
-                  color={'#000'}
-                  lineHeight={1.38}
-                >
+                <CSText size={13} color={'#000'} lineHeight={1.38}>
                   {'3개월 보관해주세요.'}
                 </CSText>
               </div>
@@ -235,13 +202,7 @@ const MethodSection = () => {
         {'특별한 반찬 없이 집에서 간편하게 즐기세요!'}
       </CSText>
       {/* TODO:포장 사진 */}
-      <CSText
-        size={15}
-        fontFamily={'PretendardRegular'}
-        color={'#3e3737'}
-        lineHeight={1.33}
-        marginTop={31}
-      >
+      <CSText size={15} color={'#3e3737'} lineHeight={1.33} marginTop={31}>
         {'포장 판매는 정량의'}
         <CSSpan
           size={15}
@@ -251,29 +212,14 @@ const MethodSection = () => {
         >
           {'1.5배의 양이 제공'}
         </CSSpan>
-        <CSSpan
-          size={15}
-          fontFamily={'PretendardRegular'}
-          color={'#3e3737'}
-          lineHeight={1.33}
-        >
+        <CSSpan size={15} color={'#3e3737'} lineHeight={1.33}>
           {'됩니다.'}
         </CSSpan>
       </CSText>
-      <CSText
-        size={15}
-        fontFamily={'PretendardRegular'}
-        color={'#3e3737'}
-        lineHeight={1.33}
-      >
+      <CSText size={15} color={'#3e3737'} lineHeight={1.33}>
         {'1~2인분의 양이 제공됨으로'}
       </CSText>
-      <CSText
-        size={15}
-        fontFamily={'PretendardRegular'}
-        color={'#3e3737'}
-        lineHeight={1.33}
-      >
+      <CSText size={15} color={'#3e3737'} lineHeight={1.33}>
         {'나눠서 드시고 싶으신 고객분들을 고려하여'}
       </CSText>
       <CSText
@@ -284,13 +230,7 @@ const MethodSection = () => {
       >
         {'소분된 포장 방법  제공해 드리고 있습니다.'}
       </CSText>
-      <CSText
-        size={13}
-        fontFamily={'PretendardRegular'}
-        color={'#9e9795'}
-        lineHeight={1.54}
-        marginTop={20}
-      >
+      <CSText size={13} color={'#9e9795'} lineHeight={1.54} marginTop={20}>
         {'*주문시 선택 가능합니다.'}
       </CSText>
     </div>

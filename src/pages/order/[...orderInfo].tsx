@@ -108,7 +108,6 @@ const Order = ({
             >
               <CSText
                 size={15}
-                fontFamily={'PretendardRegular'}
                 color={'#8b8b8b'}
                 lineHeight={1.2}
                 marginBottom={5}
@@ -138,13 +137,7 @@ const Order = ({
             },
           ]}
         >
-          <CSText
-            size={15}
-            fontFamily={'PretendardRegular'}
-            color={'#8b8b8b'}
-            lineHeight={1.2}
-            marginBottom={5}
-          >
+          <CSText size={15} color={'#8b8b8b'} lineHeight={1.2} marginBottom={5}>
             {'총 가격'}
           </CSText>
 
@@ -180,7 +173,6 @@ const Order = ({
         </CSText>
         <CSText
           size={13}
-          fontFamily={'PretendardRegular'}
           color={'#000'}
           marginTop={30}
           marginBottom={8}
@@ -199,7 +191,6 @@ const Order = ({
         )}
         <CSText
           size={13}
-          fontFamily={'PretendardRegular'}
           color={'#000'}
           marginTop={30}
           marginBottom={8}
@@ -218,7 +209,6 @@ const Order = ({
         )}
         <CSText
           size={13}
-          fontFamily={'PretendardRegular'}
           color={'#000'}
           marginTop={30}
           marginBottom={8}
@@ -263,7 +253,6 @@ const Order = ({
         />
         <CSText
           size={13}
-          fontFamily={'PretendardRegular'}
           color={'#000'}
           marginTop={30}
           marginBottom={8}

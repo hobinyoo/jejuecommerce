@@ -30,59 +30,23 @@ const ChangeRefundSection = () => {
             width={getSize(12)}
             height={getSize(12)}
           />
-          <CSText
-            size={14}
-            fontFamily={'PretendardRegular'}
-            color={'#3e3737'}
-            lineHeight={1.43}
-            marginLeft={4}
-          >
+          <CSText size={14} color={'#3e3737'} lineHeight={1.43} marginLeft={4}>
             {'교환 및 반품이 어려울 경우'}
           </CSText>
         </div>
-        <CSText
-          size={13}
-          fontFamily={'PretendardRegular'}
-          color={'#3e3737'}
-          lineHeight={1.54}
-          marginTop={15}
-        >
+        <CSText size={13} color={'#3e3737'} lineHeight={1.54} marginTop={15}>
           {'· 재판매가 불가한 신선식품의 특성상 단순 변심, 주문착오,'}
         </CSText>
-        <CSText
-          size={13}
-          fontFamily={'PretendardRegular'}
-          color={'#3e3737'}
-          lineHeight={1.54}
-          marginLeft={5.8}
-        >
+        <CSText size={13} color={'#3e3737'} lineHeight={1.54} marginLeft={5.8}>
           {'일정 변경, 맛의 기호에 따른 판단, 안내된 보관 방법과 기한을'}
         </CSText>
-        <CSText
-          size={13}
-          fontFamily={'PretendardRegular'}
-          color={'#3e3737'}
-          lineHeight={1.54}
-          marginLeft={5.8}
-        >
+        <CSText size={13} color={'#3e3737'} lineHeight={1.54} marginLeft={5.8}>
           {'따르지 않은 경우'}
         </CSText>
-        <CSText
-          size={13}
-          fontFamily={'PretendardRegular'}
-          color={'#3e3737'}
-          lineHeight={1.54}
-          marginTop={15}
-        >
+        <CSText size={13} color={'#3e3737'} lineHeight={1.54} marginTop={15}>
           {'· 소비자의 책임이 있는 사유로 상품이 훼손되거나'}
         </CSText>
-        <CSText
-          size={13}
-          fontFamily={'PretendardRegular'}
-          color={'#3e3737'}
-          lineHeight={1.54}
-          marginLeft={5.8}
-        >
+        <CSText size={13} color={'#3e3737'} lineHeight={1.54} marginLeft={5.8}>
           {'분실된 경우'}
         </CSText>
         <div css={[possibleImpossible, { marginTop: `${getSize(30)}px` }]}>
@@ -91,19 +55,12 @@ const ChangeRefundSection = () => {
             width={getSize(12)}
             height={getSize(12)}
           />
-          <CSText
-            size={14}
-            fontFamily={'PretendardRegular'}
-            color={'#3e3737'}
-            lineHeight={1.43}
-            marginLeft={4}
-          >
+          <CSText size={14} color={'#3e3737'} lineHeight={1.43} marginLeft={4}>
             {'교환 및 반품이 가능한 경우'}
           </CSText>
         </div>
         <CSText
           size={13}
-          fontFamily={'PretendardRegular'}
           color={'#3e3737'}
           lineHeight={1.54}
           marginTop={15}
@@ -121,21 +78,10 @@ const ChangeRefundSection = () => {
           },
         ]}
       >
-        <CSText
-          size={15}
-          fontFamily={'PretendardRegular'}
-          color={'#3e3737'}
-          lineHeight={1.33}
-          marginTop={30}
-        >
+        <CSText size={15} color={'#3e3737'} lineHeight={1.33} marginTop={30}>
           {'매장으로 연락주시면 친절히 교환 및 환불 진행'}
         </CSText>
-        <CSText
-          size={15}
-          fontFamily={'PretendardRegular'}
-          color={'#3e3737'}
-          lineHeight={1.33}
-        >
+        <CSText size={15} color={'#3e3737'} lineHeight={1.33}>
           {'도와드리겠습니다.'}
         </CSText>
         <div
@@ -154,13 +100,7 @@ const ChangeRefundSection = () => {
             width={getSize(15)}
             height={getSize(15)}
           />
-          <CSText
-            size={14}
-            fontFamily={'PretendardRegular'}
-            color={'#fff'}
-            lineHeight={1.43}
-            marginLeft={6}
-          >
+          <CSText size={14} color={'#fff'} lineHeight={1.43} marginLeft={6}>
             {'전화번호: 070-5421-5644'}
           </CSText>
         </div>

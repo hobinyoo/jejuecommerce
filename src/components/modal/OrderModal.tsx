@@ -74,13 +74,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
               },
             ]}
           >
-            <CSText
-              size={13}
-              fontFamily={'PretendardRegular'}
-              color={'#000'}
-              lineHeight={1.15}
-              marginTop={13}
-            >
+            <CSText size={13} color={'#000'} lineHeight={1.15} marginTop={13}>
               {'한우 소고기 국밥(1300g)'}
               <span
                 css={[
@@ -92,12 +86,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
                   },
                 ]}
               />
-              <CSSpan
-                size={13}
-                fontFamily={'PretendardRegular'}
-                color={'#000'}
-                lineHeight={1.15}
-              >
+              <CSSpan size={13} color={'#000'} lineHeight={1.15}>
                 {packaging}
               </CSSpan>
             </CSText>
@@ -113,12 +102,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
               },
             ]}
           >
-            <CSText
-              size={13}
-              fontFamily={'PretendardRegular'}
-              color={'#000'}
-              lineHeight={1.18}
-            >
+            <CSText size={13} color={'#000'} lineHeight={1.18}>
               {'총 가격'}
             </CSText>
             <CSText

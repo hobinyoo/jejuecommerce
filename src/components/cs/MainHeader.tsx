@@ -51,15 +51,16 @@ const MainHeader = ({
     <div
       css={[
         container,
-        { height: `${getSize(60)}px`, padding: `0 ${getSize(20)}px` },
+        { height: `${getSize(80)}px`, padding: `0 ${getSize(25)}px` },
       ]}
     >
-      <div css={text}>
+      <div css={{ marginLeft: `${getSize(31)}px` }} />
+      <div>
         {router.pathname === '/' ? (
           <AutoSizeImage
-            src="/images/logo@3x.png"
-            width={getSize(143)}
-            height={getSize(30)}
+            src="/images/logo.png"
+            width={getSize(80)}
+            height={getSize(60)}
           />
         ) : (
           <AutoSizeImage
@@ -70,13 +71,7 @@ const MainHeader = ({
           />
         )}
 
-        <CSText
-          size={18}
-          fontFamily={'PretendardRegular'}
-          color={'#000'}
-          lineHeight={1.17}
-          marginLeft={10}
-        >
+        <CSText size={18} color={'#000'} lineHeight={1.17} marginLeft={10}>
           {router.pathname === '/signUp'
             ? '회원가입'
             : router.route.split('/')[1] === 'order'
@@ -88,8 +83,7 @@ const MainHeader = ({
             : ''}
         </CSText>
       </div>
-
-      <div css={menu}>
+      <div>
         <MenuDrawer
           openDrawer={openDrawer}
           setOpenDrawer={setOpenDrawer}
@@ -107,18 +101,10 @@ const MainHeader = ({
 const container = css`
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   background-color: #fff;
   border-bottom: solid 1px #f2f2f2;
-`
-const text = css`
-  display: flex;
   align-items: center;
 `
 
-const menu = css`
-  display: flex;
-  align-items: center;
-`
 export default MainHeader

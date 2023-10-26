@@ -92,7 +92,6 @@ const Comment = () => {
       >
         <CSText
           size={17}
-          fontFamily={'PretendardRegular'}
           color={'#000'}
           lineHeight={1.18}
           marginTop={30}
@@ -102,12 +101,7 @@ const Comment = () => {
         </CSText>
         <Rating value={rating} onChange={setRating} size="lg" />
       </div>
-      <CSText
-        size={17}
-        fontFamily={'PretendardRegular'}
-        color={'#000'}
-        lineHeight={1.18}
-      >
+      <CSText size={17} color={'#000'} lineHeight={1.18}>
         {'후기를 적어주세요'}
       </CSText>
       <input

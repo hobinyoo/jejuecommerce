@@ -62,12 +62,7 @@ const SellerInfoSection = () => {
                   padding: `${getSize(15)}px`,
                 }}
               >
-                <CSText
-                  size={13}
-                  fontFamily={'PretendardRegular'}
-                  color={'#9e9795'}
-                  lineHeight={1.54}
-                >
+                <CSText size={13} color={'#9e9795'} lineHeight={1.54}>
                   {content}
                 </CSText>
               </td>

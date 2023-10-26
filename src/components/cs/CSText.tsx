@@ -5,7 +5,7 @@ import { RootState, useAppSelector } from 'src/store'
 interface Props {
   children: ReactNode
   size: number
-  fontFamily: string
+  fontFamily?: string
   marginTop?: number
   marginBottom?: number
   marginLeft?: number
@@ -19,7 +19,7 @@ interface Props {
 const CSText = ({
   children,
   size,
-  fontFamily,
+  fontFamily = 'PretendardRegular',
   marginTop,
   marginBottom,
   marginLeft,
