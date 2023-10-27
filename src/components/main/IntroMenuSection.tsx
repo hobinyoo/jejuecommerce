@@ -6,7 +6,7 @@ import React from 'react'
 import { RootState, useAppSelector } from 'src/store'
 import { toSize } from 'styles/globalStyle'
 
-const StrengthSection = () => {
+const IntroMenuSection = () => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
@@ -15,80 +15,28 @@ const StrengthSection = () => {
     return toSize(width, height, input)
   }
   return (
-    <div css={[container, { marginTop: `${getSize(30)}px` }]}>
-      <div css={strength}>
-        <AutoSizeImage
-          src={'/images/ico_point@3x.png'}
-          width={34}
-          height={20}
-        />
-        <CSText
-          size={13}
-          fontFamily={'RIDIBatang'}
-          color={'#3e3737'}
-          marginTop={20}
-          lineHeight={1.23}
-        >
-          {'신선한 재료로 최상의 맛을 구현한'}
-        </CSText>
+    <div css={{ marginTop: `${getSize(60)}px` }}>
+      <div css={{ textAlign: 'center' }}>
         <CSText
           size={24}
-          fontFamily={'GodoB'}
+          fontFamily={'SeoulHangangEB'}
           color={'#3e3737'}
-          marginTop={11}
-          lineHeight={1.13}
+          lineHeight={0.83}
         >
-          {'공릉동 한우 소고기 국밥'}
-        </CSText>
-        <CSText
-          size={15}
-          fontFamily={'PretendardBold'}
-          color={'#3e3737'}
-          marginTop={30}
-          lineHeight={1.33}
-        >
-          {'공릉동 한우 소고기 국밥'}
-          <CSSpan size={15} color={'#3e3737'} marginTop={11} lineHeight={1.33}>
-            {'은 오랜시간을 투자하여'}
-          </CSSpan>
-        </CSText>
-        <CSText size={15} color={'#3e3737'} lineHeight={1.33}>
-          {'푹끓인 사골 베이스에 한우소고기와 우거지 등의'}
-        </CSText>
-        <CSText
-          size={15}
-          fontFamily={'PretendardBold'}
-          color={'#3e3737'}
-          lineHeight={1.33}
-        >
-          {'신선한 재료를 더해 '}
-          <CSSpan
-            size={15}
-            fontFamily={'PretendardBold'}
-            color={'#8d3036'}
-            lineHeight={1.33}
-          >
-            {'최상의 맛을 '}
-          </CSSpan>
-          <CSSpan size={15} color={'#3e3737'} lineHeight={1.33}>
-            {'구현했습니다.'}
-          </CSSpan>
+          메뉴 소개
         </CSText>
       </div>
-
       <div
         css={[
           aging,
           {
-            backgroundColor: '#c79c89',
-            height: `${getSize(160)}px`,
-            marginTop: `${getSize(50)}px`,
+            marginTop: `${getSize(40)}px`,
             display: 'flex',
             whiteSpace: 'pre-line',
           },
         ]}
       >
-        <div css={[agingText, { padding: `${getSize(20)}px` }]}>
+        <div css={[agingText, { paddingLe: `${getSize(20)}px` }]}>
           <CSText
             size={16}
             fontFamily={'RIDIBatang'}
@@ -123,11 +71,11 @@ const StrengthSection = () => {
             {'자랑합니다.'}
           </CSText>
         </div>
-        <div css={[agingImage, { marginTop: `${getSize(20)}px` }]}>
+        <div css={[agingImage]}>
           <AutoSizeImage
             src={'/images/img_01@3x.png'}
-            width={toSize(width, height, 160)}
-            height={toSize(width, height, 160)}
+            width={toSize(width, height, 180)}
+            height={toSize(width, height, 162)}
           />
         </div>
       </div>
@@ -167,15 +115,6 @@ const StrengthSection = () => {
   )
 }
 
-const container = css`
-  width: 100%;
-`
-const strength = css`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`
 const aging = css`
   width: 100%;
 `
@@ -186,4 +125,4 @@ const agingImage = css`
   width: 50%;
 `
 
-export default StrengthSection
+export default IntroMenuSection

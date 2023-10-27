@@ -22,6 +22,7 @@ import OrderDetailModal from '@components/modal/OrderDetailModal'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
 import HistoryEffection from '@components/main/HistoryEffection'
+import IntroMenuSection from '@components/main/IntroMenuSection'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -99,8 +100,9 @@ const Main = ({
           {'달인의 가마솥 브랜드 설명 \n 가게 소개 세줄 \n  가게 소개 세줄'}
         </CSText>
       </div>
-      {/* <StrengthSection /> */}
+
       <HistoryEffection />
+      <IntroMenuSection />
       <MenuPointSection />
       <MethodSection />
       <DeliveryInformSection />
