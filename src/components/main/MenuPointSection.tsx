@@ -13,139 +13,100 @@ const MenuPointSection = () => {
   const getSize = (input: number) => {
     return toSize(width, height, input)
   }
+
+  const menuPointData = [
+    '물 맛 좋은 제주에서 만듭니다.',
+    '100% 한우 또는 국내산 육우를 사용합니다.',
+    '신선하고 좋은 재료로 만든 안심 먹거리 입니다.',
+    `단순 밀키트가 아닌 달인이 만든 "Hand M\n ade" 제품으로 맛을 보장합니다.`,
+  ]
   return (
-    <div css={[container, { marginBottom: `${getSize(100)}px` }]}>
-      <AutoSizeImage src={'/images/ico_point@3x.png'} width={34} height={20} />
+    <div css={[container, { marginTop: `${getSize(60)}px` }]}>
       <CSText
         size={24}
-        fontFamily={'GodoB'}
+        fontFamily={'SeoulHangangEB'}
         color={'#3e3737'}
-        marginTop={20}
-        marginBottom={50}
-        lineHeight={1.13}
+        marginBottom={30}
+        lineHeight={0.83}
+        textAlignCenter
       >
         {'메뉴만의 포인트 및 장점'}
       </CSText>
+
       <div
         css={[
-          circleContainer,
-          {
-            padding: `0 ${getSize(20)}px`,
-          },
+          pointListWrapper,
+          { gap: `${getSize(16)}px`, padding: `0 ${getSize(20)}px` },
         ]}
       >
-        <div
-          css={[
-            circle,
-            {
-              width: `${getSize(120)}px`,
-              height: `${getSize(120)}px`,
-              backgroundColor: '#b7ae9f',
-              zIndex: 1,
-            },
-          ]}
-        >
-          <CSText
-            size={14}
-            fontFamily={'PretendardBold'}
-            color={'#fffcf7'}
-            lineHeight={1.33}
+        {menuPointData.map((data, index) => (
+          <div
+            css={[
+              pointList,
+              {
+                paddingTop: `${getSize(10)}px`,
+                paddingBottom: `${getSize(12)}px`,
+                borderRadius: `${getSize(30)}px`,
+                paddingLeft: `${getSize(12)}px`,
+                gap: `${getSize(10)}px`,
+              },
+            ]}
+            key={index}
           >
-            {'푸짐한 양의 \n 한우 소고기'}
-          </CSText>
-        </div>
-        <div
-          css={[
-            circle,
-            {
-              width: `${getSize(120)}px`,
-              height: `${getSize(120)}px`,
-              backgroundColor: '#64574f',
-              zIndex: 2,
-              marginLeft: toSize(width, height, 100),
-              position: 'absolute',
-            },
-          ]}
-        >
-          <CSText
-            size={14}
-            fontFamily={'PretendardBold'}
-            color={'#fffcf7'}
-            lineHeight={1.33}
-          >
-            {'푹 고아서 \n 만든 진한 \n 사골 육수'}
-          </CSText>
-        </div>
-        <div
-          css={[
-            circle,
-            {
-              width: `${getSize(120)}px`,
-              height: `${getSize(120)}px`,
-              backgroundColor: '#c79c89',
-              zIndex: 1,
-              marginLeft: `${getSize(200)}px`,
-              position: 'absolute',
-            },
-          ]}
-        >
-          <CSText
-            size={14}
-            fontFamily={'PretendardBold'}
-            color={'#fffcf7'}
-            lineHeight={1.33}
-          >
-            {'순수'}
-          </CSText>
-          <CSText
-            size={14}
-            fontFamily={'PretendardBold'}
-            color={'#fffcf7'}
-            lineHeight={1.33}
-          >
-            {'국내산'}
-          </CSText>
-          <CSText
-            size={14}
-            fontFamily={'PretendardBold'}
-            color={'#fffcf7'}
-            lineHeight={1.33}
-          >
-            {'고춧가루와'}
-          </CSText>
-          <CSText
-            size={14}
-            fontFamily={'PretendardBold'}
-            color={'#fffcf7'}
-            lineHeight={1.33}
-          >
-            {'우거지'}
-          </CSText>
-        </div>
+            <div
+              css={[
+                circle,
+                {
+                  height: `${getSize(30)}px`,
+                  width: `${getSize(30)}px`,
+                },
+              ]}
+            >
+              <CSText
+                size={16}
+                color={'#6dbc59'}
+                lineHeight={1.38}
+                fontFamily="PretendardBold"
+              >
+                {`0${index + 1}`}
+              </CSText>
+            </div>
+            <CSText size={14} color={'#fff'} lineHeight={1.57}>
+              {data}
+            </CSText>
+          </div>
+        ))}
       </div>
+      <AutoSizeImage
+        src={'/images/swimming.png'}
+        width={getSize(360)}
+        height={getSize(233)}
+      />
     </div>
   )
 }
 
 const container = css`
   width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 `
 
-const circleContainer = css`
-  width: 100%;
+const pointListWrapper = css`
   display: flex;
-  position: relative;
+  flex-direction: column;
+  width: 100%;
+`
+const pointList = css`
+  width: 100%;
+  background-color: #6dbc59;
+  display: flex;
+  white-space: pre-line;
+  align-items: center;
 `
 const circle = css`
-  border-radius: 100px;
-  white-space: pre-line;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: center; ;
+  border-radius: 50%;
+  background-color: #fff;
 `
-
 export default MenuPointSection

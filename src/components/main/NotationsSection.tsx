@@ -27,8 +27,7 @@ const NotationsSection = () => {
       css={[
         container,
         {
-          marginTop: `${getSize(29)}px`,
-          padding: `0 ${getSize(20)}px`,
+          padding: `${getSize(29)}px ${getSize(20)}px 0 ${getSize(20)}px`,
         },
       ]}
     >
@@ -43,7 +42,7 @@ const NotationsSection = () => {
           {'(식재료원산지)'}
         </CSSpan>
       </CSText>
-      <table css={[table, { margin: `${getSize(21)}px 0 ${getSize(30)}px 0` }]}>
+      <table css={[table, { marginTop: `${getSize(21)}px` }]}>
         <tbody>
           {list.map((value, index) => (
             <tr key={index}>
@@ -67,7 +66,7 @@ const NotationsSection = () => {
                   padding: `${getSize(15)}px`,
                 }}
               >
-                <CSText size={13} color={'#9e9795'} lineHeight={1.54}>
+                <CSText size={13} color={'#000'} lineHeight={1.54}>
                   {'국내산'}
                 </CSText>
               </td>
@@ -81,6 +80,7 @@ const NotationsSection = () => {
 
 const container = css`
   width: 100%;
+  background-color: #f3f3f3;
 `
 
 const table = css`
@@ -89,17 +89,17 @@ const table = css`
 
   td {
     border-right: none;
-    border-bottom: 1px solid #dfd6c7;
-    background-color: #f2eadd;
+    border-bottom: 1px solid #f3f3f3;
+    background-color: #fff;
   }
 
   tr:first-of-type td {
-    border-top: 1px solid #dfd6c7;
+    border-top: 1px solid #fff;
   }
 
   tr td:last-of-type {
     border-right: none;
-    background-color: #fffcf7;
+    background-color: #fff;
   }
 `
 export default NotationsSection

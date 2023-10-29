@@ -6,7 +6,7 @@ import React, { useMemo } from 'react'
 import { RootState, useAppSelector } from 'src/store'
 import { toSize } from 'styles/globalStyle'
 
-const HistoryEffection = () => {
+const HistoryEffect = () => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
@@ -38,16 +38,29 @@ const HistoryEffection = () => {
           color={'#3e3737'}
           marginTop={35}
           lineHeight={0.83}
+          textAlignCenter
         >
           {'메뉴 역사 및 효능'}
         </CSText>
-        <CSText size={13} color={'#818181'} marginTop={30} lineHeight={1.62}>
+        <CSText
+          size={13}
+          color={'#818181'}
+          marginTop={30}
+          lineHeight={1.62}
+          textAlignCenter
+        >
           {`달인의 가마솥은 "물 맛 좋은 제주"에서 만듭니다 또\n 한 "100% 한우 또는 국내산 육우"와 "신선하고 좋\n 은 재료"를 사용한 안심 먹거리 입니다
             밀키트 제품이 아닌 달인이 만드는 "hand made\n  제품"으로 맛을 보장합니다
             `}
         </CSText>
 
-        <CSText size={13} color={'#818181'} marginTop={30} lineHeight={1.62}>
+        <CSText
+          size={13}
+          color={'#818181'}
+          marginTop={30}
+          lineHeight={1.62}
+          textAlignCenter
+        >
           {`역사 및 효능 간략하게 적어주시면 좋을 것 같습니다\n  역사 및 효능 간략하게 적어주시면 좋을 것 같습니다`}
         </CSText>
         <div
@@ -103,8 +116,9 @@ const HistoryEffection = () => {
             marginTop: `${getSize(30.5)}px`,
           }}
         >
-          {Feature.map(({ title, src }) => (
+          {Feature.map(({ title, src }, index) => (
             <div
+              key={index}
               css={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -122,6 +136,7 @@ const HistoryEffection = () => {
                 lineHeight={1.3}
                 marginTop={18}
                 fontFamily="PretendardBold"
+                textAlignCenter
               >
                 {title}
               </CSText>
@@ -152,7 +167,6 @@ const containerInner = css`
   z-index: 1;
   color: white;
   background-color: white;
-  text-align: center;
 `
 
-export default HistoryEffection
+export default HistoryEffect

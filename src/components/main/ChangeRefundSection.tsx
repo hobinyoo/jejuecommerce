@@ -14,7 +14,13 @@ const ChangeRefundSection = () => {
   }
   return (
     <div css={container}>
-      <div css={{ marginLeft: `${getSize(20)}px` }}>
+      <div
+        css={{
+          padding: `${getSize(30)}px ${getSize(20)}px ${getSize(
+            41
+          )}px ${getSize(20)}px`,
+        }}
+      >
         <CSText
           size={16}
           fontFamily={'PretendardBold'}
@@ -26,11 +32,11 @@ const ChangeRefundSection = () => {
         </CSText>
         <div css={[possibleImpossible, { marginTop: `${getSize(20)}px` }]}>
           <AutoSizeImage
-            src={'/images/ico_no@3x.png'}
+            src={'/images/no.png'}
             width={getSize(12)}
             height={getSize(12)}
           />
-          <CSText size={14} color={'#3e3737'} lineHeight={1.43} marginLeft={4}>
+          <CSText size={14} color={'#e60000'} lineHeight={1.43} marginLeft={4}>
             {'교환 및 반품이 어려울 경우'}
           </CSText>
         </div>
@@ -51,21 +57,15 @@ const ChangeRefundSection = () => {
         </CSText>
         <div css={[possibleImpossible, { marginTop: `${getSize(30)}px` }]}>
           <AutoSizeImage
-            src={'/images/ico_check@3x.png'}
+            src={'/images/check.png'}
             width={getSize(12)}
             height={getSize(12)}
           />
-          <CSText size={14} color={'#3e3737'} lineHeight={1.43} marginLeft={4}>
+          <CSText size={14} color={'#2d8fbb'} lineHeight={1.43} marginLeft={4}>
             {'교환 및 반품이 가능한 경우'}
           </CSText>
         </div>
-        <CSText
-          size={13}
-          color={'#3e3737'}
-          lineHeight={1.54}
-          marginTop={15}
-          marginBottom={30}
-        >
+        <CSText size={13} color={'#3e3737'} lineHeight={1.54} marginTop={15}>
           {'· 상품 도착일에 제품이 변질되거나 제품 포장이 파손된 경우'}
         </CSText>
       </div>
@@ -110,6 +110,7 @@ const ChangeRefundSection = () => {
 }
 const container = css`
   width: 100%;
+  background-color: #f3f3f3;
 `
 
 const possibleImpossible = css`
@@ -120,12 +121,12 @@ const call = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #dfd6c7;
+  background: #f3f3f3;
 `
 const number = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #bfb5a3;
+  background-color: #77bfdf;
 `
 export default ChangeRefundSection

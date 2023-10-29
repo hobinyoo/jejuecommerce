@@ -1,5 +1,4 @@
 import AutoSizeImage from '@components/cs/AutoSizeImage'
-import CSSpan from '@components/cs/CSSpan'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'
@@ -23,7 +22,7 @@ const MainSection = () => {
       ]}
     >
       <AutoSizeImage
-        src={'/images/main_img@3x.png'}
+        src={'/images/mainImg.png'}
         width={getSize(360)}
         height={getSize(360)}
       />
@@ -33,13 +32,20 @@ const MainSection = () => {
         color={'#3e3737'}
         lineHeight={0.83}
         marginTop={30}
+        textAlignCenter
       >
         달인의 가마솥 한우곰탕
       </CSText>
-      <CSText size={13} color={'#9e9795'} marginTop={20} lineHeight={1.38}>
+      <CSText
+        size={13}
+        color={'#9e9795'}
+        marginTop={20}
+        lineHeight={1.38}
+        textAlignCenter
+      >
         집에서도 즐기는 달인의 가마솥
       </CSText>
-      <CSText size={13} color={'#9e9795'} lineHeight={1.38}>
+      <CSText size={13} color={'#9e9795'} lineHeight={1.38} textAlignCenter>
         {'#한우곰탕 #한우설렁탕 #육우갈비탕'}
       </CSText>
     </div>

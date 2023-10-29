@@ -6,10 +6,17 @@ interface Props {
   src: string
   width: number
   height: number
+  borderRadius?: string
   onClick?: () => void
 }
 
-const AutoSizeImage = ({ src, width, height, onClick }: Props) => {
+const AutoSizeImage = ({
+  src,
+  width,
+  height,
+  onClick,
+  borderRadius,
+}: Props) => {
   return (
     <div
       css={[
@@ -17,6 +24,7 @@ const AutoSizeImage = ({ src, width, height, onClick }: Props) => {
         {
           width: `${width}px`,
           height: `${height}px`,
+          borderRadius: borderRadius ? borderRadius : 0,
         },
       ]}
       onClick={onClick}

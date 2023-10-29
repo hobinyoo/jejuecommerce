@@ -58,7 +58,7 @@ const MainHeader = ({
       <div>
         {router.pathname === '/' ? (
           <AutoSizeImage
-            src="/images/logo.png"
+            src="/images/jujueLogo.png"
             width={getSize(80)}
             height={getSize(60)}
           />

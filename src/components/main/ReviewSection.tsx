@@ -33,19 +33,21 @@ const ReviewSection = () => {
       css={[
         container,
         {
-          marginTop: `${getSize(30)}px`,
-          padding: `0 ${getSize(20)}px`,
+          padding: `${getSize(50)}px ${getSize(20)}px ${getSize(
+            40
+          )}px ${getSize(20)}px`,
         },
       ]}
     >
       <CSText
-        size={16}
-        fontFamily={'PretendardBold'}
+        size={24}
+        fontFamily={'SeoulHangangEB'}
         color={'#3e3737'}
         lineHeight={1.25}
         marginBottom={20}
+        textAlignCenter
       >
-        {'후기'}
+        {'구매 후기'}
       </CSText>
       {data &&
         data.map((comment, index) => {

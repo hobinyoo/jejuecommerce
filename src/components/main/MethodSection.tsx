@@ -16,238 +16,144 @@ const MethodSection = () => {
     return toSize(width, height, input)
   }
 
+  const methodData = [
+    { title: '따뜻하게 데워 먹기', imageUrl: '/images/way1.png' },
+    { title: '온 가족 다 같이', imageUrl: '/images/way2.png' },
+    { title: '김치와 함께', imageUrl: '/images/way3.png' },
+    { title: '따뜻한 쌀밥과 함께', imageUrl: '/images/way4.png' },
+  ]
+
   return (
-    <div css={[container, { marginBottom: toSize(width, height, 60) }]}>
-      <AutoSizeImage src={'/images/ico_point@3x.png'} width={34} height={20} />
+    <div>
       <CSText
         size={24}
-        fontFamily={'GodoB'}
+        fontFamily={'SeoulHangangEB'}
         color={'#3e3737'}
-        marginTop={20}
-        marginBottom={30}
-        lineHeight={1.13}
+        marginTop={60}
+        marginBottom={40}
+        lineHeight={0.83}
+        textAlignCenter
       >
         {'맛있게 먹는 법 및 보관 방법'}
       </CSText>
-
-      {['STEP 01', 'STEP 02', 'STEP 03'].map((value, key) => {
-        return (
-          <div
-            key={key}
-            css={{
-              width: `${getSize(320)}px`,
-              height: `${getSize(105)}px`,
-              borderRadius: `${getSize(12)}px`,
-              backgroundColor: '#f3e3dc',
-              marginBottom: `${getSize(15)}px`,
-              display: 'flex',
-              alignItems: 'center',
-              padding: `0 ${getSize(20)}px`,
-            }}
-          >
-            <div css={{ width: `${getSize(93)}px` }}>
-              <AutoSizeImage
-                src={`/images/step_0${key + 1}@3x.png`}
-                width={
-                  key === 0
-                    ? getSize(93)
-                    : key === 1
-                    ? getSize(88)
-                    : getSize(83)
-                }
-                height={
-                  key === 0
-                    ? getSize(64)
-                    : key === 1
-                    ? getSize(76)
-                    : getSize(68)
-                }
-              />
-            </div>
-
-            {key === 0 ? (
-              <div css={{ marginLeft: `${getSize(20)}px` }}>
-                <div
-                  css={[
-                    step,
-                    {
-                      width: `${getSize(62)}px`,
-                      height: `${getSize(20)}px`,
-                      borderRadius: `${getSize(11)}px`,
-                    },
-                  ]}
-                >
-                  <CSText size={10} color={'#fff'} lineHeight={1.8}>
-                    {value}
-                  </CSText>
-                </div>
-                <CSText
-                  size={13}
-                  color={'#000'}
-                  lineHeight={1.38}
-                  marginTop={6}
-                >
-                  {'냉동 보관한 국밥을 '}
-                  <CSSpan
-                    size={13}
-                    fontFamily={'PretendardBold'}
-                    color={'#000'}
-                    lineHeight={1.38}
-                  >
-                    {'냄비나'}
-                  </CSSpan>
-                </CSText>
-                <CSText
-                  size={13}
-                  fontFamily={'PretendardBold'}
-                  color={'#000'}
-                  lineHeight={1.38}
-                >
-                  {'뚝빼기에 담아 중불'}
-                  <CSSpan size={13} color={'#000'} lineHeight={1.38}>
-                    {'로 끓여줍니다.'}
-                  </CSSpan>
-                </CSText>
-              </div>
-            ) : key === 1 ? (
-              <div css={{ marginLeft: `${getSize(20)}px` }}>
-                <div
-                  css={[
-                    step,
-                    {
-                      width: `${getSize(62)}px`,
-                      height: `${getSize(20)}px`,
-                      borderRadius: `${getSize(11)}px`,
-                    },
-                  ]}
-                >
-                  <CSText size={10} color={'#fff'} lineHeight={1.8}>
-                    {value}
-                  </CSText>
-                </div>
-                <CSText
-                  size={13}
-                  color={'#000'}
-                  lineHeight={1.38}
-                  marginTop={6}
-                >
-                  {'취향에 따라 '}
-                  <CSSpan
-                    size={13}
-                    fontFamily={'PretendardBold'}
-                    color={'#000'}
-                    lineHeight={1.38}
-                  >
-                    {'청양고추 및 대파를'}
-                  </CSSpan>
-                </CSText>
-                <CSText size={13} color={'#000'} lineHeight={1.38}>
-                  {'넣어주세요.'}
-                </CSText>
-              </div>
-            ) : (
-              <div css={{ marginLeft: `${getSize(20)}px` }}>
-                <div
-                  css={[
-                    step,
-                    {
-                      width: `${getSize(62)}px`,
-                      height: `${getSize(20)}px`,
-                      borderRadius: `${getSize(11)}px`,
-                    },
-                  ]}
-                >
-                  <CSText size={10} color={'#fff'} lineHeight={1.8}>
-                    {value}
-                  </CSText>
-                </div>
-                <CSText
-                  size={13}
-                  color={'#000'}
-                  lineHeight={1.38}
-                  marginTop={6}
-                >
-                  {'냉장고 3~4일 냉동실에는'}
-                </CSText>
-                <CSText size={13} color={'#000'} lineHeight={1.38}>
-                  {'3개월 보관해주세요.'}
-                </CSText>
-              </div>
-            )}
-          </div>
-        )
-      })}
-      <div css={{ marginTop: `${getSize(35)}px` }}>
+      <div
+        css={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginBottom: `${getSize(20)}px`,
+        }}
+      >
         <AutoSizeImage
-          src={'/images/img_07@3x.png'}
-          width={getSize(360)}
-          height={getSize(240)}
+          src={'/images/methodMenu.png'}
+          width={getSize(332)}
+          height={getSize(314)}
         />
       </div>
-      <CSText
-        size={16}
-        fontFamily={'RIDIBatang'}
-        color={'#3e3737'}
-        lineHeight={1.38}
-        marginTop={30}
+      <div
+        css={{
+          width: '100%',
+          padding: `${getSize(20)}px`,
+          backgroundColor: '#c4edff',
+        }}
       >
-        {'좋은 재료를 아낌없이 담았습니다.'}
-      </CSText>
-      <CSText
-        size={16}
-        fontFamily={'RIDIBatang'}
-        color={'#3e3737'}
-        lineHeight={1.38}
-      >
-        {'특별한 반찬 없이 집에서 간편하게 즐기세요!'}
-      </CSText>
-      {/* TODO:포장 사진 */}
-      <CSText size={15} color={'#3e3737'} lineHeight={1.33} marginTop={31}>
-        {'포장 판매는 정량의'}
-        <CSSpan
-          size={15}
-          fontFamily={'PretendardBold'}
-          color={'#8d3036'}
-          lineHeight={1.33}
+        <div
+          css={{
+            backgroundColor: '#fff',
+            borderRadius: '12px',
+            paddingTop: `${getSize(34)}px`,
+            paddingBottom: `${getSize(26)}px `,
+          }}
         >
-          {'1.5배의 양이 제공'}
-        </CSSpan>
-        <CSSpan size={15} color={'#3e3737'} lineHeight={1.33}>
-          {'됩니다.'}
-        </CSSpan>
-      </CSText>
-      <CSText size={15} color={'#3e3737'} lineHeight={1.33}>
-        {'1~2인분의 양이 제공됨으로'}
-      </CSText>
-      <CSText size={15} color={'#3e3737'} lineHeight={1.33}>
-        {'나눠서 드시고 싶으신 고객분들을 고려하여'}
-      </CSText>
-      <CSText
-        size={15}
-        fontFamily={'PretendardBold'}
-        color={'#3e3737'}
-        lineHeight={1.33}
-      >
-        {'소분된 포장 방법  제공해 드리고 있습니다.'}
-      </CSText>
-      <CSText size={13} color={'#9e9795'} lineHeight={1.54} marginTop={20}>
-        {'*주문시 선택 가능합니다.'}
-      </CSText>
+          <CSText size={12} color={'#5d5d5d'} lineHeight={1.33} textAlignCenter>
+            달인의 가마솥 한우곰탕, 설렁탕, 갈비탕
+          </CSText>
+          <CSText
+            size={20}
+            color="#3e3737"
+            lineHeight={1}
+            textAlignCenter
+            fontFamily="SeoulHangangEB"
+            marginTop={10}
+            marginBottom={40}
+          >
+            맛있게 먹는 방법
+          </CSText>
+          <div css={methodWrapperWithBorder}>
+            {methodData.map(({ title, imageUrl }, index) => (
+              <div key={index} css={method}>
+                <AutoSizeImage
+                  src={imageUrl}
+                  width={getSize(120)}
+                  height={getSize(120)}
+                  borderRadius="50%"
+                />
+
+                <CSText
+                  size={15}
+                  fontFamily={'PretendardBold'}
+                  color={'#15c9de'}
+                  marginTop={18}
+                  lineHeight={1.33}
+                >
+                  {title}
+                </CSText>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div
+          css={{
+            padding: `${getSize(20)}px ${getSize(16)}px`,
+            height: `${getSize(100)}px`,
+            backgroundColor: '#77bfdf',
+            marginTop: `${getSize(18)}px`,
+            borderRadius: `${getSize(12)}px`,
+          }}
+        >
+          <CSText
+            size={14}
+            fontFamily={'PretendardBold'}
+            color={'#fff'}
+            lineHeight={1.21}
+          >
+            유통기한 안내
+          </CSText>
+          <CSText size={12} color={'#fff'} lineHeight={1.42} marginTop={13}>
+            유통기한에 관한 내용이 나옵니다.
+          </CSText>
+        </div>
+      </div>
     </div>
   )
 }
 
-const container = css`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+const methodWrapper = css`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 `
-
-const step = css`
-  background-color: #64574f;
+const method = css`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+`
+const methodWrapperWithBorder = css`
+  ${methodWrapper}
+  & > :nth-child(1) {
+    border-bottom: 1px dotted #94d5ff;
+    border-right: 1px dotted #94d5ff;
+    padding-bottom: 34px;
+  }
+  & > :nth-child(2) {
+    border-bottom: 1px dotted #94d5ff;
+    padding-bottom: 34px;
+  }
+  & > :nth-child(3) {
+    border-right: 1px dotted #94d5ff;
+    padding-top: 20.5px;
+  }
+  & > :nth-child(4) {
+    padding-top: 20.5px;
+  }
 `
 export default MethodSection

@@ -25,8 +25,9 @@ const SellerInfoSection = () => {
       css={[
         container,
         {
-          marginTop: `${getSize(29)}px`,
-          padding: `0 ${getSize(20)}px`,
+          padding: `${getSize(29)}px ${getSize(20)}px ${getSize(
+            40
+          )}px ${getSize(20)}px`,
         },
       ]}
     >
@@ -38,7 +39,7 @@ const SellerInfoSection = () => {
       >
         {'판매자정보'}
       </CSText>
-      <table css={[table, { margin: `${getSize(21)}px 0 ${getSize(30)}px 0` }]}>
+      <table css={[table, { marginTop: `${getSize(21)}px` }]}>
         <tbody>
           {list.map(({ title, content }, index) => (
             <tr key={index}>
@@ -62,7 +63,7 @@ const SellerInfoSection = () => {
                   padding: `${getSize(15)}px`,
                 }}
               >
-                <CSText size={13} color={'#9e9795'} lineHeight={1.54}>
+                <CSText size={13} color={'#000'} lineHeight={1.54}>
                   {content}
                 </CSText>
               </td>
@@ -76,6 +77,7 @@ const SellerInfoSection = () => {
 
 const container = css`
   width: 100%;
+  background-color: #f3f3f3;
 `
 
 const table = css`
@@ -84,17 +86,17 @@ const table = css`
 
   td {
     border-right: none;
-    border-bottom: 1px solid #dfd6c7;
-    background-color: #f2eadd;
+    border-bottom: 1px solid #f3f3f3;
+    background-color: #fff;
   }
 
   tr:first-of-type td {
-    border-top: 1px solid #dfd6c7;
+    border-top: 1px solid #fff;
   }
 
   tr td:last-of-type {
     border-right: none;
-    background-color: #fffcf7;
+    background-color: #fff;
   }
 `
 export default SellerInfoSection

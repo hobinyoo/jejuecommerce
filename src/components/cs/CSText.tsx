@@ -13,6 +13,7 @@ interface Props {
   color?: string
   lineHeight?: number
   textDecoration?: string
+  textAlignCenter?: boolean
   onClick?: () => void
 }
 
@@ -27,6 +28,7 @@ const CSText = ({
   color,
   lineHeight,
   textDecoration,
+  textAlignCenter,
   onClick,
 }: Props) => {
   const { width, height } = useAppSelector(
@@ -51,6 +53,7 @@ const CSText = ({
           color: color ? color : '#000',
           lineHeight: lineHeight ? lineHeight : 1,
           textDecoration: textDecoration ? textDecoration : 'none',
+          textAlign: textAlignCenter ? 'center' : 'start',
         },
       ]}
     >

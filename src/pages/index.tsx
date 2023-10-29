@@ -21,8 +21,10 @@ import { isEmpty } from 'lodash'
 import OrderDetailModal from '@components/modal/OrderDetailModal'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
-import HistoryEffection from '@components/main/HistoryEffection'
+import HistoryEffect from '@components/main/HistoryEffect'
 import IntroMenuSection from '@components/main/IntroMenuSection'
+import SafePolicy from '@components/main/SafePolicy'
+import PackageMethod from '@components/main/PackageMethod'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -101,18 +103,20 @@ const Main = ({
         </CSText>
       </div>
 
-      <HistoryEffection />
+      <HistoryEffect />
       <IntroMenuSection />
       <MenuPointSection />
       <MethodSection />
-      <DeliveryInformSection />
-      <Line backgroundColor={'#f5f0e8'} />
+      <SafePolicy />
+      <AutoSizeImage
+        src={'/images/maejang.png'}
+        width={getSize(360)}
+        height={getSize(420)}
+      />
+      <PackageMethod />
       <ChangeRefundSection />
-      <Line backgroundColor={'#f5f0e8'} />
       <NotationsSection />
-      <Line backgroundColor={'#f5f0e8'} />
       <SellerInfoSection />
-      <Line backgroundColor={'#f5f0e8'} />
       <ReviewSection />
 
       <div css={[buttonWrapper, { width: width > 500 ? '500px' : '100%' }]}>
