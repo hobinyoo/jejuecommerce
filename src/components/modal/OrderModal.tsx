@@ -2,14 +2,11 @@ import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { Dispatch, SetStateAction, useState } from 'react'
-import MenuControl from '@components/MenuControl'
-import IconX from '/public/X.svg'
 import { RootState, useAppSelector } from 'src/store'
 import { toHeightSize, toSize } from 'styles/globalStyle'
 import CSText from '@components/cs/CSText'
-import PackagingControl from '@components/PackagingControl'
-import CSSpan from '@components/cs/CSSpan'
 import CountControl from '@components/CountControl'
+import AutoSizeImage from '@components/cs/AutoSizeImage'
 
 interface Props {
   uid: string
@@ -20,9 +17,7 @@ interface Props {
 const OrderModal = ({ setOrderVisible }: Props) => {
   const router = useRouter()
 
-  const [selectMenu, setSelectMenu] = useState<string>('메뉴 선택')
   const [quantity, setQuantity] = useState<number>(1)
-  const [packaging, setPackaging] = useState<string>('포장 방법 선택')
 
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
@@ -32,63 +27,35 @@ const OrderModal = ({ setOrderVisible }: Props) => {
   }
   return (
     <div css={overlay}>
-      <div css={[orderModal, { height: `${toHeightSize(height, 540)}px` }]}>
+      <div css={[orderModal, { height: `${toHeightSize(height, 577)}px` }]}>
         <div
           css={{
-            position: 'absolute',
-            top: `${getSize(14)}px`,
-            right: `${getSize(14)}px`,
+            padding: `${getSize(20)}px ${getSize(20)}px ${getSize(
+              30
+            )}px ${getSize(20)}px`,
           }}
         >
-          <IconX onClick={() => setOrderVisible(false)} />
-        </div>
-        <div css={{ padding: `0 ${getSize(20)}px` }}>
-          <CSText
-            size={15}
-            fontFamily={'PretendardBold'}
-            color={'#000'}
-            lineHeight={1.25}
-            marginTop={30}
-          >
-            {'메뉴'}
-          </CSText>
-          <MenuControl selectMenu={selectMenu} setSelectMenu={setSelectMenu} />
-          <CSText
-            size={15}
-            fontFamily={'PretendardBold'}
-            color={'#000'}
-            lineHeight={1.25}
-            marginTop={20}
-          >
-            {'포장 방법을 선택해주세요.'}
-          </CSText>
-          <PackagingControl packaging={packaging} setPackaging={setPackaging} />
+          <div css={buttonWrapper}>
+            <AutoSizeImage
+              src={'/images/btnX.png'}
+              width={getSize(14)}
+              height={getSize(14)}
+              onClick={() => setOrderVisible(false)}
+            />
+          </div>
           <div
             css={[
               decideQuantity,
               {
                 width: `${getSize(320)}px`,
                 height: `${getSize(80)}px`,
-                marginTop: `${getSize(20)}px`,
+                marginTop: `${getSize(16)}px`,
                 padding: `0 ${getSize(20)}px`,
               },
             ]}
           >
             <CSText size={13} color={'#000'} lineHeight={1.15} marginTop={13}>
               {'한우 소고기 국밥(1300g)'}
-              <span
-                css={[
-                  line,
-                  {
-                    fontSize: `${getSize(10)}px`,
-                    margin: `0 ${getSize(10)}px`,
-                    lineHeight: 1.15,
-                  },
-                ]}
-              />
-              <CSSpan size={13} color={'#000'} lineHeight={1.15}>
-                {packaging}
-              </CSSpan>
             </CSText>
             <CountControl quantity={quantity} setQuantity={setQuantity} />
           </div>
@@ -102,35 +69,36 @@ const OrderModal = ({ setOrderVisible }: Props) => {
               },
             ]}
           >
-            <CSText size={13} color={'#000'} lineHeight={1.18}>
-              {'총 가격'}
+            <CSText size={13} color="#000" lineHeight={1.18}>
+              총 결제 금액
             </CSText>
             <CSText
               size={17}
-              fontFamily={'PretendardBold'}
-              color={'#000'}
+              fontFamily="PretendardBold"
+              color="#000"
               lineHeight={1.18}
             >
               {quantity && quantity * 11000}원
             </CSText>
           </div>
-        </div>
-        <div css={buttonWrapper}>
-          <Button
-            onClick={() =>
-              //shallow getStaticProps, getServerSideProps, getInitialProps를 실행하지 않고 업데이트 된 pathname과 query를 받아 url을 바꿔줄 수 있다.
-              //뒤로가기했다가 다시 숫자를 바꾸고 들어가도 패칭은 이루어지지 않는다
-              router.push(`/order/한우 소고기 국밥/${quantity}`, undefined, {
-                shallow: true,
-              })
-            }
-            btnHeight={50}
-            backgroundColor={'#000'}
-            fontColor={'#fff'}
-            fontSize={17}
-          >
-            주문하기
-          </Button>
+          <div css={buttonWrapper}>
+            <Button
+              onClick={() =>
+                //shallow getStaticProps, getServerSideProps, getInitialProps를 실행하지 않고 업데이트 된 pathname과 query를 받아 url을 바꿔줄 수 있다.
+                //뒤로가기했다가 다시 숫자를 바꾸고 들어가도 패칭은 이루어지지 않는다
+                router.push(`/order/한우 소고기 국밥/${quantity}`, undefined, {
+                  shallow: true,
+                })
+              }
+              btnHeight={50}
+              backgroundColor="#15c9de"
+              fontColor="#fff"
+              fontSize={14}
+              borderColor="#15c9de"
+            >
+              주문하기
+            </Button>
+          </div>
         </div>
       </div>
     </div>
@@ -156,12 +124,14 @@ const orderModal = css`
   border-top-right-radius: 10px;
   z-index: 9999;
 `
+
+const buttonWrapper = css`
+  display: flex;
+  justify-content: end;
+`
 const decideQuantity = css`
   background-color: #f6f6f6;
   border: solid 1px #ececec;
-`
-const line = css`
-  border: solid 1px #9e9795;
 `
 const price = css`
   display: flex;
@@ -172,9 +142,4 @@ const price = css`
   border-bottom: solid 1px #ececec;
 `
 
-const buttonWrapper = css`
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-`
 export default OrderModal
