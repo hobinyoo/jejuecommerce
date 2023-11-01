@@ -14,10 +14,48 @@ interface Props {
   setOrderVisible: Dispatch<SetStateAction<boolean>>
 }
 
+const data = [
+  {
+    title: '한우곰탕',
+    content: '(한우육수: 600g 2포,고기: 한우사태 80g)',
+    price: '12,000원',
+  },
+  {
+    title: '한우설렁탕',
+    content: '(한우육수: 600g 2포, 고기: 한우사태 80g)',
+    price: '13,000원',
+  },
+  {
+    title: '육우 갈비탕',
+    content: '(한우육수: 600g 2포, 고기: 국내산 육우갈비 220g)',
+    price: '15,000원',
+  },
+  {
+    title: '육우곰탕',
+    content: '(한우육수: 600g 2포, 고기: 국내산 한우갈비 220g)',
+    price: '18,000원',
+  },
+]
+
+const prices = [12000, 13000, 15000, 18000]
+
+const calculateTotalPrice = (quantities: number[]) => {
+  if (quantities.length !== prices.length) {
+    throw new Error('Quantities and prices arrays must have the same length.')
+  }
+
+  let totalPrice = 0
+  for (let i = 0; i < quantities.length; i++) {
+    totalPrice += quantities[i] * prices[i]
+  }
+
+  return totalPrice
+}
+
 const OrderModal = ({ setOrderVisible }: Props) => {
   const router = useRouter()
 
-  const [quantity, setQuantity] = useState<number>(1)
+  const [quantity, setQuantity] = useState<number[]>([0, 0, 0, 0])
 
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
@@ -26,28 +64,6 @@ const OrderModal = ({ setOrderVisible }: Props) => {
     return toSize(width, height, input)
   }
 
-  const data = [
-    {
-      title: '한우곰탕',
-      content: '(한우육수: 600g 2포,고기: 한우사태 80g)',
-      price: '12,000원',
-    },
-    {
-      title: '한우설렁탕',
-      content: '(한우육수: 600g 2포, 고기: 한우사태 80g)',
-      price: '13,000원',
-    },
-    {
-      title: '육우 갈비탕',
-      content: '(한우육수: 600g 2포, 고기: 국내산 육우갈비 220g)',
-      price: '12,000원',
-    },
-    {
-      title: '육우곰탕',
-      content: '(한우육수: 600g 2포, 고기: 국내산 한우갈비 220g)',
-      price: '12,000원',
-    },
-  ]
   return (
     <div css={overlay}>
       <div css={[orderModal]}>
@@ -118,7 +134,11 @@ const OrderModal = ({ setOrderVisible }: Props) => {
                   justifyContent: 'space-between',
                 }}
               >
-                <CountControl quantity={quantity} setQuantity={setQuantity} />
+                <CountControl
+                  index={index}
+                  quantity={quantity}
+                  setQuantity={setQuantity}
+                />
                 <CSText
                   size={15}
                   color={'#000'}
@@ -152,7 +172,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
               color="#15c9de"
               lineHeight={1.18}
             >
-              52,000원
+              {calculateTotalPrice(quantity)}원
             </CSText>
           </div>
           <CSText

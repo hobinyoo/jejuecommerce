@@ -6,11 +6,12 @@ import AutoSizeImage from './cs/AutoSizeImage'
 import CSText from './cs/CSText'
 
 interface Props {
-  quantity: number
-  setQuantity: Dispatch<SetStateAction<number>>
+  quantity: number[]
+  setQuantity: Dispatch<SetStateAction<number[]>>
+  index: number
 }
 
-const CountControl = ({ quantity, setQuantity }: Props) => {
+const CountControl = ({ quantity, setQuantity, index }: Props) => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
@@ -19,12 +20,15 @@ const CountControl = ({ quantity, setQuantity }: Props) => {
   }
 
   const clickPlus = () => {
-    setQuantity((prev) => prev + 1)
+    const newQuantity = [...quantity]
+    newQuantity[index] = newQuantity[index] + 1
+    setQuantity(newQuantity)
   }
 
   const clickMinus = () => {
-    if (quantity <= 1) return 1
-    setQuantity((prev) => prev - 1)
+    const newQuantity = [...quantity]
+    newQuantity[index] = newQuantity[index] - 1
+    setQuantity(newQuantity)
   }
   return (
     <div
@@ -52,7 +56,7 @@ const CountControl = ({ quantity, setQuantity }: Props) => {
         ]}
       >
         <CSText size={14} color={'#000'} lineHeight={1.14}>
-          {quantity}
+          {quantity[index]}
         </CSText>
       </div>
       <AutoSizeImage
