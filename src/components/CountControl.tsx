@@ -33,7 +33,6 @@ const CountControl = ({ quantity, setQuantity }: Props) => {
         {
           width: `${getSize(110)}px`,
           height: `${getSize(30)}px`,
-          marginTop: `${getSize(10)}px`,
         },
       ]}
     >

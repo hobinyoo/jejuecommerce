@@ -37,9 +37,9 @@ const NotationsSection = () => {
         color={'#3e3737'}
         lineHeight={1.25}
       >
-        {'제품표기사항 '}
+        제품표기사항
         <CSSpan size={16} color={'#3e3737'} lineHeight={1.25}>
-          {'(식재료원산지)'}
+          (식재료원산지)
         </CSSpan>
       </CSText>
       <table css={[table, { marginTop: `${getSize(21)}px` }]}>

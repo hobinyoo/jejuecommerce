@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { RootState, useAppSelector } from 'src/store'
-import { toHeightSize, toSize } from 'styles/globalStyle'
+import { toSize } from 'styles/globalStyle'
 import CSText from '@components/cs/CSText'
 import CountControl from '@components/CountControl'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
@@ -25,9 +25,32 @@ const OrderModal = ({ setOrderVisible }: Props) => {
   const getSize = (input: number) => {
     return toSize(width, height, input)
   }
+
+  const data = [
+    {
+      title: '한우곰탕',
+      content: '(한우육수: 600g 2포,고기: 한우사태 80g)',
+      price: '12,000원',
+    },
+    {
+      title: '한우설렁탕',
+      content: '(한우육수: 600g 2포, 고기: 한우사태 80g)',
+      price: '13,000원',
+    },
+    {
+      title: '육우 갈비탕',
+      content: '(한우육수: 600g 2포, 고기: 국내산 육우갈비 220g)',
+      price: '12,000원',
+    },
+    {
+      title: '육우곰탕',
+      content: '(한우육수: 600g 2포, 고기: 국내산 한우갈비 220g)',
+      price: '12,000원',
+    },
+  ]
   return (
     <div css={overlay}>
-      <div css={[orderModal, { height: `${toHeightSize(height, 577)}px` }]}>
+      <div css={[orderModal]}>
         <div
           css={{
             padding: `${getSize(20)}px ${getSize(20)}px ${getSize(
@@ -43,44 +66,115 @@ const OrderModal = ({ setOrderVisible }: Props) => {
               onClick={() => setOrderVisible(false)}
             />
           </div>
-          <div
-            css={[
-              decideQuantity,
-              {
-                width: `${getSize(320)}px`,
-                height: `${getSize(80)}px`,
-                marginTop: `${getSize(16)}px`,
-                padding: `0 ${getSize(20)}px`,
-              },
-            ]}
-          >
-            <CSText size={13} color={'#000'} lineHeight={1.15} marginTop={13}>
-              {'한우 소고기 국밥(1300g)'}
-            </CSText>
-            <CountControl quantity={quantity} setQuantity={setQuantity} />
-          </div>
+          {data.map(({ title, content, price }, index) => (
+            <div
+              key={index}
+              css={[
+                menuBox,
+                {
+                  marginTop: `${index === 0 && getSize(16)}px`,
+                  borderTop: `${index === 0 && 'solid 1px #ececec'}`,
+                  borderTopRightRadius: `${index === 0 && getSize(10)}px`,
+                  borderTopLeftRadius: `${index === 0 && getSize(10)}px`,
+                  width: `${getSize(320)}px`,
+                  padding: `${getSize(15)}px ${getSize(20)}px`,
+                },
+              ]}
+            >
+              <div
+                css={{
+                  display: 'flex',
+                  gap: `${getSize(8)}px`,
+                }}
+              >
+                <AutoSizeImage
+                  src={'/images/checkbox.png'}
+                  width={getSize(16)}
+                  height={getSize(16)}
+                />
+
+                <CSText
+                  size={14}
+                  color={'#000'}
+                  lineHeight={1.14}
+                  fontFamily="PretendardBold"
+                >
+                  {title}
+                </CSText>
+              </div>
+              <CSText
+                size={11}
+                color={'#818181'}
+                lineHeight={1.67}
+                marginTop={2}
+                marginBottom={10}
+              >
+                {content}
+              </CSText>
+              <div
+                css={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <CountControl quantity={quantity} setQuantity={setQuantity} />
+                <CSText
+                  size={15}
+                  color={'#000'}
+                  lineHeight={1.67}
+                  fontFamily="PretendardBold"
+                >
+                  {price}
+                </CSText>
+              </div>
+            </div>
+          ))}
+
           <div
             css={[
               price,
               {
                 width: `${getSize(320)}px`,
-                height: `${getSize(60)}px`,
-                padding: `0 ${getSize(20)}px`,
+                height: `${getSize(50)}px`,
+                padding: `0 ${getSize(18)}px`,
+                borderBottomLeftRadius: `${getSize(10)}px`,
+                borderBottomRightRadius: `${getSize(10)}px`,
               },
             ]}
           >
-            <CSText size={13} color="#000" lineHeight={1.18}>
+            <CSText size={12} color="#818181" lineHeight={1.67}>
               총 결제 금액
             </CSText>
             <CSText
-              size={17}
+              size={15}
               fontFamily="PretendardBold"
-              color="#000"
+              color="#15c9de"
               lineHeight={1.18}
             >
-              {quantity && quantity * 11000}원
+              52,000원
             </CSText>
           </div>
+          <CSText
+            size={10}
+            color="#9e9e9e"
+            lineHeight={2}
+            marginTop={5}
+            marginBottom={20}
+          >
+            배송정보
+            <span
+              css={[
+                line,
+                {
+                  fontSize: `${getSize(10)}px`,
+                  margin: `0 ${getSize(5)}px`,
+                  lineHeight: 1.15,
+                },
+              ]}
+            />
+            택배, 배송비 4,000원 (70,000원 이상 주문시 도외 택배비 무료)
+          </CSText>
           <div css={buttonWrapper}>
             <Button
               onClick={() =>
@@ -129,10 +223,13 @@ const buttonWrapper = css`
   display: flex;
   justify-content: end;
 `
-const decideQuantity = css`
-  background-color: #f6f6f6;
-  border: solid 1px #ececec;
+const menuBox = css`
+  background-color: #fff;
+  border-left: solid 1px #ececec;
+  border-right: solid 1px #ececec;
+  border-bottom: solid 1px #ececec;
 `
+
 const price = css`
   display: flex;
   justify-content: space-between;
@@ -141,5 +238,7 @@ const price = css`
   border-right: solid 1px #ececec;
   border-bottom: solid 1px #ececec;
 `
-
+const line = css`
+  border: solid 1px #ececec;
+`
 export default OrderModal

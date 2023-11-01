@@ -1,8 +1,7 @@
 import AutoSizeImage from '@components/cs/AutoSizeImage'
-import CSSpan from '@components/cs/CSSpan'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
-import React, { useMemo } from 'react'
+import React from 'react'
 import { RootState, useAppSelector } from 'src/store'
 import { toSize } from 'styles/globalStyle'
 
