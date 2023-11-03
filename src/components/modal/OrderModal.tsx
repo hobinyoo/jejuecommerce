@@ -200,7 +200,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
               onClick={() =>
                 //shallow getStaticProps, getServerSideProps, getInitialProps를 실행하지 않고 업데이트 된 pathname과 query를 받아 url을 바꿔줄 수 있다.
                 //뒤로가기했다가 다시 숫자를 바꾸고 들어가도 패칭은 이루어지지 않는다
-                router.push(`/order/한우 소고기 국밥/${quantity}`, undefined, {
+                router.push(`/order/${quantity}`, undefined, {
                   shallow: true,
                 })
               }

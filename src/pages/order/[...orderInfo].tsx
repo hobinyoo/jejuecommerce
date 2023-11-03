@@ -36,6 +36,24 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     return { props: {} as never }
   }
 }
+const meneData = [
+  {
+    title: '한우곰탕',
+    price: '12,000원',
+  },
+  {
+    title: '한우설렁탕',
+    price: '13,000원',
+  },
+  {
+    title: '육우 갈비탕',
+    price: '15,000원',
+  },
+  {
+    title: '육우곰탕',
+    price: '18,000원',
+  },
+]
 
 const Order = ({
   data,
@@ -62,6 +80,12 @@ const Order = ({
   const [postVisible, setPostVisible] = useState<boolean>(false)
   const { orderInfo } = router.query
 
+  const newData = meneData.map((item, index) => ({
+    title: item.title,
+    price: item.price,
+    quantity: orderInfo && orderInfo[0].split(',')[index],
+  }))
+  console.log(newData)
   const handle = {
     // 버튼 클릭 이벤트
     clickButton: () => {
