@@ -11,9 +11,10 @@ const Admin = () => {
   const [data, setData] = useState<OrderProps[]>([])
   const [carrierCode, setCarrierCode] = useState<string>('')
 
-  const todayTotalPrice = data
-    .map((item) => Number(item.totalPrice))
-    .reduce((prev, curr) => prev + curr, 0)
+  // const todayTotalPrice = data
+  //   .map((item) => Number(item.totalPrice))
+  //   .reduce((prev, curr) => prev + curr, 0)
+  const todayTotalPrice = 1000
 
   useEffect(() => {
     fetch(`/api/get-dates`, {

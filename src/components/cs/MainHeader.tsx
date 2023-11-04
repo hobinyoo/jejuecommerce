@@ -54,8 +54,7 @@ const MainHeader = ({
         { height: `${getSize(80)}px`, padding: `0 ${getSize(25)}px` },
       ]}
     >
-      <div css={{ marginLeft: `${getSize(31)}px` }} />
-      <div>
+      <div css={{ display: 'flex', alignItems: 'center' }}>
         {router.pathname === '/' ? (
           <AutoSizeImage
             src="/images/jujueLogo.png"
@@ -71,7 +70,7 @@ const MainHeader = ({
           />
         )}
 
-        <CSText size={18} color={'#000'} lineHeight={1.17} marginLeft={10}>
+        <CSText size={18} color={'#000'} lineHeight={1.17}>
           {router.pathname === '/signUp'
             ? '회원가입'
             : router.route.split('/')[1] === 'order'

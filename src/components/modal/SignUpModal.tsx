@@ -8,6 +8,7 @@ import CSText from '@components/cs/CSText'
 
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import { useRouter } from 'next/router'
+import CSSpan from '@components/cs/CSSpan'
 
 interface Props {
   setSignVisible: Dispatch<SetStateAction<boolean>>
@@ -32,60 +33,77 @@ const SignUpModal = ({ setSignVisible }: Props) => {
         css={[
           container,
           {
-            padding: `${getSize(20)}px`,
             width: `${getSize(300)}px`,
-            height: `${getSize(420)}px`,
             borderRadius: `${getSize(12)}px`,
           },
         ]}
       >
         <div
           css={{
-            position: 'absolute',
-            top: `${getSize(14)}px`,
-            right: `${getSize(14)}px`,
-          }}
-        >
-          <IconX onClick={() => setSignVisible(false)} />
-        </div>
-        <div
-          css={{
-            marginTop: `${getSize(14)}px`,
-            marginBottom: `${getSize(14)}px`,
+            display: 'flex',
+            justifyContent: 'flex-end',
+            marginBottom: `${getSize(13)}px`,
           }}
         >
           <AutoSizeImage
-            src="/images/logo@3x.png"
-            width={getSize(143)}
-            height={getSize(30)}
+            src="/images/btnX_white.png"
+            width={getSize(14)}
+            height={getSize(14)}
           />
         </div>
-        <AutoSizeImage
-          src="/images/illust_done@3x.png"
-          width={getSize(200)}
-          height={getSize(168)}
-        />
-        <CSText
-          size={20}
-          fontFamily={'GodoB'}
-          color={'#000'}
-          lineHeight={1.5}
-          marginTop={25}
+        <div
+          css={{
+            position: 'relative',
+            justifyContent: 'center',
+            display: 'flex',
+          }}
         >
-          {'환영합니다!'}
-        </CSText>
-        <CSText size={20} fontFamily={'GodoB'} color={'#000'} lineHeight={1.5}>
-          {'회원가입을 축하해요.'}
-        </CSText>
+          <div
+            css={{
+              position: 'absolute',
+              zIndex: 1,
+              whiteSpace: 'pre-line',
+            }}
+          >
+            <CSText
+              size={20}
+              color="#15c9de"
+              marginTop={30}
+              lineHeight={1}
+              fontFamily="PretendardBold"
+              textAlignCenter
+            >
+              회원가입을 축하
+              <CSSpan size={20} color="#000">
+                합니다.
+              </CSSpan>
+            </CSText>
+            <CSText
+              size={15}
+              color="#818181"
+              marginTop={15}
+              lineHeight={1.33}
+              textAlignCenter
+            >
+              {'달인의 가마솥에 오신 걸 환영합니다!\n 상품을 둘러보세요!'}
+            </CSText>
+          </div>
+          <AutoSizeImage
+            src="/images/join_popup_img.png"
+            width={getSize(300)}
+            height={getSize(321)}
+          />
+        </div>
 
         <Button
           onClick={clickBtn}
           btnHeight={46}
-          backgroundColor={'#000'}
+          backgroundColor={'#15c9de'}
           fontColor={'#fff'}
           fontSize={14}
-          borderRadius={4}
-          marginTop={30}
+          borderRadius={8}
+          marginTop={10}
+          borderColor="#15c9de"
         >
           상품 자세히 보러가기
         </Button>
@@ -107,11 +125,7 @@ const overlay = css`
   align-items: center;
 `
 const container = css`
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
+  background-color: 'transparent';
 `
 
 export default SignUpModal

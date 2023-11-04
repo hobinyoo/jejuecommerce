@@ -124,17 +124,11 @@ const SignUp = () => {
         css={[
           signUpWrapper,
           {
-            padding: `0 ${getSize(20)}px`,
+            padding: `${getSize(30)}px ${getSize(20)}px`,
           },
         ]}
       >
-        <CSText
-          size={13}
-          color={'#000'}
-          marginTop={30}
-          marginBottom={8}
-          lineHeight={1.15}
-        >
+        <CSText size={13} color={'#000'} marginBottom={8} lineHeight={1.15}>
           {'이메일'}
         </CSText>
         <InputText
@@ -247,16 +241,17 @@ const SignUp = () => {
             btnWidth={100}
             btnHeight={46}
             backgroundColor={'#fff'}
-            fontColor={'#000'}
+            fontColor="#15c9de"
             fontSize={14}
             borderRadius={4}
+            borderColor="#15c9de"
           >
-            {'주소 찾기'}
+            주소 찾기
           </Button>
         </div>
         <InputText
           name="address"
-          placeholder=""
+          placeholder="주소 입력"
           setInputText={setAddress}
           inputText={address}
           marginTop={10}
@@ -268,21 +263,17 @@ const SignUp = () => {
           inputText={addressDetail}
           marginTop={10}
         />
-      </div>
-      <div
-        css={{
-          marginTop: `${getSize(20)}px`,
-        }}
-      >
         <Button
           onClick={signUp}
           btnHeight={46}
-          backgroundColor={fillUserInfo() ? '#000' : '#b9b9b9'}
-          fontColor={fillUserInfo() ? '#fff' : '#8b8b8b'}
+          backgroundColor="#15c9de"
+          fontColor="#fff"
           fontSize={15}
-          borderColor={fillUserInfo() ? '#000' : '#b9b9b9'}
+          borderColor="#15c9de"
+          marginTop={30}
+          borderRadius={8}
         >
-          {'회원가입'}
+          회원가입
         </Button>
       </div>
 

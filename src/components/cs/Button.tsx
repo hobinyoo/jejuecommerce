@@ -16,6 +16,7 @@ interface Props {
   fontColor: string
   borderRadius?: number
   borderColor?: string
+  disabled?: boolean
 }
 
 const Button = ({
@@ -30,6 +31,7 @@ const Button = ({
   fontColor,
   borderRadius,
   borderColor,
+  disabled,
 }: Props) => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
@@ -54,6 +56,7 @@ const Button = ({
         },
       ]}
       onClick={onClick}
+      disabled={disabled}
     >
       <CSText size={fontSize} color={fontColor} lineHeight={1.18}>
         {children}

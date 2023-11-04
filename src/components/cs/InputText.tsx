@@ -44,9 +44,11 @@ const InputText = ({
           width: signUpCertification ? `${getSize(214)}px` : '100%',
           height: `${getSize(46)}px`,
           paddingLeft: `${getSize(20)}px`,
-          border: `solid 1px ${isEmpty(inputText) ? '#ececec' : '#000'} `,
+          borderBottom: `solid 1px ${isEmpty(inputText) ? '#ececec' : '#000'} `,
+          borderTop: 'none',
+          borderRight: 'none',
+          borderLeft: 'none',
           marginTop: marginTop ? `${getSize(marginTop)}px` : 0,
-          borderRadius: `${getSize(4)}px`,
         },
       ]}
       type={passwordType ? 'password' : 'text'}
@@ -66,7 +68,6 @@ const input = css`
   line-height: 1.14;
   &::placeholder {
     font-size: 14px;
-    font-family: 'PretendardRegular';
     color: #bebebe;
   }
 `

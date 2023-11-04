@@ -12,7 +12,6 @@ import { useAppSelector, RootState } from 'src/store'
 import MainHeader from '@components/cs/MainHeader'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import { toSize } from 'styles/globalStyle'
-import CSText from '@components/cs/CSText'
 
 const SignIn = () => {
   const router = useRouter()
@@ -42,23 +41,21 @@ const SignIn = () => {
   }
 
   const signIn = async () => {
-    if (fillUserInfo()) {
-      try {
-        await signInWithEmailAndPassword(auth, email, password).then(
-          async (_userCredential) => {
-            alert('로그인 성공')
-            window.location.replace('/')
-          }
-        )
-      } catch (err: any) {
-        switch (err.code) {
-          case 'auth/user-not-found':
-            alert('잘못된 이메일 주소입니다.')
-            break
-          case 'auth/wrong-password':
-            alert('올바른 비밀번호를 입력해주세요.')
-            break
+    try {
+      await signInWithEmailAndPassword(auth, email, password).then(
+        async (_userCredential) => {
+          alert('로그인 성공')
+          window.location.replace('/')
         }
+      )
+    } catch (err: any) {
+      switch (err.code) {
+        case 'auth/user-not-found':
+          alert('잘못된 이메일 주소입니다.')
+          break
+        case 'auth/wrong-password':
+          alert('올바른 비밀번호를 입력해주세요.')
+          break
       }
     }
   }
@@ -71,52 +68,36 @@ const SignIn = () => {
           signInWrapper,
           {
             padding: `0 ${getSize(30)}px`,
-            height: `calc(100vh - ${getSize(60)}px)`,
+            height: `calc(100vh - ${getSize(83)}px)`,
           },
         ]}
       >
-        <div css={{ marginTop: getSize(82) }}>
+        <div css={{ marginTop: getSize(50) }}>
           <AutoSizeImage
-            src="/images/logo@3x.png"
-            width={getSize(216)}
-            height={getSize(45)}
+            src="/images/jujueLogo.png"
+            width={getSize(177)}
+            height={getSize(133)}
           />
         </div>
 
-        <div css={inputWrapper}>
-          <CSText
-            size={13}
-            color={'#000'}
-            marginTop={30}
-            marginBottom={8}
-            lineHeight={1.15}
-          >
-            {'이메일'}
-          </CSText>
+        <div css={[inputWrapper, { marginTop: `${getSize(40)}px` }]}>
           <InputText
             name=""
-            placeholder="핸드폰 번호로 로그인 해주세요."
+            placeholder="이메일을 입력해주세요."
             setInputText={setEmail}
             inputText={email}
           />
           {!isEmpty(email) && !emailValidation(email) && (
             <ErrorMessage message={'이메일 형식의 아이디를 입력해주세요.'} />
           )}
-          <CSText
-            size={13}
-            color={'#000'}
-            marginTop={30}
-            marginBottom={8}
-            lineHeight={1.15}
-          >
-            {'비밀번호'}
-          </CSText>
+
           <InputText
             name=""
             placeholder="비밀번호를 입력해주세요."
             setInputText={setPassword}
             inputText={password}
             passwordType
+            marginTop={20}
           />
           {!isEmpty(password) && !passwordValidation(password) && (
             <ErrorMessage
@@ -127,34 +108,29 @@ const SignIn = () => {
             <Button
               onClick={signIn}
               btnHeight={46}
-              backgroundColor={fillUserInfo() ? '#000' : '#b9b9b9'}
-              fontColor={fillUserInfo() ? '#fff' : '#8b8b8b'}
+              backgroundColor="#15c9de"
+              fontColor="#fff"
               fontSize={15}
-              borderColor={fillUserInfo() ? '#000' : '#b9b9b9'}
+              borderColor="#15c9de"
               marginTop={30}
+              borderRadius={8}
+              disabled={!fillUserInfo()}
             >
-              {'로그인'}
+              로그인
+            </Button>
+            <Button
+              onClick={() => router.push('/signUp')}
+              btnHeight={46}
+              backgroundColor="#fff"
+              fontColor="#15c9de"
+              fontSize={14}
+              borderRadius={8}
+              marginTop={10}
+              borderColor="#15c9de"
+            >
+              회원가입
             </Button>
           </div>
-        </div>
-
-        <div
-          css={{
-            width: `calc(100% - ${getSize(60)}px)`,
-            position: 'absolute',
-            bottom: `${getSize(30)}px`,
-          }}
-        >
-          <Button
-            onClick={() => router.push('/signUp')}
-            btnHeight={46}
-            backgroundColor={'#fff'}
-            fontColor={'#000'}
-            fontSize={14}
-            borderRadius={4}
-          >
-            회원가입
-          </Button>
         </div>
       </div>
     </div>
