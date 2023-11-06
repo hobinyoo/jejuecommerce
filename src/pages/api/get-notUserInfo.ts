@@ -1,16 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import {
-  getDoc,
-  doc,
-  collection,
-  getDocs,
-  query,
-  orderBy,
-  where,
-} from 'firebase/firestore'
+import { collection, getDocs, query, orderBy, where } from 'firebase/firestore'
 import { db } from 'src/firebase/initFirebase'
-import { isEmpty } from 'lodash'
 
 async function getNotUserInfo(name: string, phoneNumber: string) {
   try {
@@ -23,7 +14,7 @@ async function getNotUserInfo(name: string, phoneNumber: string) {
         orderBy('timestamp', 'desc')
       )
     )
-
+    console.log(querySnapshot, 'querySnapshot')
     if (querySnapshot.empty) {
       return null
     }
