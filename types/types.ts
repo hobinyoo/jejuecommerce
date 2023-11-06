@@ -41,8 +41,7 @@ export interface CommentProps {
 export interface PayMentsProps {
   uid?: string
   email?: string
-  menu: string
-  quantity: string
+  quantity: number[]
   totalPrice: number
   name: string
   phoneNumber: string

@@ -7,6 +7,7 @@ import { toSize } from 'styles/globalStyle'
 import CSText from '@components/cs/CSText'
 import CountControl from '@components/CountControl'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
+import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
 
 interface Props {
   uid: string
@@ -36,21 +37,6 @@ const data = [
     price: '18,000원',
   },
 ]
-
-const prices = [12000, 13000, 15000, 18000]
-
-const calculateTotalPrice = (quantities: number[]) => {
-  if (quantities.length !== prices.length) {
-    throw new Error('Quantities and prices arrays must have the same length.')
-  }
-
-  let totalPrice = 0
-  for (let i = 0; i < quantities.length; i++) {
-    totalPrice += quantities[i] * prices[i]
-  }
-
-  return totalPrice
-}
 
 const OrderModal = ({ setOrderVisible }: Props) => {
   const router = useRouter()

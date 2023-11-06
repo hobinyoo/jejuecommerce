@@ -73,8 +73,6 @@ const MainHeader = ({
         <CSText size={18} color={'#000'} lineHeight={1.17}>
           {router.pathname === '/signUp'
             ? '회원가입'
-            : router.route.split('/')[1] === 'order'
-            ? '주문하기'
             : router.route.split('/')[1] === 'orderDetail'
             ? '주문내역'
             : router.route.split('/')[1] === 'comment'
@@ -102,7 +100,6 @@ const container = css`
   display: flex;
   justify-content: space-between;
   background-color: #fff;
-  border-bottom: solid 1px #f2f2f2;
   align-items: center;
 `
 

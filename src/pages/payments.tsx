@@ -10,10 +10,10 @@ import {
   ANONYMOUS,
 } from '@tosspayments/payment-widget-sdk'
 import { useRouter } from 'next/router'
+import { menuData } from 'src/constants/products'
 
 const PayMents = ({
   uid,
-  menu,
   quantity,
   totalPrice,
   phoneNumber,
@@ -24,6 +24,10 @@ const PayMents = ({
   carrierRequest,
 }: PayMentsProps) => {
   const router = useRouter()
+
+  const orderName = menuData
+    .filter((_item, index) => quantity[index] !== 0)
+    .map((item) => item.title)
 
   const orderId = Math.random().toString(36).slice(2)
 
@@ -66,7 +70,7 @@ const PayMents = ({
       await paymentWidget
         ?.requestPayment({
           orderId: orderId,
-          orderName: menu,
+          orderName: `${orderName[0]} 외 ${orderName.length - 1}건`,
           customerName: name,
           successUrl: `${window.location.origin}/api/payments`,
           failUrl: `${window.location.origin}/api/paymentsFail`,
@@ -75,7 +79,6 @@ const PayMents = ({
           async () =>
             await setDoc(doc(db, 'orders', orderId), {
               uid: uid,
-              menu: menu,
               quantity: quantity,
               totalPrice: totalPrice,
               name: name,

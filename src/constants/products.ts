@@ -18,6 +18,28 @@ export const getOrderBy = (orderBy?: string) => {
       : orderBy === 'expensive'
       ? { orderBy: { price: 'desc' } }
       : { orderBy: { price: 'asc' } }
-    : undefined 
+    : undefined
 }
-  
+
+export const menuData = [
+  {
+    title: '한우곰탕',
+    price: '12,000원',
+    quantity: 0,
+  },
+  {
+    title: '한우설렁탕',
+    price: '13,000원',
+    quantity: 0,
+  },
+  {
+    title: '육우 갈비탕',
+    price: '15,000원',
+    quantity: 0,
+  },
+  {
+    title: '육우곰탕',
+    price: '18,000원',
+    quantity: 0,
+  },
+]

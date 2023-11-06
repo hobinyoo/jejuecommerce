@@ -15,6 +15,10 @@ import ErrorMessage from '@components/Error'
 import { nameValidation, phoneValidation } from 'src/function/vaildation'
 import Button from '@components/cs/Button'
 import PostModal from '@components/modal/PostModal'
+import AutoSizeImage from '@components/cs/AutoSizeImage'
+import CSSpan from '@components/cs/CSSpan'
+import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
+import { menuData } from 'src/constants/products'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -36,24 +40,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     return { props: {} as never }
   }
 }
-const meneData = [
-  {
-    title: '한우곰탕',
-    price: '12,000원',
-  },
-  {
-    title: '한우설렁탕',
-    price: '13,000원',
-  },
-  {
-    title: '육우 갈비탕',
-    price: '15,000원',
-  },
-  {
-    title: '육우곰탕',
-    price: '18,000원',
-  },
-]
 
 const Order = ({
   data,
@@ -80,12 +66,14 @@ const Order = ({
   const [postVisible, setPostVisible] = useState<boolean>(false)
   const { orderInfo } = router.query
 
-  const newData = meneData.map((item, index) => ({
+  const quantityArr = orderInfo![0].split(',').map((str) => Number(str))
+
+  const newData = menuData.map((item, index) => ({
     title: item.title,
     price: item.price,
-    quantity: orderInfo && orderInfo[0].split(',')[index],
+    quantity: quantityArr[index],
   }))
-  console.log(newData)
+
   const handle = {
     // 버튼 클릭 이벤트
     clickButton: () => {
@@ -100,86 +88,111 @@ const Order = ({
     },
   }
 
-  const product = [
-    { title: '상품명', content: orderInfo && orderInfo[0] },
-    { title: '수량', content: `${orderInfo && orderInfo[1]}개` },
-    {
-      title: '제품가격',
-      content: `${Number(orderInfo && orderInfo[1]) * 11000}원`,
-    },
-    { title: '배송비', content: '3000원' },
-  ]
-
   return (
     <div css={container}>
       <MainHeader windowWidth={width} windowHeight={height} uid={''} />
       <div css={{ padding: `0 ${getSize(20)}px` }}>
         <CSText
-          size={15}
+          size={24}
           fontFamily={'PretendardBold'}
           color={'#000'}
-          lineHeight={1.22}
-          marginTop={20}
-          marginBottom={5}
+          lineHeight={0.83}
         >
-          {'주문 상품'}
+          주문하기
         </CSText>
-        {product.map(({ title, content }, index) => {
-          return (
-            <div
-              key={index}
-              css={[orderProduct, { marginTop: `${getSize(15)}px` }]}
-            >
-              <CSText
-                size={15}
-                color={'#8b8b8b'}
-                lineHeight={1.2}
-                marginBottom={5}
-              >
-                {title}
-              </CSText>
-
-              <CSText
-                size={15}
-                fontFamily={'PretendardBold'}
-                color={'#000'}
-                lineHeight={1.2}
-                marginBottom={5}
-              >
-                {content}
-              </CSText>
-            </div>
-          )
-        })}
+        <CSText size={15} color={'#818181'} lineHeight={1.22} marginTop={12}>
+          달인의 가마솥을 집에서 편하게 만나보세요!
+        </CSText>
         <div
-          css={[
-            totalPrice,
-            {
-              marginTop: `${getSize(15)}px`,
-              paddingTop: `${getSize(15)}px`,
-              paddingBottom: `${getSize(20)}px`,
-            },
-          ]}
+          css={{
+            padding: `${getSize(20)}px ${getSize(20)}px ${getSize(
+              0
+            )}px ${getSize(20)}px`,
+            border: '1px solid #ececec',
+            borderTopLeftRadius: '8px',
+            borderTopRightRadius: '8px',
+            marginTop: `${getSize(40)}px `,
+          }}
         >
-          <CSText size={15} color={'#8b8b8b'} lineHeight={1.2} marginBottom={5}>
-            {'총 가격'}
-          </CSText>
-
           <CSText
-            size={15}
+            size={12}
             fontFamily={'PretendardBold'}
             color={'#000'}
-            lineHeight={1.2}
-            marginBottom={5}
+            lineHeight={1.17}
           >
-            {!isEmpty(data.items?.email)
-              ? (Number(orderInfo && orderInfo[1]) * 11000 + 3000) * 0.9
-              : Number(orderInfo && orderInfo[1]) * 11000 + 3000}
-            원
+            주문 상품
           </CSText>
+          {newData.map((menu, index) => (
+            <div key={index}>
+              {menu.quantity !== 0 && (
+                <div
+                  css={{
+                    display: 'flex',
+                    gap: `${getSize(10)}px`,
+                    paddingTop: `${getSize(15)}px`,
+                    paddingBottom: `${getSize(14)}px`,
+                    borderBottom:
+                      newData.length - 1 === index
+                        ? 'none'
+                        : 'solid 1px #ececec',
+                  }}
+                >
+                  <div>
+                    <AutoSizeImage
+                      src={'/images/orderMenu1.png'}
+                      width={getSize(40)}
+                      height={getSize(40)}
+                    />
+                  </div>
+                  <div
+                    css={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <CSText size={13} color={'#000'} lineHeight={1.15}>
+                      {menu.title}
+                    </CSText>
+                    <CSText size={13} color={'#000'} lineHeight={1.15}>
+                      {menu.price}
+                      <span css={line} />
+                      <CSSpan size={13} color={'#000'} lineHeight={1.15}>
+                        수량 {menu.quantity}개
+                      </CSSpan>
+                    </CSText>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div
+          css={{
+            padding: `${getSize(18)}px ${getSize(16)}px`,
+            borderLeft: '1px solid #ececec',
+            borderRight: '1px solid #ececec',
+            borderBottom: '1px solid #ececec',
+            borderBottomLeftRadius: '8px',
+            borderBottomRightRadius: '8px',
+          }}
+        >
+          <div css={{ display: 'flex', justifyContent: 'space-between' }}>
+            <CSText size={12} color={'#818181'} lineHeight={1.67}>
+              총 결제 금액
+            </CSText>
+            <CSText
+              size={15}
+              color={'#15c9de'}
+              lineHeight={1.2}
+              fontFamily={'PretendardBold'}
+            >
+              {calculateTotalPrice(quantityArr)}원
+            </CSText>
+          </div>
         </div>
       </div>
-      <Line backgroundColor={'#f6f6f6'} />
+
       <div
         css={{
           padding: `0 ${getSize(20)}px`,
@@ -301,9 +314,8 @@ const Order = ({
 
       <PayMents
         uid={data.uid ?? ''}
-        menu={'한우 소고기 국밥'}
-        quantity={String(orderInfo && orderInfo[1])}
-        totalPrice={Number(orderInfo && orderInfo[1]) * 11000 + 3000}
+        quantity={quantityArr}
+        totalPrice={calculateTotalPrice(quantityArr)}
         name={name}
         phoneNumber={phoneNumber}
         address={address}
@@ -321,20 +333,17 @@ const container = css`
   flex-direction: column;
   position: relative;
 `
-const orderProduct = css`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`
-const totalPrice = css`
-  border-top: solid 1px #ececec;
-  display: flex;
-  justify-content: space-between;
-`
+
 const findAddress = css`
   width: 100%;
   display: flex;
   justify-content: space-between;
 `
-
+const line = css`
+  width: 1px;
+  height: 10px;
+  border: 1px solid #ececec;
+  margin-left: 8px;
+  margin-right: 8px;
+`
 export default Order
