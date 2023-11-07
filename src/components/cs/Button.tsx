@@ -48,7 +48,6 @@ const Button = ({
         {
           width: btnWidth ? `${getSize(btnWidth)}px` : '100%',
           height: `${getSize(btnHeight)}px`,
-
           borderRadius: borderRadius ? `${getSize(borderRadius)}px` : 'none',
           marginTop: marginTop ? `${getSize(marginTop)}px` : 0,
           backgroundColor: backgroundColor,

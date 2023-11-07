@@ -71,13 +71,7 @@ const MainHeader = ({
         )}
 
         <CSText size={18} color={'#000'} lineHeight={1.17}>
-          {router.pathname === '/signUp'
-            ? '회원가입'
-            : router.route.split('/')[1] === 'orderDetail'
-            ? '주문내역'
-            : router.route.split('/')[1] === 'comment'
-            ? '후기작성'
-            : ''}
+          {router.pathname === '/signUp' ? '회원가입' : ''}
         </CSText>
       </div>
       <div>

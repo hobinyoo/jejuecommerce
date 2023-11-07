@@ -81,70 +81,99 @@ const Comment = () => {
 
   return (
     <div css={container}>
-      <MainHeader windowWidth={width} windowHeight={height} uid={''} />
-      <div
-        css={[
-          ratingContainer,
-          {
-            height: `${getSize(114)}px`,
-          },
-        ]}
-      >
+      <MainHeader windowWidth={width} windowHeight={height} uid={''} />{' '}
+      <div css={{ padding: `0 ${getSize(20)}px` }}>
         <CSText
-          size={17}
+          size={24}
+          fontFamily={'PretendardBold'}
+          color={'#000'}
+          lineHeight={0.83}
+        >
+          후기작성
+        </CSText>
+        <CSText
+          size={15}
+          color={'#818181'}
+          lineHeight={1.22}
+          marginTop={12}
+          marginBottom={40}
+        >
+          받으신 상품은 만족하셨나요?
+        </CSText>
+        <div css={ratingContainer}>
+          <Rating value={rating} onChange={setRating} size="lg" />
+        </div>
+        <CSText
+          size={12}
           color={'#000'}
           lineHeight={1.18}
-          marginTop={30}
+          marginTop={50}
           marginBottom={10}
         >
-          {'상품에 만족하셨나요?'}
+          어떤점이 좋으셧나요?
         </CSText>
-        <Rating value={rating} onChange={setRating} size="lg" />
-      </div>
-      <CSText size={17} color={'#000'} lineHeight={1.18}>
-        {'후기를 적어주세요'}
-      </CSText>
-      <input
-        ref={inputRef}
-        type="file"
-        accept="image/*"
-        // multiple
-        onChange={handleChange}
-      />
 
-      <div style={{ display: 'flex' }}>
-        {images &&
-          images.length > 0 &&
-          images.map((image, idx) => (
-            <AutoSizeImage key={idx} src={image} width={100} height={100} />
-          ))}
-      </div>
-
-      <br />
-      <div>
         <TextArea
           name="content"
           placeholder="후기를 작성해주세요."
           content={content}
           setContent={setContent}
         />
+        <label htmlFor="fileInput">
+          <input
+            id="fileInput"
+            ref={inputRef}
+            type="file"
+            accept="image/*"
+            // multiple
+            onChange={handleChange}
+            hidden
+          />
+          <div
+            css={{
+              display: 'flex',
+              height: `${getSize(46)}px`,
+              backgroundColor: '#fff',
+              borderRadius: '8px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginTop: `${getSize(15)}px`,
+              marginBottom: `${getSize(15)}px`,
+              border: '1px solid #15c9de',
+              color: '#15c9de',
+              fontFamily: 'PretendardRegular',
+              fontSize: '14px',
+            }}
+          >
+            사진추가
+          </div>
+        </label>
+
+        <div style={{ display: 'flex' }}>
+          {images &&
+            images.length > 0 &&
+            images.map((image, idx) => (
+              <AutoSizeImage key={idx} src={image} width={100} height={100} />
+            ))}
+        </div>
+        <Button
+          btnHeight={46}
+          backgroundColor="#15c9de"
+          fontColor={'#fff'}
+          fontSize={14}
+          onClick={saveComment}
+          borderRadius={8}
+          borderColor="#15c9de"
+        >
+          후기 작성 완료
+        </Button>
       </div>
-      <Button
-        btnHeight={50}
-        backgroundColor={'#000'}
-        fontColor={'#fff'}
-        fontSize={17}
-        onClick={saveComment}
-      >
-        저장
-      </Button>
     </div>
   )
 }
 
 const container = css`
   width: 100%;
-  height: 100vh;
 `
 
 const ratingContainer = css`
@@ -152,6 +181,5 @@ const ratingContainer = css`
   display: flex;
   align-items: center;
   flex-direction: column;
-  border-bottom: solid 1px #f2f2f2;
 `
 export default Comment

@@ -17,7 +17,7 @@ export interface OrderProps {
   method?: string
   phoneNumber: string
   postCode: string
-  quantity: string
+  quantity: number[]
   timestamp: string
   totalPrice: string
   status: string

@@ -29,7 +29,13 @@ const AutoSizeImage = ({
       ]}
       onClick={onClick}
     >
-      <Image src={src} fill style={{ objectFit: 'cover' }} alt="" />
+      <Image
+        src={src}
+        fill
+        style={{ objectFit: 'cover' }}
+        sizes="100%"
+        alt=""
+      />
     </div>
   )
 }
