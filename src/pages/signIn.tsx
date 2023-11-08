@@ -68,7 +68,7 @@ const SignIn = () => {
           signInWrapper,
           {
             padding: `0 ${getSize(30)}px`,
-            height: `calc(100vh - ${getSize(83)}px)`,
+            height: `calc(100vh - ${getSize(80)}px)`,
           },
         ]}
       >

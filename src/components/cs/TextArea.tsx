@@ -31,6 +31,9 @@ const textarea = css`
   resize: none;
   font-size: 14px;
   font-family: 'PretendardRegular';
+  &:focus {
+    outline: none;
+  }
 `
 
 export default TextArea

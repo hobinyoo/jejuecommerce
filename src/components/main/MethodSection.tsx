@@ -1,6 +1,4 @@
 import AutoSizeImage from '@components/cs/AutoSizeImage'
-import CSSpan from '@components/cs/CSSpan'
-
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'

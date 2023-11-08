@@ -99,24 +99,13 @@ const ReviewSection = () => {
                     {comment.content}
                   </CSText>
                 </div>
-                {comment.images &&
-                  comment.images.map((image, imageIndex) => {
-                    return (
-                      <AutoSizeImage
-                        key={imageIndex}
-                        src={image}
-                        width={getSize(80)}
-                        height={getSize(80)}
-                      />
-
-                      // <img
-                      //   key={imageIndex}
-                      //   src={image}
-                      //   alt="test"
-                      //   css={{ width: '80px', height: '80px' }}
-                      // />
-                    )
-                  })}
+                <AutoSizeImage
+                  src={
+                    comment.images ? comment.images[0] : '/images/no_img.png'
+                  }
+                  width={getSize(80)}
+                  height={getSize(80)}
+                />
               </div>
             </div>
           )

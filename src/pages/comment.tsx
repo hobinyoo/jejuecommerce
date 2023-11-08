@@ -82,7 +82,11 @@ const Comment = () => {
   return (
     <div css={container}>
       <MainHeader windowWidth={width} windowHeight={height} uid={''} />{' '}
-      <div css={{ padding: `0 ${getSize(20)}px` }}>
+      <div
+        css={{
+          padding: `0 ${getSize(20)}px ${getSize(15)}px ${getSize(20)}px`,
+        }}
+      >
         <CSText
           size={24}
           fontFamily={'PretendardBold'}
@@ -138,7 +142,7 @@ const Comment = () => {
               justifyContent: 'center',
               alignItems: 'center',
               marginTop: `${getSize(15)}px`,
-              marginBottom: `${getSize(15)}px`,
+
               border: '1px solid #15c9de',
               color: '#15c9de',
               fontFamily: 'PretendardRegular',
@@ -149,7 +153,7 @@ const Comment = () => {
           </div>
         </label>
 
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', marginTop: `${getSize(15)}px` }}>
           {images &&
             images.length > 0 &&
             images.map((image, idx) => (
@@ -164,6 +168,7 @@ const Comment = () => {
           onClick={saveComment}
           borderRadius={8}
           borderColor="#15c9de"
+          marginTop={15}
         >
           후기 작성 완료
         </Button>
