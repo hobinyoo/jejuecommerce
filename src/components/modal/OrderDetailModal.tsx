@@ -1,5 +1,4 @@
 import Button from '@components/cs/Button'
-import { css } from '@emotion/react'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import IconX from '/public/X.svg'
 import { RootState, useAppSelector } from 'src/store'
@@ -147,9 +146,4 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
   )
 }
 
-const btnWrapper = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
 export default OrderDetailModal

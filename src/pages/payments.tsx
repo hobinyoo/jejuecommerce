@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-
 import Button from '@components/cs/Button'
 import { doc, setDoc } from 'firebase/firestore'
 import { db } from 'src/firebase/initFirebase'

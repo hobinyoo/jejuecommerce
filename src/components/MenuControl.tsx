@@ -4,7 +4,6 @@ import { useAppSelector, RootState } from 'src/store'
 import { toSize } from 'styles/globalStyle'
 import CSText from './cs/CSText'
 import AutoSizeImage from './cs/AutoSizeImage'
-import { isEmpty } from 'lodash'
 
 interface Props {
   selectMenu: string

@@ -2,7 +2,7 @@ import MainHeader from '@components/cs/MainHeader'
 import OrderModal from '@components/modal/OrderModal'
 import { css } from '@emotion/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import nookies from 'nookies'
 import { RootState, useAppSelector } from 'src/store'
 import MainSection from '@components/main/MainSection'
@@ -23,8 +23,10 @@ import HistoryEffect from '@components/main/HistoryEffect'
 import IntroMenuSection from '@components/main/IntroMenuSection'
 import SafePolicy from '@components/main/SafePolicy'
 import PackageMethod from '@components/main/PackageMethod'
-import StartPage from '@components/main/StartPage'
+import dynamic from 'next/dynamic'
+// import StartPage from '@components/main/StartPage'
 
+const StartPage = dynamic(() => import('@components/main/StartPage'))
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const user = nookies.get(ctx)
@@ -51,13 +53,28 @@ const Main = ({
   const [orderDetailVisible, setOrderDetailVisible] = useState<boolean>(false)
   const [notiVisible, setNotiVisible] = useState<boolean>(false)
 
+  const [startEnabled, setStartEnabled] = useState<string | null>('')
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (startEnabled) {
+        localStorage.setItem('couponVisible', startEnabled)
+      }
+
+      const coupon = localStorage.getItem('couponVisible')
+      setStartEnabled(coupon)
+    }
+  }, [startEnabled])
+
   const getSize = (input: number) => {
     return toSize(width, height, input)
   }
 
   return (
     <>
-      <StartPage />
+      {startEnabled !== 'noShow' && (
+        <StartPage setStartEnabled={setStartEnabled} />
+      )}
       <div
         css={[
           container,

@@ -1,5 +1,5 @@
 import Button from '@components/cs/Button'
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import Divider from '@mui/material/Divider'
 import { useRouter } from 'next/router'
 import { auth } from 'src/firebase/initFirebase'

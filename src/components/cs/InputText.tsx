@@ -3,7 +3,6 @@ import { css } from '@emotion/react'
 import { useAppSelector, RootState } from 'src/store'
 import { toSize } from 'styles/globalStyle'
 import { isEmpty } from 'lodash'
-import { unlink } from 'fs'
 
 interface Props {
   name: string

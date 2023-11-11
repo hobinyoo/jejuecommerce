@@ -14,17 +14,14 @@ import ErrorMessage from '@components/Error'
 import { nameValidation, phoneValidation } from 'src/function/vaildation'
 import Button from '@components/cs/Button'
 import PostModal from '@components/modal/PostModal'
-
 import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
-import { menuData } from 'src/constants/products'
 import OrderMenu from '@components/order-menu/OrderMenu'
+import { getBaseUrl } from 'src/utils/url'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const user = nookies.get(ctx)
-    const res = await fetch(
-      `http://localhost:3000/api/get-oneUserInfo?id=${user.uid}`
-    )
+    const res = await fetch(`${getBaseUrl}/api/get-oneUserInfo?id=${user.uid}`)
     let data = await res.json()
     data.uid = user.uid
     return {
