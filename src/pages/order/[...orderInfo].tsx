@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import nookies from 'nookies'
-import PayMents from '../payments'
+
 import MainHeader from '@components/cs/MainHeader'
 import { useAppSelector, RootState } from 'src/store'
 import { toSize } from 'styles/globalStyle'
@@ -17,6 +17,7 @@ import PostModal from '@components/modal/PostModal'
 import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
 import OrderMenu from '@components/order-menu/OrderMenu'
 import { getBaseUrl } from 'src/utils/url'
+import Payments from '@components/payments/Payments'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -217,7 +218,7 @@ const Order = ({
         />
       )}
 
-      <PayMents
+      <Payments
         uid={data.uid ?? ''}
         quantity={quantityArr}
         totalPrice={calculateTotalPrice(quantityArr)}

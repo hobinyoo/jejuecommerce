@@ -11,7 +11,7 @@ import {
 import { useRouter } from 'next/router'
 import { menuData } from 'src/constants/products'
 
-const PayMents = ({
+const Payments = ({
   uid,
   quantity,
   totalPrice,
@@ -120,4 +120,4 @@ const PayMents = ({
   )
 }
 
-export default PayMents
+export default Payments
