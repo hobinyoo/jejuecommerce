@@ -2,7 +2,7 @@ import AutoSizeImage from '@components/cs/AutoSizeImage'
 import Button from '@components/cs/Button'
 import CSSpan from '@components/cs/CSSpan'
 import CSText from '@components/cs/CSText'
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useEffect } from 'react'
 import { useAppSelector, RootState } from 'src/store'
 import { toSize } from 'styles/globalStyle'
 
@@ -19,11 +19,15 @@ const StartPage = ({ setStartEnabled }: Props) => {
     return toSize(width, height, input)
   }
 
+  useEffect(() => {
+    let vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+  }, [])
   return (
     <div
       css={{
         padding: `${getSize(30)}px ${getSize(20)}px`,
-        height: '100vh',
+        height: 'calc(var(--vh, 1vh) * 100)',
         width: '100%',
         zIndex: 3,
         position: 'fixed',
