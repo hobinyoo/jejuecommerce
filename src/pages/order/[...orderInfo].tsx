@@ -49,15 +49,11 @@ const Order = ({
   const getSize = (input: number) => {
     return toSize(width, height, input)
   }
-  const [name, setName] = useState<string>(data.items?.name ?? '')
-  const [phoneNumber, setPhoneNumber] = useState<string>(
-    data.items?.phoneNumber ?? ''
-  )
-  const [address, setAddress] = useState<string>(data.items?.address ?? '')
-  const [addressDetail, setAddressDetail] = useState<string>(
-    data.items?.addressDetail ?? ''
-  )
-  const [postCode, setPostCode] = useState<string>(data.items?.postCode ?? '')
+  const [name, setName] = useState<string>('')
+  const [phoneNumber, setPhoneNumber] = useState<string>('')
+  const [address, setAddress] = useState<string>('')
+  const [addressDetail, setAddressDetail] = useState<string>('')
+  const [postCode, setPostCode] = useState<string>('')
   const [carrierRequest, setCarrierRequest] = useState<string>('')
 
   const [postVisible, setPostVisible] = useState<boolean>(false)
@@ -125,7 +121,7 @@ const Order = ({
             name="name"
             placeholder="이름을 입력해주세요."
             setInputText={setName}
-            inputText={name}
+            inputText={data ? data.items?.name : name}
           />
           {!isEmpty(name) && !nameValidation(name) && (
             <ErrorMessage message={'2-4 글자의 이름을 입력해주세요.'} />
