@@ -39,7 +39,7 @@ const HistoryEffect = () => {
           lineHeight={0.83}
           textAlignCenter
         >
-          {'메뉴 역사 및 효능'}
+          달인의 가마솥 목표
         </CSText>
         <CSText
           size={13}
@@ -48,7 +48,7 @@ const HistoryEffect = () => {
           lineHeight={1.62}
           textAlignCenter
         >
-          {`달인의 가마솥은 "물 맛 좋은 제주"에서 만듭니다 또\n 한 "100% 한우 또는 국내산 육우"와 "신선하고 좋\n 은 재료"를 사용한 안심 먹거리 입니다
+          {`달인의 가마솥은 "물 맛 좋은 제주"에서 만듭니다. 또\n 한 "100% 한우 또는 국내산 육우"와 "신선하고 좋\n 은 재료"를 사용한 안심 먹거리 입니다
             밀키트 제품이 아닌 달인이 만드는 "hand made\n  제품"으로 맛을 보장합니다
             `}
         </CSText>
@@ -60,7 +60,7 @@ const HistoryEffect = () => {
           lineHeight={1.62}
           textAlignCenter
         >
-          {`역사 및 효능 간략하게 적어주시면 좋을 것 같습니다\n  역사 및 효능 간략하게 적어주시면 좋을 것 같습니다`}
+          {`'요리에 진심인 쉐프가 전통 가마솥 방식으로\n맛 좋은 먹거리를 만든다'는 의미로 \n공장에서 대량으로 만드는 밀키트가 아닙니다.`}
         </CSText>
         <div
           css={{

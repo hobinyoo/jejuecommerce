@@ -99,28 +99,6 @@ const Main = ({
             width={getSize(360)}
             height={getSize(240)}
           />
-          <div css={{ backgroundColor: 'yellow' }}>영상</div>
-          <div
-            css={{
-              width: '100%',
-              height: `${getSize(100)}px`,
-              backgroundColor: 'black',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'column',
-            }}
-          >
-            <CSText size={12} color={'#fffcf7'} lineHeight={1.33}>
-              {'달인의 가마솥 브랜드 설명 \n 가게 소개 세줄 \n  가게 소개 세줄'}
-            </CSText>
-            <CSText size={12} color={'#fffcf7'} lineHeight={1.33}>
-              {'달인의 가마솥 브랜드 설명 \n  가게 소개 세줄'}
-            </CSText>
-            <CSText size={12} color={'#fffcf7'} lineHeight={1.33}>
-              {'달인의 가마솥 브랜드 설명 \n 가게 소개 세줄 \n  가게 소개 세줄'}
-            </CSText>
-          </div>
 
           <HistoryEffect />
           <IntroMenuSection />
