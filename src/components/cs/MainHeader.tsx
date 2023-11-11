@@ -9,7 +9,6 @@ import { css } from '@emotion/react'
 import MenuDrawer from '@components/navigation/Drawer'
 import { db } from '@firebase/initFirebase'
 import { doc, getDoc } from 'firebase/firestore'
-import { isEmpty } from 'lodash'
 import AutoSizeImage from './AutoSizeImage'
 import { toSize } from 'styles/globalStyle'
 import { useRouter } from 'next/router'
@@ -32,7 +31,7 @@ const MainHeader = ({
   const router = useRouter()
 
   const getUser = useCallback(async () => {
-    if (!isEmpty(uid)) {
+    if (uid) {
       const docRef = doc(db, 'users', uid)
       const result = await getDoc(docRef)
       setName(result?.data()?.name)
