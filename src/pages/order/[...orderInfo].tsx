@@ -22,9 +22,15 @@ import Payments from '@components/payments/Payments'
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const user = nookies.get(ctx)
-    const res = await fetch(`${getBaseUrl}/api/get-oneUserInfo?id=${user.uid}`)
-    let data = await res.json()
-    // data.uid = user.uid
+    let data
+    if (user) {
+      const res = await fetch(
+        `${getBaseUrl}/api/get-oneUserInfo?id=${user.uid}`
+      )
+      data = await res.json()
+      data.uid = user.uid
+    }
+
     return {
       props: { data },
     }
