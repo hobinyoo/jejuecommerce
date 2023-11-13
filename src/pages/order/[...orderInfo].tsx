@@ -24,7 +24,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     const user = nookies.get(ctx)
     const res = await fetch(`${getBaseUrl}/api/get-oneUserInfo?id=${user.uid}`)
     let data = await res.json()
-    data.uid = user.uid
+    // data.uid = user.uid
     return {
       props: { data },
     }
