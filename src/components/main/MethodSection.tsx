@@ -32,7 +32,7 @@ const MethodSection = () => {
         lineHeight={0.83}
         textAlignCenter
       >
-        {'맛있게 먹는 법 및 보관 방법'}
+        맛있게 먹는 법 및 보관 방법
       </CSText>
       <div
         css={{
@@ -137,20 +137,20 @@ const method = css`
 `
 const methodWrapperWithBorder = css`
   ${methodWrapper}
-  & > :nth-child(1) {
+  & > :nth-of-type(1) {
     border-bottom: 1px dotted #94d5ff;
     border-right: 1px dotted #94d5ff;
     padding-bottom: 34px;
   }
-  & > :nth-child(2) {
+  & > :nth-of-type(2) {
     border-bottom: 1px dotted #94d5ff;
     padding-bottom: 34px;
   }
-  & > :nth-child(3) {
+  & > :nth-of-type(3) {
     border-right: 1px dotted #94d5ff;
     padding-top: 20.5px;
   }
-  & > :nth-child(4) {
+  & > :nth-of-type(4) {
     padding-top: 20.5px;
   }
 `

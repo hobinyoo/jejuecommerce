@@ -14,10 +14,10 @@ import ErrorMessage from '@components/Error'
 import { nameValidation, phoneValidation } from 'src/function/vaildation'
 import Button from '@components/cs/Button'
 import PostModal from '@components/modal/PostModal'
-// import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
+import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
 import OrderMenu from '@components/order-menu/OrderMenu'
 import { getBaseUrl } from 'src/utils/url'
-// import Payments from '@components/payments/Payments'
+import Payments from '@components/payments/Payments'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -51,11 +51,15 @@ const Order = ({
   const getSize = (input: number) => {
     return toSize(width, height, input)
   }
-  const [name, setName] = useState<string>('')
-  const [phoneNumber, setPhoneNumber] = useState<string>('')
-  const [address, setAddress] = useState<string>('')
-  const [addressDetail, setAddressDetail] = useState<string>('')
-  const [postCode, setPostCode] = useState<string>('')
+  const [name, setName] = useState<string>(data.items.name ?? '')
+  const [phoneNumber, setPhoneNumber] = useState<string>(
+    data.items.phoneNumber ?? ''
+  )
+  const [address, setAddress] = useState<string>(data.items.address ?? '')
+  const [addressDetail, setAddressDetail] = useState<string>(
+    data.items.addressDetail ?? ''
+  )
+  const [postCode, setPostCode] = useState<string>(data.items.postCode ?? '')
   const [carrierRequest, setCarrierRequest] = useState<string>('')
 
   const [postVisible, setPostVisible] = useState<boolean>(false)
@@ -123,7 +127,7 @@ const Order = ({
             name="name"
             placeholder="이름을 입력해주세요."
             setInputText={setName}
-            inputText={data ? data.items?.name : name}
+            inputText={name}
           />
           {!isEmpty(name) && !nameValidation(name) && (
             <ErrorMessage message={'2-4 글자의 이름을 입력해주세요.'} />
@@ -216,7 +220,7 @@ const Order = ({
         />
       )}
 
-      {/* <Payments
+      <Payments
         uid={data.uid ?? ''}
         quantity={quantityArr}
         totalPrice={calculateTotalPrice(quantityArr)}
@@ -226,7 +230,7 @@ const Order = ({
         addressDetail={addressDetail}
         postCode={postCode}
         carrierRequest={carrierRequest}
-      /> */}
+      />
     </div>
   )
 }

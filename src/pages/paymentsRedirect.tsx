@@ -4,6 +4,7 @@ import { doc, updateDoc } from 'firebase/firestore'
 import { db } from 'src/firebase/initFirebase'
 import { format } from 'date-fns'
 import { isEmpty } from 'lodash'
+import CSText from '@components/cs/CSText'
 
 interface PaymentInfo {
   orderName: string
@@ -60,19 +61,54 @@ const PaymentsRedirect = () => {
 
   return (
     <main
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      css={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        height: '100vh',
+      }}
     >
-      <h1>결제 성공</h1>
-      <p>주문: {paymentInfo.orderName}</p>
-      <p>결제 수단: {paymentInfo.method}</p>
-      <p>결제 금액: {paymentInfo.totalAmount}원</p>
-      <p>
-        결제 일시:
-        {paymentInfo.approvedAt}
-      </p>
-      <p>
-        <a href={paymentInfo.receipt}>영수증</a>
-      </p>
+      <div
+        css={{
+          border: '1px solid #15c9de',
+          padding: '20px',
+          borderRadius: '8px',
+        }}
+      >
+        <h1>결제 성공</h1>
+        <CSText size={16} color={'black'} lineHeight={1.21} marginTop={10}>
+          주문: {paymentInfo.orderName}
+        </CSText>
+        <CSText size={16} color={'black'} lineHeight={1.21}>
+          결제 수단: {paymentInfo.method}
+        </CSText>
+        <CSText size={16} color={'black'} lineHeight={1.21}>
+          결제 금액: {paymentInfo.totalAmount}원
+        </CSText>
+        <CSText size={16} color={'black'} lineHeight={1.21}>
+          결제 일시:
+          {paymentInfo.approvedAt}
+        </CSText>
+        <CSText
+          size={16}
+          color={'black'}
+          lineHeight={1.21}
+          marginTop={10}
+          fontFamily={'PretendardBold'}
+        >
+          영수증은 주문내역에서 확인 가능합니다.
+        </CSText>
+        <CSText
+          size={16}
+          color={'black'}
+          lineHeight={1.21}
+          fontFamily={'PretendardBold'}
+        >
+          현금 영수증은 매장으로 문의해주세요.
+        </CSText>
+      </div>
     </main>
   )
 }

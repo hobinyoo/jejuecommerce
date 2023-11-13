@@ -110,9 +110,10 @@ const Payments = ({
       <Button
         onClick={handleClick}
         btnHeight={50}
-        backgroundColor={'#000'}
-        fontColor={'#fff'}
+        backgroundColor="#15c9de"
+        fontColor="#fff"
         fontSize={17}
+        borderColor="#15c9de"
       >
         결제하기
       </Button>

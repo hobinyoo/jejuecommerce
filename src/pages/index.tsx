@@ -28,9 +28,10 @@ import dynamic from 'next/dynamic'
 const StartPage = dynamic(() => import('@components/main/StartPage'))
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
-    const user = nookies.get(ctx)
+    const cookies = nookies.get(ctx)
+
     return {
-      props: { user },
+      props: { cookies },
     }
   } catch (err) {
     console.log(err)
@@ -43,7 +44,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 }
 
 const Main = ({
-  user,
+  cookies,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
@@ -52,16 +53,15 @@ const Main = ({
   const [orderDetailVisible, setOrderDetailVisible] = useState<boolean>(false)
   const [notiVisible, setNotiVisible] = useState<boolean>(false)
 
-  const [startEnabled, setStartEnabled] = useState<string | null>('')
+  const [startEnabled, setStartEnabled] = useState<string | null>(
+    cookies.coupon ?? ''
+  )
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (startEnabled) {
-        localStorage.setItem('couponVisible', startEnabled)
+        nookies.set(undefined, 'coupon', startEnabled, { path: '/' })
       }
-
-      const coupon = localStorage.getItem('couponVisible')
-      setStartEnabled(coupon)
     }
   }, [startEnabled])
 
@@ -88,7 +88,7 @@ const Main = ({
           <MainHeader
             windowWidth={width}
             windowHeight={height}
-            uid={user?.uid}
+            uid={cookies?.uid}
             setOrderDetailVisible={setOrderDetailVisible}
           />
 
@@ -118,7 +118,9 @@ const Main = ({
           <div css={[buttonWrapper, { width: width > 500 ? '500px' : '100%' }]}>
             <Button
               onClick={() =>
-                isEmpty(user.uid) ? setNotiVisible(true) : setOrderVisible(true)
+                isEmpty(cookies.uid)
+                  ? setNotiVisible(true)
+                  : setOrderVisible(true)
               }
               btnHeight={50}
               backgroundColor={'#15c9de'}
@@ -139,7 +141,7 @@ const Main = ({
 
           {orderVisible && (
             <OrderModal
-              uid={user.uid}
+              uid={cookies.uid}
               orderVisible={orderVisible}
               setOrderVisible={setOrderVisible}
             />
