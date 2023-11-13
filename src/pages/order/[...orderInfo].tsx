@@ -125,7 +125,7 @@ const Order = ({}) => {
             name="name"
             placeholder="이름을 입력해주세요."
             setInputText={setName}
-            inputText={data ? data.items?.name : name}
+            inputText={name}
           />
           {!isEmpty(name) && !nameValidation(name) && (
             <ErrorMessage message={'2-4 글자의 이름을 입력해주세요.'} />
@@ -219,7 +219,7 @@ const Order = ({}) => {
       )}
 
       <Payments
-        uid={data.uid ?? ''}
+        uid={''}
         quantity={quantityArr}
         totalPrice={calculateTotalPrice(quantityArr)}
         name={name}
