@@ -19,36 +19,34 @@ import OrderMenu from '@components/order-menu/OrderMenu'
 import { getBaseUrl } from 'src/utils/url'
 import Payments from '@components/payments/Payments'
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  try {
-    const user = nookies.get(ctx)
-    let data
-    if (user) {
-      const res = await fetch(
-        `${getBaseUrl}/api/get-oneUserInfo?id=${user.uid}`
-      )
-      data = await res.json()
-      data.uid = user.uid
-    }
+// export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+//   try {
+//     const user = nookies.get(ctx)
+//     let data
+//     if (user) {
+//       const res = await fetch(
+//         `${getBaseUrl}/api/get-oneUserInfo?id=${user.uid}`
+//       )
+//       data = await res.json()
+//       data.uid = user.uid
+//     }
 
-    return {
-      props: { data },
-    }
-  } catch (err) {
-    console.log(err)
+//     return {
+//       props: { data },
+//     }
+//   } catch (err) {
+//     console.log(err)
 
-    ctx.res.writeHead(302, { Location: '/signIn' })
-    ctx.res.end()
+//     ctx.res.writeHead(302, { Location: '/signIn' })
+//     ctx.res.end()
 
-    return { props: {} as never }
-  }
-}
+//     return { props: {} as never }
+//   }
+// }
 
-const Order = ({
-  data,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Order = ({}) => {
   const router = useRouter()
-  console.log(data)
+  // console.log(data)
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
@@ -177,7 +175,7 @@ const Order = ({
               fontSize={14}
               borderRadius={4}
             >
-              {'주소 찾기'}
+              주소 찾기
             </Button>
           </div>
           <InputText
@@ -201,7 +199,7 @@ const Order = ({
             marginBottom={8}
             lineHeight={1.15}
           >
-            {'배송시 요청사항'}
+            배송시 요청사항
           </CSText>
           <InputText
             name="carrierRequest"
