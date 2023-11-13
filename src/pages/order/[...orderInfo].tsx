@@ -2,8 +2,8 @@ import InputText from '@components/cs/InputText'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-// import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
-// import nookies from 'nookies'
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
+import nookies from 'nookies'
 
 import MainHeader from '@components/cs/MainHeader'
 import { useAppSelector, RootState } from 'src/store'
@@ -14,39 +14,37 @@ import ErrorMessage from '@components/Error'
 import { nameValidation, phoneValidation } from 'src/function/vaildation'
 import Button from '@components/cs/Button'
 import PostModal from '@components/modal/PostModal'
-import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
+// import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
 import OrderMenu from '@components/order-menu/OrderMenu'
-// import { getBaseUrl } from 'src/utils/url'
-import Payments from '@components/payments/Payments'
+import { getBaseUrl } from 'src/utils/url'
+// import Payments from '@components/payments/Payments'
 
-// export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-//   try {
-//     const user = nookies.get(ctx)
-//     let data
-//     if (user) {
-//       const res = await fetch(
-//         `${getBaseUrl}/api/get-oneUserInfo?id=${user.uid}`
-//       )
-//       data = await res.json()
-//       data.uid = user.uid
-//     }
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  try {
+    const user = nookies.get(ctx)
 
-//     return {
-//       props: { data },
-//     }
-//   } catch (err) {
-//     console.log(err)
+    const res = await fetch(`${getBaseUrl}/api/get-oneUserInfo?id=${user.uid}`)
+    let data = await res.json()
+    data.uid = user.uid
 
-//     ctx.res.writeHead(302, { Location: '/signIn' })
-//     ctx.res.end()
+    return {
+      props: { data },
+    }
+  } catch (err) {
+    console.log(err)
 
-//     return { props: {} as never }
-//   }
-// }
+    ctx.res.writeHead(302, { Location: '/' })
+    ctx.res.end()
 
-const Order = ({}) => {
+    return { props: {} as never }
+  }
+}
+
+const Order = ({
+  data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter()
-  // console.log(data)
+  console.log(data)
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
@@ -125,7 +123,7 @@ const Order = ({}) => {
             name="name"
             placeholder="이름을 입력해주세요."
             setInputText={setName}
-            inputText={name}
+            inputText={data ? data.items?.name : name}
           />
           {!isEmpty(name) && !nameValidation(name) && (
             <ErrorMessage message={'2-4 글자의 이름을 입력해주세요.'} />
@@ -218,8 +216,8 @@ const Order = ({}) => {
         />
       )}
 
-      <Payments
-        uid={''}
+      {/* <Payments
+        uid={data.uid ?? ''}
         quantity={quantityArr}
         totalPrice={calculateTotalPrice(quantityArr)}
         name={name}
@@ -228,7 +226,7 @@ const Order = ({}) => {
         addressDetail={addressDetail}
         postCode={postCode}
         carrierRequest={carrierRequest}
-      />
+      /> */}
     </div>
   )
 }
