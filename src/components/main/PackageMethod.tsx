@@ -61,13 +61,13 @@ const PackageMethod = () => {
         <div>
           <CSText
             size={16}
-            color={'#fff'}
+            color="#fff"
             lineHeight={1.13}
             fontFamily="PretendardBold"
           >
             배송 절차
           </CSText>
-          <CSText size={13} color={'#fff'} lineHeight={1.38} marginTop={10}>
+          <CSText size={13} color="#fff" lineHeight={1.38} marginTop={10}>
             7만원 이상 배송시 배송비 무료
           </CSText>
         </div>

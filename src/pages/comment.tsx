@@ -81,7 +81,7 @@ const Comment = () => {
 
   return (
     <div css={container}>
-      <MainHeader windowWidth={width} windowHeight={height} uid={''} />{' '}
+      <MainHeader windowWidth={width} windowHeight={height} uid={''} />
       <div
         css={{
           padding: `0 ${getSize(20)}px ${getSize(15)}px ${getSize(20)}px`,
@@ -90,7 +90,7 @@ const Comment = () => {
         <CSText
           size={24}
           fontFamily={'PretendardBold'}
-          color={'#000'}
+          color="#000"
           lineHeight={0.83}
         >
           후기작성
@@ -109,7 +109,7 @@ const Comment = () => {
         </div>
         <CSText
           size={12}
-          color={'#000'}
+          color="#000"
           lineHeight={1.18}
           marginTop={50}
           marginBottom={10}
@@ -163,7 +163,7 @@ const Comment = () => {
         <Button
           btnHeight={46}
           backgroundColor="#15c9de"
-          fontColor={'#fff'}
+          fontColor="#fff"
           fontSize={14}
           onClick={saveComment}
           borderRadius={8}

@@ -18,13 +18,13 @@ const MenuPoint = () => {
       <AutoSizeImage src={'/images/ico_point@3x.png'} width={34} height={20} />
       <CSText
         size={24}
-        fontFamily={'GodoB'}
-        color={'#3e3737'}
+        fontFamily="GodoB"
+        color="#3e3737"
         marginTop={20}
         marginBottom={50}
         lineHeight={1.13}
       >
-        {'메뉴만의 포인트 및 장점'}
+        '메뉴만의 포인트 및 장점'
       </CSText>
       <div
         css={[
@@ -47,8 +47,8 @@ const MenuPoint = () => {
         >
           <CSText
             size={14}
-            fontFamily={'PretendardBold'}
-            color={'#fffcf7'}
+            fontFamily="PretendardBold"
+            color="#fffcf7"
             lineHeight={1.33}
           >
             {'푸짐한 양의 \n 한우 소고기'}
@@ -69,8 +69,8 @@ const MenuPoint = () => {
         >
           <CSText
             size={14}
-            fontFamily={'PretendardBold'}
-            color={'#fffcf7'}
+            fontFamily="PretendardBold"
+            color="#fffcf7"
             lineHeight={1.33}
           >
             {'푹 고아서 \n 만든 진한 \n 사골 육수'}
@@ -91,7 +91,7 @@ const MenuPoint = () => {
         >
           <CSText
             size={14}
-            fontFamily={'PretendardBold'}
+            fontFamily="PretendardBold"
             color={'#fffcf7'}
             lineHeight={1.33}
           >
@@ -99,27 +99,27 @@ const MenuPoint = () => {
           </CSText>
           <CSText
             size={14}
-            fontFamily={'PretendardBold'}
-            color={'#fffcf7'}
+            fontFamily="PretendardBold"
+            color="#fffcf7"
             lineHeight={1.33}
           >
-            {'국내산'}
+            국내산
           </CSText>
           <CSText
             size={14}
-            fontFamily={'PretendardBold'}
-            color={'#fffcf7'}
+            fontFamily="PretendardBold"
+            color="#fffcf7"
             lineHeight={1.33}
           >
-            {'고춧가루와'}
+            고춧가루와
           </CSText>
           <CSText
             size={14}
-            fontFamily={'PretendardBold'}
-            color={'#fffcf7'}
+            fontFamily="PretendardBold"
+            color="#fffcf7"
             lineHeight={1.33}
           >
-            {'우거지'}
+            우거지
           </CSText>
         </div>
       </div>

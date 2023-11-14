@@ -88,12 +88,12 @@ const DrawerList = ({
               onClick={() => router.push('/signUp')}
               btnWidth={80}
               btnHeight={30}
-              backgroundColor={'#000'}
-              fontColor={'#fff'}
+              backgroundColor="#000"
+              fontColor="#fff"
               fontSize={13}
               borderRadius={4}
             >
-              <CSText size={13} color={'#fff'} lineHeight={1.54}>
+              <CSText size={13} color="#fff" lineHeight={1.54}>
                 {'회원가입'}
               </CSText>
             </Button>

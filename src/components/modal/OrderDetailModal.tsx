@@ -76,7 +76,7 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
           <CSText
             size={15}
             fontFamily={'PretendardBold'}
-            color={'#000'}
+            color="#000"
             lineHeight={1.25}
             marginTop={30}
           >
@@ -84,7 +84,7 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
           </CSText>
           <CSText
             size={13}
-            color={'#000'}
+            color="#000"
             marginTop={30}
             marginBottom={8}
             lineHeight={1.15}
@@ -102,7 +102,7 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
           )}
           <CSText
             size={13}
-            color={'#000'}
+            color="#000"
             marginTop={30}
             marginBottom={8}
             lineHeight={1.15}
@@ -123,9 +123,9 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
           <Button
             onClick={handle.orderDetail}
             btnHeight={50}
-            backgroundColor={'#000'}
+            backgroundColor="#000"
             fontSize={17}
-            fontColor={'#fff'}
+            fontColor="#fff"
             marginTop={20}
           >
             {'주문내역 확인'}
@@ -134,7 +134,7 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
         <CSText
           onClick={handle.signIn}
           size={12}
-          color={'#000'}
+          color="#000"
           marginTop={30}
           marginBottom={8}
           lineHeight={1.15}

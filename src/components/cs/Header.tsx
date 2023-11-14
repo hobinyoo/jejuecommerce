@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import React from 'react'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useRouter } from 'next/router'
+import CSText from './CSText'
 
 const Header = () => {
   const router = useRouter()
@@ -9,7 +10,12 @@ const Header = () => {
   return (
     <div css={container}>
       <ArrowBackIcon css={arrowIcon} onClick={() => router.back()} />
-      <p>
+      <CSText
+        size={18}
+        color="#3e3737"
+        lineHeight={1.11}
+        fontFamily="PretendardBold"
+      >
         {router?.pathname === '/signUp'
           ? '회원가입'
           : router?.pathname === '/signIn'
@@ -21,9 +27,9 @@ const Header = () => {
           : router?.pathname === '/comment'
           ? '후기작성'
           : router?.pathname === '/admin'
-          ? '관리자'
+          ? '관리자 페이지'
           : null}
-      </p>
+      </CSText>
       <p>{''}</p>
     </div>
   )

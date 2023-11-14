@@ -111,12 +111,12 @@ const MethodSection = () => {
           <CSText
             size={14}
             fontFamily={'PretendardBold'}
-            color={'#fff'}
+            color="#fff"
             lineHeight={1.21}
           >
             유통기한 안내
           </CSText>
-          <CSText size={12} color={'#fff'} lineHeight={1.42} marginTop={13}>
+          <CSText size={12} color="#fff" lineHeight={1.42} marginTop={13}>
             유통기한에 관한 내용이 나옵니다.
           </CSText>
         </div>

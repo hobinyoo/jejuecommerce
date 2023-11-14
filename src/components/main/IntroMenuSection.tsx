@@ -67,7 +67,7 @@ const IntroMenuSection = () => {
       </CSText>
 
       {menuData.map((data, index) => (
-        <>
+        <div key={index}>
           <div
             css={[
               introMenuBox,
@@ -77,7 +77,6 @@ const IntroMenuSection = () => {
                 whiteSpace: 'pre-line',
               },
             ]}
-            key={index}
           >
             <div css={[agingText, { paddingLeft: `${getSize(20)}px` }]}>
               <CSText size={10} color={'#15c9de'} lineHeight={2} marginTop={4}>
@@ -104,7 +103,7 @@ const IntroMenuSection = () => {
               </CSText>
               <CSText
                 size={18}
-                color={'#000'}
+                color="#000"
                 lineHeight={1.11}
                 fontFamily="PretendardBold"
                 marginTop={20}
@@ -129,11 +128,11 @@ const IntroMenuSection = () => {
               },
             ]}
           >
-            <CSText size={12} color={'#fff'} lineHeight={1.5}>
+            <CSText size={12} color="#fff" lineHeight={1.5}>
               {data.description}
             </CSText>
           </div>
-        </>
+        </div>
       ))}
     </div>
   )

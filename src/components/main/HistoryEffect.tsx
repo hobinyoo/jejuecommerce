@@ -86,7 +86,7 @@ const HistoryEffect = () => {
               backgroundColor: '#000',
             }}
           />
-          <CSText size={13} color={'#000'} lineHeight={1.62}>
+          <CSText size={13} color="#000" lineHeight={1.62}>
             {'달인의 가마솥 특징'}
           </CSText>
           <div
@@ -131,7 +131,7 @@ const HistoryEffect = () => {
               />
               <CSText
                 size={10}
-                color={'#000'}
+                color="#000"
                 lineHeight={1.3}
                 marginTop={18}
                 fontFamily="PretendardBold"

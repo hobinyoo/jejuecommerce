@@ -71,7 +71,7 @@ const MenuPointSection = () => {
                 {`0${index + 1}`}
               </CSText>
             </div>
-            <CSText size={14} color={'#fff'} lineHeight={1.57}>
+            <CSText size={14} color="#fff" lineHeight={1.57}>
               {data}
             </CSText>
           </div>

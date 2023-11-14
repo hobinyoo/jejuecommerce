@@ -69,7 +69,7 @@ const MainHeader = ({
           />
         )}
 
-        <CSText size={18} color={'#000'} lineHeight={1.17}>
+        <CSText size={18} color="#000" lineHeight={1.17}>
           {router.pathname === '/signUp' ? '회원가입' : ''}
         </CSText>
       </div>

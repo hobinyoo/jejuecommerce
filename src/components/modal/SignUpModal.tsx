@@ -98,7 +98,7 @@ const SignUpModal = ({ setSignVisible }: Props) => {
           onClick={clickBtn}
           btnHeight={46}
           backgroundColor={'#15c9de'}
-          fontColor={'#fff'}
+          fontColor="#fff"
           fontSize={14}
           borderRadius={8}
           marginTop={10}

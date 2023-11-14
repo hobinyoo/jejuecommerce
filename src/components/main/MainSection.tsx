@@ -25,6 +25,7 @@ const MainSection = () => {
         src={'/images/mainImg.png'}
         width={getSize(360)}
         height={getSize(360)}
+        priority={true}
       />
       <CSText
         size={24}

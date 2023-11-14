@@ -66,7 +66,7 @@ const NotationsSection = () => {
                   padding: `${getSize(15)}px`,
                 }}
               >
-                <CSText size={13} color={'#000'} lineHeight={1.54}>
+                <CSText size={13} color="#000" lineHeight={1.54}>
                   {'국내산'}
                 </CSText>
               </td>

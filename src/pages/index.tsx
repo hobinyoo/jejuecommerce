@@ -125,7 +125,7 @@ const Main = ({
               btnHeight={50}
               backgroundColor={'#15c9de'}
               fontSize={17}
-              fontColor={'#fff'}
+              fontColor="#fff"
               borderColor={'#15c9de'}
             >
               {'구매하기'}

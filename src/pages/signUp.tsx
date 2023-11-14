@@ -128,7 +128,7 @@ const SignUp = () => {
           },
         ]}
       >
-        <CSText size={13} color={'#000'} marginBottom={8} lineHeight={1.15}>
+        <CSText size={13} color="#000" marginBottom={8} lineHeight={1.15}>
           {'이메일'}
         </CSText>
         <InputText
@@ -142,7 +142,7 @@ const SignUp = () => {
         )}
         <CSText
           size={13}
-          color={'#000'}
+          color="#000"
           marginTop={30}
           marginBottom={8}
           lineHeight={1.15}
@@ -163,7 +163,7 @@ const SignUp = () => {
         )}
         <CSText
           size={13}
-          color={'#000'}
+          color="#000"
           marginTop={30}
           marginBottom={8}
           lineHeight={1.15}
@@ -182,7 +182,7 @@ const SignUp = () => {
         )}
         <CSText
           size={13}
-          color={'#000'}
+          color="#000"
           marginTop={30}
           marginBottom={8}
           lineHeight={1.15}
@@ -200,7 +200,7 @@ const SignUp = () => {
         )}
         <CSText
           size={13}
-          color={'#000'}
+          color="#000"
           marginTop={30}
           marginBottom={8}
           lineHeight={1.15}
@@ -220,7 +220,7 @@ const SignUp = () => {
         )}
         <CSText
           size={13}
-          color={'#000'}
+          color="#000"
           marginTop={30}
           marginBottom={8}
           lineHeight={1.15}
@@ -240,7 +240,7 @@ const SignUp = () => {
             onClick={handle.clickButton}
             btnWidth={100}
             btnHeight={46}
-            backgroundColor={'#fff'}
+            backgroundColor="#fff"
             fontColor="#15c9de"
             fontSize={14}
             borderRadius={4}

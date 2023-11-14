@@ -19,11 +19,25 @@ const PaymentsRedirect = () => {
   const searchParams = router.query
 
   const [paymentInfo, setPaymentInfo] = useState({} as PaymentInfo)
+  const [seconds, setSeconds] = useState<number>(5)
 
   const secretKey = 'test_sk_aBX7zk2yd8yoAolYXpvVx9POLqKQ'
   const basicToken = Buffer.from(`${secretKey}:`, `utf-8`).toString('base64')
 
   const url = `https://api.tosspayments.com/v1/payments/orders/${searchParams?.orderId}`
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds((prevSeconds) => prevSeconds - 1)
+      } else {
+        clearInterval(intervalId)
+        router.push('/')
+      }
+    }, 1000)
+
+    return () => clearInterval(intervalId)
+  }, [seconds])
 
   const completePayments = useCallback(async () => {
     if (!isEmpty(searchParams?.orderId)) {
@@ -107,6 +121,9 @@ const PaymentsRedirect = () => {
           fontFamily={'PretendardBold'}
         >
           현금 영수증은 매장으로 문의해주세요.
+        </CSText>
+        <CSText size={16} color={'black'} lineHeight={1.21} marginTop={10}>
+          {seconds}초 뒤 메인으로 이동합니다.
         </CSText>
       </div>
     </main>

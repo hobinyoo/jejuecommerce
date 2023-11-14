@@ -7,6 +7,7 @@ interface Props {
   width: number
   height: number
   borderRadius?: string
+  priority?: boolean
   onClick?: () => void
 }
 
@@ -16,6 +17,7 @@ const AutoSizeImage = ({
   height,
   onClick,
   borderRadius,
+  priority = false,
 }: Props) => {
   return (
     <div
@@ -35,6 +37,7 @@ const AutoSizeImage = ({
         style={{ objectFit: 'cover' }}
         sizes="100%"
         alt=""
+        priority={priority}
       />
     </div>
   )

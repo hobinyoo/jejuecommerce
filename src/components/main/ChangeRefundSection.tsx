@@ -100,7 +100,7 @@ const ChangeRefundSection = () => {
             width={getSize(15)}
             height={getSize(15)}
           />
-          <CSText size={14} color={'#fff'} lineHeight={1.43} marginLeft={6}>
+          <CSText size={14} color="#fff" lineHeight={1.43} marginLeft={6}>
             {'전화번호: 070-5421-5644'}
           </CSText>
         </div>

@@ -41,7 +41,7 @@ const OrderDetail = () => {
         <CSText
           size={24}
           fontFamily={'PretendardBold'}
-          color={'#000'}
+          color="#000"
           lineHeight={0.83}
         >
           주문 내역
@@ -55,7 +55,7 @@ const OrderDetail = () => {
               <div key={index}>
                 <CSText
                   size={13}
-                  color={'#8b8b8b'}
+                  color="#8b8b8b"
                   lineHeight={1.15}
                   marginTop={40}
                   marginBottom={5}
@@ -75,21 +75,21 @@ const OrderDetail = () => {
                   <CSText
                     size={15}
                     fontFamily={'PretendardBold'}
-                    color={'#000'}
+                    color="#000"
                     lineHeight={1.2}
                   >
                     받는사람
                   </CSText>
                   <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
                     <div css={{ width: `${getSize(78)}px` }}>
-                      <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
+                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         {'받는 사람'}
                       </CSText>
                     </div>
 
                     <CSText
                       size={15}
-                      color={'#000'}
+                      color="#000"
                       lineHeight={1.2}
                       marginLeft={31}
                     >
@@ -98,13 +98,13 @@ const OrderDetail = () => {
                   </div>
                   <div css={[carrierInfo, { marginTop: ` ${getSize(20)}px` }]}>
                     <div css={{ width: `${getSize(78)}px` }}>
-                      <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
+                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         핸드폰 번호
                       </CSText>
                     </div>
                     <CSText
                       size={15}
-                      color={'#000'}
+                      color="#000"
                       lineHeight={1.2}
                       marginLeft={31}
                     >
@@ -113,7 +113,7 @@ const OrderDetail = () => {
                   </div>
                   <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
                     <div css={{ width: `${getSize(78)}px` }}>
-                      <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
+                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         주소
                       </CSText>
                     </div>
@@ -124,23 +124,23 @@ const OrderDetail = () => {
                         marginLeft: `${getSize(31)}px`,
                       }}
                     >
-                      <CSText size={15} color={'#000'} lineHeight={1.2}>
+                      <CSText size={15} color="#000" lineHeight={1.2}>
                         {value.address}
                       </CSText>
-                      <CSText size={15} color={'#000'} lineHeight={1.2}>
+                      <CSText size={15} color="#000" lineHeight={1.2}>
                         {value.addressDetail}
                       </CSText>
                     </div>
                   </div>
                   <div css={[carrierInfo, { marginTop: ` ${getSize(20)}px` }]}>
                     <div css={{ width: `${getSize(78)}px` }}>
-                      <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
+                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         우편 번호
                       </CSText>
                     </div>
                     <CSText
                       size={15}
-                      color={'#000'}
+                      color="#000"
                       lineHeight={1.2}
                       marginLeft={31}
                     >
@@ -149,13 +149,13 @@ const OrderDetail = () => {
                   </div>
                   <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
                     <div css={{ width: `${getSize(78)}px` }}>
-                      <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
+                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         배송 요청사항
                       </CSText>
                     </div>
                     <CSText
                       size={15}
-                      color={'#000'}
+                      color="#000"
                       lineHeight={1.2}
                       marginLeft={31}
                     >
@@ -164,13 +164,13 @@ const OrderDetail = () => {
                   </div>
                   <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
                     <div css={{ width: `${getSize(78)}px` }}>
-                      <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
+                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         배송현황
                       </CSText>
                     </div>
                     <CSText
                       size={15}
-                      color={'#000'}
+                      color="#000"
                       lineHeight={1.2}
                       marginLeft={31}
                     >
@@ -179,7 +179,7 @@ const OrderDetail = () => {
                   </div>
                   <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
                     <div css={{ width: `${getSize(78)}px` }}>
-                      <CSText size={15} color={'#8b8b8b'} lineHeight={1.2}>
+                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         영수증
                       </CSText>
                     </div>
@@ -187,7 +187,7 @@ const OrderDetail = () => {
                       <Link href={value.receipt}>
                         <CSText
                           size={15}
-                          color={'blue'}
+                          color="blue"
                           lineHeight={1.2}
                           marginLeft={31}
                           textDecoration={'underline'}
@@ -204,7 +204,7 @@ const OrderDetail = () => {
                       fontSize={14}
                       backgroundColor="#15c9de"
                       borderColor="#15c9de"
-                      fontColor={'#fff'}
+                      fontColor="#fff"
                       borderRadius={8}
                       onClick={() =>
                         router.push(`/comment?orderId=${value.id}`)

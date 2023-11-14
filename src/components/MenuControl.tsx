@@ -40,7 +40,7 @@ const MenuControl = ({ selectMenu, setSelectMenu }: Props) => {
           },
         ]}
       >
-        <CSText size={14} color={'#000'} lineHeight={1.14}>
+        <CSText size={14} color="#000" lineHeight={1.14}>
           {selectMenu}
         </CSText>
         {openBox ? (
@@ -74,7 +74,7 @@ const MenuControl = ({ selectMenu, setSelectMenu }: Props) => {
                   },
                 ]}
               >
-                <CSText size={14} color={'#000'} lineHeight={1.14}>
+                <CSText size={14} color="#000" lineHeight={1.14}>
                   {value}
                 </CSText>
               </div>

@@ -88,7 +88,7 @@ const Order = ({
         <CSText
           size={24}
           fontFamily={'PretendardBold'}
-          color={'#000'}
+          color="#000"
           lineHeight={0.83}
         >
           주문하기
@@ -107,7 +107,7 @@ const Order = ({
           <CSText
             size={15}
             fontFamily={'PretendardBold'}
-            color={'#000'}
+            color="#000"
             lineHeight={1.22}
             marginTop={20}
             marginBottom={5}
@@ -116,7 +116,7 @@ const Order = ({
           </CSText>
           <CSText
             size={13}
-            color={'#000'}
+            color="#000"
             marginTop={30}
             marginBottom={8}
             lineHeight={1.15}
@@ -134,7 +134,7 @@ const Order = ({
           )}
           <CSText
             size={13}
-            color={'#000'}
+            color="#000"
             marginTop={30}
             marginBottom={8}
             lineHeight={1.15}
@@ -152,7 +152,7 @@ const Order = ({
           )}
           <CSText
             size={13}
-            color={'#000'}
+            color="#000"
             marginTop={30}
             marginBottom={8}
             lineHeight={1.15}
@@ -172,8 +172,8 @@ const Order = ({
               onClick={handle.clickButton}
               btnWidth={100}
               btnHeight={46}
-              backgroundColor={'#fff'}
-              fontColor={'#000'}
+              backgroundColor="#fff"
+              fontColor="#000"
               fontSize={14}
               borderRadius={4}
             >
@@ -196,7 +196,7 @@ const Order = ({
           />
           <CSText
             size={13}
-            color={'#000'}
+            color="#000"
             marginTop={30}
             marginBottom={8}
             lineHeight={1.15}

@@ -97,7 +97,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
 
                 <CSText
                   size={14}
-                  color={'#000'}
+                  color="#000"
                   lineHeight={1.14}
                   fontFamily="PretendardBold"
                 >
@@ -127,7 +127,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
                 />
                 <CSText
                   size={15}
-                  color={'#000'}
+                  color="#000"
                   lineHeight={1.67}
                   fontFamily="PretendardBold"
                 >

@@ -40,7 +40,7 @@ const OrderMenu = ({ quantityArr }: Props) => {
         <CSText
           size={12}
           fontFamily={'PretendardBold'}
-          color={'#000'}
+          color="#000"
           lineHeight={1.17}
         >
           주문 상품
@@ -71,13 +71,13 @@ const OrderMenu = ({ quantityArr }: Props) => {
                     justifyContent: 'space-between',
                   }}
                 >
-                  <CSText size={13} color={'#000'} lineHeight={1.15}>
+                  <CSText size={13} color="#000" lineHeight={1.15}>
                     {menu.title}
                   </CSText>
-                  <CSText size={13} color={'#000'} lineHeight={1.15}>
+                  <CSText size={13} color="#000" lineHeight={1.15}>
                     {menu.price}
                     <span css={line} />
-                    <CSSpan size={13} color={'#000'} lineHeight={1.15}>
+                    <CSSpan size={13} color="#000" lineHeight={1.15}>
                       수량 {menu.quantity}개
                     </CSSpan>
                   </CSText>
