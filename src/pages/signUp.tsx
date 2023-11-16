@@ -128,8 +128,8 @@ const SignUp = () => {
           },
         ]}
       >
-        <CSText size={13} color="#000" marginBottom={8} lineHeight={1.15}>
-          {'이메일'}
+        <CSText size={13} marginBottom={8} lineHeight={1.15}>
+          이메일
         </CSText>
         <InputText
           name="email"
@@ -140,14 +140,8 @@ const SignUp = () => {
         {!isEmpty(email) && !emailValidation(email) && (
           <ErrorMessage message={'이메일 형식의 아이디를 입력해주세요.'} />
         )}
-        <CSText
-          size={13}
-          color="#000"
-          marginTop={30}
-          marginBottom={8}
-          lineHeight={1.15}
-        >
-          {'비밀번호'}
+        <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
+          비밀번호
         </CSText>
         <InputText
           name="password"
@@ -161,14 +155,8 @@ const SignUp = () => {
             message={'비밀번호에는 영문과 숫자가 포함 되어야 합니다.'}
           />
         )}
-        <CSText
-          size={13}
-          color="#000"
-          marginTop={30}
-          marginBottom={8}
-          lineHeight={1.15}
-        >
-          {'비밀번호 확인'}
+        <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
+          비밀번호 확인
         </CSText>
         <InputText
           name="password"
@@ -180,13 +168,7 @@ const SignUp = () => {
         {!isEmpty(passwordCheck) && password !== passwordCheck && (
           <ErrorMessage message={'비밀번호가 같지 않습니다.'} />
         )}
-        <CSText
-          size={13}
-          color="#000"
-          marginTop={30}
-          marginBottom={8}
-          lineHeight={1.15}
-        >
+        <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
           {'이름'}
         </CSText>
         <InputText
@@ -198,13 +180,7 @@ const SignUp = () => {
         {!isEmpty(name) && !nameValidation(name) && (
           <ErrorMessage message={'2-4 글자의 이름을 입력해주세요.'} />
         )}
-        <CSText
-          size={13}
-          color="#000"
-          marginTop={30}
-          marginBottom={8}
-          lineHeight={1.15}
-        >
+        <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
           {'휴대폰 번호'}
         </CSText>
         <div>
@@ -218,14 +194,8 @@ const SignUp = () => {
         {!isEmpty(phoneNumber) && !phoneValidation(phoneNumber) && (
           <ErrorMessage message={'올바른 번호를 입력해주세요'} />
         )}
-        <CSText
-          size={13}
-          color="#000"
-          marginTop={30}
-          marginBottom={8}
-          lineHeight={1.15}
-        >
-          {'주소'}
+        <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
+          주소
         </CSText>
         <div css={findAddress}>
           <InputText

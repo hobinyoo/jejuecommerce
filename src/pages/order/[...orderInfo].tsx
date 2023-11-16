@@ -85,12 +85,7 @@ const Order = ({
     <div css={container}>
       <MainHeader windowWidth={width} windowHeight={height} uid={''} />
       <div css={{ padding: `0 ${getSize(20)}px` }}>
-        <CSText
-          size={24}
-          fontFamily={'PretendardBold'}
-          color="#000"
-          lineHeight={0.83}
-        >
+        <CSText size={24} fontFamily={'PretendardBold'} lineHeight={0.83}>
           주문하기
         </CSText>
         <CSText
@@ -107,20 +102,13 @@ const Order = ({
           <CSText
             size={15}
             fontFamily={'PretendardBold'}
-            color="#000"
             lineHeight={1.22}
             marginTop={20}
             marginBottom={5}
           >
             받는 사람
           </CSText>
-          <CSText
-            size={13}
-            color="#000"
-            marginTop={30}
-            marginBottom={8}
-            lineHeight={1.15}
-          >
+          <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
             이름
           </CSText>
           <InputText
@@ -132,13 +120,7 @@ const Order = ({
           {!isEmpty(name) && !nameValidation(name) && (
             <ErrorMessage message={'2-4 글자의 이름을 입력해주세요.'} />
           )}
-          <CSText
-            size={13}
-            color="#000"
-            marginTop={30}
-            marginBottom={8}
-            lineHeight={1.15}
-          >
+          <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
             휴대폰 번호
           </CSText>
           <InputText
@@ -150,13 +132,7 @@ const Order = ({
           {!isEmpty(phoneNumber) && !phoneValidation(phoneNumber) && (
             <ErrorMessage message={'올바른 번호를 입력해주세요'} />
           )}
-          <CSText
-            size={13}
-            color="#000"
-            marginTop={30}
-            marginBottom={8}
-            lineHeight={1.15}
-          >
+          <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
             주소
           </CSText>
           <div css={findAddress}>
@@ -173,7 +149,6 @@ const Order = ({
               btnWidth={100}
               btnHeight={46}
               backgroundColor="#fff"
-              fontColor="#000"
               fontSize={14}
               borderRadius={4}
             >
@@ -194,13 +169,7 @@ const Order = ({
             inputText={addressDetail}
             marginTop={10}
           />
-          <CSText
-            size={13}
-            color="#000"
-            marginTop={30}
-            marginBottom={8}
-            lineHeight={1.15}
-          >
+          <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
             배송시 요청사항
           </CSText>
           <InputText

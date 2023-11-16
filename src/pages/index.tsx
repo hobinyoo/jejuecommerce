@@ -23,9 +23,9 @@ import IntroMenuSection from '@components/main/IntroMenuSection'
 import SafePolicy from '@components/main/SafePolicy'
 import PackageMethod from '@components/main/PackageMethod'
 import dynamic from 'next/dynamic'
-// import StartPage from '@components/main/StartPage'
 
 const StartPage = dynamic(() => import('@components/main/StartPage'))
+
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const cookies = nookies.get(ctx)
@@ -79,9 +79,10 @@ const Main = ({
             container,
             {
               width: width > 500 ? '500px' : '100%',
-              marginBottom: `${getSize(60)}px`,
+              marginBottom: `${getSize(20)}px`,
               marginLeft: 'auto',
               marginRight: 'auto',
+              position: orderVisible ? 'fixed' : undefined,
             },
           ]}
         >
@@ -128,7 +129,7 @@ const Main = ({
               fontColor="#fff"
               borderColor={'#15c9de'}
             >
-              {'구매하기'}
+              구매하기
             </Button>
           </div>
 

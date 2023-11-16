@@ -9,7 +9,6 @@ import CSText from '@components/cs/CSText'
 import CSSpan from '@components/cs/CSSpan'
 import OrderMenu from '@components/order-menu/OrderMenu'
 import Link from 'next/link'
-import router from 'next/router'
 import { useAppSelector, RootState } from 'src/store'
 import { toSize } from 'styles/globalStyle'
 import { css } from '@emotion/react'
@@ -100,7 +99,6 @@ const Admin = () => {
                 <CSText
                   size={15}
                   fontFamily={'PretendardBold'}
-                  color="#000"
                   lineHeight={1.2}
                   marginTop={40}
                 >
@@ -113,12 +111,7 @@ const Admin = () => {
                     </CSText>
                   </div>
 
-                  <CSText
-                    size={15}
-                    color="#000"
-                    lineHeight={1.2}
-                    marginLeft={31}
-                  >
+                  <CSText size={15} lineHeight={1.2} marginLeft={31}>
                     {value.name}
                   </CSText>
                 </div>
@@ -128,12 +121,7 @@ const Admin = () => {
                       핸드폰 번호
                     </CSText>
                   </div>
-                  <CSText
-                    size={15}
-                    color="#000"
-                    lineHeight={1.2}
-                    marginLeft={31}
-                  >
+                  <CSText size={15} lineHeight={1.2} marginLeft={31}>
                     {value.phoneNumber}
                   </CSText>
                 </div>
@@ -150,10 +138,10 @@ const Admin = () => {
                       marginLeft: `${getSize(31)}px`,
                     }}
                   >
-                    <CSText size={15} color="#000" lineHeight={1.2}>
+                    <CSText size={15} lineHeight={1.2}>
                       {value.address}
                     </CSText>
-                    <CSText size={15} color="#000" lineHeight={1.2}>
+                    <CSText size={15} lineHeight={1.2}>
                       {value.addressDetail}
                     </CSText>
                   </div>
@@ -164,12 +152,7 @@ const Admin = () => {
                       우편 번호
                     </CSText>
                   </div>
-                  <CSText
-                    size={15}
-                    color="#000"
-                    lineHeight={1.2}
-                    marginLeft={31}
-                  >
+                  <CSText size={15} lineHeight={1.2} marginLeft={31}>
                     {value.postCode}
                   </CSText>
                 </div>
@@ -179,12 +162,7 @@ const Admin = () => {
                       배송 요청사항
                     </CSText>
                   </div>
-                  <CSText
-                    size={15}
-                    color="#000"
-                    lineHeight={1.2}
-                    marginLeft={31}
-                  >
+                  <CSText size={15} lineHeight={1.2} marginLeft={31}>
                     {value.carrierRequest}
                   </CSText>
                 </div>
@@ -194,12 +172,7 @@ const Admin = () => {
                       배송현황
                     </CSText>
                   </div>
-                  <CSText
-                    size={15}
-                    color="#000"
-                    lineHeight={1.2}
-                    marginLeft={31}
-                  >
+                  <CSText size={15} lineHeight={1.2} marginLeft={31}>
                     {value.status === 'DONE' ? '상품준비' : value.status}
                   </CSText>
                 </div>

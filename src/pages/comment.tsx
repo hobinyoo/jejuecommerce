@@ -87,17 +87,12 @@ const Comment = () => {
           padding: `0 ${getSize(20)}px ${getSize(15)}px ${getSize(20)}px`,
         }}
       >
-        <CSText
-          size={24}
-          fontFamily={'PretendardBold'}
-          color="#000"
-          lineHeight={0.83}
-        >
+        <CSText size={24} fontFamily={'PretendardBold'} lineHeight={0.83}>
           후기작성
         </CSText>
         <CSText
           size={15}
-          color={'#818181'}
+          color="#818181"
           lineHeight={1.22}
           marginTop={12}
           marginBottom={40}
@@ -107,13 +102,7 @@ const Comment = () => {
         <div css={ratingContainer}>
           <Rating value={rating} onChange={setRating} size="lg" />
         </div>
-        <CSText
-          size={12}
-          color="#000"
-          lineHeight={1.18}
-          marginTop={50}
-          marginBottom={10}
-        >
+        <CSText size={12} lineHeight={1.18} marginTop={50} marginBottom={10}>
           어떤점이 좋으셧나요?
         </CSText>
 

@@ -5,6 +5,7 @@ import { RootState, useAppSelector } from 'src/store'
 import { modalOverlay, toSize } from 'styles/globalStyle'
 import { useRouter } from 'next/router'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
+import CSText from '@components/cs/CSText'
 
 interface Props {
   setNotiVisible: Dispatch<SetStateAction<boolean>>
@@ -51,13 +52,32 @@ const NotiModal = ({ setNotiVisible, setOrderVisible }: Props) => {
             flexDirection: 'column',
           }}
         >
-          <div css={btnXWrapper}>
-            <AutoSizeImage
-              src={'/images/btnX.png'}
-              width={getSize(14)}
-              height={getSize(14)}
-              onClick={() => setOrderVisible(false)}
-            />
+          <div css={{ flex: 1, whiteSpace: 'pre-line' }}>
+            <div css={btnXWrapper}>
+              <AutoSizeImage
+                src="/images/btnX.png"
+                width={getSize(14)}
+                height={getSize(14)}
+                onClick={() => setOrderVisible(false)}
+              />
+            </div>
+            <CSText
+              size={17}
+              fontFamily="PretendardBold"
+              lineHeight={1.18}
+              textAlignCenter
+            >
+              회원가입 시 10% 상시할인!
+            </CSText>
+            <CSText
+              size={14}
+              color="#818181"
+              lineHeight={1.18}
+              textAlignCenter
+              marginTop={20}
+            >
+              {`회원등록을 해주시는 고객분들께\n 10% 상시 할인을 진행하고 있습니다.`}
+            </CSText>
           </div>
 
           <div css={btnWrapper}>
@@ -97,7 +117,6 @@ const modalContainer = css`
 `
 const btnXWrapper = css`
   display: flex;
-  flex: 1;
   justify-content: end;
 `
 const btnWrapper = css`

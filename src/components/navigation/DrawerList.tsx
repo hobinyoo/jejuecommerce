@@ -88,7 +88,6 @@ const DrawerList = ({
               onClick={() => router.push('/signUp')}
               btnWidth={80}
               btnHeight={30}
-              backgroundColor="#000"
               fontColor="#fff"
               fontSize={13}
               borderRadius={4}

@@ -11,9 +11,9 @@ interface Props {
   marginTop?: number
   btnWidth?: number
   btnHeight: number
-  backgroundColor: string
+  backgroundColor?: string
   fontSize: number
-  fontColor: string
+  fontColor?: string
   borderRadius?: number
   borderColor?: string
   disabled?: boolean
@@ -50,7 +50,7 @@ const Button = ({
           height: `${getSize(btnHeight)}px`,
           borderRadius: borderRadius ? `${getSize(borderRadius)}px` : 'none',
           marginTop: marginTop ? `${getSize(marginTop)}px` : 0,
-          backgroundColor: backgroundColor,
+          backgroundColor: backgroundColor ? backgroundColor : '#000',
           border: `1px solid ${borderColor ? borderColor : 'black'}`,
         },
       ]}

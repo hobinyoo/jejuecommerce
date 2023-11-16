@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
+import { modalOverlay, toSize } from 'styles/globalStyle'
 import CSText from '@components/cs/CSText'
 import CountControl from '@components/CountControl'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
@@ -51,13 +51,13 @@ const OrderModal = ({ setOrderVisible }: Props) => {
   }
 
   return (
-    <div css={overlay}>
-      <div css={[orderModal]}>
+    <div css={modalOverlay}>
+      <div
+        css={[orderModal, { height: `${getSize(577)}px`, overflowY: 'auto' }]}
+      >
         <div
           css={{
-            padding: `${getSize(20)}px ${getSize(20)}px ${getSize(
-              30
-            )}px ${getSize(20)}px`,
+            padding: `${getSize(20)}px`,
           }}
         >
           <div css={buttonWrapper}>
@@ -95,12 +95,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
                   height={getSize(16)}
                 />
 
-                <CSText
-                  size={14}
-                  color="#000"
-                  lineHeight={1.14}
-                  fontFamily="PretendardBold"
-                >
+                <CSText size={14} lineHeight={1.14} fontFamily="PretendardBold">
                   {title}
                 </CSText>
               </div>
@@ -125,12 +120,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
                   quantity={quantity}
                   setQuantity={setQuantity}
                 />
-                <CSText
-                  size={15}
-                  color="#000"
-                  lineHeight={1.67}
-                  fontFamily="PretendardBold"
-                >
+                <CSText size={15} lineHeight={1.67} fontFamily="PretendardBold">
                   {price}
                 </CSText>
               </div>
@@ -205,16 +195,6 @@ const OrderModal = ({ setOrderVisible }: Props) => {
   )
 }
 
-const overlay = css`
-  position: fixed; /* 화면에 고정 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 투명한 검은 배경 */
-  z-index: 9999; /* 다른 요소들보다 위에 나타나도록 높은 값 설정 */
-  display: flex;
-`
 const orderModal = css`
   width: 100%;
   background-color: white;
@@ -222,7 +202,6 @@ const orderModal = css`
   bottom: 0;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  z-index: 9999;
 `
 
 const buttonWrapper = css`

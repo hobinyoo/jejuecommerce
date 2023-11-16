@@ -55,7 +55,7 @@ const CountControl = ({ quantity, setQuantity, index }: Props) => {
           },
         ]}
       >
-        <CSText size={14} color="#000" lineHeight={1.14}>
+        <CSText size={14} lineHeight={1.14}>
           {quantity[index]}
         </CSText>
       </div>

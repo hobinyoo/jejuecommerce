@@ -103,7 +103,6 @@ const IntroMenuSection = () => {
               </CSText>
               <CSText
                 size={18}
-                color="#000"
                 lineHeight={1.11}
                 fontFamily="PretendardBold"
                 marginTop={20}

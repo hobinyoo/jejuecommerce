@@ -38,12 +38,7 @@ const OrderDetail = () => {
           padding: `0 ${getSize(20)}px`,
         }}
       >
-        <CSText
-          size={24}
-          fontFamily={'PretendardBold'}
-          color="#000"
-          lineHeight={0.83}
-        >
+        <CSText size={24} fontFamily={'PretendardBold'} lineHeight={0.83}>
           주문 내역
         </CSText>
         <CSText size={15} color={'#818181'} lineHeight={1.22} marginTop={12}>
@@ -75,7 +70,6 @@ const OrderDetail = () => {
                   <CSText
                     size={15}
                     fontFamily={'PretendardBold'}
-                    color="#000"
                     lineHeight={1.2}
                   >
                     받는사람
@@ -83,16 +77,11 @@ const OrderDetail = () => {
                   <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
                     <div css={{ width: `${getSize(78)}px` }}>
                       <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
-                        {'받는 사람'}
+                        받는 사람
                       </CSText>
                     </div>
 
-                    <CSText
-                      size={15}
-                      color="#000"
-                      lineHeight={1.2}
-                      marginLeft={31}
-                    >
+                    <CSText size={15} lineHeight={1.2} marginLeft={31}>
                       {value.name}
                     </CSText>
                   </div>
@@ -102,12 +91,7 @@ const OrderDetail = () => {
                         핸드폰 번호
                       </CSText>
                     </div>
-                    <CSText
-                      size={15}
-                      color="#000"
-                      lineHeight={1.2}
-                      marginLeft={31}
-                    >
+                    <CSText size={15} lineHeight={1.2} marginLeft={31}>
                       {value.phoneNumber}
                     </CSText>
                   </div>
@@ -124,10 +108,10 @@ const OrderDetail = () => {
                         marginLeft: `${getSize(31)}px`,
                       }}
                     >
-                      <CSText size={15} color="#000" lineHeight={1.2}>
+                      <CSText size={15} lineHeight={1.2}>
                         {value.address}
                       </CSText>
-                      <CSText size={15} color="#000" lineHeight={1.2}>
+                      <CSText size={15} lineHeight={1.2}>
                         {value.addressDetail}
                       </CSText>
                     </div>
@@ -138,12 +122,7 @@ const OrderDetail = () => {
                         우편 번호
                       </CSText>
                     </div>
-                    <CSText
-                      size={15}
-                      color="#000"
-                      lineHeight={1.2}
-                      marginLeft={31}
-                    >
+                    <CSText size={15} lineHeight={1.2} marginLeft={31}>
                       {value.postCode}
                     </CSText>
                   </div>
@@ -153,12 +132,7 @@ const OrderDetail = () => {
                         배송 요청사항
                       </CSText>
                     </div>
-                    <CSText
-                      size={15}
-                      color="#000"
-                      lineHeight={1.2}
-                      marginLeft={31}
-                    >
+                    <CSText size={15} lineHeight={1.2} marginLeft={31}>
                       {value.carrierRequest}
                     </CSText>
                   </div>
@@ -168,12 +142,7 @@ const OrderDetail = () => {
                         배송현황
                       </CSText>
                     </div>
-                    <CSText
-                      size={15}
-                      color="#000"
-                      lineHeight={1.2}
-                      marginLeft={31}
-                    >
+                    <CSText size={15} lineHeight={1.2} marginLeft={31}>
                       {value.status === 'DONE' ? '상품준비' : value.status}
                     </CSText>
                   </div>

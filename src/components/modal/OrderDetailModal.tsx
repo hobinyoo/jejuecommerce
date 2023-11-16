@@ -76,19 +76,12 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
           <CSText
             size={15}
             fontFamily={'PretendardBold'}
-            color="#000"
             lineHeight={1.25}
             marginTop={30}
           >
             {'비회원 주문'}
           </CSText>
-          <CSText
-            size={13}
-            color="#000"
-            marginTop={30}
-            marginBottom={8}
-            lineHeight={1.15}
-          >
+          <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
             {'이름'}
           </CSText>
           <InputText
@@ -100,13 +93,7 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
           {!isEmpty(name) && !nameValidation(name) && (
             <ErrorMessage message={'2-4 글자의 이름을 입력해주세요.'} />
           )}
-          <CSText
-            size={13}
-            color="#000"
-            marginTop={30}
-            marginBottom={8}
-            lineHeight={1.15}
-          >
+          <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
             {'휴대폰 번호'}
           </CSText>
           <div>
@@ -123,23 +110,21 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
           <Button
             onClick={handle.orderDetail}
             btnHeight={50}
-            backgroundColor="#000"
             fontSize={17}
             fontColor="#fff"
             marginTop={20}
           >
-            {'주문내역 확인'}
+            주문내역 확인
           </Button>
         </div>
         <CSText
           onClick={handle.signIn}
           size={12}
-          color="#000"
           marginTop={30}
           marginBottom={8}
           lineHeight={1.15}
         >
-          {'회원이신가요? 로그인하러가기'}
+          회원이신가요? 로그인하러가기
         </CSText>
       </div>
     </div>

@@ -131,7 +131,6 @@ const HistoryEffect = () => {
               />
               <CSText
                 size={10}
-                color="#000"
                 lineHeight={1.3}
                 marginTop={18}
                 fontFamily="PretendardBold"

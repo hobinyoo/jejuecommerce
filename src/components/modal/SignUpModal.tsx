@@ -73,9 +73,7 @@ const SignUpModal = ({ setSignVisible }: Props) => {
               textAlignCenter
             >
               회원가입을 축하
-              <CSSpan size={20} color="#000">
-                합니다.
-              </CSSpan>
+              <CSSpan size={20}>합니다.</CSSpan>
             </CSText>
             <CSText
               size={15}
