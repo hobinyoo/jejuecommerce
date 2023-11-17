@@ -72,7 +72,7 @@ const Payments = ({
           orderName: `${orderName[0]} 외 ${orderName.length - 1}건`,
           customerName: name,
           successUrl: `${window.location.origin}/api/payments`,
-          failUrl: `${window.location.origin}/api/paymentsFail`,
+          failUrl: `${window.location.origin}/paymentsFail`,
         })
         .then(
           async () =>

@@ -44,22 +44,22 @@ const Order = ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter()
-  console.log(data)
+
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
   const getSize = (input: number) => {
     return toSize(width, height, input)
   }
-  const [name, setName] = useState<string>(data.items.name ?? '')
+  const [name, setName] = useState<string>(data?.items?.name ?? '')
   const [phoneNumber, setPhoneNumber] = useState<string>(
-    data.items.phoneNumber ?? ''
+    data?.items?.phoneNumber ?? ''
   )
-  const [address, setAddress] = useState<string>(data.items.address ?? '')
+  const [address, setAddress] = useState<string>(data?.items?.address ?? '')
   const [addressDetail, setAddressDetail] = useState<string>(
-    data.items.addressDetail ?? ''
+    data?.items?.addressDetail ?? ''
   )
-  const [postCode, setPostCode] = useState<string>(data.items.postCode ?? '')
+  const [postCode, setPostCode] = useState<string>(data?.items?.postCode ?? '')
   const [carrierRequest, setCarrierRequest] = useState<string>('')
 
   const [postVisible, setPostVisible] = useState<boolean>(false)
@@ -149,6 +149,8 @@ const Order = ({
               btnWidth={100}
               btnHeight={46}
               backgroundColor="#fff"
+              borderColor="#15c9de"
+              fontColor="#15c9de"
               fontSize={14}
               borderRadius={4}
             >

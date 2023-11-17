@@ -58,7 +58,7 @@ const NotiModal = ({ setNotiVisible, setOrderVisible }: Props) => {
                 src="/images/btnX.png"
                 width={getSize(14)}
                 height={getSize(14)}
-                onClick={() => setOrderVisible(false)}
+                onClick={() => setNotiVisible(false)}
               />
             </div>
             <CSText

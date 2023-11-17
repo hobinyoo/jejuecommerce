@@ -1,14 +1,14 @@
 import Button from '@components/cs/Button'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import IconX from '/public/X.svg'
-import { RootState, useAppSelector } from 'src/store'
+import { RootState, useAppDispatch, useAppSelector } from 'src/store'
 import { modalContainer, modalOverlay, toSize } from 'styles/globalStyle'
 import CSText from '@components/cs/CSText'
 import { useRouter } from 'next/router'
 import InputText from '@components/cs/InputText'
 import { isEmpty } from 'lodash'
-import { nameValidation, phoneValidation } from 'src/function/vaildation'
-import ErrorMessage from '@components/Error'
+import CSSpan from '@components/cs/CSSpan'
+import { setOrdersInfo } from 'src/store/features/paymentSlice'
 
 interface Props {
   setOrderDetailVisible: Dispatch<SetStateAction<boolean>>
@@ -16,6 +16,7 @@ interface Props {
 
 const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
   const router = useRouter()
+  const dispatch = useAppDispatch()
 
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
@@ -45,6 +46,9 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
           if (isEmpty(data.items)) {
             alert('해당 정보를 찾을 수 없습니다.')
           }
+
+          dispatch(setOrdersInfo(data.items))
+          router.push('/orderDetail')
         })
         .catch((error) => console.error(error))
     },
@@ -79,10 +83,10 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
             lineHeight={1.25}
             marginTop={30}
           >
-            {'비회원 주문'}
+            비회원 주문
           </CSText>
           <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
-            {'이름'}
+            이름
           </CSText>
           <InputText
             name="name"
@@ -90,11 +94,9 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
             setInputText={setName}
             inputText={name}
           />
-          {!isEmpty(name) && !nameValidation(name) && (
-            <ErrorMessage message={'2-4 글자의 이름을 입력해주세요.'} />
-          )}
+
           <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
-            {'휴대폰 번호'}
+            휴대폰 번호
           </CSText>
           <div>
             <InputText
@@ -104,31 +106,42 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
               inputText={phoneNumber}
             />
           </div>
-          {!isEmpty(phoneNumber) && !phoneValidation(phoneNumber) && (
-            <ErrorMessage message={'올바른 번호를 입력해주세요'} />
-          )}
           <Button
             onClick={handle.orderDetail}
             btnHeight={50}
             fontSize={17}
             fontColor="#fff"
             marginTop={20}
+            backgroundColor="#15c9de"
+            borderColor="#15c9de"
           >
             주문내역 확인
           </Button>
         </div>
-        <CSText
-          onClick={handle.signIn}
-          size={12}
-          marginTop={30}
-          marginBottom={8}
-          lineHeight={1.15}
-        >
-          회원이신가요? 로그인하러가기
-        </CSText>
+        <div css={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <CSText
+            onClick={handle.signIn}
+            size={12}
+            marginTop={30}
+            lineHeight={1.15}
+          >
+            회원이신가요?{' '}
+            <CSSpan
+              size={12}
+              lineHeight={1.15}
+              textDecoration
+              onClick={() => router.push('/signIn')}
+            >
+              로그인하러 가기
+            </CSSpan>
+          </CSText>
+        </div>
       </div>
     </div>
   )
 }
 
 export default OrderDetailModal
+function dispatch(arg0: { payload: any; type: 'payment/setOrdersInfo' }) {
+  throw new Error('Function not implemented.')
+}

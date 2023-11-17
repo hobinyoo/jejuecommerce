@@ -12,6 +12,8 @@ interface Props {
   marginRight?: number
   color?: string
   lineHeight?: number
+  textDecoration?: boolean
+  onClick?: () => void
 }
 
 const CSSpan = ({
@@ -24,6 +26,8 @@ const CSSpan = ({
   marginRight,
   color,
   lineHeight,
+  textDecoration,
+  onClick,
 }: Props) => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
@@ -31,6 +35,7 @@ const CSSpan = ({
 
   return (
     <span
+      onClick={onClick}
       css={[
         {
           fontSize: toSize(width, height, size),
@@ -41,6 +46,7 @@ const CSSpan = ({
           marginRight: marginRight ? toSize(width, height, marginRight) : 0,
           color: color ? color : '#000',
           lineHeight: lineHeight ? lineHeight : 1,
+          textDecoration: textDecoration ? 'underline' : 'none',
         },
       ]}
     >

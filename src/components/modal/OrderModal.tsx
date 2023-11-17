@@ -148,7 +148,7 @@ const OrderModal = ({ setOrderVisible }: Props) => {
               color="#15c9de"
               lineHeight={1.18}
             >
-              {calculateTotalPrice(quantity)}원
+              {calculateTotalPrice(quantity, 4000).toLocaleString()}원
             </CSText>
           </div>
           <CSText

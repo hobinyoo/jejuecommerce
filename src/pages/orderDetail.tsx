@@ -18,6 +18,10 @@ const OrderDetail = () => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
+  const ordersInfo = useAppSelector(
+    (state: RootState) => state.payment.ordersInfo
+  )
+
   const getSize = (input: number) => {
     return toSize(width, height, input)
   }
@@ -29,6 +33,8 @@ const OrderDetail = () => {
         res.json().then((data) => data.items)
       ),
   })
+
+  const orderData = ordersInfo ? ordersInfo : data
 
   return (
     <div css={{ overflowY: 'auto' }}>
@@ -44,8 +50,8 @@ const OrderDetail = () => {
         <CSText size={15} color={'#818181'} lineHeight={1.22} marginTop={12}>
           주문하신 내역을 확인해보세요.
         </CSText>
-        {data &&
-          data.map((value, index) => {
+        {orderData &&
+          orderData.map((value, index) => {
             return (
               <div key={index}>
                 <CSText

@@ -92,37 +92,31 @@ const PaymentsRedirect = () => {
         }}
       >
         <h1>결제 성공</h1>
-        <CSText size={16} color={'black'} lineHeight={1.21} marginTop={10}>
+        <CSText size={16} lineHeight={1.21} marginTop={10}>
           주문: {paymentInfo.orderName}
         </CSText>
-        <CSText size={16} color={'black'} lineHeight={1.21}>
+        <CSText size={16} lineHeight={1.21}>
           결제 수단: {paymentInfo.method}
         </CSText>
-        <CSText size={16} color={'black'} lineHeight={1.21}>
+        <CSText size={16} lineHeight={1.21}>
           결제 금액: {paymentInfo.totalAmount}원
         </CSText>
-        <CSText size={16} color={'black'} lineHeight={1.21}>
+        <CSText size={16} lineHeight={1.21}>
           결제 일시:
           {paymentInfo.approvedAt}
         </CSText>
         <CSText
           size={16}
-          color={'black'}
           lineHeight={1.21}
           marginTop={10}
           fontFamily={'PretendardBold'}
         >
           영수증은 주문내역에서 확인 가능합니다.
         </CSText>
-        <CSText
-          size={16}
-          color={'black'}
-          lineHeight={1.21}
-          fontFamily={'PretendardBold'}
-        >
+        <CSText size={16} lineHeight={1.21} fontFamily={'PretendardBold'}>
           현금 영수증은 매장으로 문의해주세요.
         </CSText>
-        <CSText size={16} color={'black'} lineHeight={1.21} marginTop={10}>
+        <CSText size={16} lineHeight={1.21} marginTop={10}>
           {seconds}초 뒤 메인으로 이동합니다.
         </CSText>
       </div>

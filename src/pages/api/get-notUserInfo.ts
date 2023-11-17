@@ -2,9 +2,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { collection, getDocs, query, orderBy, where } from 'firebase/firestore'
 import { db } from 'src/firebase/initFirebase'
+import { OrderProps } from 'types/types'
 
 async function getNotUserInfo(name: string, phoneNumber: string) {
   try {
+    const ordersInfo: OrderProps[] = []
     const board = collection(db, 'orders')
     const querySnapshot = await getDocs(
       query(
@@ -14,14 +16,31 @@ async function getNotUserInfo(name: string, phoneNumber: string) {
         orderBy('timestamp', 'desc')
       )
     )
-    console.log(querySnapshot, 'querySnapshot')
+
     if (querySnapshot.empty) {
       return null
     }
 
     querySnapshot.forEach((doc) => {
-      console.log(doc.data())
+      ordersInfo.push({
+        address: doc.data().address,
+        addressDetail: doc.data().addressDetail,
+        menu: doc.data().menu,
+        name: doc.data().name,
+        phoneNumber: doc.data().phoneNumber,
+        postCode: doc.data().postCode,
+        quantity: doc.data().quantity,
+        status: doc.data().status,
+        timestamp: doc.data().timestamp,
+        totalPrice: doc.data().totalPrice,
+        uid: doc.data().uid,
+        id: doc.id,
+        carrierRequest: doc.data().carrierRequest,
+        method: doc.data().method,
+        receipt: doc.data().receipt,
+      })
     })
+    return ordersInfo
   } catch (error) {
     console.error(error)
   }

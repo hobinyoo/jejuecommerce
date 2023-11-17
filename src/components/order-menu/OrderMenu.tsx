@@ -94,7 +94,8 @@ const OrderMenu = ({ quantityArr }: Props) => {
       >
         <div css={{ display: 'flex', justifyContent: 'space-between' }}>
           <CSText size={12} color={'#818181'} lineHeight={1.67}>
-            총 결제 금액
+            총 결제 금액 + 배송비 (
+            {calculateTotalPrice(quantityArr) > 70000 ? '0원' : '4000원'})
           </CSText>
           <CSText
             size={15}
@@ -102,7 +103,10 @@ const OrderMenu = ({ quantityArr }: Props) => {
             lineHeight={1.2}
             fontFamily={'PretendardBold'}
           >
-            {calculateTotalPrice(quantityArr)}원
+            {calculateTotalPrice(quantityArr) > 70000
+              ? calculateTotalPrice(quantityArr, 0).toLocaleString()
+              : calculateTotalPrice(quantityArr, 4000).toLocaleString()}
+            원
           </CSText>
         </div>
       </div>

@@ -37,6 +37,8 @@ export const GlobalStyle = css`
   html,
   body {
     overflow-x: hidden;
+    width: 100%;
+    height: 100%;
   }
 
   @font-face {
@@ -112,6 +114,5 @@ export const modalContainer = css`
   background-color: #fff;
   position: relative;
   display: flex;
-  align-items: center;
   flex-direction: column;
 `

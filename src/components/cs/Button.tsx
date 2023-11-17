@@ -51,7 +51,7 @@ const Button = ({
           borderRadius: borderRadius ? `${getSize(borderRadius)}px` : 'none',
           marginTop: marginTop ? `${getSize(marginTop)}px` : 0,
           backgroundColor: backgroundColor ? backgroundColor : '#000',
-          border: `1px solid ${borderColor ? borderColor : 'black'}`,
+          border: `1px solid ${borderColor ? borderColor : '#000'}`,
         },
       ]}
       onClick={onClick}
