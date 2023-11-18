@@ -17,10 +17,9 @@ import PostModal from '@components/modal/PostModal'
 // import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
 
 import { getBaseUrl } from 'src/utils/url'
-import dynamic from 'next/dynamic'
-// import Payments from '@components/payments/Payments'
 
-const OrderMenu = dynamic(import('@components/order-menu/OrderMenu'))
+import OrderMenu from '@components/order-menu/OrderMenu'
+// import Payments from '@components/payments/Payments'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -47,7 +46,7 @@ const Order = ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter()
-  console.log(data)
+  console.log(data.uid ?? '없다시발')
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
@@ -100,7 +99,7 @@ const Order = ({
         >
           달인의 가마솥을 집에서 편하게 만나보세요!
         </CSText>
-        <OrderMenu quantityArr={quantityArr} uid={data.uid} />
+        <OrderMenu quantityArr={quantityArr} uid={data.uid ?? ''} />
         <div>
           <CSText
             size={15}
