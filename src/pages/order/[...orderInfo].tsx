@@ -32,6 +32,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     }
   } catch (err) {
     console.log(err)
+    console.log('에러가 발생했어요~')
 
     ctx.res.writeHead(302, { Location: '/' })
     ctx.res.end()
