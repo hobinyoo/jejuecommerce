@@ -142,6 +142,3 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
 }
 
 export default OrderDetailModal
-function dispatch(arg0: { payload: any; type: 'payment/setOrdersInfo' }) {
-  throw new Error('Function not implemented.')
-}

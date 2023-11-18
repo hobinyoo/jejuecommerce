@@ -44,7 +44,7 @@ const SignIn = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password).then(
         async (_userCredential) => {
-          alert('로그인 성공')
+          alert('로그인이 되었습니다.')
           window.location.replace('/')
         }
       )

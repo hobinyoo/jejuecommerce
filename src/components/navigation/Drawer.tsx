@@ -48,7 +48,7 @@ const MenuDrawer = ({
         onClick={() => setOpenDrawer(!openDrawer)}
       />
       <SwipeableDrawer
-        anchor={'right'}
+        anchor="right"
         open={openDrawer}
         onClose={toggleDrawer(false)}
         onOpen={toggleDrawer(true)}

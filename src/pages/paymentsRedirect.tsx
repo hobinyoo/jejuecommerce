@@ -102,8 +102,7 @@ const PaymentsRedirect = () => {
           결제 금액: {paymentInfo.totalAmount}원
         </CSText>
         <CSText size={16} lineHeight={1.21}>
-          결제 일시:
-          {paymentInfo.approvedAt}
+          결제 일시:  {paymentInfo.approvedAt}
         </CSText>
         <CSText
           size={16}

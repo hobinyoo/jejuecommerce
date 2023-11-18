@@ -41,14 +41,15 @@ const ReviewSection = () => {
     >
       <CSText
         size={24}
-        fontFamily={'SeoulHangangEB'}
-        color={'#3e3737'}
+        fontFamily="SeoulHangangEB"
+        color="#3e3737"
         lineHeight={1.25}
         marginBottom={20}
         textAlignCenter
       >
-        {'구매 후기'}
+        구매 후기
       </CSText>
+
       {data &&
         data.map((comment, index) => {
           return (
@@ -79,7 +80,7 @@ const ReviewSection = () => {
               </div>
               <CSText
                 size={15}
-                fontFamily={'PretendardBold'}
+                fontFamily="PretendardBold"
                 color={'#3e3737'}
                 lineHeight={1.33}
                 marginTop={15}

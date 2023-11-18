@@ -29,6 +29,7 @@ async function getOrderDetail(id: string) {
           carrierRequest: doc.data().carrierRequest,
           method: doc.data().method,
           receipt: doc.data().receipt,
+          content: doc.data().content,
         })
       }
     })

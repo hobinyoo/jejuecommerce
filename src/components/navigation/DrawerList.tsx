@@ -10,7 +10,7 @@ import { toSize } from 'styles/globalStyle'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
-
+import nookies from 'nookies'
 interface Props {
   uid: string
   name: string
@@ -35,6 +35,7 @@ const DrawerList = ({
 
   const handleLogout = () => {
     signOut(auth)
+    nookies.destroy(undefined, 'uid', { path: '/' })
     window.location.replace('/')
   }
 
@@ -178,7 +179,7 @@ const DrawerList = ({
           lineHeight={1.33}
           textDecoration={'underline'}
         >
-          {'로그아웃'}
+          로그아웃
         </CSText>
       </div>
     </div>

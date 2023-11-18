@@ -97,7 +97,7 @@ const Order = ({
         >
           달인의 가마솥을 집에서 편하게 만나보세요!
         </CSText>
-        <OrderMenu quantityArr={quantityArr} />
+        <OrderMenu quantityArr={quantityArr} uid={data.uid} />
         <div>
           <CSText
             size={15}
@@ -194,7 +194,11 @@ const Order = ({
       <Payments
         uid={data.uid ?? ''}
         quantity={quantityArr}
-        totalPrice={calculateTotalPrice(quantityArr)}
+        totalPrice={
+          calculateTotalPrice(quantityArr, 0) > 70000
+            ? calculateTotalPrice(quantityArr, 0, data.uid)
+            : calculateTotalPrice(quantityArr, 4000, data.uid)
+        }
         name={name}
         phoneNumber={phoneNumber}
         address={address}
@@ -217,6 +221,7 @@ const findAddress = css`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 `
 
 export default Order

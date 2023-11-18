@@ -9,9 +9,10 @@ import { toSize } from 'styles/globalStyle'
 
 interface Props {
   quantityArr: number[]
+  uid?: string
 }
 
-const OrderMenu = ({ quantityArr }: Props) => {
+const OrderMenu = ({ quantityArr, uid }: Props) => {
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
@@ -92,20 +93,26 @@ const OrderMenu = ({ quantityArr }: Props) => {
           borderBottomRightRadius: '8px',
         }}
       >
-        <div css={{ display: 'flex', justifyContent: 'space-between' }}>
-          <CSText size={12} color={'#818181'} lineHeight={1.67}>
+        <div
+          css={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <CSText size={12} color="#818181" lineHeight={1.67}>
             총 결제 금액 + 배송비 (
-            {calculateTotalPrice(quantityArr) > 70000 ? '0원' : '4000원'})
+            {calculateTotalPrice(quantityArr, 0) > 70000 ? '0원' : '4000원'})
           </CSText>
           <CSText
             size={15}
-            color={'#15c9de'}
-            lineHeight={1.2}
-            fontFamily={'PretendardBold'}
+            fontFamily="PretendardBold"
+            color="#15c9de"
+            lineHeight={1.18}
           >
-            {calculateTotalPrice(quantityArr) > 70000
-              ? calculateTotalPrice(quantityArr, 0).toLocaleString()
-              : calculateTotalPrice(quantityArr, 4000).toLocaleString()}
+            {calculateTotalPrice(quantityArr, 0) > 70000
+              ? calculateTotalPrice(quantityArr, 0, uid).toLocaleString()
+              : calculateTotalPrice(quantityArr, 4000, uid).toLocaleString()}
             원
           </CSText>
         </div>

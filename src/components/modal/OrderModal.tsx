@@ -8,6 +8,7 @@ import CSText from '@components/cs/CSText'
 import CountControl from '@components/CountControl'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
+import CSSpan from '@components/cs/CSSpan'
 
 interface Props {
   uid: string
@@ -38,7 +39,7 @@ const data = [
   },
 ]
 
-const OrderModal = ({ setOrderVisible }: Props) => {
+const OrderModal = ({ setOrderVisible, uid }: Props) => {
   const router = useRouter()
 
   const [quantity, setQuantity] = useState<number[]>([0, 0, 0, 0])
@@ -140,7 +141,8 @@ const OrderModal = ({ setOrderVisible }: Props) => {
             ]}
           >
             <CSText size={12} color="#818181" lineHeight={1.67}>
-              총 결제 금액
+              총 결제 금액 + 배송비 (
+              {calculateTotalPrice(quantity, 0) > 70000 ? '0원' : '4000원'})
             </CSText>
             <CSText
               size={15}
@@ -148,7 +150,16 @@ const OrderModal = ({ setOrderVisible }: Props) => {
               color="#15c9de"
               lineHeight={1.18}
             >
-              {calculateTotalPrice(quantity, 4000).toLocaleString()}원
+              {calculateTotalPrice(quantity, 0) > 70000
+                ? calculateTotalPrice(quantity, 0, uid).toLocaleString()
+                : calculateTotalPrice(quantity, 4000, uid).toLocaleString()}
+              원
+              {uid && (
+                <CSSpan size={10} color="#de1515" lineHeight={1.18}>
+                  {' '}
+                  회원 10% 할인
+                </CSSpan>
+              )}
             </CSText>
           </div>
           <CSText

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-const paymentsFail = () => {
+const PaymentsFail = () => {
   const router = useRouter()
 
   useEffect(() => {
@@ -9,8 +9,8 @@ const paymentsFail = () => {
       alert(router.query.message)
       router.push('/')
     }
-  }, [router.query.message])
+  }, [router])
   return null
 }
 
-export default paymentsFail
+export default PaymentsFail

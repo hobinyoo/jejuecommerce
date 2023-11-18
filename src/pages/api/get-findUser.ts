@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { collection, getDocs, query, orderBy, where } from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from 'src/firebase/initFirebase'
 
 async function getFindUser(name: string, phoneNumber: string) {

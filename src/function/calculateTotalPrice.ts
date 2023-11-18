@@ -1,6 +1,7 @@
 export const calculateTotalPrice = (
   quantities: number[],
-  delivery?: number
+  delivery: number,
+  uid?: string
 ) => {
   const prices = [12000, 13000, 15000, 18000]
   if (quantities.length !== prices.length) {
@@ -12,9 +13,5 @@ export const calculateTotalPrice = (
     totalPrice += quantities[i] * prices[i]
   }
 
-  if (delivery) {
-    return totalPrice + delivery
-  } else {
-    return totalPrice
-  }
+  return uid ? (totalPrice + delivery) * 0.9 : totalPrice + delivery
 }

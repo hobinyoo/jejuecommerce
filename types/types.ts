@@ -26,6 +26,7 @@ export interface OrderProps {
   carrierCode?: string
   prepareShipping?: boolean
   receipt?: string
+  content?: string
 }
 
 export interface CommentProps {

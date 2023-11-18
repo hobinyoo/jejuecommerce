@@ -24,7 +24,7 @@ const MenuPoint = () => {
         marginBottom={50}
         lineHeight={1.13}
       >
-        '메뉴만의 포인트 및 장점'
+        메뉴만의 포인트 및 장점
       </CSText>
       <div
         css={[

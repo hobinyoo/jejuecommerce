@@ -5,6 +5,7 @@ import MainHeader from '@components/cs/MainHeader'
 import OrderMenu from '@components/order-menu/OrderMenu'
 import { css } from '@emotion/react'
 import { useQuery } from '@tanstack/react-query'
+import { isEmpty } from 'lodash'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -34,7 +35,7 @@ const OrderDetail = () => {
       ),
   })
 
-  const orderData = ordersInfo ? ordersInfo : data
+  const orderData = isEmpty(ordersInfo) && data ? data : ordersInfo
 
   return (
     <div css={{ overflowY: 'auto' }}>
@@ -61,12 +62,15 @@ const OrderDetail = () => {
                   marginTop={40}
                   marginBottom={5}
                 >
-                  주문일:
+                  주문일:{' '}
                   <CSSpan size={13} color="#8b8b8b" lineHeight={1.15}>
                     {value.timestamp}
                   </CSSpan>
                 </CSText>
-                <OrderMenu quantityArr={value.quantity} />
+                <OrderMenu
+                  quantityArr={value.quantity}
+                  uid={String(router.query.uid)}
+                />
                 <div
                   css={{
                     marginTop: `${getSize(20)}px`,
@@ -81,7 +85,7 @@ const OrderDetail = () => {
                     받는사람
                   </CSText>
                   <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(78)}px` }}>
+                    <div css={{ width: `${getSize(90)}px` }}>
                       <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         받는 사람
                       </CSText>
@@ -92,7 +96,7 @@ const OrderDetail = () => {
                     </CSText>
                   </div>
                   <div css={[carrierInfo, { marginTop: ` ${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(78)}px` }}>
+                    <div css={{ width: `${getSize(90)}px` }}>
                       <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         핸드폰 번호
                       </CSText>
@@ -102,7 +106,7 @@ const OrderDetail = () => {
                     </CSText>
                   </div>
                   <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(78)}px` }}>
+                    <div css={{ width: `${getSize(90)}px` }}>
                       <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         주소
                       </CSText>
@@ -123,7 +127,7 @@ const OrderDetail = () => {
                     </div>
                   </div>
                   <div css={[carrierInfo, { marginTop: ` ${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(78)}px` }}>
+                    <div css={{ width: `${getSize(90)}px` }}>
                       <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         우편 번호
                       </CSText>
@@ -133,7 +137,7 @@ const OrderDetail = () => {
                     </CSText>
                   </div>
                   <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(78)}px` }}>
+                    <div css={{ width: `${getSize(90)}px` }}>
                       <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         배송 요청사항
                       </CSText>
@@ -143,7 +147,7 @@ const OrderDetail = () => {
                     </CSText>
                   </div>
                   <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(78)}px` }}>
+                    <div css={{ width: `${getSize(90)}px` }}>
                       <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         배송현황
                       </CSText>
@@ -153,7 +157,7 @@ const OrderDetail = () => {
                     </CSText>
                   </div>
                   <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(78)}px` }}>
+                    <div css={{ width: `${getSize(90)}px` }}>
                       <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
                         영수증
                       </CSText>
@@ -177,15 +181,16 @@ const OrderDetail = () => {
                     <Button
                       btnHeight={46}
                       fontSize={14}
-                      backgroundColor="#15c9de"
-                      borderColor="#15c9de"
+                      backgroundColor={value.content ? '#8ab7bb' : '#15c9de'}
+                      borderColor={value.content ? '#8ab7bb' : '#15c9de'}
                       fontColor="#fff"
                       borderRadius={8}
                       onClick={() =>
+                        !value.content &&
                         router.push(`/comment?orderId=${value.id}`)
                       }
                     >
-                      후기작성
+                      {value.content ? '후기 작성 완료' : '후기작성'}
                     </Button>
                   </div>
                 </div>

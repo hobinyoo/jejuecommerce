@@ -7,7 +7,6 @@ import AutoSizeImage from '@components/cs/AutoSizeImage'
 import { useRouter } from 'next/router'
 import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
-import { isEmpty } from 'lodash'
 import { doc, updateDoc } from 'firebase/firestore'
 import MainHeader from '@components/cs/MainHeader'
 import { useAppSelector, RootState } from 'src/store'
@@ -51,7 +50,7 @@ const Comment = () => {
   }
 
   const saveComment = async () => {
-    if (!isEmpty(images) && typeof orderId === 'string') {
+    if (images) {
       const imagesArray: string[] = []
 
       images.map((image, index) => {
@@ -61,15 +60,19 @@ const Comment = () => {
           async (snapshot: any) => {
             const downloadURL = await getDownloadURL(snapshot.ref)
             imagesArray.push(downloadURL)
-            await updateDoc(doc(db, 'orders', orderId), {
+            await updateDoc(doc(db, 'orders', String(orderId)), {
               images: imagesArray,
+              rating: rating,
+              content: content,
+              commentTimestamp: format(new Date(), 'yyyy/MM/dd HH:mm:ss'),
             })
+            alert('저장되었습니다.')
+            window.location.replace('/')
           }
         )
       })
-    }
-    if (typeof orderId === 'string') {
-      await updateDoc(doc(db, 'orders', orderId), {
+    } else {
+      await updateDoc(doc(db, 'orders', String(orderId)), {
         rating: rating,
         content: content,
         commentTimestamp: format(new Date(), 'yyyy/MM/dd HH:mm:ss'),
@@ -87,7 +90,7 @@ const Comment = () => {
           padding: `0 ${getSize(20)}px ${getSize(15)}px ${getSize(20)}px`,
         }}
       >
-        <CSText size={24} fontFamily={'PretendardBold'} lineHeight={0.83}>
+        <CSText size={24} fontFamily="PretendardBold" lineHeight={0.83}>
           후기작성
         </CSText>
         <CSText
