@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import nookies from 'nookies'
-
 import MainHeader from '@components/cs/MainHeader'
 import { useAppSelector, RootState } from 'src/store'
 import { toSize } from 'styles/globalStyle'
@@ -14,12 +13,12 @@ import ErrorMessage from '@components/Error'
 import { nameValidation, phoneValidation } from 'src/function/vaildation'
 import Button from '@components/cs/Button'
 import PostModal from '@components/modal/PostModal'
-import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
+// import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
 import OrderMenu from '@components/order-menu/OrderMenu'
 import { getBaseUrl } from 'src/utils/url'
 import dynamic from 'next/dynamic'
 
-const Payments = dynamic(import('@components/payments/Payments'))
+// const Payments = dynamic(import('@components/payments/Payments'))
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -54,7 +53,6 @@ const Order = ({
     return toSize(width, height, input)
   }
 
-  const [uid, setUid] = useState<string>(data.uid)
   const [name, setName] = useState<string>(data?.items?.name ?? '')
   const [phoneNumber, setPhoneNumber] = useState<string>(
     data?.items?.phoneNumber ?? ''
@@ -196,12 +194,12 @@ const Order = ({
       )}
 
       {/* <Payments
-        uid={uid}
+        uid={data.uid}
         quantity={quantityArr}
         totalPrice={
           calculateTotalPrice(quantityArr, 0) > 70000
-            ? calculateTotalPrice(quantityArr, 0, uid)
-            : calculateTotalPrice(quantityArr, 4000, uid)
+            ? calculateTotalPrice(quantityArr, 0, data.uid)
+            : calculateTotalPrice(quantityArr, 4000, data.uid)
         }
         name={name}
         phoneNumber={phoneNumber}
