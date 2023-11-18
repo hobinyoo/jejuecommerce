@@ -1,6 +1,6 @@
 import InputText from '@components/cs/InputText'
 import { css } from '@emotion/react'
-// import { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import nookies from 'nookies'
@@ -15,7 +15,7 @@ import { nameValidation, phoneValidation } from 'src/function/vaildation'
 import Button from '@components/cs/Button'
 import PostModal from '@components/modal/PostModal'
 // import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
-// import OrderMenu from '@components/order-menu/OrderMenu'
+import OrderMenu from '@components/order-menu/OrderMenu'
 import { getBaseUrl } from 'src/utils/url'
 // import Payments from '@components/payments/Payments'
 
@@ -43,8 +43,8 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 const Order = ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  // const router = useRouter()
-
+  const router = useRouter()
+  console.log(data)
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
@@ -63,9 +63,9 @@ const Order = ({
   const [carrierRequest, setCarrierRequest] = useState<string>('')
 
   const [postVisible, setPostVisible] = useState<boolean>(false)
-  // const { orderInfo } = router.query
+  const { orderInfo } = router.query
 
-  // const quantityArr = orderInfo![0].split(',').map((str) => Number(str))
+  const quantityArr = orderInfo![0].split(',').map((str) => Number(str))
 
   const handle = {
     // 버튼 클릭 이벤트
@@ -97,7 +97,7 @@ const Order = ({
         >
           달인의 가마솥을 집에서 편하게 만나보세요!
         </CSText>
-        {/* <OrderMenu quantityArr={quantityArr} uid={data.uid} /> */}
+        <OrderMenu quantityArr={quantityArr} uid={data.uid} />
         <div>
           <CSText
             size={15}
