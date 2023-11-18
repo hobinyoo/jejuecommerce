@@ -53,6 +53,8 @@ const Order = ({
   const getSize = (input: number) => {
     return toSize(width, height, input)
   }
+
+  const [uid, setUid] = useState<string>(data.uid)
   const [name, setName] = useState<string>(data?.items?.name ?? '')
   const [phoneNumber, setPhoneNumber] = useState<string>(
     data?.items?.phoneNumber ?? ''
@@ -194,12 +196,12 @@ const Order = ({
       )}
 
       <Payments
-        uid={data.uid}
+        uid={uid}
         quantity={quantityArr}
         totalPrice={
           calculateTotalPrice(quantityArr, 0) > 70000
-            ? calculateTotalPrice(quantityArr, 0, data.uid)
-            : calculateTotalPrice(quantityArr, 4000, data.uid)
+            ? calculateTotalPrice(quantityArr, 0, uid)
+            : calculateTotalPrice(quantityArr, 4000, uid)
         }
         name={name}
         phoneNumber={phoneNumber}
