@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import nookies from 'nookies'
+
 import MainHeader from '@components/cs/MainHeader'
 import { useAppSelector, RootState } from 'src/store'
 import { toSize } from 'styles/globalStyle'
@@ -16,9 +17,7 @@ import PostModal from '@components/modal/PostModal'
 // import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
 import OrderMenu from '@components/order-menu/OrderMenu'
 import { getBaseUrl } from 'src/utils/url'
-import dynamic from 'next/dynamic'
-
-// const Payments = dynamic(import('@components/payments/Payments'))
+import Payments from '@components/payments/Payments'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -52,7 +51,6 @@ const Order = ({
   const getSize = (input: number) => {
     return toSize(width, height, input)
   }
-
   const [name, setName] = useState<string>(data?.items?.name ?? '')
   const [phoneNumber, setPhoneNumber] = useState<string>(
     data?.items?.phoneNumber ?? ''
@@ -193,13 +191,14 @@ const Order = ({
         />
       )}
 
-      {/* <Payments
-        uid={data.uid}
+      <Payments
+        uid={'호빈'}
         quantity={quantityArr}
         totalPrice={
-          calculateTotalPrice(quantityArr, 0) > 70000
-            ? calculateTotalPrice(quantityArr, 0, data.uid)
-            : calculateTotalPrice(quantityArr, 4000, data.uid)
+          // calculateTotalPrice(quantityArr, 0) > 70000
+          //   ? calculateTotalPrice(quantityArr, 0, data.uid)
+          //   : calculateTotalPrice(quantityArr, 4000, data.uid)
+          1000
         }
         name={name}
         phoneNumber={phoneNumber}
@@ -207,7 +206,7 @@ const Order = ({
         addressDetail={addressDetail}
         postCode={postCode}
         carrierRequest={carrierRequest}
-      /> */}
+      />
     </div>
   )
 }
