@@ -24,14 +24,18 @@ import Payments from '@components/payments/Payments'
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const user = nookies.get(ctx)
+    if (user.uid) {
+      const res = await fetch(
+        `${getBaseUrl}/api/get-oneUserInfo?id=${user.uid}`
+      )
+      let data = await res.json()
+      data.uid = user.uid
 
-    const res = await fetch(`${getBaseUrl}/api/get-oneUserInfo?id=${user.uid}`)
-    let data = await res.json()
-    data.uid = user.uid
-
-    return {
-      props: { data },
+      return {
+        props: { data },
+      }
     }
+    return null
   } catch (err) {
     console.log(err)
 
@@ -47,6 +51,7 @@ const Order = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter()
   console.log(data?.uid ?? '없다시발')
+  console.log(data, 'data')
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
