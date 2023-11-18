@@ -46,7 +46,7 @@ const Order = ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter()
-  console.log(data.uid ?? '없다시발')
+  console.log(data?.uid ?? '없다시발')
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
@@ -99,7 +99,7 @@ const Order = ({
         >
           달인의 가마솥을 집에서 편하게 만나보세요!
         </CSText>
-        <OrderMenu quantityArr={quantityArr} uid={data.uid ?? ''} />
+        <OrderMenu quantityArr={quantityArr} uid={data?.uid ?? ''} />
         <div>
           <CSText
             size={15}
