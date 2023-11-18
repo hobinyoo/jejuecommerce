@@ -102,7 +102,7 @@ const Order = ({
         >
           달인의 가마솥을 집에서 편하게 만나보세요!
         </CSText>
-        {/* <OrderMenu quantityArr={quantityArr} uid={uid} /> */}
+        <OrderMenu quantityArr={quantityArr} uid={uid} />
         <div>
           <CSText
             size={15}
