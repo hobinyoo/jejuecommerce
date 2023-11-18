@@ -192,7 +192,7 @@ const Order = ({
       )}
 
       <Payments
-        uid={data.uid ?? ''}
+        uid={data.uid}
         quantity={quantityArr}
         totalPrice={
           calculateTotalPrice(quantityArr, 0) > 70000
