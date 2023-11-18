@@ -17,7 +17,9 @@ import PostModal from '@components/modal/PostModal'
 import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
 import OrderMenu from '@components/order-menu/OrderMenu'
 import { getBaseUrl } from 'src/utils/url'
-import Payments from '@components/payments/Payments'
+import dynamic from 'next/dynamic'
+
+const Payments = dynamic(import('@components/payments/Payments'))
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -32,7 +34,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     }
   } catch (err) {
     console.log(err)
-    console.log('에러가 발생했어요~')
 
     ctx.res.writeHead(302, { Location: '/' })
     ctx.res.end()
