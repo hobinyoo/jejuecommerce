@@ -14,12 +14,12 @@ import ErrorMessage from '@components/Error'
 import { nameValidation, phoneValidation } from 'src/function/vaildation'
 import Button from '@components/cs/Button'
 import PostModal from '@components/modal/PostModal'
-// import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
+import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
 
 import { getBaseUrl } from 'src/utils/url'
 
 import OrderMenu from '@components/order-menu/OrderMenu'
-// import Payments from '@components/payments/Payments'
+import Payments from '@components/payments/Payments'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
@@ -193,13 +193,13 @@ const Order = ({
         />
       )}
 
-      {/* <Payments
-        uid={data.uid}
+      <Payments
+        uid={data?.uid ?? ''}
         quantity={quantityArr}
         totalPrice={
           calculateTotalPrice(quantityArr, 0) > 70000
-            ? calculateTotalPrice(quantityArr, 0, data.uid)
-            : calculateTotalPrice(quantityArr, 4000, data.uid)
+            ? calculateTotalPrice(quantityArr, 0, data?.uid ?? '')
+            : calculateTotalPrice(quantityArr, 4000, data?.uid ?? '')
         }
         name={name}
         phoneNumber={phoneNumber}
@@ -207,7 +207,7 @@ const Order = ({
         addressDetail={addressDetail}
         postCode={postCode}
         carrierRequest={carrierRequest}
-      /> */}
+      />
     </div>
   )
 }
