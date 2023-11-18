@@ -195,7 +195,7 @@ const Order = ({
         />
       )}
 
-      <Payments
+      {/* <Payments
         uid={uid}
         quantity={quantityArr}
         totalPrice={
@@ -209,7 +209,7 @@ const Order = ({
         addressDetail={addressDetail}
         postCode={postCode}
         carrierRequest={carrierRequest}
-      />
+      /> */}
     </div>
   )
 }
