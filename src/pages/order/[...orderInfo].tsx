@@ -15,9 +15,12 @@ import { nameValidation, phoneValidation } from 'src/function/vaildation'
 import Button from '@components/cs/Button'
 import PostModal from '@components/modal/PostModal'
 // import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
-import OrderMenu from '@components/order-menu/OrderMenu'
+
 import { getBaseUrl } from 'src/utils/url'
+import dynamic from 'next/dynamic'
 // import Payments from '@components/payments/Payments'
+
+const OrderMenu = dynamic(import('@components/order-menu/OrderMenu'))
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
