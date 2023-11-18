@@ -49,8 +49,7 @@ const Order = ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter()
-  console.log(data?.uid ?? '없다시발')
-  console.log(data, 'data')
+
   const { width, height } = useAppSelector(
     (state: RootState) => state.windowSize.windowSize
   )
