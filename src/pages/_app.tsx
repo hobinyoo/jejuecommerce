@@ -47,8 +47,12 @@ const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <Head>
-          <title>Korea Beef Soup</title>
-          <meta name="description" content="Korea Beef Soup" />
+          <title>달인의 가마솥</title>
+          <meta
+            name="description"
+            content="물 맛 좋은 제주에서 만든 달인의 가마솥 입니다."
+          />
+          <meta property="og:image" content="/public/images/jujueLogo.png" />
         </Head>
         <Global styles={GlobalStyle} />
         <Layout>
