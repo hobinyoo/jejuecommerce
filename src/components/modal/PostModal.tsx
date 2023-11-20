@@ -27,7 +27,7 @@ const PostModal = ({ setPostVisible, setAddress, setPostCode }: Props) => {
           {
             padding: `${getSize(20)}px`,
             width: `${getSize(340)}px`,
-            height: `${getSize(380)}px`,
+            height: `${getSize(520)}px`,
             borderRadius: `${getSize(12)}px`,
           },
         ]}
