@@ -21,6 +21,8 @@ import CSText from '@components/cs/CSText'
 import SignUpModal from '@components/modal/SignUpModal'
 
 import PostModal from '@components/modal/PostModal'
+import Agreement from '@components/agreement/Agreement'
+import { Agreements } from 'src/utils/types'
 
 const SignUp = () => {
   const router = useRouter()
@@ -44,6 +46,18 @@ const SignUp = () => {
 
   const [postVisible, setPostVisible] = useState<boolean>(false)
   const [modalVisible, setModalVisible] = useState<boolean>(false)
+
+  //동의
+  const [agreements, setAgreements] = useState<Agreements>({
+    allAgreements: false,
+    over14: false,
+    serviceTerms: false,
+    privacyPolicy: false,
+  })
+
+  const allAgreementsTrue = Object.values(agreements).every(
+    (value) => value === true
+  )
 
   const handle = {
     // 버튼 클릭 이벤트
@@ -82,6 +96,8 @@ const SignUp = () => {
   }
 
   const signUp = async () => {
+    if (!allAgreementsTrue) alert('개인정보를 동의는 필수 입니다.')
+
     if (fillUserInfo()) {
       try {
         await createUserWithEmailAndPassword(auth, email, password).then(
@@ -233,6 +249,7 @@ const SignUp = () => {
           inputText={addressDetail}
           marginTop={10}
         />
+        <Agreement agreements={agreements} setAgreements={setAgreements} />
         <Button
           onClick={signUp}
           btnHeight={46}

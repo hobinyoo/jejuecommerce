@@ -67,7 +67,7 @@ const Admin = () => {
   }
 
   return (
-    <div>
+    <div css={{ padding: `0 ${getSize(20)}px` }}>
       <Header />
       <Group position="right" css={{ marginBottom: '1rem' }}>
         <DatePicker value={value} onChange={(date) => setValue(date)} />
