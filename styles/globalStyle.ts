@@ -41,6 +41,16 @@ export const GlobalStyle = css`
     height: 100%;
   }
 
+  input,
+  button {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+  }
+
   @font-face {
     font-family: 'PretendardRegular';
     font-weight: 400;
