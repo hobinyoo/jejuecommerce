@@ -31,6 +31,7 @@ const CSText = ({
   textAlignCenter,
   onClick,
 }: Props) => {
+  console.log('test')
   return (
     <div
       onClick={onClick}
