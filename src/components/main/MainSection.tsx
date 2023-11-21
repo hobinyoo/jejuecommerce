@@ -28,25 +28,25 @@ const MainSection = () => {
         priority={true}
       />
       <CSText
-        size={2.4}
+        size={24}
         fontFamily={'SeoulHangangEB'}
         color={'#3e3737'}
         lineHeight={0.83}
-        marginTop={3}
+        marginTop={30}
         textAlignCenter
       >
         달인의 가마솥 한우곰탕
       </CSText>
       <CSText
-        size={1.3}
+        size={13}
         color={'#9e9795'}
-        marginTop={2}
+        marginTop={20}
         lineHeight={1.38}
         textAlignCenter
       >
         집에서도 즐기는 달인의 가마솥
       </CSText>
-      <CSText size={1.3} color={'#9e9795'} lineHeight={1.38} textAlignCenter>
+      <CSText size={13} color={'#9e9795'} lineHeight={1.38} textAlignCenter>
         #한우곰탕 #한우설렁탕 #육우갈비탕
       </CSText>
     </div>
