@@ -22,7 +22,7 @@ const StartPage = ({ setStartEnabled }: Props) => {
   return (
     <div
       css={{
-        padding: `${getSize(30)}px ${getSize(20)}px`,
+        padding: '3rem 2rem',
         height: 'calc(var(--vh, 1vh) * 100)',
         width: '100%',
         zIndex: 3,

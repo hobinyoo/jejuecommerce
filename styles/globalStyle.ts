@@ -36,6 +36,7 @@ export const GlobalStyle = css`
   /* base styles */
   html,
   body {
+    font-size: 62.5%;
     overflow-x: hidden;
     width: 100%;
     height: 100%;

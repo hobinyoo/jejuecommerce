@@ -24,11 +24,11 @@ const MethodSection = () => {
   return (
     <div>
       <CSText
-        size={24}
+        size={2.4}
         fontFamily={'SeoulHangangEB'}
         color={'#3e3737'}
-        marginTop={60}
-        marginBottom={40}
+        marginTop={6}
+        marginBottom={4}
         lineHeight={0.83}
         textAlignCenter
       >
@@ -43,14 +43,14 @@ const MethodSection = () => {
       >
         <AutoSizeImage
           src={'/images/methodMenu.png'}
-          width={getSize(332)}
+          width={getSize(375)}
           height={getSize(314)}
         />
       </div>
       <div
         css={{
           width: '100%',
-          padding: `${getSize(20)}px`,
+          padding: '2rem',
           backgroundColor: '#c4edff',
         }}
       >
@@ -58,21 +58,26 @@ const MethodSection = () => {
           css={{
             backgroundColor: '#fff',
             borderRadius: '12px',
-            paddingTop: `${getSize(34)}px`,
-            paddingBottom: `${getSize(26)}px `,
+            paddingTop: '3.4rem',
+            paddingBottom: `2.6rem`,
           }}
         >
-          <CSText size={12} color={'#5d5d5d'} lineHeight={1.33} textAlignCenter>
+          <CSText
+            size={1.2}
+            color={'#5d5d5d'}
+            lineHeight={1.33}
+            textAlignCenter
+          >
             달인의 가마솥 한우곰탕, 설렁탕, 갈비탕
           </CSText>
           <CSText
-            size={20}
+            size={2}
             color="#3e3737"
             lineHeight={1}
             textAlignCenter
             fontFamily="SeoulHangangEB"
-            marginTop={10}
-            marginBottom={40}
+            marginTop={1}
+            marginBottom={4}
           >
             맛있게 먹는 방법
           </CSText>
@@ -87,10 +92,10 @@ const MethodSection = () => {
                 />
 
                 <CSText
-                  size={15}
+                  size={1.5}
                   fontFamily={'PretendardBold'}
                   color={'#15c9de'}
-                  marginTop={18}
+                  marginTop={1.8}
                   lineHeight={1.33}
                 >
                   {title}
@@ -101,22 +106,22 @@ const MethodSection = () => {
         </div>
         <div
           css={{
-            padding: `${getSize(20)}px ${getSize(16)}px`,
-            height: `${getSize(100)}px`,
+            padding: '2rem 1.6rem',
+            height: '10rem',
             backgroundColor: '#77bfdf',
-            marginTop: `${getSize(18)}px`,
-            borderRadius: `${getSize(12)}px`,
+            marginTop: '1.8rem',
+            borderRadius: '1.2rem',
           }}
         >
           <CSText
-            size={14}
+            size={1.4}
             fontFamily={'PretendardBold'}
             color="#fff"
             lineHeight={1.21}
           >
             유통기한 안내
           </CSText>
-          <CSText size={12} color="#fff" lineHeight={1.42} marginTop={13}>
+          <CSText size={1.2} color="#fff" lineHeight={1.42} marginTop={1.3}>
             유통기한에 관한 내용이 나옵니다.
           </CSText>
         </div>

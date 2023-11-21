@@ -20,26 +20,28 @@ const AutoSizeImage = ({
   priority = false,
 }: Props) => {
   return (
-    <div
-      css={[
-        imageWrapper,
-        {
-          width: `${width}px`,
-          height: `${height}px`,
-          borderRadius: borderRadius ? borderRadius : 0,
-        },
-      ]}
-      onClick={onClick}
-    >
-      <Image
-        src={src}
-        fill
-        style={{ objectFit: 'cover' }}
-        sizes="100%"
-        alt=""
-        priority={priority}
-      />
-    </div>
+    <>
+      <div
+        css={[
+          imageWrapper,
+          {
+            width: `${width}px`,
+            height: `${height}px`,
+            borderRadius: borderRadius ? borderRadius : 0,
+          },
+        ]}
+        onClick={onClick}
+      >
+        <Image
+          src={src}
+          fill
+          style={{ objectFit: 'cover' }}
+          sizes="100%"
+          alt=""
+          priority={priority}
+        />
+      </div>
+    </>
   )
 }
 

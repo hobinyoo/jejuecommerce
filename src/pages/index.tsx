@@ -79,7 +79,7 @@ const Main = ({
             container,
             {
               width: width > 500 ? '500px' : '100%',
-              marginBottom: `${getSize(20)}px`,
+              marginBottom: '2rem',
               marginLeft: 'auto',
               marginRight: 'auto',
               position: orderVisible ? 'fixed' : undefined,
@@ -123,9 +123,9 @@ const Main = ({
                   ? setNotiVisible(true)
                   : setOrderVisible(true)
               }
-              btnHeight={50}
+              btnHeight={5}
               backgroundColor={'#15c9de'}
-              fontSize={17}
+              fontSize={1.7}
               fontColor="#fff"
               borderColor={'#15c9de'}
             >

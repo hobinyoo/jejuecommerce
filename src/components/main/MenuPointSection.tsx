@@ -21,34 +21,29 @@ const MenuPointSection = () => {
     `단순 밀키트가 아닌 달인이 만든 "Hand M\n ade" 제품으로 맛을 보장합니다.`,
   ]
   return (
-    <div css={[container, { marginTop: `${getSize(60)}px` }]}>
+    <div css={[container, { marginTop: '6rem' }]}>
       <CSText
-        size={24}
+        size={2.4}
         fontFamily={'SeoulHangangEB'}
         color={'#3e3737'}
-        marginBottom={30}
+        marginBottom={3}
         lineHeight={0.83}
         textAlignCenter
       >
         {'메뉴만의 포인트 및 장점'}
       </CSText>
 
-      <div
-        css={[
-          pointListWrapper,
-          { gap: `${getSize(16)}px`, padding: `0 ${getSize(20)}px` },
-        ]}
-      >
+      <div css={[pointListWrapper, { gap: '1.6rem', padding: '0 2rem' }]}>
         {menuPointData.map((data, index) => (
           <div
             css={[
               pointList,
               {
-                paddingTop: `${getSize(10)}px`,
-                paddingBottom: `${getSize(12)}px`,
-                borderRadius: `${getSize(30)}px`,
-                paddingLeft: `${getSize(12)}px`,
-                gap: `${getSize(10)}px`,
+                paddingTop: '1rem',
+                paddingBottom: '1.2rem',
+                borderRadius: '3rem',
+                paddingLeft: '1.2em',
+                gap: '1rem',
               },
             ]}
             key={index}
@@ -57,13 +52,13 @@ const MenuPointSection = () => {
               css={[
                 circle,
                 {
-                  height: `${getSize(30)}px`,
-                  width: `${getSize(30)}px`,
+                  height: '3rem',
+                  width: '3rem',
                 },
               ]}
             >
               <CSText
-                size={16}
+                size={1.6}
                 color={'#6dbc59'}
                 lineHeight={1.38}
                 fontFamily="PretendardBold"
@@ -71,7 +66,7 @@ const MenuPointSection = () => {
                 {`0${index + 1}`}
               </CSText>
             </div>
-            <CSText size={14} color="#fff" lineHeight={1.57}>
+            <CSText size={1.4} color="#fff" lineHeight={1.57}>
               {data}
             </CSText>
           </div>

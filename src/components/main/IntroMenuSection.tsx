@@ -54,14 +54,14 @@ const IntroMenuSection = () => {
     },
   ]
   return (
-    <div css={{ marginTop: `${getSize(60)}px` }}>
+    <div css={{ marginTop: '6rem' }}>
       <CSText
-        size={24}
-        fontFamily={'SeoulHangangEB'}
-        color={'#3e3737'}
+        size={2.4}
+        fontFamily="SeoulHangangEB"
+        color="#3e3737"
         lineHeight={0.83}
         textAlignCenter
-        marginBottom={10}
+        marginBottom={1}
       >
         메뉴 소개
       </CSText>
@@ -78,12 +78,12 @@ const IntroMenuSection = () => {
               },
             ]}
           >
-            <div css={[agingText, { paddingLeft: `${getSize(20)}px` }]}>
-              <CSText size={10} color={'#15c9de'} lineHeight={2} marginTop={4}>
+            <div css={[agingText, { paddingLeft: '2rem' }]}>
+              <CSText size={1} color={'#15c9de'} lineHeight={2} marginTop={0.4}>
                 달인의 가마솥
               </CSText>
               <CSText
-                size={18}
+                size={1.8}
                 color={'#3e3737'}
                 lineHeight={1.11}
                 fontFamily="PretendardBold"
@@ -91,21 +91,21 @@ const IntroMenuSection = () => {
                 {data.title}
               </CSText>
               <CSText
-                size={12}
+                size={1.2}
                 color={'#818181'}
                 lineHeight={1.67}
-                marginTop={21}
+                marginTop={2.1}
               >
                 {`한우육수: ${data.soup}`}
               </CSText>
-              <CSText size={12} color={'#818181'} lineHeight={1.67}>
+              <CSText size={1.2} color={'#818181'} lineHeight={1.67}>
                 {`고기: ${data.meat}`}
               </CSText>
               <CSText
-                size={18}
+                size={1.8}
                 lineHeight={1.11}
                 fontFamily="PretendardBold"
-                marginTop={20}
+                marginTop={2}
               >
                 {data.price}
               </CSText>
@@ -122,12 +122,12 @@ const IntroMenuSection = () => {
             css={[
               menuDescription,
               {
-                padding: `${getSize(25)}px ${getSize(25)}px`,
-                height: `${getSize(100)}px`,
+                padding: '2.5rem 2.5rem',
+                height: '10rem',
               },
             ]}
           >
-            <CSText size={12} color="#fff" lineHeight={1.5}>
+            <CSText size={1.2} color="#fff" lineHeight={1.5}>
               {data.description}
             </CSText>
           </div>

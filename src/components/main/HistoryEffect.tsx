@@ -32,19 +32,19 @@ const HistoryEffect = () => {
         ]}
       >
         <CSText
-          size={24}
+          size={2.4}
           fontFamily={'SeoulHangangEB'}
           color={'#3e3737'}
-          marginTop={35}
+          marginTop={3.5}
           lineHeight={0.83}
           textAlignCenter
         >
           달인의 가마솥 목표
         </CSText>
         <CSText
-          size={13}
+          size={1.3}
           color={'#818181'}
-          marginTop={30}
+          marginTop={3.0}
           lineHeight={1.62}
           textAlignCenter
         >
@@ -54,9 +54,9 @@ const HistoryEffect = () => {
         </CSText>
 
         <CSText
-          size={13}
+          size={1.3}
           color={'#818181'}
-          marginTop={30}
+          marginTop={3.0}
           lineHeight={1.62}
           textAlignCenter
         >
@@ -67,41 +67,41 @@ const HistoryEffect = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: `${getSize(7.5)}px`,
-            marginTop: `${getSize(30)}px`,
+            gap: '0.75rem',
+            marginTop: '3rem',
           }}
         >
           <div>
             <div
               css={{
                 border: '1px solid #000',
-                width: `${getSize(60)}px`,
+                width: '6rem',
               }}
             />
           </div>
           <div
             css={{
-              width: `${getSize(3)}px`,
-              height: `${getSize(3)}px`,
+              width: '0.3rem',
+              height: '0.3rem',
               backgroundColor: '#000',
             }}
           />
-          <CSText size={13} color="#000" lineHeight={1.62}>
+          <CSText size={1.3} color="#000" lineHeight={1.62}>
             {'달인의 가마솥 특징'}
           </CSText>
           <div
             css={{
-              width: `${getSize(3)}px`,
-              height: `${getSize(3)}px`,
+              width: '0.3rem',
+              height: '0.3rem',
               backgroundColor: '#000',
-              marginLeft: `${getSize(7.5)}px`,
+              marginLeft: '0.75rem',
             }}
           />
           <div>
             <div
               css={{
                 border: '1px solid #000',
-                width: `${getSize(60)}px`,
+                width: '6rem',
               }}
             />
           </div>
@@ -109,10 +109,10 @@ const HistoryEffect = () => {
         <div
           css={{
             display: 'flex',
-            paddingRight: `${getSize(35)}px`,
-            paddingLeft: `${getSize(35)}px`,
+            paddingRight: '3.5rem',
+            paddingLeft: '3.5rem',
             justifyContent: 'space-between',
-            marginTop: `${getSize(30.5)}px`,
+            marginTop: '3rem',
           }}
         >
           {Feature.map(({ title, src }, index) => (
@@ -130,9 +130,9 @@ const HistoryEffect = () => {
                 height={getSize(60)}
               />
               <CSText
-                size={10}
+                size={1}
                 lineHeight={1.3}
-                marginTop={18}
+                marginTop={1.8}
                 fontFamily="PretendardBold"
                 textAlignCenter
               >

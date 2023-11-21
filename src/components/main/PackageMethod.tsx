@@ -16,13 +16,11 @@ const PackageMethod = () => {
   return (
     <section
       css={{
-        padding: `${getSize(50)}px ${getSize(20)}px ${getSize(30)}px ${getSize(
-          20
-        )}px`,
+        padding: '5rem 2rem 3rem 2rem',
       }}
     >
       <CSText
-        size={24}
+        size={2.4}
         fontFamily={'SeoulHangangEB'}
         color={'#3e3737'}
         lineHeight={0.83}
@@ -31,12 +29,12 @@ const PackageMethod = () => {
         포장 이미지 및 포장 방법
       </CSText>
       <CSText
-        size={15}
+        size={1.5}
         color={'#3e3737'}
         lineHeight={1.33}
         textAlignCenter
-        marginTop={50}
-        marginBottom={44}
+        marginTop={5}
+        marginBottom={4.4}
       >
         포장에 관한 설명이 필요합니다
       </CSText>
@@ -50,24 +48,22 @@ const PackageMethod = () => {
         css={[
           packageProcess,
           {
-            padding: `${getSize(15)}px ${getSize(16)}px ${getSize(
-              20
-            )}px ${getSize(20)}px`,
-            borderRadius: `${getSize(12)}px`,
-            marginTop: `${getSize(30)}px`,
+            padding: '1.5rem 1.6rem 2rem 2rem',
+            borderRadius: '1.2rem',
+            marginTop: '3rem',
           },
         ]}
       >
         <div>
           <CSText
-            size={16}
+            size={1.6}
             color="#fff"
             lineHeight={1.13}
             fontFamily="PretendardBold"
           >
             배송 절차
           </CSText>
-          <CSText size={13} color="#fff" lineHeight={1.38} marginTop={10}>
+          <CSText size={1.3} color="#fff" lineHeight={1.38} marginTop={1}>
             7만원 이상 배송시 배송비 무료
           </CSText>
         </div>
