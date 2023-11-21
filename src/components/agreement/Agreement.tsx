@@ -2,8 +2,8 @@ import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
 import React, { Dispatch, SetStateAction } from 'react'
 import { useAppSelector, RootState } from 'src/store'
-import { Agreements } from 'src/utils/types'
 import { toSize } from 'styles/globalStyle'
+import { Agreements } from 'types/types'
 
 interface Props {
   agreements: Agreements

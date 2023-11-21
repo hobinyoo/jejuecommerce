@@ -19,10 +19,9 @@ import { toSize } from 'styles/globalStyle'
 import MainHeader from '@components/cs/MainHeader'
 import CSText from '@components/cs/CSText'
 import SignUpModal from '@components/modal/SignUpModal'
-
 import PostModal from '@components/modal/PostModal'
 import Agreement from '@components/agreement/Agreement'
-import { Agreements } from 'src/utils/types'
+import { Agreements } from 'types/types'
 
 const SignUp = () => {
   const router = useRouter()
