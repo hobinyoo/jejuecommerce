@@ -31,25 +31,17 @@ const CSText = ({
   textAlignCenter,
   onClick,
 }: Props) => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
   return (
     <div
       onClick={onClick}
       css={[
         {
-          fontSize: `${toSize(width, height, size)}rem`,
+          fontSize: `${size}rem`,
           fontFamily: fontFamily,
-          marginTop: marginTop ? `${toSize(width, height, marginTop)}px` : 0,
-          marginBottom: marginBottom
-            ? `${toSize(width, height, marginBottom)}px`
-            : 0,
-          marginLeft: marginLeft ? `${toSize(width, height, marginLeft)}px` : 0,
-          marginRight: marginRight
-            ? `${toSize(width, height, marginRight)}px`
-            : 0,
+          marginTop: marginTop ? `${marginTop}rem` : 0,
+          marginBottom: marginBottom ? `${marginBottom}rem` : 0,
+          marginLeft: marginLeft ? `${marginLeft}rem` : 0,
+          marginRight: marginRight ? `${marginRight}rem` : 0,
           color: color ? color : '#000',
           lineHeight: lineHeight ? lineHeight : 1,
           textDecoration: textDecoration ? textDecoration : 'none',

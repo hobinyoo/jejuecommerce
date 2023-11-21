@@ -32,19 +32,19 @@ const HistoryEffect = () => {
         ]}
       >
         <CSText
-          size={24}
+          size={2.4}
           fontFamily={'SeoulHangangEB'}
           color={'#3e3737'}
-          marginTop={35}
+          marginTop={3.5}
           lineHeight={0.83}
           textAlignCenter
         >
           달인의 가마솥 목표
         </CSText>
         <CSText
-          size={13}
+          size={1.3}
           color={'#818181'}
-          marginTop={30}
+          marginTop={3}
           lineHeight={1.62}
           textAlignCenter
         >
@@ -54,9 +54,9 @@ const HistoryEffect = () => {
         </CSText>
 
         <CSText
-          size={13}
+          size={1.3}
           color={'#818181'}
-          marginTop={30}
+          marginTop={3}
           lineHeight={1.62}
           textAlignCenter
         >
@@ -86,7 +86,7 @@ const HistoryEffect = () => {
               backgroundColor: '#000',
             }}
           />
-          <CSText size={13} color="#000" lineHeight={1.62}>
+          <CSText size={1.3} color="#000" lineHeight={1.62}>
             {'달인의 가마솥 특징'}
           </CSText>
           <div

@@ -33,18 +33,16 @@ const ReviewSection = () => {
       css={[
         container,
         {
-          padding: `${getSize(50)}px ${getSize(20)}px ${getSize(
-            40
-          )}px ${getSize(20)}px`,
+          padding: '5rem 2rem 4rem 2rem',
         },
       ]}
     >
       <CSText
-        size={24}
+        size={2.4}
         fontFamily="SeoulHangangEB"
         color="#3e3737"
         lineHeight={1.25}
-        marginBottom={20}
+        marginBottom={2}
         textAlignCenter
       >
         구매 후기
@@ -57,10 +55,10 @@ const ReviewSection = () => {
               css={[
                 review,
                 {
-                  height: `${getSize(173)}px`,
-                  marginBottom: `${getSize(10)}px`,
-                  borderRadius: `${getSize(6)}px`,
-                  padding: `0 ${getSize(20)}px`,
+                  height: '17.3rem',
+                  marginBottom: '1rem',
+                  borderRadius: '0.6rem',
+                  padding: '0 2rem',
                 },
               ]}
               key={index}
@@ -69,34 +67,34 @@ const ReviewSection = () => {
                 css={[
                   ratingDate,
                   {
-                    marginTop: `${getSize(20)}px`,
+                    marginTop: '2rem',
                   },
                 ]}
               >
                 <Rating value={comment.rating} size={'xs'} />
-                <CSText size={12} color={'#9e9795'} lineHeight={1.67}>
+                <CSText size={1.2} color={'#9e9795'} lineHeight={1.67}>
                   {comment.commentTimestamp}
                 </CSText>
               </div>
               <CSText
-                size={15}
+                size={1.5}
                 fontFamily="PretendardBold"
                 color={'#3e3737'}
                 lineHeight={1.33}
-                marginTop={15}
+                marginTop={1.5}
               >
                 {comment.menu}
               </CSText>
               <div
                 css={{
-                  marginTop: `${getSize(10)}px`,
+                  marginTop: '2rem',
                   width: '100%',
                   display: 'flex',
                   justifyContent: 'space-between',
                 }}
               >
-                <div css={{ width: `${getSize(180)}px` }}>
-                  <CSText size={13} color={'#9e9795'} lineHeight={1.54}>
+                <div css={{ width: '18rem' }}>
+                  <CSText size={1.3} color={'#9e9795'} lineHeight={1.54}>
                     {comment.content}
                   </CSText>
                 </div>

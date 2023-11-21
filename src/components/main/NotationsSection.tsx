@@ -27,33 +27,33 @@ const NotationsSection = () => {
       css={[
         container,
         {
-          padding: `${getSize(29)}px ${getSize(20)}px 0 ${getSize(20)}px`,
+          padding: '2.9rem 2rem 0 2rem',
         },
       ]}
     >
       <CSText
-        size={16}
+        size={1.6}
         fontFamily={'PretendardBold'}
         color={'#3e3737'}
         lineHeight={1.25}
       >
         제품표기사항
-        <CSSpan size={16} color={'#3e3737'} lineHeight={1.25}>
+        <CSSpan size={1.6} color={'#3e3737'} lineHeight={1.25}>
           (식재료원산지)
         </CSSpan>
       </CSText>
-      <table css={[table, { marginTop: `${getSize(21)}px` }]}>
+      <table css={[table, { marginTop: '2.1rem' }]}>
         <tbody>
           {list.map((value, index) => (
             <tr key={index}>
               <td
                 css={{
-                  width: `${getSize(140)}px`,
-                  padding: `${getSize(15)}px`,
+                  width: '14rem',
+                  padding: '1.5rem',
                 }}
               >
                 <CSText
-                  size={13}
+                  size={1.3}
                   fontFamily={'PretendardBold'}
                   color={'#3e3737'}
                   lineHeight={1.54}
@@ -63,10 +63,10 @@ const NotationsSection = () => {
               </td>
               <td
                 css={{
-                  padding: `${getSize(15)}px`,
+                  padding: '1.5rem',
                 }}
               >
-                <CSText size={13} lineHeight={1.54}>
+                <CSText size={1.3} lineHeight={1.54}>
                   국내산
                 </CSText>
               </td>

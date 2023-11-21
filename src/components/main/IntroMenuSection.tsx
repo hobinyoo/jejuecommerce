@@ -72,7 +72,7 @@ const IntroMenuSection = () => {
             css={[
               introMenuBox,
               {
-                marginTop: `${getSize(30)}px`,
+                marginTop: '3rem',
                 display: 'flex',
                 whiteSpace: 'pre-line',
               },

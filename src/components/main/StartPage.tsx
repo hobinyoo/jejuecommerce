@@ -34,7 +34,7 @@ const StartPage = ({ setStartEnabled }: Props) => {
       }}
     >
       <CSText
-        size={32}
+        size={3.2}
         fontFamily={'PretendardBold'}
         color={'#3e3737'}
         lineHeight={1.38}
@@ -44,14 +44,14 @@ const StartPage = ({ setStartEnabled }: Props) => {
       </CSText>
       <div css={{ flex: 1, marginTop: '4vh' }}>
         <CSText
-          size={20}
+          size={2}
           color={'#3e3737'}
           lineHeight={1.4}
           textAlignCenter
-          marginBottom={15}
+          marginBottom={1.5}
         >
           회원가입 시
-          <CSSpan size={20} fontFamily={'PretendardBold'} color={'#15c9de'}>
+          <CSSpan size={2} fontFamily={'PretendardBold'} color={'#15c9de'}>
             10% 상시 할인
           </CSSpan>
         </CSText>
@@ -61,18 +61,18 @@ const StartPage = ({ setStartEnabled }: Props) => {
           height={getSize(106)}
         />
         <div css={{ marginTop: '4vh' }}>
-          <CSText size={20} color={'#3e3737'} lineHeight={1.4} textAlignCenter>
+          <CSText size={2} color={'#3e3737'} lineHeight={1.4} textAlignCenter>
             70,000원 이상 주문시
           </CSText>
           <CSText
-            size={20}
+            size={2}
             color={'#3e3737'}
             lineHeight={1.4}
             textAlignCenter
-            marginBottom={15}
+            marginBottom={1.5}
           >
             도외
-            <CSSpan size={20} fontFamily={'PretendardBold'} color={'#15c9de'}>
+            <CSSpan size={2} fontFamily={'PretendardBold'} color={'#15c9de'}>
               {' '}
               택배비 무료
             </CSSpan>
@@ -95,11 +95,11 @@ const StartPage = ({ setStartEnabled }: Props) => {
       >
         <Button
           onClick={() => setStartEnabled('noShow')}
-          btnHeight={46}
+          btnHeight={4.6}
           backgroundColor="#15c9de"
           fontColor="#fff"
-          fontSize={14}
-          borderRadius={8}
+          fontSize={1.4}
+          borderRadius={0.8}
           borderColor="#15c9de"
         >
           시작하기
