@@ -36,7 +36,6 @@ const CountControl = ({ quantity, setQuantity, index }: Props) => {
         width={3}
         height={3}
         onClick={clickMinus}
-        priority
       />
       <div
         css={[
@@ -56,7 +55,6 @@ const CountControl = ({ quantity, setQuantity, index }: Props) => {
         width={3}
         height={3}
         onClick={clickPlus}
-        priority
       />
     </div>
   )

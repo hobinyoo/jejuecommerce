@@ -6,7 +6,7 @@ import React from 'react'
 const MainSection = () => {
   return (
     <div css={container}>
-      <AutoSizeImage src={'/images/mainImg.png'} full priority={true} />
+      <AutoSizeImage src={'/images/mainImg.png'} full />
       <CSText
         size={2.4}
         fontFamily={'SeoulHangangEB'}

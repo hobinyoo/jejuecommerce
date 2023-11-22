@@ -250,7 +250,7 @@ const SignUp = () => {
           marginTop={3}
           borderRadius={0.8}
         >
-          회원가입
+          회원가입s
         </Button>
       </div>
 
