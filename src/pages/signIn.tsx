@@ -5,7 +5,6 @@ import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import InputText from '@components/cs/InputText'
 import { emailValidation, passwordValidation } from 'src/function/vaildation'
-import ErrorMessage from '@components/Error'
 import { isEmpty } from 'lodash'
 import { useRouter } from 'next/router'
 import MainHeader from '@components/cs/MainHeader'
@@ -77,9 +76,6 @@ const SignIn = () => {
             setInputText={setEmail}
             inputText={email}
           />
-          {!isEmpty(email) && !emailValidation(email) && (
-            <ErrorMessage message={'이메일 형식의 아이디를 입력해주세요.'} />
-          )}
 
           <InputText
             name=""
@@ -89,11 +85,7 @@ const SignIn = () => {
             passwordType
             marginTop={2}
           />
-          {!isEmpty(password) && !passwordValidation(password) && (
-            <ErrorMessage
-              message={'비밀번호에는 영문과 숫자가 포함 되어야 합니다.'}
-            />
-          )}
+
           <div>
             <Button
               onClick={signIn}

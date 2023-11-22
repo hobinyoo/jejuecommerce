@@ -57,7 +57,7 @@ const DrawerList = ({
         <div css={{ marginTop: '3rem' }}>
           <AutoSizeImage src={'/images/ico_my@3x.png'} width={2} height={2} />
         </div>
-        <div onClick={() => router.push('/signIn')}>
+        <div onClick={() => isEmpty(name) && router.push('/signIn')}>
           <CSText
             size={1.5}
             color={'#3e3737'}

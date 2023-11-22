@@ -92,9 +92,7 @@ const Main = ({
           <MethodSection />
           <SafePolicy />
           <div css={{ position: 'relative' }}>
-            <video width="100%" height="auto" autoPlay loop muted>
-              <source src="/videos/video.mp4" type="video/mp4" />
-            </video>
+            <AutoSizeImage full src={'/images/gamasot.gif'} />
             <div
               css={{
                 position: 'absolute',
