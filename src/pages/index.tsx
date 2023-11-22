@@ -92,7 +92,7 @@ const Main = ({
           <MethodSection />
           <SafePolicy />
           <div css={{ position: 'relative' }}>
-            <AutoSizeImage full src={'/images/gamasot.gif'} />
+            <AutoSizeImage full src={'/images/gamasot.gif'} priority />
             <div
               css={{
                 position: 'absolute',
