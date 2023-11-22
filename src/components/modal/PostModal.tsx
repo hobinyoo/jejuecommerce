@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import DaumPostcode from 'react-daum-postcode'
-import { modalContainer, modalOverlay, toSize } from 'styles/globalStyle'
-import { useAppSelector, RootState } from 'src/store'
+import { modalContainer, modalOverlay } from 'styles/globalStyle'
+
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import { css } from '@emotion/react'
 
@@ -12,31 +12,24 @@ interface Props {
 }
 
 const PostModal = ({ setPostVisible, setAddress, setPostCode }: Props) => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   return (
     <div css={modalOverlay}>
       <div
         css={[
           modalContainer,
           {
-            padding: `${getSize(20)}px`,
-            width: `${getSize(340)}px`,
-            height: `${getSize(520)}px`,
-            borderRadius: `${getSize(12)}px`,
+            padding: '2rem',
+            width: '34rem',
+            height: '52rem',
+            borderRadius: '1.2rem',
           },
         ]}
       >
         <div css={btnXWrapper}>
           <AutoSizeImage
             src="/images/btnX.png"
-            width={getSize(14)}
-            height={getSize(14)}
+            width={1.4}
+            height={1.4}
             onClick={() => setPostVisible(false)}
           />
         </div>

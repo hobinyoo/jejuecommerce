@@ -14,8 +14,7 @@ import ErrorMessage from '@components/Error'
 import { isEmpty } from 'lodash'
 import { doc, setDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router'
-import { useAppSelector, RootState } from 'src/store'
-import { toSize } from 'styles/globalStyle'
+
 import MainHeader from '@components/cs/MainHeader'
 import CSText from '@components/cs/CSText'
 import SignUpModal from '@components/modal/SignUpModal'
@@ -25,14 +24,6 @@ import { Agreements } from 'types/types'
 
 const SignUp = () => {
   const router = useRouter()
-
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
 
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -134,16 +125,16 @@ const SignUp = () => {
 
   return (
     <div css={container}>
-      <MainHeader windowWidth={width} windowHeight={height} uid={''} />
+      <MainHeader uid={''} />
       <div
         css={[
           signUpWrapper,
           {
-            padding: `${getSize(30)}px ${getSize(20)}px`,
+            padding: '3rem 2rem',
           },
         ]}
       >
-        <CSText size={13} marginBottom={8} lineHeight={1.15}>
+        <CSText size={1.3} marginBottom={0.8} lineHeight={1.15}>
           이메일
         </CSText>
         <InputText
@@ -155,7 +146,7 @@ const SignUp = () => {
         {!isEmpty(email) && !emailValidation(email) && (
           <ErrorMessage message={'이메일 형식의 아이디를 입력해주세요.'} />
         )}
-        <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
+        <CSText size={1.3} marginTop={3} marginBottom={0.8} lineHeight={1.15}>
           비밀번호
         </CSText>
         <InputText
@@ -170,7 +161,7 @@ const SignUp = () => {
             message={'비밀번호에는 영문과 숫자가 포함 되어야 합니다.'}
           />
         )}
-        <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
+        <CSText size={1.3} marginTop={3} marginBottom={0.8} lineHeight={1.15}>
           비밀번호 확인
         </CSText>
         <InputText
@@ -183,8 +174,8 @@ const SignUp = () => {
         {!isEmpty(passwordCheck) && password !== passwordCheck && (
           <ErrorMessage message={'비밀번호가 같지 않습니다.'} />
         )}
-        <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
-          {'이름'}
+        <CSText size={1.3} marginTop={3} marginBottom={0.8} lineHeight={1.15}>
+          이름
         </CSText>
         <InputText
           name="name"
@@ -195,8 +186,8 @@ const SignUp = () => {
         {!isEmpty(name) && !nameValidation(name) && (
           <ErrorMessage message={'2-4 글자의 이름을 입력해주세요.'} />
         )}
-        <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
-          {'휴대폰 번호'}
+        <CSText size={1.3} marginTop={3} marginBottom={0.8} lineHeight={1.15}>
+          휴대폰 번호
         </CSText>
         <div>
           <InputText
@@ -209,7 +200,7 @@ const SignUp = () => {
         {!isEmpty(phoneNumber) && !phoneValidation(phoneNumber) && (
           <ErrorMessage message={'올바른 번호를 입력해주세요'} />
         )}
-        <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
+        <CSText size={1.3} marginTop={3} marginBottom={0.8} lineHeight={1.15}>
           주소
         </CSText>
         <div css={findAddress}>
@@ -223,12 +214,12 @@ const SignUp = () => {
 
           <Button
             onClick={handle.clickButton}
-            btnWidth={100}
-            btnHeight={46}
+            btnWidth={10}
+            btnHeight={4.6}
             backgroundColor="#fff"
             fontColor="#15c9de"
-            fontSize={14}
-            borderRadius={4}
+            fontSize={1.4}
+            borderRadius={0.4}
             borderColor="#15c9de"
           >
             주소 찾기
@@ -239,25 +230,25 @@ const SignUp = () => {
           placeholder="주소 입력"
           setInputText={setAddress}
           inputText={address}
-          marginTop={10}
+          marginTop={1}
         />
         <InputText
           name="addressDetail"
           placeholder="상세 주소"
           setInputText={setAddressDetail}
           inputText={addressDetail}
-          marginTop={10}
+          marginTop={1}
         />
         <Agreement agreements={agreements} setAgreements={setAgreements} />
         <Button
           onClick={signUp}
-          btnHeight={46}
+          btnHeight={4.6}
           backgroundColor="#15c9de"
           fontColor="#fff"
-          fontSize={15}
+          fontSize={1.5}
           borderColor="#15c9de"
-          marginTop={30}
-          borderRadius={8}
+          marginTop={3}
+          borderRadius={0.8}
         >
           회원가입
         </Button>

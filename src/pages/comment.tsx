@@ -9,9 +9,7 @@ import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import { doc, updateDoc } from 'firebase/firestore'
 import MainHeader from '@components/cs/MainHeader'
-import { useAppSelector, RootState } from 'src/store'
 import CSText from '@components/cs/CSText'
-import { toSize } from 'styles/globalStyle'
 import { format } from 'date-fns'
 
 const Comment = () => {
@@ -22,13 +20,6 @@ const Comment = () => {
   const router = useRouter()
   const orderId = router.query.orderId
 
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.files) {
       const fileArr = e.currentTarget.files
@@ -84,28 +75,28 @@ const Comment = () => {
 
   return (
     <div css={container}>
-      <MainHeader windowWidth={width} windowHeight={height} uid={''} />
+      <MainHeader uid={''} />
       <div
         css={{
-          padding: `0 ${getSize(20)}px ${getSize(15)}px ${getSize(20)}px`,
+          padding: '0 2rem 1.5rem 2rem',
         }}
       >
-        <CSText size={24} fontFamily="PretendardBold" lineHeight={0.83}>
+        <CSText size={2.4} fontFamily="PretendardBold" lineHeight={0.83}>
           후기작성
         </CSText>
         <CSText
-          size={15}
+          size={1.5}
           color="#818181"
           lineHeight={1.22}
-          marginTop={12}
-          marginBottom={40}
+          marginTop={1.2}
+          marginBottom={4}
         >
           받으신 상품은 만족하셨나요?
         </CSText>
         <div css={ratingContainer}>
           <Rating value={rating} onChange={setRating} size="lg" />
         </div>
-        <CSText size={12} lineHeight={1.18} marginTop={50} marginBottom={10}>
+        <CSText size={1.2} lineHeight={1.18} marginTop={5} marginBottom={1}>
           어떤점이 좋으셧나요?
         </CSText>
 
@@ -128,13 +119,12 @@ const Comment = () => {
           <div
             css={{
               display: 'flex',
-              height: `${getSize(46)}px`,
+              height: '4.6rem',
               backgroundColor: '#fff',
               borderRadius: '8px',
               justifyContent: 'center',
               alignItems: 'center',
-              marginTop: `${getSize(15)}px`,
-
+              marginTop: '1.5rem',
               border: '1px solid #15c9de',
               color: '#15c9de',
               fontFamily: 'PretendardRegular',
@@ -145,22 +135,22 @@ const Comment = () => {
           </div>
         </label>
 
-        <div style={{ display: 'flex', marginTop: `${getSize(15)}px` }}>
+        <div style={{ display: 'flex', marginTop: '1.5rem' }}>
           {images &&
             images.length > 0 &&
             images.map((image, idx) => (
-              <AutoSizeImage key={idx} src={image} width={100} height={100} />
+              <AutoSizeImage key={idx} src={image} width={10} height={10} />
             ))}
         </div>
         <Button
-          btnHeight={46}
+          btnHeight={4.6}
           backgroundColor="#15c9de"
           fontColor="#fff"
-          fontSize={14}
+          fontSize={1.4}
           onClick={saveComment}
-          borderRadius={8}
+          borderRadius={0.8}
           borderColor="#15c9de"
-          marginTop={15}
+          marginTop={1.5}
         >
           후기 작성 완료
         </Button>

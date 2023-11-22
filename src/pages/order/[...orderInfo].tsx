@@ -6,8 +6,6 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import nookies from 'nookies'
 
 import MainHeader from '@components/cs/MainHeader'
-import { useAppSelector, RootState } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 import CSText from '@components/cs/CSText'
 import { isEmpty } from 'lodash'
 import ErrorMessage from '@components/Error'
@@ -50,12 +48,6 @@ const Order = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter()
 
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
   const [name, setName] = useState<string>(data?.items?.name ?? '')
   const [phoneNumber, setPhoneNumber] = useState<string>(
     data?.items?.phoneNumber ?? ''
@@ -88,32 +80,32 @@ const Order = ({
 
   return (
     <div css={container}>
-      <MainHeader windowWidth={width} windowHeight={height} uid={''} />
-      <div css={{ padding: `0 ${getSize(20)}px` }}>
-        <CSText size={24} fontFamily={'PretendardBold'} lineHeight={0.83}>
+      <MainHeader uid={''} />
+      <div css={{ padding: '0 2rem' }}>
+        <CSText size={2.4} fontFamily={'PretendardBold'} lineHeight={0.83}>
           주문하기
         </CSText>
         <CSText
-          size={15}
+          size={1.5}
           color={'#818181'}
           lineHeight={1.22}
-          marginTop={12}
-          marginBottom={40}
+          marginTop={1.2}
+          marginBottom={4}
         >
           달인의 가마솥을 집에서 편하게 만나보세요!
         </CSText>
         <OrderMenu quantityArr={quantityArr} uid={data?.uid ?? ''} />
         <div>
           <CSText
-            size={15}
+            size={1.5}
             fontFamily={'PretendardBold'}
             lineHeight={1.22}
-            marginTop={20}
-            marginBottom={5}
+            marginTop={2}
+            marginBottom={0.5}
           >
             받는 사람
           </CSText>
-          <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
+          <CSText size={1.3} marginTop={3} marginBottom={0.8} lineHeight={1.15}>
             이름
           </CSText>
           <InputText
@@ -125,7 +117,7 @@ const Order = ({
           {!isEmpty(name) && !nameValidation(name) && (
             <ErrorMessage message={'2-4 글자의 이름을 입력해주세요.'} />
           )}
-          <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
+          <CSText size={1.3} marginTop={3} marginBottom={0.8} lineHeight={1.15}>
             휴대폰 번호
           </CSText>
           <InputText
@@ -137,7 +129,7 @@ const Order = ({
           {!isEmpty(phoneNumber) && !phoneValidation(phoneNumber) && (
             <ErrorMessage message={'올바른 번호를 입력해주세요'} />
           )}
-          <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
+          <CSText size={1.3} marginTop={3} marginBottom={0.8} lineHeight={1.15}>
             주소
           </CSText>
           <div css={findAddress}>
@@ -151,13 +143,13 @@ const Order = ({
 
             <Button
               onClick={handle.clickButton}
-              btnWidth={100}
-              btnHeight={46}
+              btnWidth={10}
+              btnHeight={4.6}
               backgroundColor="#fff"
               borderColor="#15c9de"
               fontColor="#15c9de"
-              fontSize={14}
-              borderRadius={4}
+              fontSize={1.4}
+              borderRadius={0.4}
             >
               주소 찾기
             </Button>
@@ -167,16 +159,16 @@ const Order = ({
             placeholder=""
             setInputText={setAddress}
             inputText={address}
-            marginTop={10}
+            marginTop={1}
           />
           <InputText
             name="addressDetail"
             placeholder="상세 주소"
             setInputText={setAddressDetail}
             inputText={addressDetail}
-            marginTop={10}
+            marginTop={1}
           />
-          <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
+          <CSText size={1.3} marginTop={3} marginBottom={0.8} lineHeight={1.15}>
             배송시 요청사항
           </CSText>
           <InputText

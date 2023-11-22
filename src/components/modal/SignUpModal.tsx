@@ -1,8 +1,6 @@
 import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import React, { Dispatch, SetStateAction } from 'react'
-import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 import CSText from '@components/cs/CSText'
 
 import AutoSizeImage from '@components/cs/AutoSizeImage'
@@ -15,12 +13,7 @@ interface Props {
 
 const SignUpModal = ({ setSignVisible }: Props) => {
   const router = useRouter()
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
+
   const clickBtn = () => {
     setSignVisible(false)
     router.push('/')
@@ -32,8 +25,8 @@ const SignUpModal = ({ setSignVisible }: Props) => {
         css={[
           container,
           {
-            width: `${getSize(300)}px`,
-            borderRadius: `${getSize(12)}px`,
+            width: '30rem',
+            borderRadius: '1.2rem',
           },
         ]}
       >
@@ -41,13 +34,13 @@ const SignUpModal = ({ setSignVisible }: Props) => {
           css={{
             display: 'flex',
             justifyContent: 'flex-end',
-            marginBottom: `${getSize(13)}px`,
+            marginBottom: '1.3rem',
           }}
         >
           <AutoSizeImage
             src="/images/btnX_white.png"
-            width={getSize(14)}
-            height={getSize(14)}
+            width={1.4}
+            height={1.4}
           />
         </div>
         <div
@@ -65,41 +58,37 @@ const SignUpModal = ({ setSignVisible }: Props) => {
             }}
           >
             <CSText
-              size={20}
+              size={2}
               color="#15c9de"
-              marginTop={30}
+              marginTop={3}
               lineHeight={1}
               fontFamily="PretendardBold"
               textAlignCenter
             >
               회원가입을 축하
-              <CSSpan size={20}>합니다.</CSSpan>
+              <CSSpan size={2}>합니다.</CSSpan>
             </CSText>
             <CSText
-              size={15}
+              size={1.5}
               color="#818181"
-              marginTop={15}
+              marginTop={1.5}
               lineHeight={1.33}
               textAlignCenter
             >
               {'달인의 가마솥에 오신 걸 환영합니다!\n 상품을 둘러보세요!'}
             </CSText>
           </div>
-          <AutoSizeImage
-            src="/images/join_popup_img.png"
-            width={getSize(300)}
-            height={getSize(321)}
-          />
+          <AutoSizeImage src="/images/join_popup_img.png" full />
         </div>
 
         <Button
           onClick={clickBtn}
-          btnHeight={46}
+          btnHeight={4.6}
           backgroundColor={'#15c9de'}
           fontColor="#fff"
-          fontSize={14}
-          borderRadius={8}
-          marginTop={10}
+          fontSize={1.4}
+          borderRadius={0.8}
+          marginTop={1}
           borderColor="#15c9de"
         >
           상품 자세히 보러가기

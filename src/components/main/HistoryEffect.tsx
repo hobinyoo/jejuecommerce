@@ -2,31 +2,22 @@ import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'
-import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 const HistoryEffect = () => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   const Feature = [
     { title: `온 가족이\n 함께즐겨요`, src: '/images/history1.png' },
     { title: `건강한 맛\n 건강한 재료`, src: '/images/history1.png' },
     { title: `물 맛 좋은\n 청정 제주`, src: '/images/history1.png' },
   ]
+
   return (
     <div css={container}>
       <div
         css={[
           containerInner,
           {
-            width: `${getSize(320)}px`,
-            height: `${getSize(480)}px`,
+            width: 'calc(100% - 4rem)',
+            height: 'calc(100% - 6rem)',
             whiteSpace: 'pre-line',
           },
         ]}
@@ -87,7 +78,7 @@ const HistoryEffect = () => {
             }}
           />
           <CSText size={1.3} color="#000" lineHeight={1.62}>
-            {'달인의 가마솥 특징'}
+            달인의 가마솥 특징
           </CSText>
           <div
             css={{
@@ -121,14 +112,10 @@ const HistoryEffect = () => {
               css={{
                 display: 'flex',
                 flexDirection: 'column',
-                width: `${getSize(60)}px`,
+                width: '6rem',
               }}
             >
-              <AutoSizeImage
-                src={src}
-                width={getSize(60)}
-                height={getSize(60)}
-              />
+              <AutoSizeImage src={src} width={6} height={6} />
               <CSText
                 size={1}
                 lineHeight={1.3}
@@ -143,11 +130,7 @@ const HistoryEffect = () => {
         </div>
       </div>
 
-      <AutoSizeImage
-        src={'/images/menubg.png'}
-        width={getSize(360)}
-        height={getSize(540)}
-      />
+      <AutoSizeImage src={'/images/menubg.png'} full />
     </div>
   )
 }

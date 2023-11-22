@@ -3,22 +3,12 @@ import Button from '@components/cs/Button'
 import CSSpan from '@components/cs/CSSpan'
 import CSText from '@components/cs/CSText'
 import { Dispatch, SetStateAction } from 'react'
-import { useAppSelector, RootState } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 interface Props {
   setStartEnabled: Dispatch<SetStateAction<string | null>>
 }
 
 const StartPage = ({ setStartEnabled }: Props) => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   return (
     <div
       css={{
@@ -42,7 +32,15 @@ const StartPage = ({ setStartEnabled }: Props) => {
       >
         {`Welcome\n달인의 가마솥`}
       </CSText>
-      <div css={{ flex: 1, marginTop: '4vh' }}>
+      <div
+        css={{
+          flex: 1,
+          marginTop: '4vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
         <CSText
           size={2}
           color={'#3e3737'}
@@ -57,10 +55,14 @@ const StartPage = ({ setStartEnabled }: Props) => {
         </CSText>
         <AutoSizeImage
           src={'/images/welcome_coupon.png'}
-          width={getSize(192)}
-          height={getSize(106)}
+          width={19.2}
+          height={10.6}
         />
-        <div css={{ marginTop: '4vh' }}>
+        <div
+          css={{
+            marginTop: '4vh',
+          }}
+        >
           <CSText size={2} color={'#3e3737'} lineHeight={1.4} textAlignCenter>
             70,000원 이상 주문시
           </CSText>
@@ -79,8 +81,8 @@ const StartPage = ({ setStartEnabled }: Props) => {
           </CSText>
           <AutoSizeImage
             src={'/images/welcome_delivery.png'}
-            width={getSize(192)}
-            height={getSize(106)}
+            width={19.2}
+            height={10.6}
           />
         </div>
       </div>

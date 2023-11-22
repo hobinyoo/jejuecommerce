@@ -2,8 +2,7 @@ import Button from '@components/cs/Button'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import React, { Dispatch, SetStateAction, useState } from 'react'
-import { RootState, useAppSelector } from 'src/store'
-import { modalOverlay, toSize } from 'styles/globalStyle'
+import { modalOverlay } from 'styles/globalStyle'
 import CSText from '@components/cs/CSText'
 import CountControl from '@components/CountControl'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
@@ -44,28 +43,19 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
 
   const [quantity, setQuantity] = useState<number[]>([0, 0, 0, 0])
 
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   return (
     <div css={modalOverlay}>
-      <div
-        css={[orderModal, { height: `${getSize(577)}px`, overflowY: 'auto' }]}
-      >
+      <div css={[orderModal, { height: '57.7rem', overflowY: 'auto' }]}>
         <div
           css={{
-            padding: `${getSize(20)}px`,
+            padding: '2rem',
           }}
         >
           <div css={buttonWrapper}>
             <AutoSizeImage
               src={'/images/btnX.png'}
-              width={getSize(14)}
-              height={getSize(14)}
+              width={1.4}
+              height={1.4}
               onClick={() => setOrderVisible(false)}
             />
           </div>
@@ -75,37 +65,41 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
               css={[
                 menuBox,
                 {
-                  marginTop: `${index === 0 && getSize(16)}px`,
+                  marginTop: `${index === 0 && '1.6rem'}`,
                   borderTop: `${index === 0 && 'solid 1px #ececec'}`,
-                  borderTopRightRadius: `${index === 0 && getSize(10)}px`,
-                  borderTopLeftRadius: `${index === 0 && getSize(10)}px`,
-                  width: `${getSize(320)}px`,
-                  padding: `${getSize(15)}px ${getSize(20)}px`,
+                  borderTopRightRadius: `${index === 0 && '1rem'}`,
+                  borderTopLeftRadius: `${index === 0 && '1rem'}`,
+                  width: '32rem',
+                  padding: '1.5rem 2rem',
                 },
               ]}
             >
               <div
                 css={{
                   display: 'flex',
-                  gap: `${getSize(8)}px`,
+                  gap: '0.8rem',
                 }}
               >
                 <AutoSizeImage
                   src={'/images/checkbox.png'}
-                  width={getSize(16)}
-                  height={getSize(16)}
+                  width={1.6}
+                  height={1.6}
                 />
 
-                <CSText size={14} lineHeight={1.14} fontFamily="PretendardBold">
+                <CSText
+                  size={1.4}
+                  lineHeight={1.14}
+                  fontFamily="PretendardBold"
+                >
                   {title}
                 </CSText>
               </div>
               <CSText
-                size={11}
+                size={1.1}
                 color={'#818181'}
                 lineHeight={1.67}
-                marginTop={2}
-                marginBottom={10}
+                marginTop={0.2}
+                marginBottom={1}
               >
                 {content}
               </CSText>
@@ -121,7 +115,11 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
                   quantity={quantity}
                   setQuantity={setQuantity}
                 />
-                <CSText size={15} lineHeight={1.67} fontFamily="PretendardBold">
+                <CSText
+                  size={1.5}
+                  lineHeight={1.67}
+                  fontFamily="PretendardBold"
+                >
                   {price}
                 </CSText>
               </div>
@@ -132,20 +130,20 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
             css={[
               price,
               {
-                width: `${getSize(320)}px`,
-                height: `${getSize(50)}px`,
-                padding: `0 ${getSize(18)}px`,
-                borderBottomLeftRadius: `${getSize(10)}px`,
-                borderBottomRightRadius: `${getSize(10)}px`,
+                width: '32rem',
+                height: '5rem',
+                padding: '0 1.8rem',
+                borderBottomLeftRadius: '1rem',
+                borderBottomRightRadius: '1rem',
               },
             ]}
           >
-            <CSText size={12} color="#818181" lineHeight={1.67}>
+            <CSText size={1.2} color="#818181" lineHeight={1.67}>
               총 결제 금액 + 배송비 (
               {calculateTotalPrice(quantity, 0) > 70000 ? '0원' : '4000원'})
             </CSText>
             <CSText
-              size={15}
+              size={1.5}
               fontFamily="PretendardBold"
               color="#15c9de"
               lineHeight={1.18}
@@ -155,7 +153,7 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
                 : calculateTotalPrice(quantity, 4000, uid).toLocaleString()}
               원
               {uid && (
-                <CSSpan size={10} color="#de1515" lineHeight={1.18}>
+                <CSSpan size={1} color="#de1515" lineHeight={1.18}>
                   {' '}
                   회원 10% 할인
                 </CSSpan>
@@ -163,19 +161,19 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
             </CSText>
           </div>
           <CSText
-            size={10}
+            size={1}
             color="#9e9e9e"
             lineHeight={2}
-            marginTop={5}
-            marginBottom={20}
+            marginTop={0.5}
+            marginBottom={2}
           >
             배송정보
             <span
               css={[
                 line,
                 {
-                  fontSize: `${getSize(10)}px`,
-                  margin: `0 ${getSize(5)}px`,
+                  fontSize: '1rem',
+                  margin: '0 0.5rem',
                   lineHeight: 1.15,
                 },
               ]}
@@ -191,10 +189,10 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
                   shallow: true,
                 })
               }
-              btnHeight={50}
+              btnHeight={5}
               backgroundColor="#15c9de"
               fontColor="#fff"
-              fontSize={14}
+              fontSize={1.4}
               borderColor="#15c9de"
             >
               주문하기

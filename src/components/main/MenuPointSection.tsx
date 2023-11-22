@@ -3,17 +3,8 @@ import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'
-import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 const MenuPointSection = () => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   const menuPointData = [
     '물 맛 좋은 제주에서 만듭니다.',
     '100% 한우 또는 국내산 육우를 사용합니다.',
@@ -72,11 +63,7 @@ const MenuPointSection = () => {
           </div>
         ))}
       </div>
-      <AutoSizeImage
-        src={'/images/swimming.png'}
-        width={getSize(360)}
-        height={getSize(233)}
-      />
+      <AutoSizeImage src={'/images/swimming.png'} full />
     </div>
   )
 }

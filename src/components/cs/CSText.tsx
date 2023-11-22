@@ -1,6 +1,4 @@
 import React, { ReactNode } from 'react'
-import { toSize } from 'styles/globalStyle'
-import { RootState, useAppSelector } from 'src/store'
 
 interface Props {
   children: ReactNode

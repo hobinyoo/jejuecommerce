@@ -109,10 +109,10 @@ const Payments = ({
       <div id="agreement" style={{ width: '100%' }} />
       <Button
         onClick={handleClick}
-        btnHeight={50}
+        btnHeight={5}
         backgroundColor="#15c9de"
         fontColor="#fff"
-        fontSize={17}
+        fontSize={1.7}
         borderColor="#15c9de"
       >
         결제하기

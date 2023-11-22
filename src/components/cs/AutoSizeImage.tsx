@@ -4,11 +4,12 @@ import React from 'react'
 
 interface Props {
   src: string
-  width: number
-  height: number
+  width?: number
+  height?: number
   borderRadius?: string
   priority?: boolean
   onClick?: () => void
+  full?: boolean
 }
 
 const AutoSizeImage = ({
@@ -18,29 +19,42 @@ const AutoSizeImage = ({
   onClick,
   borderRadius,
   priority = false,
+  full = false,
 }: Props) => {
   return (
     <>
-      <div
-        css={[
-          imageWrapper,
-          {
-            width: `${width}px`,
-            height: `${height}px`,
-            borderRadius: borderRadius ? borderRadius : 0,
-          },
-        ]}
-        onClick={onClick}
-      >
+      {full ? (
         <Image
           src={src}
-          fill
-          style={{ objectFit: 'cover' }}
+          width={0}
+          height={0}
           sizes="100%"
+          css={{ width: '100%', height: 'auto' }}
           alt=""
           priority={priority}
         />
-      </div>
+      ) : (
+        <div
+          css={[
+            imageWrapper,
+            {
+              width: `${width}rem`,
+              height: `${height}rem`,
+              borderRadius: borderRadius ? borderRadius : 0,
+            },
+          ]}
+          onClick={onClick}
+        >
+          <Image
+            src={src}
+            fill
+            style={{ objectFit: 'cover' }}
+            sizes="100%"
+            alt=""
+            priority={priority}
+          />
+        </div>
+      )}
     </>
   )
 }

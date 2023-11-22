@@ -1,8 +1,6 @@
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
 import React, { Dispatch, SetStateAction } from 'react'
-import { useAppSelector, RootState } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 import { Agreements } from 'types/types'
 
 interface Props {
@@ -11,14 +9,6 @@ interface Props {
 }
 
 const Agreement = ({ agreements, setAgreements }: Props) => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   const handleAllAgreements = () => {
     setAgreements({
       allAgreements: !agreements.allAgreements,
@@ -60,8 +50,8 @@ const Agreement = ({ agreements, setAgreements }: Props) => {
           src={`/images/${
             agreements.allAgreements ? 'checkbox' : 'checkboxnone'
           }.png`}
-          width={getSize(16)}
-          height={getSize(16)}
+          width={1.6}
+          height={1.6}
         />
         <CSText size={13} color="#8b8b8b" lineHeight={1.15}>
           전체동의
@@ -88,8 +78,8 @@ const Agreement = ({ agreements, setAgreements }: Props) => {
                 src={`/images/${
                   agreements[value.key] ? 'checkbox' : 'checkboxnone'
                 }.png`}
-                width={getSize(16)}
-                height={getSize(16)}
+                width={1.6}
+                height={1.6}
               />
               <CSText size={13} color="#8b8b8b" lineHeight={1.15}>
                 {value.title} (필수)

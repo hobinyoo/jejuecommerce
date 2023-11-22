@@ -10,22 +10,15 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useAppSelector, RootState } from 'src/store'
-import { toSize } from 'styles/globalStyle'
+
 import { OrderProps } from 'types/types'
 
 const OrderDetail = () => {
   const router = useRouter()
 
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
   const ordersInfo = useAppSelector(
     (state: RootState) => state.payment.ordersInfo
   )
-
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
 
   const { data } = useQuery<{ items: OrderProps[] }, unknown, OrderProps[]>({
     queryKey: [`/api/get-orderDetail?id=${router.query.uid}`],
@@ -39,16 +32,16 @@ const OrderDetail = () => {
 
   return (
     <div css={{ overflowY: 'auto' }}>
-      <MainHeader windowWidth={width} windowHeight={height} uid={''} />
+      <MainHeader uid={''} />
       <div
         css={{
-          padding: `0 ${getSize(20)}px`,
+          padding: '0 2rem',
         }}
       >
-        <CSText size={24} fontFamily={'PretendardBold'} lineHeight={0.83}>
+        <CSText size={2.4} fontFamily="PretendardBold" lineHeight={0.83}>
           주문 내역
         </CSText>
-        <CSText size={15} color={'#818181'} lineHeight={1.22} marginTop={12}>
+        <CSText size={1.5} color="#818181" lineHeight={1.22} marginTop={1.2}>
           주문하신 내역을 확인해보세요.
         </CSText>
         {orderData &&
@@ -56,14 +49,14 @@ const OrderDetail = () => {
             return (
               <div key={index}>
                 <CSText
-                  size={13}
+                  size={1.3}
                   color="#8b8b8b"
                   lineHeight={1.15}
-                  marginTop={40}
-                  marginBottom={5}
+                  marginTop={4}
+                  marginBottom={0.5}
                 >
                   주문일:{' '}
-                  <CSSpan size={13} color="#8b8b8b" lineHeight={1.15}>
+                  <CSSpan size={1.3} color="#8b8b8b" lineHeight={1.15}>
                     {value.timestamp}
                   </CSSpan>
                 </CSText>
@@ -73,41 +66,41 @@ const OrderDetail = () => {
                 />
                 <div
                   css={{
-                    marginTop: `${getSize(20)}px`,
-                    marginBottom: `${getSize(20)}px`,
+                    marginTop: '2rem',
+                    marginBottom: '2rem',
                   }}
                 >
                   <CSText
-                    size={15}
-                    fontFamily={'PretendardBold'}
+                    size={1.5}
+                    fontFamily="PretendardBold"
                     lineHeight={1.2}
                   >
                     받는사람
                   </CSText>
-                  <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(90)}px` }}>
-                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
+                  <div css={[carrierInfo, { marginTop: '2rem' }]}>
+                    <div css={{ width: '9rem' }}>
+                      <CSText size={1.5} color="#8b8b8b" lineHeight={1.2}>
                         받는 사람
                       </CSText>
                     </div>
 
-                    <CSText size={15} lineHeight={1.2} marginLeft={31}>
+                    <CSText size={1.5} lineHeight={1.2} marginLeft={3.1}>
                       {value.name}
                     </CSText>
                   </div>
-                  <div css={[carrierInfo, { marginTop: ` ${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(90)}px` }}>
-                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
+                  <div css={[carrierInfo, { marginTop: '2rem' }]}>
+                    <div css={{ width: '9rem' }}>
+                      <CSText size={1.5} color="#8b8b8b" lineHeight={1.2}>
                         핸드폰 번호
                       </CSText>
                     </div>
-                    <CSText size={15} lineHeight={1.2} marginLeft={31}>
+                    <CSText size={1.5} lineHeight={1.2} marginLeft={3.1}>
                       {value.phoneNumber}
                     </CSText>
                   </div>
-                  <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(90)}px` }}>
-                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
+                  <div css={[carrierInfo, { marginTop: '2rem' }]}>
+                    <div css={{ width: '9rem' }}>
+                      <CSText size={1.5} color="#8b8b8b" lineHeight={1.2}>
                         주소
                       </CSText>
                     </div>
@@ -115,60 +108,60 @@ const OrderDetail = () => {
                       css={{
                         display: 'flex',
                         flexDirection: 'column',
-                        marginLeft: `${getSize(31)}px`,
+                        marginLeft: '3.1rem',
                       }}
                     >
-                      <CSText size={15} lineHeight={1.2}>
+                      <CSText size={1.5} lineHeight={1.2}>
                         {value.address}
                       </CSText>
-                      <CSText size={15} lineHeight={1.2}>
+                      <CSText size={1.5} lineHeight={1.2}>
                         {value.addressDetail}
                       </CSText>
                     </div>
                   </div>
-                  <div css={[carrierInfo, { marginTop: ` ${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(90)}px` }}>
-                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
+                  <div css={[carrierInfo, { marginTop: '2rem' }]}>
+                    <div css={{ width: '9rem' }}>
+                      <CSText size={1.5} color="#8b8b8b" lineHeight={1.2}>
                         우편 번호
                       </CSText>
                     </div>
-                    <CSText size={15} lineHeight={1.2} marginLeft={31}>
+                    <CSText size={1.5} lineHeight={1.2} marginLeft={3.1}>
                       {value.postCode}
                     </CSText>
                   </div>
-                  <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(90)}px` }}>
-                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
+                  <div css={[carrierInfo, { marginTop: '2rem' }]}>
+                    <div css={{ width: '9rem' }}>
+                      <CSText size={1.5} color="#8b8b8b" lineHeight={1.2}>
                         배송 요청사항
                       </CSText>
                     </div>
-                    <CSText size={15} lineHeight={1.2} marginLeft={31}>
+                    <CSText size={1.5} lineHeight={1.2} marginLeft={3.1}>
                       {value.carrierRequest}
                     </CSText>
                   </div>
-                  <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(90)}px` }}>
-                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
+                  <div css={[carrierInfo, { marginTop: '1rem' }]}>
+                    <div css={{ width: '9rem' }}>
+                      <CSText size={1.5} color="#8b8b8b" lineHeight={1.2}>
                         배송현황
                       </CSText>
                     </div>
-                    <CSText size={15} lineHeight={1.2} marginLeft={31}>
+                    <CSText size={1.5} lineHeight={1.2} marginLeft={3.1}>
                       {value.status === 'DONE' ? '상품준비' : value.status}
                     </CSText>
                   </div>
-                  <div css={[carrierInfo, { marginTop: `${getSize(20)}px` }]}>
-                    <div css={{ width: `${getSize(90)}px` }}>
-                      <CSText size={15} color="#8b8b8b" lineHeight={1.2}>
+                  <div css={[carrierInfo, { marginTop: '2rem' }]}>
+                    <div css={{ width: '9rem' }}>
+                      <CSText size={1.5} color="#8b8b8b" lineHeight={1.2}>
                         영수증
                       </CSText>
                     </div>
                     {value.receipt && (
                       <Link href={value.receipt}>
                         <CSText
-                          size={15}
+                          size={1.5}
                           color="blue"
                           lineHeight={1.2}
-                          marginLeft={31}
+                          marginLeft={3.1}
                           textDecoration={'underline'}
                         >
                           영수증
@@ -177,14 +170,14 @@ const OrderDetail = () => {
                     )}
                   </div>
 
-                  <div css={[btnWrapper, { marginTop: `${getSize(30)}px` }]}>
+                  <div css={[btnWrapper, { marginTop: '3rem' }]}>
                     <Button
-                      btnHeight={46}
-                      fontSize={14}
+                      btnHeight={4.6}
+                      fontSize={1.4}
                       backgroundColor={value.content ? '#8ab7bb' : '#15c9de'}
                       borderColor={value.content ? '#8ab7bb' : '#15c9de'}
                       fontColor="#fff"
-                      borderRadius={8}
+                      borderRadius={0.8}
                       onClick={() =>
                         !value.content &&
                         router.push(`/comment?orderId=${value.id}`)

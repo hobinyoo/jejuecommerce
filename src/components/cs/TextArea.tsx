@@ -23,13 +23,13 @@ const TextArea = ({ name, placeholder, content, setContent }: Props) => {
 
 const textarea = css`
   width: 100%;
-  height: 240px;
-  padding: 15px;
+  height: 24rem;
+  padding: 1.5rem;
   box-sizing: border-box;
-  border-radius: 4px;
+  border-radius: 0.4rem;
   border-color: #ececec;
   resize: none;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-family: 'PretendardRegular';
   &:focus {
     outline: none;

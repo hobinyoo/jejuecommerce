@@ -3,18 +3,10 @@ import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'
-import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 const MenuPoint = () => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
   return (
-    <div css={[container, { marginBottom: `${getSize(100)}px` }]}>
+    <div css={[container, { marginBottom: '10rem' }]}>
       <AutoSizeImage src={'/images/ico_point@3x.png'} width={34} height={20} />
       <CSText
         size={24}
@@ -30,7 +22,7 @@ const MenuPoint = () => {
         css={[
           circleContainer,
           {
-            padding: `0 ${getSize(20)}px`,
+            padding: '0 2rem',
           },
         ]}
       >
@@ -38,8 +30,8 @@ const MenuPoint = () => {
           css={[
             circle,
             {
-              width: `${getSize(120)}px`,
-              height: `${getSize(120)}px`,
+              width: '12rem',
+              height: '12rem',
               backgroundColor: '#b7ae9f',
               zIndex: 1,
             },
@@ -58,11 +50,11 @@ const MenuPoint = () => {
           css={[
             circle,
             {
-              width: `${getSize(120)}px`,
-              height: `${getSize(120)}px`,
+              width: '12rem',
+              height: '12rem',
               backgroundColor: '#64574f',
               zIndex: 2,
-              marginLeft: toSize(width, height, 100),
+              marginLeft: '10rem',
               position: 'absolute',
             },
           ]}
@@ -80,11 +72,11 @@ const MenuPoint = () => {
           css={[
             circle,
             {
-              width: `${getSize(120)}px`,
-              height: `${getSize(120)}px`,
+              width: '12rem',
+              height: '12rem',
               backgroundColor: '#c79c89',
               zIndex: 1,
-              marginLeft: `${getSize(200)}px`,
+              marginLeft: '20rem',
               position: 'absolute',
             },
           ]}

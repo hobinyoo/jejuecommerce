@@ -2,18 +2,8 @@ import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'
-import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 const MethodSection = () => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   const methodData = [
     { title: '따뜻하게 데워 먹기', imageUrl: '/images/way1.png' },
     { title: '온 가족 다 같이', imageUrl: '/images/way2.png' },
@@ -38,14 +28,10 @@ const MethodSection = () => {
         css={{
           display: 'flex',
           justifyContent: 'center',
-          marginBottom: `${getSize(20)}px`,
+          marginBottom: '2rem',
         }}
       >
-        <AutoSizeImage
-          src={'/images/methodMenu.png'}
-          width={getSize(375)}
-          height={getSize(314)}
-        />
+        <AutoSizeImage src={'/images/methodMenu.png'} full />
       </div>
       <div
         css={{
@@ -86,8 +72,8 @@ const MethodSection = () => {
               <div key={index} css={method}>
                 <AutoSizeImage
                   src={imageUrl}
-                  width={getSize(120)}
-                  height={getSize(120)}
+                  width={12}
+                  height={12}
                   borderRadius="50%"
                 />
 

@@ -1,7 +1,5 @@
 import { css } from '@emotion/react'
 import React, { Dispatch, SetStateAction } from 'react'
-import { useAppSelector, RootState } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 import AutoSizeImage from './cs/AutoSizeImage'
 import CSText from './cs/CSText'
 
@@ -12,13 +10,6 @@ interface Props {
 }
 
 const CountControl = ({ quantity, setQuantity, index }: Props) => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   const clickPlus = () => {
     const newQuantity = [...quantity]
     newQuantity[index] = newQuantity[index] + 1
@@ -35,34 +26,34 @@ const CountControl = ({ quantity, setQuantity, index }: Props) => {
       css={[
         count,
         {
-          width: `${getSize(110)}px`,
-          height: `${getSize(30)}px`,
+          width: '11rem',
+          height: '3rem',
         },
       ]}
     >
       <AutoSizeImage
         src={'/images/btn_minus@3x.png'}
-        width={getSize(30)}
-        height={getSize(30)}
+        width={3}
+        height={3}
         onClick={clickMinus}
       />
       <div
         css={[
           number,
           {
-            width: `${getSize(40)}px`,
-            height: `${getSize(30)}px`,
+            width: '4rem',
+            height: '3rem',
           },
         ]}
       >
-        <CSText size={14} lineHeight={1.14}>
+        <CSText size={1.4} lineHeight={1.14}>
           {quantity[index]}
         </CSText>
       </div>
       <AutoSizeImage
         src={'/images/btn_plus@3x.png'}
-        width={getSize(30)}
-        height={getSize(30)}
+        width={3}
+        height={3}
         onClick={clickPlus}
       />
     </div>

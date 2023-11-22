@@ -2,17 +2,8 @@ import CSSpan from '@components/cs/CSSpan'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'
-import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 const NotationsSection = () => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   const list = [
     '한우소고기',
     '고추가루',
@@ -23,14 +14,7 @@ const NotationsSection = () => {
     '사골',
   ]
   return (
-    <div
-      css={[
-        container,
-        {
-          padding: '2.9rem 2rem 0 2rem',
-        },
-      ]}
-    >
+    <div css={container}>
       <CSText
         size={1.6}
         fontFamily={'PretendardBold'}
@@ -81,6 +65,7 @@ const NotationsSection = () => {
 const container = css`
   width: 100%;
   background-color: #f3f3f3;
+  padding: 2.9rem 2rem 0 2rem;
 `
 
 const table = css`

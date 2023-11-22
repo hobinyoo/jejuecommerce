@@ -11,7 +11,7 @@ const Header = () => {
     <div css={container}>
       <ArrowBackIcon css={arrowIcon} onClick={() => router.back()} />
       <CSText
-        size={18}
+        size={1.8}
         color="#3e3737"
         lineHeight={1.11}
         fontFamily="PretendardBold"

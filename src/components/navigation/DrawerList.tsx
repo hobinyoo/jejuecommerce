@@ -5,8 +5,6 @@ import { useRouter } from 'next/router'
 import { auth } from 'src/firebase/initFirebase'
 import { signOut } from 'firebase/auth'
 import { isEmpty } from 'lodash'
-import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
@@ -26,13 +24,6 @@ const DrawerList = ({
 }: Props) => {
   const router = useRouter()
 
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   const handleLogout = () => {
     signOut(auth)
     nookies.destroy(undefined, 'uid', { path: '/' })
@@ -51,50 +42,46 @@ const DrawerList = ({
   return (
     <div
       css={{
-        width: `${getSize(240)}px`,
+        width: '24rem',
       }}
     >
       <div
         css={[
           content,
           {
-            height: `${getSize(71)}px`,
-            padding: `0 ${getSize(20)}px`,
+            height: '7.1rem',
+            padding: '0 2rem',
           },
         ]}
       >
-        <div css={{ marginTop: `${getSize(30)}px` }}>
-          <AutoSizeImage
-            src={'/images/ico_my@3x.png'}
-            width={getSize(20)}
-            height={getSize(20)}
-          />
+        <div css={{ marginTop: '3rem' }}>
+          <AutoSizeImage src={'/images/ico_my@3x.png'} width={2} height={2} />
         </div>
         <div onClick={() => router.push('/signIn')}>
           <CSText
-            size={15}
+            size={1.5}
             color={'#3e3737'}
             lineHeight={1.25}
-            marginTop={32}
-            marginLeft={10}
-            marginRight={26}
+            marginTop={3.2}
+            marginLeft={1}
+            marginRight={2.6}
           >
             {isEmpty(name) ? '로그인' : name}
           </CSText>
         </div>
 
         {isEmpty(name) && (
-          <div css={{ marginTop: `${getSize(26)}px` }}>
+          <div css={{ marginTop: '2.6rem' }}>
             <Button
               onClick={() => router.push('/signUp')}
-              btnWidth={80}
-              btnHeight={30}
+              btnWidth={8}
+              btnHeight={3}
               fontColor="#fff"
-              fontSize={13}
-              borderRadius={4}
+              fontSize={1.3}
+              borderRadius={0.4}
             >
-              <CSText size={13} color="#fff" lineHeight={1.54}>
-                {'회원가입'}
+              <CSText size={1.3} color="#fff" lineHeight={1.54}>
+                회원가입
               </CSText>
             </Button>
           </div>
@@ -107,28 +94,28 @@ const DrawerList = ({
         css={[
           content,
           {
-            height: `${getSize(58)}px`,
-            padding: `0 ${getSize(20)}px`,
+            height: '5.8rem',
+            padding: '0 2rem',
           },
         ]}
       >
-        <div css={{ marginTop: `${getSize(20)}px` }}>
+        <div css={{ marginTop: '2rem' }}>
           <AutoSizeImage
             src={'/images/ico_list@3x.png'}
-            width={getSize(18)}
-            height={getSize(20)}
+            width={1.8}
+            height={2}
           />
         </div>
 
         <CSText
-          size={15}
+          size={1.5}
           color={'#3e3737'}
           lineHeight={1.25}
-          marginTop={20}
-          marginLeft={10}
-          marginRight={26}
+          marginTop={2}
+          marginLeft={1}
+          marginRight={2.6}
         >
-          {'주문 내역'}
+          주문 내역
         </CSText>
       </div>
       <Divider />
@@ -138,28 +125,28 @@ const DrawerList = ({
         css={[
           content,
           {
-            height: `${getSize(58)}px`,
-            padding: `0 ${getSize(20)}px`,
+            height: '5.8rem',
+            padding: '0 2rem',
           },
         ]}
       >
-        <div css={{ marginTop: `${getSize(20)}px` }}>
+        <div css={{ marginTop: '2rem' }}>
           <AutoSizeImage
             src={'/images/ico_setting@3x.png'}
-            width={getSize(19)}
-            height={getSize(20)}
+            width={1.9}
+            height={2}
           />
         </div>
 
         <CSText
-          size={15}
+          size={1.5}
           color={'#3e3737'}
           lineHeight={1.25}
-          marginTop={20}
-          marginLeft={10}
-          marginRight={26}
+          marginTop={2}
+          marginLeft={1}
+          marginRight={2.6}
         >
-          {'관리자'}
+          관리자
         </CSText>
       </div>
       <Divider />
@@ -169,12 +156,12 @@ const DrawerList = ({
           justifyContent: 'center',
           display: 'flex',
           position: 'absolute',
-          bottom: `${getSize(30)}px`,
+          bottom: '3rem',
         }}
         onClick={handleLogout}
       >
         <CSText
-          size={15}
+          size={1.5}
           color={'#3e3737'}
           lineHeight={1.33}
           textDecoration={'underline'}

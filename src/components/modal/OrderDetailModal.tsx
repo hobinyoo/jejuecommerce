@@ -1,8 +1,8 @@
 import Button from '@components/cs/Button'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import IconX from '/public/X.svg'
-import { RootState, useAppDispatch, useAppSelector } from 'src/store'
-import { modalContainer, modalOverlay, toSize } from 'styles/globalStyle'
+import { useAppDispatch } from 'src/store'
+import { modalContainer, modalOverlay } from 'styles/globalStyle'
 import CSText from '@components/cs/CSText'
 import { useRouter } from 'next/router'
 import InputText from '@components/cs/InputText'
@@ -18,15 +18,9 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
   const router = useRouter()
   const dispatch = useAppDispatch()
 
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
   const [name, setName] = useState<string>('')
   const [phoneNumber, setPhoneNumber] = useState<string>('')
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
+
   const handle = {
     signIn: () => {
       router.push('signIn')
@@ -60,32 +54,32 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
         css={[
           modalContainer,
           {
-            padding: `${getSize(20)}px`,
-            width: `${getSize(300)}px`,
-            height: `${getSize(400)}px`,
-            borderRadius: `${getSize(12)}px`,
+            padding: '2rem',
+            width: '30rem',
+            height: '40rem',
+            borderRadius: '1.2rem',
           },
         ]}
       >
         <div
           css={{
             position: 'absolute',
-            top: `${getSize(20)}px`,
-            right: `${getSize(20)}px`,
+            top: '2rem',
+            right: '2rem',
           }}
         >
           <IconX onClick={() => setOrderDetailVisible(false)} />
         </div>
         <div>
           <CSText
-            size={15}
+            size={1.5}
             fontFamily={'PretendardBold'}
             lineHeight={1.25}
-            marginTop={30}
+            marginTop={3}
           >
             비회원 주문
           </CSText>
-          <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
+          <CSText size={1.3} marginTop={3} marginBottom={0.8} lineHeight={1.15}>
             이름
           </CSText>
           <InputText
@@ -95,7 +89,7 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
             inputText={name}
           />
 
-          <CSText size={13} marginTop={30} marginBottom={8} lineHeight={1.15}>
+          <CSText size={1.3} marginTop={3} marginBottom={0.8} lineHeight={1.15}>
             휴대폰 번호
           </CSText>
           <div>
@@ -108,10 +102,10 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
           </div>
           <Button
             onClick={handle.orderDetail}
-            btnHeight={50}
-            fontSize={17}
+            btnHeight={5}
+            fontSize={1.7}
             fontColor="#fff"
-            marginTop={20}
+            marginTop={2}
             backgroundColor="#15c9de"
             borderColor="#15c9de"
           >
@@ -121,13 +115,13 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
         <div css={{ display: 'flex', justifyContent: 'flex-end' }}>
           <CSText
             onClick={handle.signIn}
-            size={12}
-            marginTop={30}
+            size={1.2}
+            marginTop={3}
             lineHeight={1.15}
           >
             회원이신가요?{' '}
             <CSSpan
-              size={12}
+              size={1.2}
               lineHeight={1.15}
               textDecoration
               onClick={() => router.push('/signIn')}

@@ -2,18 +2,8 @@ import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'
-import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 const IntroMenuSection = () => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   const menuData = [
     {
       title: '한우곰탕',
@@ -111,11 +101,7 @@ const IntroMenuSection = () => {
               </CSText>
             </div>
             <div css={[agingImage]}>
-              <AutoSizeImage
-                src={data.imageUrl}
-                width={toSize(width, height, 180)}
-                height={toSize(width, height, 162)}
-              />
+              <AutoSizeImage src={data.imageUrl} width={18} height={16.2} />
             </div>
           </div>
           <div

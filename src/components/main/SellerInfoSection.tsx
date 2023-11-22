@@ -1,17 +1,8 @@
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'
-import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 const SellerInfoSection = () => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   const list = [
     { title: '상호', content: '공릉동 한우소고기 국밥' },
     { title: '매장주소', content: '서울 노원구 동일로192길 42' },
@@ -61,7 +52,7 @@ const SellerInfoSection = () => {
                   padding: '1.5rem',
                 }}
               >
-                <CSText size={(1.3)} lineHeight={1.54}>
+                <CSText size={1.3} lineHeight={1.54}>
                   {content}
                 </CSText>
               </td>

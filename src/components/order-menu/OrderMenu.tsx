@@ -4,8 +4,6 @@ import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import { menuData } from 'src/constants/products'
 import { calculateTotalPrice } from 'src/function/calculateTotalPrice'
-import { useAppSelector, RootState } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 interface Props {
   quantityArr: number[]
@@ -13,12 +11,6 @@ interface Props {
 }
 
 const OrderMenu = ({ quantityArr, uid }: Props) => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
   const newData = menuData
     .map((item, index) => ({
       ...item,
@@ -30,15 +22,13 @@ const OrderMenu = ({ quantityArr, uid }: Props) => {
     <div>
       <div
         css={{
-          padding: `${getSize(20)}px ${getSize(20)}px ${getSize(0)}px ${getSize(
-            20
-          )}px`,
+          padding: '2rem 2rem 0 2rem',
           border: '1px solid #ececec',
           borderTopLeftRadius: '8px',
           borderTopRightRadius: '8px',
         }}
       >
-        <CSText size={12} fontFamily={'PretendardBold'} lineHeight={1.17}>
+        <CSText size={1.2} fontFamily={'PretendardBold'} lineHeight={1.17}>
           주문 상품
         </CSText>
         {newData.map((menu, index) => (
@@ -47,17 +37,17 @@ const OrderMenu = ({ quantityArr, uid }: Props) => {
               <div
                 css={{
                   display: 'flex',
-                  gap: `${getSize(10)}px`,
-                  paddingTop: `${getSize(15)}px`,
-                  paddingBottom: `${getSize(14)}px`,
+                  gap: '1rem',
+                  paddingTop: '1.5rem',
+                  paddingBottom: '1.4rem',
                   borderTop: index === 0 ? 'none' : 'solid 1px #ececec',
                 }}
               >
                 <div>
                   <AutoSizeImage
                     src={'/images/orderMenu1.png'}
-                    width={getSize(40)}
-                    height={getSize(40)}
+                    width={4}
+                    height={4}
                   />
                 </div>
                 <div
@@ -67,13 +57,13 @@ const OrderMenu = ({ quantityArr, uid }: Props) => {
                     justifyContent: 'space-between',
                   }}
                 >
-                  <CSText size={13} lineHeight={1.15}>
+                  <CSText size={1.3} lineHeight={1.15}>
                     {menu.title}
                   </CSText>
-                  <CSText size={13} lineHeight={1.15}>
+                  <CSText size={1.3} lineHeight={1.15}>
                     {menu.price}
                     <span css={line} />
-                    <CSSpan size={13} lineHeight={1.15}>
+                    <CSSpan size={1.3} lineHeight={1.15}>
                       수량 {menu.quantity}개
                     </CSSpan>
                   </CSText>
@@ -85,7 +75,7 @@ const OrderMenu = ({ quantityArr, uid }: Props) => {
       </div>
       <div
         css={{
-          padding: `${getSize(18)}px ${getSize(16)}px`,
+          padding: '1.8rem 1.6rem',
           borderLeft: '1px solid #ececec',
           borderRight: '1px solid #ececec',
           borderBottom: '1px solid #ececec',
@@ -100,12 +90,12 @@ const OrderMenu = ({ quantityArr, uid }: Props) => {
             alignItems: 'center',
           }}
         >
-          <CSText size={12} color="#818181" lineHeight={1.67}>
+          <CSText size={1.2} color="#818181" lineHeight={1.67}>
             총 결제 금액 + 배송비 (
             {calculateTotalPrice(quantityArr, 0) > 70000 ? '0원' : '4000원'})
           </CSText>
           <CSText
-            size={15}
+            size={1.5}
             fontFamily="PretendardBold"
             color="#15c9de"
             lineHeight={1.18}

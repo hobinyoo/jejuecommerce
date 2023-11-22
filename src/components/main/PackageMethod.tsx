@@ -1,18 +1,8 @@
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
-import { useAppSelector, RootState } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 const PackageMethod = () => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   return (
     <section
       css={{
@@ -39,11 +29,7 @@ const PackageMethod = () => {
         포장에 관한 설명이 필요합니다
       </CSText>
 
-      <AutoSizeImage
-        src={'/images/packageImg.png'}
-        width={getSize(320)}
-        height={getSize(320)}
-      />
+      <AutoSizeImage src={'/images/packageImg.png'} full />
       <div
         css={[
           packageProcess,
@@ -70,8 +56,8 @@ const PackageMethod = () => {
 
         <AutoSizeImage
           src={'/images/delivery.png'}
-          width={getSize(46.5)}
-          height={getSize(28.5)}
+          width={4.65}
+          height={2.85}
         />
       </div>
     </section>

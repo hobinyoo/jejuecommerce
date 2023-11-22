@@ -8,21 +8,11 @@ import { emailValidation, passwordValidation } from 'src/function/vaildation'
 import ErrorMessage from '@components/Error'
 import { isEmpty } from 'lodash'
 import { useRouter } from 'next/router'
-import { useAppSelector, RootState } from 'src/store'
 import MainHeader from '@components/cs/MainHeader'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
-import { toSize } from 'styles/globalStyle'
 
 const SignIn = () => {
   const router = useRouter()
-
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
 
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -62,25 +52,25 @@ const SignIn = () => {
 
   return (
     <div css={container}>
-      <MainHeader windowWidth={width} windowHeight={height} uid={''} />
+      <MainHeader uid={''} />
       <div
         css={[
           signInWrapper,
           {
-            padding: `0 ${getSize(30)}px`,
-            height: `calc(100vh - ${getSize(80)}px)`,
+            padding: '0 3rem',
+            height: 'calc(100vh - 8rem)',
           },
         ]}
       >
-        <div css={{ marginTop: getSize(50) }}>
+        <div css={{ marginTop: '5rem' }}>
           <AutoSizeImage
             src="/images/jujueLogo.png"
-            width={getSize(177)}
-            height={getSize(133)}
+            width={17.7}
+            height={13.3}
           />
         </div>
 
-        <div css={[inputWrapper, { marginTop: `${getSize(40)}px` }]}>
+        <div css={[inputWrapper, { marginTop: '4rem' }]}>
           <InputText
             name=""
             placeholder="이메일을 입력해주세요."
@@ -97,7 +87,7 @@ const SignIn = () => {
             setInputText={setPassword}
             inputText={password}
             passwordType
-            marginTop={20}
+            marginTop={2}
           />
           {!isEmpty(password) && !passwordValidation(password) && (
             <ErrorMessage
@@ -107,25 +97,25 @@ const SignIn = () => {
           <div>
             <Button
               onClick={signIn}
-              btnHeight={46}
+              btnHeight={4.6}
               backgroundColor="#15c9de"
               fontColor="#fff"
-              fontSize={15}
+              fontSize={1.5}
               borderColor="#15c9de"
-              marginTop={30}
-              borderRadius={8}
+              marginTop={3}
+              borderRadius={0.8}
               disabled={!fillUserInfo()}
             >
               로그인
             </Button>
             <Button
               onClick={() => router.push('/signUp')}
-              btnHeight={46}
+              btnHeight={4.6}
               backgroundColor="#fff"
               fontColor="#15c9de"
-              fontSize={14}
-              borderRadius={8}
-              marginTop={10}
+              fontSize={1.4}
+              borderRadius={0.8}
+              marginTop={1}
               borderColor="#15c9de"
             >
               회원가입

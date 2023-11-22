@@ -2,26 +2,11 @@ import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'
-import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 const MainSection = () => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   return (
-    <div css={[container, { marginBottom: '3rem', textAlign: 'center' }]}>
-      <AutoSizeImage
-        src={'/images/mainImg.png'}
-        width={getSize(360)}
-        height={getSize(360)}
-        priority={true}
-      />
+    <div css={container}>
+      <AutoSizeImage src={'/images/mainImg.png'} full priority={true} />
       <CSText
         size={2.4}
         fontFamily={'SeoulHangangEB'}
@@ -51,6 +36,8 @@ const MainSection = () => {
 const container = css`
   width: 100%;
   justify-content: center;
+  margin-bottom: 3rem;
+  text-align: center;
 `
 
 export default MainSection

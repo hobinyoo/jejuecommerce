@@ -4,7 +4,6 @@ import { css } from '@emotion/react'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import React, { useEffect, useState } from 'react'
 import nookies from 'nookies'
-import { RootState, useAppSelector } from 'src/store'
 import MainSection from '@components/main/MainSection'
 import MenuPointSection from '@components/main/MenuPointSection'
 import MethodSection from '@components/main/MethodSection'
@@ -13,7 +12,6 @@ import NotationsSection from '@components/main/NotationsSection'
 import SellerInfoSection from '@components/main/SellerInfoSection'
 import ReviewSection from '@components/main/ReviewSection'
 import Button from '@components/cs/Button'
-import { toSize } from 'styles/globalStyle'
 import NotiModal from '@components/modal/NotiModal'
 import { isEmpty } from 'lodash'
 import OrderDetailModal from '@components/modal/OrderDetailModal'
@@ -46,9 +44,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 const Main = ({
   cookies,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
   const [orderVisible, setOrderVisible] = useState<boolean>(false)
   const [orderDetailVisible, setOrderDetailVisible] = useState<boolean>(false)
   const [notiVisible, setNotiVisible] = useState<boolean>(false)
@@ -65,10 +60,6 @@ const Main = ({
     }
   }, [startEnabled])
 
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   return (
     <>
       {startEnabled !== 'noShow' ? (
@@ -78,7 +69,7 @@ const Main = ({
           css={[
             container,
             {
-              width: width > 500 ? '50rem' : '100%',
+              width: '100%',
               marginBottom: '2rem',
               marginLeft: 'auto',
               marginRight: 'auto',
@@ -87,36 +78,26 @@ const Main = ({
           ]}
         >
           <MainHeader
-            windowWidth={width}
-            windowHeight={height}
             uid={cookies?.uid}
             setOrderDetailVisible={setOrderDetailVisible}
           />
 
           <MainSection />
-          <AutoSizeImage
-            src={'/images/jejupic.png'}
-            width={getSize(360)}
-            height={getSize(240)}
-          />
+          <AutoSizeImage src={'/images/jejupic.png'} full />
 
           <HistoryEffect />
           <IntroMenuSection />
           <MenuPointSection />
           <MethodSection />
           <SafePolicy />
-          <AutoSizeImage
-            src={'/images/maejang.png'}
-            width={getSize(360)}
-            height={getSize(420)}
-          />
+          <AutoSizeImage src={'/images/maejang.png'} full />
           <PackageMethod />
           <ChangeRefundSection />
           <NotationsSection />
           <SellerInfoSection />
           <ReviewSection />
 
-          <div css={[buttonWrapper, { width: width > 500 ? '500px' : '100%' }]}>
+          <div css={[buttonWrapper, { width: '100%' }]}>
             <Button
               onClick={() =>
                 isEmpty(cookies.uid)

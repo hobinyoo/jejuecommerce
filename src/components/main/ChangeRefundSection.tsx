@@ -2,16 +2,8 @@ import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'
-import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 const ChangeRefundSection = () => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
   return (
     <div css={container}>
       <div
@@ -29,11 +21,7 @@ const ChangeRefundSection = () => {
           {'반품/환불/교환 안내'}
         </CSText>
         <div css={[possibleImpossible, { marginTop: '2rem' }]}>
-          <AutoSizeImage
-            src={'/images/no.png'}
-            width={getSize(12)}
-            height={getSize(12)}
-          />
+          <AutoSizeImage src={'/images/no.png'} width={1.2} height={1.2} />
           <CSText
             size={1.4}
             color={'#e60000'}
@@ -74,11 +62,7 @@ const ChangeRefundSection = () => {
           {'분실된 경우'}
         </CSText>
         <div css={[possibleImpossible, { marginTop: '3rem' }]}>
-          <AutoSizeImage
-            src={'/images/check.png'}
-            width={getSize(12)}
-            height={getSize(12)}
-          />
+          <AutoSizeImage src={'/images/check.png'} width={1.2} height={1.2} />
           <CSText
             size={1.4}
             color={'#2d8fbb'}
@@ -120,8 +104,8 @@ const ChangeRefundSection = () => {
         >
           <AutoSizeImage
             src={'/images/ico_call@3x.png'}
-            width={getSize(15)}
-            height={getSize(15)}
+            width={1.5}
+            height={1.5}
           />
           <CSText size={1.4} color="#fff" lineHeight={1.43} marginLeft={0.6}>
             {'전화번호: 070-5421-5644'}

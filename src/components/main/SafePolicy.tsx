@@ -2,18 +2,8 @@ import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'
-import { RootState, useAppSelector } from 'src/store'
-import { toSize } from 'styles/globalStyle'
 
 const SafePolicy = () => {
-  const { width, height } = useAppSelector(
-    (state: RootState) => state.windowSize.windowSize
-  )
-
-  const getSize = (input: number) => {
-    return toSize(width, height, input)
-  }
-
   return (
     <div css={container}>
       <div
@@ -21,7 +11,7 @@ const SafePolicy = () => {
           containerInner,
           {
             whiteSpace: 'pre-line',
-            padding: `${getSize(24)}px ${getSize(14)}px`,
+            padding: '2.4rem 1.2rem',
           },
         ]}
       >
@@ -41,11 +31,7 @@ const SafePolicy = () => {
         </div>
       </div>
 
-      <AutoSizeImage
-        src={'/images/safeBg.png'}
-        width={getSize(360)}
-        height={getSize(243)}
-      />
+      <AutoSizeImage src={'/images/safeBg.png'} full />
     </div>
   )
 }

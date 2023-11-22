@@ -10,22 +10,14 @@ import MenuDrawer from '@components/navigation/Drawer'
 import { db } from '@firebase/initFirebase'
 import { doc, getDoc } from 'firebase/firestore'
 import AutoSizeImage from './AutoSizeImage'
-import { toSize } from 'styles/globalStyle'
 import { useRouter } from 'next/router'
 import CSText from './CSText'
 
 interface Props {
   uid: string
-  windowWidth: number
-  windowHeight: number
   setOrderDetailVisible?: Dispatch<SetStateAction<boolean>>
 }
-const MainHeader = ({
-  uid,
-  windowWidth,
-  windowHeight,
-  setOrderDetailVisible,
-}: Props) => {
+const MainHeader = ({ uid, setOrderDetailVisible }: Props) => {
   const [name, setName] = useState('')
   const [openDrawer, setOpenDrawer] = useState<boolean>(false)
   const router = useRouter()
@@ -42,35 +34,26 @@ const MainHeader = ({
     getUser()
   }, [getUser])
 
-  const getSize = (input: number) => {
-    return toSize(windowWidth, windowHeight, input)
-  }
-
   return (
-    <div
-      css={[
-        container,
-        { height: `${getSize(80)}px`, padding: `0 ${getSize(25)}px` },
-      ]}
-    >
+    <div css={[container, { height: '8rem', padding: '0 2.5rem' }]}>
       <div css={{ display: 'flex', alignItems: 'center' }}>
         {router.pathname === '/' ? (
-          <AutoSizeImage
-            src="/images/jujueLogo.png"
-            width={getSize(80)}
-            height={getSize(60)}
-          />
+          <AutoSizeImage src="/images/jujueLogo.png" width={8} height={6} />
         ) : (
           <AutoSizeImage
             src="/images/gnb_back@3x.png"
-            width={getSize(30)}
-            height={getSize(30)}
+            width={3}
+            height={3}
             onClick={() => router.back()}
           />
         )}
 
-        <CSText size={18} lineHeight={1.17}>
-          {router.pathname === '/signUp' ? '회원가입' : ''}
+        <CSText size={1.8} lineHeight={1.17}>
+          {router.pathname === '/signUp'
+            ? '회원가입'
+            : router.pathname === '/admin'
+            ? '관리자 페이지'
+            : ''}
         </CSText>
       </div>
       <div>
@@ -78,8 +61,6 @@ const MainHeader = ({
           openDrawer={openDrawer}
           setOpenDrawer={setOpenDrawer}
           uid={uid}
-          windowWidth={windowWidth}
-          windowHeight={windowHeight}
           name={name}
           setOrderDetailVisible={setOrderDetailVisible}
         />
