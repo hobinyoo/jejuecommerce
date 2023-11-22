@@ -26,20 +26,24 @@ export const menuData = [
     title: '한우곰탕',
     price: '12,000원',
     quantity: 0,
+    image_url: '/images/gomtang.png',
   },
   {
     title: '한우설렁탕',
     price: '13,000원',
     quantity: 0,
+    image_url: '/images/selungtang.png',
   },
   {
-    title: '육우 갈비탕',
+    title: '육우갈비탕',
     price: '15,000원',
     quantity: 0,
+    image_url: '/images/galbitang2.png',
   },
   {
-    title: '육우곰탕',
+    title: '한우갈비탕',
     price: '18,000원',
     quantity: 0,
+    image_url: '/images/galbitang2.png',
   },
 ]

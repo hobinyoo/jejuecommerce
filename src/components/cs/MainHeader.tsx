@@ -12,6 +12,7 @@ import { doc, getDoc } from 'firebase/firestore'
 import AutoSizeImage from './AutoSizeImage'
 import { useRouter } from 'next/router'
 import CSText from './CSText'
+import Link from 'next/link'
 
 interface Props {
   uid: string
@@ -38,7 +39,9 @@ const MainHeader = ({ uid, setOrderDetailVisible }: Props) => {
     <div css={[container, { height: '8rem', padding: '0 2.5rem' }]}>
       <div css={{ display: 'flex', alignItems: 'center' }}>
         {router.pathname === '/' ? (
-          <AutoSizeImage src="/images/jujueLogo.png" width={8} height={6} />
+          <Link href={'/'}>
+            <AutoSizeImage src="/images/jujueLogo.png" width={8} height={6} />
+          </Link>
         ) : (
           <AutoSizeImage
             src="/images/gnb_back@3x.png"
@@ -49,22 +52,21 @@ const MainHeader = ({ uid, setOrderDetailVisible }: Props) => {
         )}
 
         <CSText size={1.8} lineHeight={1.17}>
-          {router.pathname === '/signUp'
-            ? '회원가입'
-            : router.pathname === '/admin'
-            ? '관리자 페이지'
-            : ''}
+          {router.pathname === '/admin' && '관리자 페이지'}
         </CSText>
       </div>
-      <div>
-        <MenuDrawer
-          openDrawer={openDrawer}
-          setOpenDrawer={setOpenDrawer}
-          uid={uid}
-          name={name}
-          setOrderDetailVisible={setOrderDetailVisible}
-        />
-      </div>
+
+      {router.pathname === '/' && (
+        <div>
+          <MenuDrawer
+            openDrawer={openDrawer}
+            setOpenDrawer={setOpenDrawer}
+            uid={uid}
+            name={name}
+            setOrderDetailVisible={setOrderDetailVisible}
+          />
+        </div>
+      )}
     </div>
   )
 }

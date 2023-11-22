@@ -45,9 +45,10 @@ const OrderMenu = ({ quantityArr, uid }: Props) => {
               >
                 <div>
                   <AutoSizeImage
-                    src={'/images/orderMenu1.png'}
+                    src={menu.image_url}
                     width={4}
                     height={4}
+                    borderRadius={0.5}
                   />
                 </div>
                 <div

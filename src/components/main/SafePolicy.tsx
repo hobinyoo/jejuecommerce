@@ -26,12 +26,12 @@ const SafePolicy = () => {
             {'달인의 가마솥은'}
           </CSText>
           <CSText size={1.5} color="#fff" lineHeight={1.47}>
-            {`100% 국내산 소고기, 신선한 좋은 청정재료를\n사용함으로써 자라나는 어린아이들은 물론\n모든 사람들이 안심하고 먹을 수 있는 으뜸가는 맛\n좋은 먹거리를 책임지겠습니다`}
+            {`100% 국내산 소고기, 신선한 좋은 청정재료를\n사용함으로써 자라나는 어린아이들은 물론\n모든 사람들이 안심하고 먹을 수 있는 건강한\n 먹거리를 책임지겠습니다.`}
           </CSText>
         </div>
       </div>
 
-      <AutoSizeImage src={'/images/safeBg.png'} full />
+      <AutoSizeImage src={'/images/safeBg.png'} full priority />
     </div>
   )
 }

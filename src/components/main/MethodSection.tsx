@@ -26,15 +26,6 @@ const MethodSection = () => {
       </CSText>
       <div
         css={{
-          display: 'flex',
-          justifyContent: 'center',
-          marginBottom: '2rem',
-        }}
-      >
-        <AutoSizeImage src={'/images/methodMenu.png'} full />
-      </div>
-      <div
-        css={{
           width: '100%',
           padding: '2rem',
           backgroundColor: '#c4edff',
@@ -70,12 +61,7 @@ const MethodSection = () => {
           <div css={methodWrapperWithBorder}>
             {methodData.map(({ title, imageUrl }, index) => (
               <div key={index} css={method}>
-                <AutoSizeImage
-                  src={imageUrl}
-                  width={12}
-                  height={12}
-                  borderRadius="50%"
-                />
+                <AutoSizeImage src={imageUrl} width={12} height={12} />
 
                 <CSText
                   size={1.5}
@@ -97,6 +83,7 @@ const MethodSection = () => {
             backgroundColor: '#77bfdf',
             marginTop: '1.8rem',
             borderRadius: '1.2rem',
+            whiteSpace: 'pre-line',
           }}
         >
           <CSText
@@ -108,7 +95,7 @@ const MethodSection = () => {
             유통기한 안내
           </CSText>
           <CSText size={1.2} color="#fff" lineHeight={1.42} marginTop={1.3}>
-            유통기한에 관한 내용이 나옵니다.
+            {`냉동보관, 6개월\n해동 후 개봉된 제품은 다시 냉동하지 마시고 바로 드세요.`}
           </CSText>
         </div>
       </div>

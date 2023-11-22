@@ -24,10 +24,7 @@ const MainSection = () => {
         lineHeight={1.38}
         textAlignCenter
       >
-        집에서도 즐기는 달인의 가마솥
-      </CSText>
-      <CSText size={1.3} color={'#9e9795'} lineHeight={1.38} textAlignCenter>
-        #한우곰탕 #한우설렁탕 #육우갈비탕
+        {`집에서도 즐기는 달인의 가마솥\n  #한우곰탕 #한우설렁탕 #육우갈비탕`}
       </CSText>
     </div>
   )
@@ -38,6 +35,7 @@ const container = css`
   justify-content: center;
   margin-bottom: 3rem;
   text-align: center;
+  white-space: pre-line;
 `
 
 export default MainSection

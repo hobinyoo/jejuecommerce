@@ -21,6 +21,7 @@ import IntroMenuSection from '@components/main/IntroMenuSection'
 import SafePolicy from '@components/main/SafePolicy'
 import PackageMethod from '@components/main/PackageMethod'
 import dynamic from 'next/dynamic'
+import CSText from '@components/cs/CSText'
 
 const StartPage = dynamic(() => import('@components/main/StartPage'))
 
@@ -90,7 +91,32 @@ const Main = ({
           <MenuPointSection />
           <MethodSection />
           <SafePolicy />
-          <AutoSizeImage src={'/images/maejang.png'} full />
+          <div css={{ position: 'relative' }}>
+            <video width="100%" height="auto" autoPlay loop muted>
+              <source src="/videos/video.mp4" type="video/mp4" />
+            </video>
+            <div
+              css={{
+                position: 'absolute',
+                width: '70%',
+                backgroundColor: 'rgba(0,0,0,0.3)',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+              }}
+            >
+              <CSText
+                size={2.4}
+                fontFamily={'SeoulHangangEB'}
+                color={'#fff'}
+                lineHeight={1}
+                textAlignCenter
+              >
+                {`요리에 진심인 쉐프가\n 전통 가마솥 방식으로 \n 맛 좋은 먹거리를 만듭니다`}
+              </CSText>
+            </div>
+          </div>
+
           <PackageMethod />
           <ChangeRefundSection />
           <NotationsSection />

@@ -6,10 +6,11 @@ interface Props {
   src: string
   width?: number
   height?: number
-  borderRadius?: string
+  borderRadius?: number
   priority?: boolean
   onClick?: () => void
   full?: boolean
+  borderTopLeftRadius?: number
 }
 
 const AutoSizeImage = ({
@@ -18,6 +19,7 @@ const AutoSizeImage = ({
   height,
   onClick,
   borderRadius,
+  borderTopLeftRadius,
   priority = false,
   full = false,
 }: Props) => {
@@ -40,7 +42,6 @@ const AutoSizeImage = ({
             {
               width: `${width}rem`,
               height: `${height}rem`,
-              borderRadius: borderRadius ? borderRadius : 0,
             },
           ]}
           onClick={onClick}
@@ -48,7 +49,13 @@ const AutoSizeImage = ({
           <Image
             src={src}
             fill
-            style={{ objectFit: 'cover' }}
+            style={{
+              objectFit: 'cover',
+              borderTopLeftRadius: borderTopLeftRadius
+                ? `${borderTopLeftRadius}rem`
+                : 0,
+              borderRadius: borderRadius ? `${borderRadius}rem` : 0,
+            }}
             sizes="100%"
             alt=""
             priority={priority}

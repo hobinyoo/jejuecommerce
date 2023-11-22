@@ -79,6 +79,8 @@ const DrawerList = ({
               fontColor="#fff"
               fontSize={1.3}
               borderRadius={0.4}
+              backgroundColor="#15c9de"
+              borderColor="#15c9de"
             >
               <CSText size={1.3} color="#fff" lineHeight={1.54}>
                 회원가입

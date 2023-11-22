@@ -51,15 +51,7 @@ const ChangeRefundSection = () => {
           {'따르지 않은 경우'}
         </CSText>
         <CSText size={1.3} color={'#3e3737'} lineHeight={1.54} marginTop={1.5}>
-          {'· 소비자의 책임이 있는 사유로 상품이 훼손되거나'}
-        </CSText>
-        <CSText
-          size={1.3}
-          color={'#3e3737'}
-          lineHeight={1.54}
-          marginLeft={0.58}
-        >
-          {'분실된 경우'}
+          {'· 소비자의 책임이 있는 사유로 상품이 훼손되거나 분실된 경우'}
         </CSText>
         <div css={[possibleImpossible, { marginTop: '3rem' }]}>
           <AutoSizeImage src={'/images/check.png'} width={1.2} height={1.2} />
@@ -85,7 +77,7 @@ const ChangeRefundSection = () => {
           },
         ]}
       >
-        <CSText size={1.5} color={'#3e3737'} lineHeight={1.33} marginTop={3}>
+        <CSText size={1.5} color={'#3e3737'} lineHeight={1.33}>
           {'매장으로 연락주시면 친절히 교환 및 환불 진행'}
         </CSText>
         <CSText size={1.5} color={'#3e3737'} lineHeight={1.33}>
@@ -108,7 +100,7 @@ const ChangeRefundSection = () => {
             height={1.5}
           />
           <CSText size={1.4} color="#fff" lineHeight={1.43} marginLeft={0.6}>
-            {'전화번호: 070-5421-5644'}
+            {'전화번호: 064-711-6465'}
           </CSText>
         </div>
       </div>

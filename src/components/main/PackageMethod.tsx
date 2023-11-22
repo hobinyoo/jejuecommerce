@@ -7,6 +7,7 @@ const PackageMethod = () => {
     <section
       css={{
         padding: '5rem 2rem 3rem 2rem',
+        whiteSpace: 'pre-line',
       }}
     >
       <CSText
@@ -15,21 +16,22 @@ const PackageMethod = () => {
         color={'#3e3737'}
         lineHeight={0.83}
         textAlignCenter
+        marginBottom={3}
       >
         포장 이미지 및 포장 방법
       </CSText>
       <CSText
-        size={1.5}
+        size={1.4}
         color={'#3e3737'}
-        lineHeight={1.33}
+        marginTop={2}
+        lineHeight={1.38}
         textAlignCenter
-        marginTop={5}
-        marginBottom={4.4}
+        marginBottom={1}
       >
-        포장에 관한 설명이 필요합니다
+        {`육수를 급냉한 후 스티로폼 박스에 고기와 같이 넣어\n 배송하면 주문 후 3일 이내에 받으시 수 있습니다.`}
       </CSText>
-
-      <AutoSizeImage src={'/images/packageImg.png'} full />
+      <AutoSizeImage src={'/images/packing_1.jpeg'} full />
+      <AutoSizeImage src={'/images/packing_2.jpeg'} full />
       <div
         css={[
           packageProcess,
@@ -50,7 +52,7 @@ const PackageMethod = () => {
             배송 절차
           </CSText>
           <CSText size={1.3} color="#fff" lineHeight={1.38} marginTop={1}>
-            7만원 이상 배송시 배송비 무료
+            10만원 이상 배송시 배송비 무료
           </CSText>
         </div>
 

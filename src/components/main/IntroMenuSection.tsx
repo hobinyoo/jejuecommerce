@@ -11,7 +11,7 @@ const IntroMenuSection = () => {
       meat: '한우사태 80g',
       description:
         '본 메뉴는 한우사태를 2시간 이상 삶으면서 무, 양파, 대파, 생강, 마\n늘, 건표고버섯, 천일염 등 신선한 재료를 엄선하여 물 맛 좋은 제주에\n서 가마솥 전통방식으로 정성껏 끓여 만든 달인의 대표 메뉴입니다',
-      imageUrl: '/images/menu1.png',
+      imageUrl: '/images/gomtang.png',
       price: '12,000원',
     },
     {
@@ -21,7 +21,7 @@ const IntroMenuSection = () => {
       description:
         '본 메뉴는 한우사골, 꼬리반골, 우족, 잡뼈와 값비싼 한우도가니까지\n 넣어 물 맛 좋은 제주에서 가마솥 전통방식으로 12시간 이상 고아 만\n든 달인의 대표 메뉴입니다',
 
-      imageUrl: '/images/menu2.png',
+      imageUrl: '/images/selungtang.png',
       price: '13,000원',
     },
     {
@@ -30,7 +30,7 @@ const IntroMenuSection = () => {
       meat: '국내산 육우갈비 220g',
       description:
         '본 메뉴의 육수는 한우곰탕 육수와 같은 방법으로 만들었고 고기는 국\n내산 육우(육우란 "한우, 젖소외에 식용을 목적으로 비육한 국내산\n 소"를 의미합니다) 를 사용해 만든 달인의 대표 메뉴 입니다',
-      imageUrl: '/images/menu3.png',
+      imageUrl: '/images/galbitang2.png',
       price: '15,000원',
     },
     {
@@ -39,7 +39,7 @@ const IntroMenuSection = () => {
       meat: '국내산 한우갈비 220g',
       description:
         '본 메뉴의 육수는 한우곰탕 육수와 같은 방법으로 만들었고 고기는\n 100% 국내산 한우를 사용해 만든 달인의 대표 메뉴입니다',
-      imageUrl: '/images/menu1.png',
+      imageUrl: '/images/galbitang2.png',
       price: '18,000원',
     },
   ]
@@ -100,8 +100,13 @@ const IntroMenuSection = () => {
                 {data.price}
               </CSText>
             </div>
-            <div css={[agingImage]}>
-              <AutoSizeImage src={data.imageUrl} width={18} height={16.2} />
+            <div css={agingImage}>
+              <AutoSizeImage
+                src={data.imageUrl}
+                width={18}
+                height={16.2}
+                borderTopLeftRadius={1.8}
+              />
             </div>
           </div>
           <div
@@ -131,6 +136,8 @@ const agingText = css`
 `
 const agingImage = css`
   width: 50%;
+  display: flex;
+  justify-content: end;
 `
 
 const menuDescription = css`

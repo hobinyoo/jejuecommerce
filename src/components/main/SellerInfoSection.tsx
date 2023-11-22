@@ -4,10 +4,10 @@ import React from 'react'
 
 const SellerInfoSection = () => {
   const list = [
-    { title: '상호', content: '공릉동 한우소고기 국밥' },
-    { title: '매장주소', content: '서울 노원구 동일로192길 42' },
-    { title: '전화번호', content: '070-5421-5644' },
-    { title: '사업자등록 번호', content: '000-0000-000000' },
+    { title: '상호', content: '달인의 가마솥' },
+    { title: '매장주소', content: '제주시 달마루길 20-7' },
+    { title: '대표전화', content: '064-711-6465' },
+    { title: '사업자등록 번호', content: '제주2023-0907754' },
     { title: '통신판매업등록 번호', content: '000-0000-000000' },
     { title: '즉석판매제조가공업\n등록번호', content: '000-0000-000000' },
   ]

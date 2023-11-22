@@ -5,13 +5,10 @@ import React from 'react'
 
 const NotationsSection = () => {
   const list = [
-    '한우소고기',
-    '고추가루',
-    '우거지',
-    '무',
-    '양파',
-    '대파',
-    '사골',
+    { title: '고기', where: '국내산 한우' },
+    { title: '갈비', where: '국내산 한우 또는 육우' },
+    { title: '생강, 마늘', where: '국내산' },
+    { title: '소금', where: '국내산 천일염' },
   ]
   return (
     <div css={container}>
@@ -42,7 +39,7 @@ const NotationsSection = () => {
                   color={'#3e3737'}
                   lineHeight={1.54}
                 >
-                  {value}
+                  {value.title}
                 </CSText>
               </td>
               <td
@@ -51,7 +48,7 @@ const NotationsSection = () => {
                 }}
               >
                 <CSText size={1.3} lineHeight={1.54}>
-                  국내산
+                  {value.where}
                 </CSText>
               </td>
             </tr>
