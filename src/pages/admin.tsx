@@ -17,6 +17,7 @@ const Admin = () => {
   const [data, setData] = useState<OrderProps[]>([])
   const [carrierCode, setCarrierCode] = useState<string>('')
   console.log(data, '날짜찍어봐라')
+
   useEffect(() => {
     fetch(`/api/get-dates`, {
       method: 'POST',
@@ -29,7 +30,7 @@ const Admin = () => {
         setData(data.items)
       })
       .catch((error) => console.error(error))
-  }, [value])
+  }, [value, data])
 
   const prepareShipping = (orderId: string) => {
     fetch(`/api/update-carrierCode`, {
