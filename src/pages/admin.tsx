@@ -220,7 +220,7 @@ const Admin = () => {
                         borderRadius={0.4}
                         onClick={() => prepareShipping(value.id)}
                       >
-                        배송준비완료
+                        배송준비
                       </Button>
                     )}
                   </div>

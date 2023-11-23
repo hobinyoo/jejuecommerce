@@ -17,7 +17,7 @@ const OrderMenu = ({ quantityArr, uid }: Props) => {
       quantity: quantityArr[index],
     }))
     .filter((item) => item.quantity !== 0)
-
+  console.log(uid, 'uid')
   return (
     <div>
       <div
@@ -93,7 +93,8 @@ const OrderMenu = ({ quantityArr, uid }: Props) => {
         >
           <CSText size={1.2} color="#818181" lineHeight={1.67}>
             총 결제 금액 + 배송비 (
-            {calculateTotalPrice(quantityArr, 0) > 70000 ? '0원' : '4000원'})
+            {calculateTotalPrice(quantityArr, uid) >= 100000 ? '0원' : '6000원'}
+            )
           </CSText>
           <CSText
             size={1.5}
@@ -101,9 +102,9 @@ const OrderMenu = ({ quantityArr, uid }: Props) => {
             color="#15c9de"
             lineHeight={1.18}
           >
-            {calculateTotalPrice(quantityArr, 0) > 70000
-              ? calculateTotalPrice(quantityArr, 0, uid).toLocaleString()
-              : calculateTotalPrice(quantityArr, 4000, uid).toLocaleString()}
+            {calculateTotalPrice(quantityArr, uid) >= 100000
+              ? calculateTotalPrice(quantityArr, uid).toLocaleString()
+              : (calculateTotalPrice(quantityArr, uid) + 6000).toLocaleString()}
             원
           </CSText>
         </div>

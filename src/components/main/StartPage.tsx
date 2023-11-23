@@ -65,7 +65,7 @@ const StartPage = ({ setStartEnabled }: Props) => {
           }}
         >
           <CSText size={2} color={'#3e3737'} lineHeight={1.4} textAlignCenter>
-            70,000원 이상 주문시
+            100,000원 이상 주문시
           </CSText>
           <CSText
             size={2}

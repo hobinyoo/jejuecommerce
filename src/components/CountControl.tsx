@@ -17,9 +17,11 @@ const CountControl = ({ quantity, setQuantity, index }: Props) => {
   }
 
   const clickMinus = () => {
-    const newQuantity = [...quantity]
-    newQuantity[index] = newQuantity[index] - 1
-    setQuantity(newQuantity)
+    if (quantity[index] > 0) {
+      const newQuantity = [...quantity]
+      newQuantity[index] = newQuantity[index] - 1
+      setQuantity(newQuantity)
+    }
   }
   return (
     <div

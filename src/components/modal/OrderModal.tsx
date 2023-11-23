@@ -126,39 +126,57 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
             </div>
           ))}
 
-          <div
-            css={[
-              price,
-              {
-                width: '32rem',
-                height: '5rem',
-                padding: '0 1.8rem',
-                borderBottomLeftRadius: '1rem',
-                borderBottomRightRadius: '1rem',
-              },
-            ]}
-          >
-            <CSText size={1.2} color="#818181" lineHeight={1.67}>
-              총 결제 금액 + 배송비 (
-              {calculateTotalPrice(quantity, 0) > 70000 ? '0원' : '4000원'})
-            </CSText>
-            <CSText
-              size={1.5}
-              fontFamily="PretendardBold"
-              color="#15c9de"
-              lineHeight={1.18}
-            >
-              {calculateTotalPrice(quantity, 0) > 70000
-                ? calculateTotalPrice(quantity, 0, uid).toLocaleString()
-                : calculateTotalPrice(quantity, 4000, uid).toLocaleString()}
-              원
-              {uid && (
-                <CSSpan size={1} color="#de1515" lineHeight={1.18}>
-                  {' '}
-                  회원 10% 할인
-                </CSSpan>
-              )}
-            </CSText>
+          <div css={price}>
+            <div css={{ display: 'flex', justifyContent: 'space-between' }}>
+              <CSText size={1.2} color="#818181" lineHeight={1.67}>
+                결제 금액
+                {/* + 배송비 (
+                {calculateTotalPrice(quantity, uid) >= 100000
+                  ? '0원'
+                  : '6000원'}
+                ) */}
+              </CSText>
+
+              <CSText size={1.2} color="#818181" lineHeight={1.67}>
+                {calculateTotalPrice(quantity, uid).toLocaleString()}원
+                {uid && (
+                  <CSSpan size={1} color="#de1515" lineHeight={1.18}>
+                    {' '}
+                    10%
+                  </CSSpan>
+                )}
+              </CSText>
+            </div>
+            <div css={{ display: 'flex', justifyContent: 'space-between' }}>
+              <CSText size={1.2} color="#818181" lineHeight={1.67}>
+                배송비
+              </CSText>
+
+              <CSText size={1.2} color="#818181" lineHeight={1.67}>
+                {calculateTotalPrice(quantity, uid) >= 100000
+                  ? '0원'
+                  : '6,000원'}
+              </CSText>
+            </div>
+            <div css={{ display: 'flex', justifyContent: 'space-between' }}>
+              <CSText size={1.2} color="#818181" lineHeight={1.67}>
+                총 결제 금액
+              </CSText>
+
+              <CSText
+                size={1.5}
+                fontFamily="PretendardBold"
+                color="#15c9de"
+                lineHeight={1.18}
+              >
+                {calculateTotalPrice(quantity, uid) >= 100000
+                  ? calculateTotalPrice(quantity, uid).toLocaleString()
+                  : (
+                      calculateTotalPrice(quantity, uid) + 6000
+                    ).toLocaleString()}
+                원
+              </CSText>
+            </div>
           </div>
           <CSText
             size={1}
@@ -178,7 +196,7 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
                 },
               ]}
             />
-            택배, 배송비 4,000원 (70,000원 이상 주문시 도외 택배비 무료)
+            택배, 배송비 6,000원 (100,000원 이상 주문시 도외 택배비 무료)
           </CSText>
           <div css={buttonWrapper}>
             <Button
@@ -225,12 +243,13 @@ const menuBox = css`
 `
 
 const price = css`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-left: solid 1px #ececec;
   border-right: solid 1px #ececec;
   border-bottom: solid 1px #ececec;
+  width: 32rem;
+  padding: 1rem 1.8rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 `
 const line = css`
   border: solid 1px #ececec;
