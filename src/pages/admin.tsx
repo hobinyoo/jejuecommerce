@@ -30,7 +30,7 @@ const Admin = () => {
         setData(data.items)
       })
       .catch((error) => console.error(error))
-  }, [value, data])
+  }, [value])
 
   const prepareShipping = (orderId: string) => {
     fetch(`/api/update-carrierCode`, {
