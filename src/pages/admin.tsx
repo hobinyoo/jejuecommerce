@@ -16,7 +16,7 @@ const Admin = () => {
   const [value, setValue] = useState<Date | null>(new Date())
   const [data, setData] = useState<OrderProps[]>([])
   const [carrierCode, setCarrierCode] = useState<string>('')
-  console.log(value, '날짜찍어봐라')
+  console.log(data, '날짜찍어봐라')
   useEffect(() => {
     fetch(`/api/get-dates`, {
       method: 'POST',

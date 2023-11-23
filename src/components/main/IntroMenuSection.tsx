@@ -43,6 +43,7 @@ const IntroMenuSection = () => {
       price: '16,000원',
     },
   ]
+
   return (
     <div css={{ marginTop: '6rem' }}>
       <CSText

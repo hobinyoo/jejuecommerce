@@ -81,7 +81,7 @@ const Agreement = ({ agreements, setAgreements }: Props) => {
                 width={1.6}
                 height={1.6}
               />
-              <CSText size={13} color="#8b8b8b" lineHeight={1.15}>
+              <CSText size={1.3} color="#8b8b8b" lineHeight={1.15}>
                 {value.title} (필수)
               </CSText>
             </label>

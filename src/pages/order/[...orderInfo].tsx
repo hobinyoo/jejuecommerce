@@ -156,7 +156,7 @@ const Order = ({
           </div>
           <InputText
             name="address"
-            placeholder=""
+            placeholder="주소"
             setInputText={setAddress}
             inputText={address}
             marginTop={1}

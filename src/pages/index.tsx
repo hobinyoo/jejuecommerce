@@ -85,7 +85,6 @@ const Main = ({
 
           <MainSection />
           <AutoSizeImage src={'/images/jejupic.png'} full />
-
           <HistoryEffect />
           <IntroMenuSection />
           <MenuPointSection />

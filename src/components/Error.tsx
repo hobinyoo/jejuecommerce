@@ -5,7 +5,14 @@ type Props = {
 }
 export const ErrorMessage = ({ message }: Props) => {
   return (
-    <div css={{ fontSize: '0.8rem', color: 'red', marginTop: '6px' }}>
+    <div
+      css={{
+        fontSize: '1rem',
+        color: 'red',
+        marginTop: '0.6rem',
+        marginLeft: '1rem',
+      }}
+    >
       {message}
     </div>
   )

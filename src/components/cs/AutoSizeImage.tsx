@@ -53,8 +53,8 @@ const AutoSizeImage = ({
               objectFit: 'cover',
               borderTopLeftRadius: borderTopLeftRadius
                 ? `${borderTopLeftRadius}rem`
-                : 0,
-              borderRadius: borderRadius ? `${borderRadius}rem` : 0,
+                : undefined,
+              borderRadius: borderRadius ? `${borderRadius}rem` : undefined,
             }}
             sizes="100%"
             alt=""
