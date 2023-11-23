@@ -4,7 +4,7 @@ import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 import { db } from 'src/firebase/initFirebase'
 import { OrderProps } from 'types/types'
 
-async function getDates(date: number) {
+async function getDates(date: number[]) {
   try {
     const ordersInfo: OrderProps[] = []
     const boardRef = collection(db, 'orders')
@@ -17,9 +17,7 @@ async function getDates(date: number) {
       const [year, month, day] = dateArray.slice(0, 3)
 
       const isSameDate =
-        new Date(date).getFullYear() === year &&
-        new Date(date).getMonth() + 1 === month &&
-        new Date(date).getDate() === day
+        date[0] === year && date[1] === month && date[2] === day
 
       if (isSameDate) {
         ordersInfo.push({

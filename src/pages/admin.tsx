@@ -16,13 +16,16 @@ const Admin = () => {
   const [value, setValue] = useState<Date | null>(new Date())
   const [data, setData] = useState<OrderProps[]>([])
   const [carrierCode, setCarrierCode] = useState<string>('')
-  console.log(data, '날짜찍어봐라')
+
+  const year = value!.getFullYear()
+  const month = value!.getMonth() + 1 // 월은 0부터 시작하므로 1을 더합니다.
+  const day = value!.getDate()
 
   useEffect(() => {
     fetch(`/api/get-dates`, {
       method: 'POST',
       body: JSON.stringify({
-        date: value?.getTime(),
+        date: [year, month, day],
       }),
     })
       .then((res) => res.json())
@@ -46,7 +49,7 @@ const Admin = () => {
           fetch(`/api/get-dates`, {
             method: 'POST',
             body: JSON.stringify({
-              date: value?.getTime(),
+              date: [year, month, day],
             }),
           })
             .then((res) => res.json())
