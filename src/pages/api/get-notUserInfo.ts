@@ -38,6 +38,7 @@ async function getNotUserInfo(name: string, phoneNumber: string) {
         carrierRequest: doc.data().carrierRequest,
         method: doc.data().method,
         receipt: doc.data().receipt,
+        content: doc.data().content,
       })
     })
     return ordersInfo

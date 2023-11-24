@@ -17,7 +17,7 @@ const OrderMenu = ({ quantityArr, uid }: Props) => {
       quantity: quantityArr[index],
     }))
     .filter((item) => item.quantity !== 0)
-  console.log(uid, 'uid')
+
   return (
     <div>
       <div
