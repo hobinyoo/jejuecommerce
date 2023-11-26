@@ -22,8 +22,7 @@ import Payments from '@components/payments/Payments'
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const user = nookies.get(ctx)
-    let data
-    data = user.uid
+    let data = null
     if (user.uid) {
       const res = await fetch(
         `${getBaseUrl}/api/get-oneUserInfo?id=${user.uid}`
@@ -31,7 +30,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
       data = await res.json()
     }
     return {
-      props: { data },
+      props: { data, uid: user.uid },
     }
   } catch (err) {
     console.log(err)
@@ -45,6 +44,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
 const Order = ({
   data,
+  uid
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter()
 
@@ -94,7 +94,7 @@ const Order = ({
         >
           달인의 가마솥을 집에서 편하게 만나보세요!
         </CSText>
-        <OrderMenu quantityArr={quantityArr} uid={data?.uid ?? ''} />
+        <OrderMenu quantityArr={quantityArr} uid={uid} />
         <div>
           <CSText
             size={1.5}
@@ -189,12 +189,12 @@ const Order = ({
       )}
 
       <Payments
-        uid={data?.uid ?? ''}
+        uid={uid}
         quantity={quantityArr}
         totalPrice={
-          calculateTotalPrice(quantityArr, data?.uid) >= 100000
-            ? calculateTotalPrice(quantityArr, data?.uid ?? '')
-            : calculateTotalPrice(quantityArr, data?.uid ?? '')
+          calculateTotalPrice(quantityArr, uid) >= 100000
+            ? calculateTotalPrice(quantityArr, uid)
+            : calculateTotalPrice(quantityArr, uid)
         }
         name={name}
         phoneNumber={phoneNumber}
