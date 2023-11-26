@@ -194,7 +194,7 @@ const Order = ({
         totalPrice={
           calculateTotalPrice(quantityArr, uid) >= 100000
             ? calculateTotalPrice(quantityArr, uid)
-            : calculateTotalPrice(quantityArr, uid)
+            : calculateTotalPrice(quantityArr, uid) + 6000
         }
         name={name}
         phoneNumber={phoneNumber}

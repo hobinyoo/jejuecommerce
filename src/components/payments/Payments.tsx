@@ -89,6 +89,7 @@ const Payments = ({
             })
         )
         .catch((error) => {
+          console.log(error)
           // 에러 처리: 에러 목록을 확인하세요
           // https://docs.tosspayments.com/reference/error-codes#failurl로-전달되는-에러
           if (error.code === 'USER_CANCEL') {
