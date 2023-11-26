@@ -22,24 +22,26 @@ async function getNotUserInfo(name: string, phoneNumber: string) {
     }
 
     querySnapshot.forEach((doc) => {
-      ordersInfo.push({
-        address: doc.data().address,
-        addressDetail: doc.data().addressDetail,
-        menu: doc.data().menu,
-        name: doc.data().name,
-        phoneNumber: doc.data().phoneNumber,
-        postCode: doc.data().postCode,
-        quantity: doc.data().quantity,
-        status: doc.data().status,
-        timestamp: doc.data().timestamp,
-        totalPrice: doc.data().totalPrice,
-        uid: doc.data().uid,
-        id: doc.id,
-        carrierRequest: doc.data().carrierRequest,
-        method: doc.data().method,
-        receipt: doc.data().receipt,
-        content: doc.data().content,
-      })
+      if (!doc.data().uid) {
+        ordersInfo.push({
+          address: doc.data().address,
+          addressDetail: doc.data().addressDetail,
+          menu: doc.data().menu,
+          name: doc.data().name,
+          phoneNumber: doc.data().phoneNumber,
+          postCode: doc.data().postCode,
+          quantity: doc.data().quantity,
+          status: doc.data().status,
+          timestamp: doc.data().timestamp,
+          totalPrice: doc.data().totalPrice,
+          id: doc.id,
+          carrierRequest: doc.data().carrierRequest,
+          method: doc.data().method,
+          receipt: doc.data().receipt,
+          content: doc.data().content,
+        })
+      }
+
     })
     return ordersInfo
   } catch (error) {
