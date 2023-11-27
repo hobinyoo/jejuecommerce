@@ -9,12 +9,15 @@ import { isEmpty } from 'lodash'
 import { useRouter } from 'next/router'
 import MainHeader from '@components/cs/MainHeader'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
+import Loading from '@components/Loading'
 
 const SignIn = () => {
   const router = useRouter()
 
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+
+  const [loading, setLoading] = useState<boolean>(false)
 
   const fillUserInfo = () => {
     if (
@@ -30,14 +33,17 @@ const SignIn = () => {
   }
 
   const signIn = async () => {
+    setLoading(true)
     try {
       await signInWithEmailAndPassword(auth, email, password).then(
         async (_userCredential) => {
           alert('로그인이 되었습니다.')
+          setLoading(false)
           window.location.replace('/')
         }
       )
     } catch (err: any) {
+      setLoading(false)
       switch (err.code) {
         case 'auth/user-not-found':
           alert('잘못된 이메일 주소입니다.')
@@ -115,6 +121,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
+      {loading && <Loading />}
     </div>
   )
 }

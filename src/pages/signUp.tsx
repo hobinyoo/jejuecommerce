@@ -21,6 +21,7 @@ import SignUpModal from '@components/modal/SignUpModal'
 import PostModal from '@components/modal/PostModal'
 import Agreement from '@components/agreement/Agreement'
 import { Agreements } from 'types/types'
+import Loading from '@components/Loading'
 
 const SignUp = () => {
   const router = useRouter()
@@ -36,6 +37,7 @@ const SignUp = () => {
 
   const [postVisible, setPostVisible] = useState<boolean>(false)
   const [modalVisible, setModalVisible] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
 
   //동의
   const [agreements, setAgreements] = useState<Agreements>({
@@ -89,6 +91,7 @@ const SignUp = () => {
     if (!allAgreementsTrue) alert('개인정보를 동의는 필수 입니다.')
 
     if (fillUserInfo()) {
+      setLoading(true)
       try {
         await createUserWithEmailAndPassword(auth, email, password).then(
           async (userCredential) => {
@@ -104,9 +107,11 @@ const SignUp = () => {
               timestamp: new Date(),
             })
             setModalVisible(true)
+            setLoading(false)
           }
         )
       } catch (err: any) {
+        setLoading(false)
         switch (err.code) {
           case 'auth/weak-password':
             alert('비밀번호는 6자리 이상이어야 합니다')
@@ -250,7 +255,7 @@ const SignUp = () => {
           marginTop={3}
           borderRadius={0.8}
         >
-          회원가입s
+          회원가입
         </Button>
       </div>
 
@@ -263,6 +268,8 @@ const SignUp = () => {
       )}
 
       {modalVisible && <SignUpModal setSignVisible={setModalVisible} />}
+
+      {loading && <Loading />}
     </div>
   )
 }

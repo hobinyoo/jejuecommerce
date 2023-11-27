@@ -34,6 +34,8 @@ const AutoSizeImage = ({
           css={{ width: '100%', height: 'auto' }}
           alt=""
           priority={priority}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUPXmvHgAE9AI9QFfirwAAAABJRU5ErkJggg=="
         />
       ) : (
         <div
@@ -59,6 +61,8 @@ const AutoSizeImage = ({
             sizes="100%"
             alt=""
             priority={priority}
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUPXmvHgAE9AI9QFfirwAAAABJRU5ErkJggg=="
           />
         </div>
       )}
