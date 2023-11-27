@@ -30,7 +30,6 @@ const SafePolicy = () => {
           </CSText>
         </div>
       </div>
-
       <AutoSizeImage src={'/images/safeBg.png'} full priority />
     </div>
   )

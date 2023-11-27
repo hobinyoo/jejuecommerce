@@ -57,7 +57,6 @@ const StartPage = ({ setStartEnabled }: Props) => {
           src={'/images/welcome_coupon.png'}
           width={19.2}
           height={10.6}
-          priority
         />
         <div
           css={{
@@ -84,7 +83,6 @@ const StartPage = ({ setStartEnabled }: Props) => {
             src={'/images/welcome_delivery.png'}
             width={19.2}
             height={10.6}
-            priority
           />
         </div>
       </div>
