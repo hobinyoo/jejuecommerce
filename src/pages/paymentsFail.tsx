@@ -5,11 +5,9 @@ const PaymentsFail = () => {
   const router = useRouter()
 
   useEffect(() => {
-    if (router.query.message) {
-      alert(router.query.message)
-      router.push('/')
-    }
-  }, [router])
+    alert('사용자가 결제를 취소하였습니다.')
+    router.push('/')
+  }, [])
   return null
 }
 

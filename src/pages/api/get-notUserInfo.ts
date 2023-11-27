@@ -22,7 +22,7 @@ async function getNotUserInfo(name: string, phoneNumber: string) {
     }
 
     querySnapshot.forEach((doc) => {
-      if (!doc.data().uid) {
+      if (!doc.data().uid && doc.data().status === 'DONE') {
         ordersInfo.push({
           address: doc.data().address,
           addressDetail: doc.data().addressDetail,
@@ -41,7 +41,6 @@ async function getNotUserInfo(name: string, phoneNumber: string) {
           content: doc.data().content,
         })
       }
-
     })
     return ordersInfo
   } catch (error) {

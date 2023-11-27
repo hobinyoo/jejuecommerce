@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { collection, getDocs, query, orderBy } from 'firebase/firestore'
+import { collection, getDocs, query, orderBy, where } from 'firebase/firestore'
 import { db } from 'src/firebase/initFirebase'
 import { OrderProps } from 'types/types'
 
@@ -9,10 +9,10 @@ async function getOrderDetail(id: string) {
     const ordersInfo: OrderProps[] = []
     const board = collection(db, 'orders')
     const querySnapshot = await getDocs(
-      query(board, orderBy('timestamp', 'desc'))
+      query(board, orderBy('timestamp', 'desc'), where('uid', '==', id))
     )
     querySnapshot.forEach((doc) => {
-      if (doc.data().uid === id) {
+      if (doc.data().status === 'DONE') {
         ordersInfo.push({
           address: doc.data().address,
           addressDetail: doc.data().addressDetail,

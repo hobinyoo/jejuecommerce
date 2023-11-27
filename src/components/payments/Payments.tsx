@@ -66,28 +66,26 @@ const Payments = ({
       .getAgreementStatus().agreedRequiredTerms
 
     if (paymentAgreement) {
+      await setDoc(doc(db, 'orders', orderId), {
+        uid: uid,
+        quantity: quantity,
+        totalPrice: totalPrice,
+        name: name,
+        phoneNumber: phoneNumber,
+        address: address,
+        addressDetail: addressDetail,
+        postCode: postCode,
+        carrierRequest: carrierRequest,
+      })
+
       await paymentWidget
         ?.requestPayment({
           orderId: orderId,
           orderName: `${orderName[0]} 외 ${orderName.length - 1}건`,
           customerName: name,
           successUrl: `${window.location.origin}/api/payments`,
-          failUrl: `${window.location.origin}/paymentsFail`,
+          failUrl: `${window.location.origin}/api/payments-fail`,
         })
-        .then(
-          async () =>
-            await setDoc(doc(db, 'orders', orderId), {
-              uid: uid,
-              quantity: quantity,
-              totalPrice: totalPrice,
-              name: name,
-              phoneNumber: phoneNumber,
-              address: address,
-              addressDetail: addressDetail,
-              postCode: postCode,
-              carrierRequest: carrierRequest,
-            })
-        )
         .catch((error) => {
           console.log(error)
           // 에러 처리: 에러 목록을 확인하세요
