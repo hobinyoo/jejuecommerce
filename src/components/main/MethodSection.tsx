@@ -1,6 +1,5 @@
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import CSText from '@components/cs/CSText'
-import { css } from '@emotion/react'
 import React from 'react'
 
 const MethodSection = () => {
@@ -137,11 +136,5 @@ const MethodSection = () => {
     </div>
   )
 }
-
-const methodWrapper = css`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-`
 
 export default MethodSection
