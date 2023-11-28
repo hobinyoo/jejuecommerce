@@ -32,19 +32,6 @@ const SignUpModal = ({ setSignVisible }: Props) => {
       >
         <div
           css={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            marginBottom: '1.3rem',
-          }}
-        >
-          <AutoSizeImage
-            src="/images/btnX_white.png"
-            width={1.4}
-            height={1.4}
-          />
-        </div>
-        <div
-          css={{
             position: 'relative',
             justifyContent: 'center',
             display: 'flex',

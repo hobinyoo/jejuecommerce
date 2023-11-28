@@ -15,7 +15,6 @@ import { OrderProps } from 'types/types'
 
 const OrderDetail = () => {
   const router = useRouter()
-
   const ordersInfo = useAppSelector(
     (state: RootState) => state.payment.ordersInfo
   )
@@ -62,7 +61,7 @@ const OrderDetail = () => {
                 </CSText>
                 <OrderMenu
                   quantityArr={value.quantity}
-                  uid={String(router.query.uid)}
+                  uid={router.query.uid?.toString() ?? ''}
                 />
                 <div
                   css={{

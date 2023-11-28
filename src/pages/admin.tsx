@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { DatePicker } from '@mantine/dates'
 import { Group } from '@mantine/core'
 import { OrderProps } from 'types/types'
@@ -8,11 +8,30 @@ import CSText from '@components/cs/CSText'
 import CSSpan from '@components/cs/CSSpan'
 import OrderMenu from '@components/order-menu/OrderMenu'
 import Link from 'next/link'
-
+import nookies from 'nookies'
 import { css } from '@emotion/react'
 import MainHeader from '@components/cs/MainHeader'
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 
-const Admin = () => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  try {
+    const user = nookies.get(ctx)
+
+    return {
+      props: { uid: user.uid },
+    }
+  } catch (err) {
+    console.log(err)
+
+    ctx.res.writeHead(302, { Location: '/signIn' })
+    ctx.res.end()
+
+    return { props: {} as never }
+  }
+}
+const Admin = ({
+  uid,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [value, setValue] = useState<Date | null>(new Date())
   const [data, setData] = useState<OrderProps[]>([])
   const [carrierCode, setCarrierCode] = useState<string>('')
@@ -21,22 +40,30 @@ const Admin = () => {
   const month = value!.getMonth() + 1 // 월은 0부터 시작하므로 1을 더합니다.
   const day = value!.getDate()
 
-  useEffect(() => {
-    fetch(`/api/get-dates`, {
-      method: 'POST',
-      body: JSON.stringify({
-        date: [year, month, day],
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data.items)
+  const fetchData = useCallback(async () => {
+    try {
+      await fetch('/api/get-dates', {
+        method: 'POST',
+        body: JSON.stringify({
+          date: [year, month, day],
+        }),
       })
-      .catch((error) => console.error(error))
-  }, [value, year, month, day])
+        .then((res) => res.json())
+        .then((data) => {
+          setData(data.items)
+        })
+        .catch((error) => console.error(error))
+    } catch (error) {
+      console.error('Error fetching data:', error)
+    }
+  }, [year, month, day])
 
-  const prepareShipping = (orderId: string) => {
-    fetch(`/api/update-carrierCode`, {
+  useEffect(() => {
+    fetchData()
+  }, [fetchData])
+
+  const prepareShipping = async (orderId: string) => {
+    await fetch(`/api/update-carrierCode`, {
       method: 'POST',
       body: JSON.stringify({
         carrierCode: carrierCode,
@@ -86,7 +113,7 @@ const Admin = () => {
                     {value.timestamp}
                   </CSSpan>
                 </CSText>
-                <OrderMenu quantityArr={value.quantity} />
+                <OrderMenu quantityArr={value.quantity} uid={uid} />
                 <div
                   css={{
                     marginTop: '2rem',

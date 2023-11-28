@@ -3,12 +3,13 @@ import React, { Dispatch, SetStateAction } from 'react'
 import Divider from '@mui/material/Divider'
 import { useRouter } from 'next/router'
 import { auth } from 'src/firebase/initFirebase'
-import { signOut } from 'firebase/auth'
+import { signOut, deleteUser } from 'firebase/auth'
 import { isEmpty } from 'lodash'
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import nookies from 'nookies'
+
 interface Props {
   uid: string
   name: string
@@ -24,8 +25,8 @@ const DrawerList = ({
 }: Props) => {
   const router = useRouter()
 
-  const handleLogout = () => {
-    signOut(auth)
+  const handleLogout = async () => {
+    await signOut(auth)
     nookies.destroy(undefined, 'uid', { path: '/' })
     window.location.replace('/')
   }
@@ -39,6 +40,22 @@ const DrawerList = ({
     }
   }
 
+  const handleLeave = async () => {
+    try {
+      if (auth.currentUser) {
+        await deleteUser(auth.currentUser)
+        const res = await fetch(`/api/delete-account?id=${uid}`, {
+          method: 'POST',
+        })
+        if (res.ok) {
+          alert('정상적으로 탈퇴 되었습니다.')
+          window.location.replace('/')
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <div
       css={{
@@ -70,7 +87,7 @@ const DrawerList = ({
           </CSText>
         </div>
 
-        {isEmpty(name) && (
+        {isEmpty(name) ? (
           <div css={{ marginTop: '2.6rem' }}>
             <Button
               onClick={() => router.push('/signUp')}
@@ -84,6 +101,23 @@ const DrawerList = ({
             >
               <CSText size={1.3} color="#fff" lineHeight={1.54}>
                 회원가입
+              </CSText>
+            </Button>
+          </div>
+        ) : (
+          <div css={{ marginTop: '2.6rem' }}>
+            <Button
+              onClick={handleLogout}
+              btnWidth={8}
+              btnHeight={3}
+              fontColor="#fff"
+              fontSize={1.3}
+              borderRadius={0.4}
+              backgroundColor="#15c9de"
+              borderColor="#15c9de"
+            >
+              <CSText size={1.3} color="#fff" lineHeight={1.54}>
+                로그아웃
               </CSText>
             </Button>
           </div>
@@ -160,7 +194,7 @@ const DrawerList = ({
           position: 'absolute',
           bottom: '3rem',
         }}
-        onClick={handleLogout}
+        onClick={handleLeave}
       >
         <CSText
           size={1.5}
@@ -168,7 +202,7 @@ const DrawerList = ({
           lineHeight={1.33}
           textDecoration={'underline'}
         >
-          로그아웃
+          회원 탈퇴
         </CSText>
       </div>
     </div>

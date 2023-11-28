@@ -33,8 +33,10 @@ const App = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
           })
         )
       }
-      if (window.innerWidth > 500)
-        return alert('모바일 환경에서 실행 가능합니다.')
+      if (window.innerWidth > 500) {
+        alert('모바일 환경에서 실행 가능합니다.')
+        return window.location.replace('/error')
+      }
       handleResize() // 컴포넌트가 처음 마운트될 때 초기 윈도우 크기 설정
       window.addEventListener('resize', handleResize) // 윈도우 크기 변경 이벤트 처리
       return () => {

@@ -73,12 +73,22 @@ const SellerInfoSection = () => {
         }}
       >
         <Link href="/service">
-          <CSText size={1.3} lineHeight={1.54} color="#11264f">
+          <CSText
+            size={1.3}
+            color="#3e3737"
+            lineHeight={1.33}
+            textDecoration="underline"
+          >
             서비스 이용약관
           </CSText>
         </Link>
         <Link href="/agree_mathod">
-          <CSText size={1.3} lineHeight={1.54} color="#11264f">
+          <CSText
+            size={1.3}
+            color="#3e3737"
+            lineHeight={1.33}
+            textDecoration="underline"
+          >
             개인정보 처리방침
           </CSText>
         </Link>

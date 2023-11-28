@@ -12,6 +12,7 @@ import MainHeader from '@components/cs/MainHeader'
 import CSText from '@components/cs/CSText'
 import { format } from 'date-fns'
 import Loading from '@components/Loading'
+import { isEmpty } from 'lodash'
 
 const Comment = () => {
   const router = useRouter()
@@ -45,7 +46,7 @@ const Comment = () => {
 
   const saveComment = async () => {
     setLoading(true)
-    if (images) {
+    if (!isEmpty(images)) {
       const imagesArray: string[] = []
 
       images.map((image, index) => {

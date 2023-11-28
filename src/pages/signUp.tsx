@@ -83,14 +83,13 @@ const SignUp = () => {
     ) {
       return true
     } else {
-      return false
+      return alert('회원정보를 정확히 입력해주세요.')
     }
   }
 
   const signUp = async () => {
-    if (!allAgreementsTrue) alert('개인정보를 동의는 필수 입니다.')
-
     if (fillUserInfo()) {
+      if (!allAgreementsTrue) return alert('개인정보를 동의는 필수 입니다.')
       setLoading(true)
       try {
         await createUserWithEmailAndPassword(auth, email, password).then(
