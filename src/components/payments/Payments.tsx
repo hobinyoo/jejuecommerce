@@ -38,7 +38,7 @@ const Payments = ({
   useEffect(() => {
     ;(async () => {
       const paymentWidget = await loadPaymentWidget(
-        'test_ck_XjExPeJWYVQNYYg1yqxr49R5gvNL',
+        process.env.NEXT_PUBLIC_CLIENT_KEY!,
         ANONYMOUS
       )
 

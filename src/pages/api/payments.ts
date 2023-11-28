@@ -6,10 +6,11 @@ export default async function handler(
 ) {
   const { orderId, paymentKey, amount } = req.query
 
-  const secretKey = 'test_sk_aBX7zk2yd8yoAolYXpvVx9POLqKQ'
-
   const url = 'https://api.tosspayments.com/v1/payments/confirm'
-  const basicToken = Buffer.from(`${secretKey}:`, 'utf-8').toString('base64')
+  const basicToken = Buffer.from(
+    `${process.env.NEXT_PUBLIC_SECRET_KEY}:`,
+    'utf-8'
+  ).toString('base64')
 
   await fetch(url, {
     method: 'post',

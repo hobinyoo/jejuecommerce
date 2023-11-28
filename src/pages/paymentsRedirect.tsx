@@ -21,8 +21,10 @@ const PaymentsRedirect = () => {
   const [paymentInfo, setPaymentInfo] = useState({} as PaymentInfo)
   const [seconds, setSeconds] = useState<number>(5)
 
-  const secretKey = 'test_sk_aBX7zk2yd8yoAolYXpvVx9POLqKQ'
-  const basicToken = Buffer.from(`${secretKey}:`, `utf-8`).toString('base64')
+  const basicToken = Buffer.from(
+    `${process.env.NEXT_PUBLIC_SECRET_KEY}:`,
+    `utf-8`
+  ).toString('base64')
 
   const url = `https://api.tosspayments.com/v1/payments/orders/${searchParams?.orderId}`
 
