@@ -11,15 +11,18 @@ import { doc, updateDoc } from 'firebase/firestore'
 import MainHeader from '@components/cs/MainHeader'
 import CSText from '@components/cs/CSText'
 import { format } from 'date-fns'
+import Loading from '@components/Loading'
 
 const Comment = () => {
-  const [rating, setRating] = useState<number>(0)
-  const [content, setContent] = useState<string>('')
-  const inputRef = useRef<HTMLInputElement>(null)
-  const [images, setImages] = useState<string[]>([])
   const router = useRouter()
   const orderId = router.query.orderId
+  const [rating, setRating] = useState<number>(0)
+  const [content, setContent] = useState<string>('')
+  const [images, setImages] = useState<string[]>([])
 
+  const [loading, setLoading] = useState<boolean>(false)
+
+  const inputRef = useRef<HTMLInputElement>(null)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.files) {
       const fileArr = e.currentTarget.files
@@ -41,6 +44,7 @@ const Comment = () => {
   }
 
   const saveComment = async () => {
+    setLoading(true)
     if (images) {
       const imagesArray: string[] = []
 
@@ -57,6 +61,7 @@ const Comment = () => {
               content: content,
               commentTimestamp: format(new Date(), 'yyyy/MM/dd HH:mm:ss'),
             })
+            setLoading(false)
             alert('저장되었습니다.')
             window.location.replace('/')
           }
@@ -68,6 +73,7 @@ const Comment = () => {
         content: content,
         commentTimestamp: format(new Date(), 'yyyy/MM/dd HH:mm:ss'),
       })
+      setLoading(false)
       alert('저장되었습니다.')
       window.location.replace('/')
     }
@@ -155,6 +161,7 @@ const Comment = () => {
           후기 작성 완료
         </Button>
       </div>
+      {loading && <Loading />}
     </div>
   )
 }

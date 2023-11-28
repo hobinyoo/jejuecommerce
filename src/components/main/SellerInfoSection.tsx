@@ -1,5 +1,6 @@
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
+import Link from 'next/link'
 import React from 'react'
 
 const SellerInfoSection = () => {
@@ -17,7 +18,7 @@ const SellerInfoSection = () => {
       css={[
         container,
         {
-          padding: '2.9rem 2rem 4rem 2rem',
+          padding: '2.9rem 2rem 0 2rem',
         },
       ]}
     >
@@ -61,6 +62,27 @@ const SellerInfoSection = () => {
           ))}
         </tbody>
       </table>
+      <div
+        css={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          gap: '0.5rem',
+          textDecoration: 'underline',
+          marginTop: '3rem',
+          paddingBottom: '1rem',
+        }}
+      >
+        <Link href="/service">
+          <CSText size={1.3} lineHeight={1.54} color="#11264f">
+            서비스 이용약관
+          </CSText>
+        </Link>
+        <Link href="/agree_mathod">
+          <CSText size={1.3} lineHeight={1.54} color="#11264f">
+            개인정보 처리방침
+          </CSText>
+        </Link>
+      </div>
     </div>
   )
 }

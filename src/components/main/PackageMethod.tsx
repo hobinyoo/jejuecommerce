@@ -53,7 +53,7 @@ const PackageMethod = () => {
             배송 절차
           </CSText>
           <CSText size={1.3} color="#fff" lineHeight={1.38} marginTop={1}>
-            10만원 이상 배송시 배송비 무료
+            10만원 이상 주문시 배송비 무료
           </CSText>
         </div>
 
