@@ -39,7 +39,7 @@
     "init": "^0.1.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
-    "next": "^13.4.9",
+    "next": "13.1.0",
     "next-auth": "^4.19.0",
     "next-redux-wrapper": "^8.1.0",
     "nookies": "^2.5.2",
