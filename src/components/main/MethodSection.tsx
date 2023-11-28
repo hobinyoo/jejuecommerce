@@ -5,10 +5,17 @@ import React from 'react'
 
 const MethodSection = () => {
   const methodData = [
-    { title: '따뜻하게 데워 먹기', imageUrl: '/images/way1.png' },
-    { title: '온 가족 다 같이', imageUrl: '/images/way2.png' },
-    { title: '김치와 함께', imageUrl: '/images/way3.png' },
-    { title: '따뜻한 쌀밥과 함께', imageUrl: '/images/way4.png' },
+    {
+      title: '해동하기',
+      content: '냉동된 육수를 수돗물에서 해동한다.',
+      imageUrl: '/images/way1.png',
+    },
+    {
+      title: '끓여먹기',
+      content:
+        '냄비에 육수와 고기를 같이 넣고 끓인 후\n대파, 후추, 소금 등을 알맞게 넣어드세요.',
+      imageUrl: '/images/way2.png',
+    },
   ]
 
   return (
@@ -45,7 +52,7 @@ const MethodSection = () => {
             lineHeight={1.33}
             textAlignCenter
           >
-            달인의 가마솥 한우곰탕, 설렁탕, 갈비탕
+            달인의 가마솥 설렁탕, 한우곰탕, 갈비탕
           </CSText>
           <CSText
             size={2}
@@ -58,20 +65,48 @@ const MethodSection = () => {
           >
             맛있게 먹는 방법
           </CSText>
-          <div css={methodWrapperWithBorder}>
-            {methodData.map(({ title, imageUrl }, index) => (
-              <div key={index} css={method}>
-                <AutoSizeImage src={imageUrl} width={12} height={12} />
-
-                <CSText
-                  size={1.5}
-                  fontFamily={'PretendardBold'}
-                  color={'#15c9de'}
-                  marginTop={1.8}
-                  lineHeight={1.33}
-                >
-                  {title}
-                </CSText>
+          <div
+            css={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '3rem',
+              paddingLeft: '3rem',
+              paddingRight: '3rem',
+              whiteSpace: 'pre-line',
+            }}
+          >
+            {methodData.map((value, index) => (
+              <div
+                key={index}
+                css={{
+                  width: '100%',
+                  display: 'flex',
+                  gap: '2rem',
+                  paddingBottom: index === 0 ? '3rem' : 0,
+                  borderBottom: index === 0 ? '1px dotted #94d5ff' : undefined,
+                }}
+              >
+                <div css={{ width: '9rem' }}>
+                  <AutoSizeImage src={value.imageUrl} width={9} height={9} />
+                </div>
+                <div>
+                  <CSText
+                    size={1.5}
+                    color="#15c9de"
+                    lineHeight={1.33}
+                    fontFamily="PretendardBold"
+                  >
+                    {`0${index + 1} ${value.title}`}
+                  </CSText>
+                  <CSText
+                    size={1}
+                    color="#5d5d5d"
+                    lineHeight={1.5}
+                    marginTop={1}
+                  >
+                    {value.content}
+                  </CSText>
+                </div>
               </div>
             ))}
           </div>
@@ -108,28 +143,5 @@ const methodWrapper = css`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 `
-const method = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-const methodWrapperWithBorder = css`
-  ${methodWrapper}
-  & > :nth-of-type(1) {
-    border-bottom: 1px dotted #94d5ff;
-    border-right: 1px dotted #94d5ff;
-    padding-bottom: 34px;
-  }
-  & > :nth-of-type(2) {
-    border-bottom: 1px dotted #94d5ff;
-    padding-bottom: 34px;
-  }
-  & > :nth-of-type(3) {
-    border-right: 1px dotted #94d5ff;
-    padding-top: 20.5px;
-  }
-  & > :nth-of-type(4) {
-    padding-top: 20.5px;
-  }
-`
+
 export default MethodSection
