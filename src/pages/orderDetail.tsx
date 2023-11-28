@@ -174,8 +174,8 @@ const OrderDetail = () => {
                     <Button
                       btnHeight={4.6}
                       fontSize={1.4}
-                      backgroundColor={value.content ? '#8ab7bb' : '#15c9de'}
-                      borderColor={value.content ? '#8ab7bb' : '#15c9de'}
+                      backgroundColor={value.content ? '#818181' : '#15c9de'}
+                      borderColor={value.content ? '#818181' : '#15c9de'}
                       fontColor="#fff"
                       borderRadius={0.8}
                       onClick={() =>
@@ -183,7 +183,7 @@ const OrderDetail = () => {
                         router.push(`/comment?orderId=${value.id}`)
                       }
                     >
-                      {value.content ? '후기 작성 완료' : '후기작성'}
+                      {value.content ? '작성 완료' : '후기작성'}
                     </Button>
                   </div>
                 </div>
