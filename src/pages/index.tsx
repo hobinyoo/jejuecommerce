@@ -109,7 +109,6 @@ const Main = ({
                 fontFamily={'SeoulHangangEB'}
                 color={'#fff'}
                 lineHeight={1}
-                textAlignCenter
               >
                 {`요리에 진심인 쉐프가\n 전통 가마솥 방식으로 \n 맛 좋은 먹거리를 만듭니다`}
               </CSText>

@@ -38,6 +38,16 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
 
   const [quantity, setQuantity] = useState<number[]>([0, 0, 0])
 
+  const handleOrder = () => {
+    const allZeros = quantity.every((element) => element === 0)
+    if (allZeros) return alert('메뉴를 선택해주세요.')
+    router.push(`/order/${quantity}`, undefined, {
+      shallow: true,
+    })
+    //shallow getStaticProps, getServerSideProps, getInitialProps를 실행하지 않고 업데이트 된 pathname과 query를 받아 url을 바꿔줄 수 있다.
+    //뒤로가기했다가 다시 숫자를 바꾸고 들어가도 패칭은 이루어지지 않는다
+  }
+
   return (
     <div css={modalOverlay}>
       <div css={[orderModal, { height: '57.7rem', overflowY: 'auto' }]}>
@@ -190,13 +200,7 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
           </CSText>
           <div css={buttonWrapper}>
             <Button
-              onClick={() =>
-                //shallow getStaticProps, getServerSideProps, getInitialProps를 실행하지 않고 업데이트 된 pathname과 query를 받아 url을 바꿔줄 수 있다.
-                //뒤로가기했다가 다시 숫자를 바꾸고 들어가도 패칭은 이루어지지 않는다
-                router.push(`/order/${quantity}`, undefined, {
-                  shallow: true,
-                })
-              }
+              onClick={handleOrder}
               btnHeight={5}
               backgroundColor="#15c9de"
               fontColor="#fff"

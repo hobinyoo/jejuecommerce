@@ -61,7 +61,7 @@ const NotiModal = ({ setNotiVisible, setOrderVisible }: Props) => {
               lineHeight={1.18}
               textAlignCenter
             >
-              회원가입 시 10% 상시할인!
+              회원가입 시 5% 상시할인!
             </CSText>
             <CSText
               size={1.4}
@@ -70,7 +70,7 @@ const NotiModal = ({ setNotiVisible, setOrderVisible }: Props) => {
               textAlignCenter
               marginTop={2}
             >
-              {`회원등록을 해주시는 고객분들께\n 10% 상시 할인을 진행하고 있습니다.`}
+              {`회원등록을 해주시는 고객분들께\n 5% 상시 할인을 진행하고 있습니다.`}
             </CSText>
           </div>
 
