@@ -28,9 +28,15 @@ const StartPage = dynamic(() => import('@components/main/StartPage'))
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const cookies = nookies.get(ctx)
+    const { req } = ctx
+    const userAgent = req.headers['user-agent'] || ''
+    const isMobile =
+      /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/i.test(
+        userAgent
+      )
 
     return {
-      props: { cookies },
+      props: { cookies, isMobile },
     }
   } catch (err) {
     console.log(err)
@@ -44,6 +50,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
 const Main = ({
   cookies,
+  isMobile,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [orderVisible, setOrderVisible] = useState<boolean>(false)
   const [orderDetailVisible, setOrderDetailVisible] = useState<boolean>(false)
@@ -61,6 +68,7 @@ const Main = ({
     }
   }, [startEnabled])
 
+  if (!isMobile) return <div>모바일 환경에서 실행해주세요.</div>
   return (
     <>
       {startEnabled !== 'noShow' ? (
