@@ -6,10 +6,12 @@ import React from 'react'
 const NotationsSection = () => {
   const list = [
     { title: '고기', where: '국내산 한우' },
-    { title: '갈비', where: '국내산 한우 또는 육우' },
+    { title: '갈비', where: '국내산 한우' },
     { title: '생강, 마늘', where: '국내산' },
+    { title: '무, 대파, 양파', where: '국내산' },
     { title: '소금', where: '국내산 천일염' },
   ]
+
   return (
     <div css={container}>
       <CSText

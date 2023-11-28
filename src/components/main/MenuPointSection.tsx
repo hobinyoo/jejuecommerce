@@ -1,5 +1,4 @@
 import AutoSizeImage from '@components/cs/AutoSizeImage'
-
 import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import React from 'react'
@@ -7,10 +6,10 @@ import React from 'react'
 const MenuPointSection = () => {
   const menuPointData = [
     '물 맛 좋은 제주에서 만듭니다.',
-    '100% 한우 또는 국내산 육우를 사용합니다.',
-    '신선하고 좋은 재료로 만든 안심 먹거리 입니다.',
-    `단순 밀키트가 아닌 달인이 만든 "Hand M\n ade" 제품으로 맛을 보장합니다.`,
+    '100% 한우한 신선하고 좋은 재료로 만든\n 안심 먹거리 입니다.',
+    '밀키트와 전혀 다른 달인이 만든 "hand made\n 제품"으로 맛을 보장합니다.',
   ]
+
   return (
     <div css={[container, { marginTop: '6rem' }]}>
       <CSText

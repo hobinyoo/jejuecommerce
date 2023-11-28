@@ -48,9 +48,9 @@ const StartPage = ({ setStartEnabled }: Props) => {
           textAlignCenter
           marginBottom={1.5}
         >
-          회원가입 시
+          회원가입 시{' '}
           <CSSpan size={2} fontFamily={'PretendardBold'} color={'#15c9de'}>
-            10% 상시 할인
+            5% 상시 할인
           </CSSpan>
         </CSText>
         <AutoSizeImage

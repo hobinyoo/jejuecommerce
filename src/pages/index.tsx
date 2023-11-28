@@ -84,7 +84,9 @@ const Main = ({
           />
 
           <MainSection />
-          <AutoSizeImage src={'/images/jejupic.png'} full />
+          <div css={{ marginBottom: '-0.3rem' }}>
+            <AutoSizeImage src={'/images/jejupic.png'} full />
+          </div>
           <HistoryEffect />
           <IntroMenuSection />
           <MenuPointSection />

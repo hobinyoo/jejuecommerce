@@ -32,7 +32,7 @@ const AutoSizeImage = ({
           height={0}
           sizes="100%"
           css={{ width: '100%', height: 'auto' }}
-          alt=""
+          alt={''}
           priority={priority}
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUPXmvHgAE9AI9QFfirwAAAABJRU5ErkJggg=="
@@ -53,10 +53,9 @@ const AutoSizeImage = ({
             fill
             style={{
               objectFit: 'cover',
-              borderTopLeftRadius: borderTopLeftRadius
-                ? `${borderTopLeftRadius}rem`
-                : undefined,
-              borderRadius: borderRadius ? `${borderRadius}rem` : undefined,
+              borderTopLeftRadius:
+                borderTopLeftRadius && `${borderTopLeftRadius}rem`,
+              borderRadius: borderRadius && `${borderRadius}rem`,
             }}
             sizes="100%"
             alt=""

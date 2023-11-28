@@ -6,15 +6,6 @@ import React from 'react'
 const IntroMenuSection = () => {
   const menuData = [
     {
-      title: '한우곰탕',
-      soup: '한우고기육수: 600g 2포',
-      meat: '한우사태 80g',
-      description:
-        '본 메뉴는 한우사태를 2시간 이상 삶으면서 무, 양파, 대파, 생강, 마\n늘, 건표고버섯, 천일염 등 신선한 재료를 엄선하여 물 맛 좋은 제주에\n서 가마솥 전통방식으로 정성껏 끓여 만든 달인의 대표 메뉴입니다',
-      imageUrl: '/images/gomtang.png',
-      price: '12,000원',
-    },
-    {
       title: '한우설렁탕',
       soup: '한우사골곰탕: 600g 2포',
       meat: '한우사태 80g',
@@ -25,6 +16,16 @@ const IntroMenuSection = () => {
       price: '13,000원',
     },
     {
+      title: '한우곰탕',
+      soup: '한우고기육수: 600g 2포',
+      meat: '한우사태 80g',
+      description:
+        '본 메뉴는 한우사태를 2시간 이상 삶으면서 무, 양파, 대파, 생강, 마\n늘, 건표고버섯, 천일염 등 신선한 재료를 엄선하여 물 맛 좋은 제주에\n서 가마솥 전통방식으로 정성껏 끓여 만든 달인의 대표 메뉴입니다',
+      imageUrl: '/images/gomtang.png',
+      price: '12,000원',
+    },
+
+    {
       title: '한우갈비탕',
       soup: '한우고기육수: 600g 2포',
       meat: '국내산 한우갈비 250g',
@@ -32,15 +33,6 @@ const IntroMenuSection = () => {
         '본 메뉴의 육수는 한우곰탕 육수와 같은 방법으로 만들었고 고기는\n 100% 국내산 한우를 사용해 만든 달인의 대표 메뉴입니다',
       imageUrl: '/images/galbitang2.png',
       price: '18,000원',
-    },
-    {
-      title: '육우갈비탕',
-      soup: '한우고기육수: 600g 2포',
-      meat: '국내산 육우갈비 250g',
-      description:
-        '본 메뉴의 육수는 한우곰탕 육수와 같은 방법으로 만들었고 고기는 국\n내산 육우(육우란 "한우, 젖소외에 식용을 목적으로 비육한 국내산\n 소"를 의미합니다) 를 사용해 만든 달인의 대표 메뉴 입니다',
-      imageUrl: '/images/galbitang2.png',
-      price: '16,000원',
     },
   ]
 

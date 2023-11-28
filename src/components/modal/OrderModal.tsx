@@ -17,31 +17,26 @@ interface Props {
 
 const data = [
   {
-    title: '한우곰탕',
-    content: '(한우고기육수: 600g 2포,고기: 한우사태 80g)',
-    price: '12,000원',
-  },
-  {
     title: '한우설렁탕',
     content: '(한우사골곰탕: 600g 2포, 고기: 한우사태 80g)',
     price: '13,000원',
+  },
+  {
+    title: '한우곰탕',
+    content: '(한우고기육수: 600g 2포,고기: 한우사태 80g)',
+    price: '12,000원',
   },
   {
     title: '한우갈비탕',
     content: '(한우고기육수: 600g 2포, 고기: 국내산 한우갈비 250g)',
     price: '18,000원',
   },
-  {
-    title: '육우갈비탕',
-    content: '(한우고기육수: 600g 2포, 고기: 국내산 육우갈비 250g)',
-    price: '16,000원',
-  },
 ]
 
 const OrderModal = ({ setOrderVisible, uid }: Props) => {
   const router = useRouter()
 
-  const [quantity, setQuantity] = useState<number[]>([0, 0, 0, 0])
+  const [quantity, setQuantity] = useState<number[]>([0, 0, 0])
 
   return (
     <div css={modalOverlay}>
@@ -130,11 +125,6 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
             <div css={{ display: 'flex', justifyContent: 'space-between' }}>
               <CSText size={1.2} color="#818181" lineHeight={1.67}>
                 결제 금액
-                {/* + 배송비 (
-                {calculateTotalPrice(quantity, uid) >= 100000
-                  ? '0원'
-                  : '6000원'}
-                ) */}
               </CSText>
 
               <CSText size={1.2} color="#818181" lineHeight={1.67}>
@@ -142,7 +132,7 @@ const OrderModal = ({ setOrderVisible, uid }: Props) => {
                 {uid && (
                   <CSSpan size={1} color="#de1515" lineHeight={1.18}>
                     {' '}
-                    10%
+                    5%
                   </CSSpan>
                 )}
               </CSText>

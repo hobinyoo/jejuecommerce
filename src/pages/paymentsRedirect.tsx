@@ -37,7 +37,7 @@ const PaymentsRedirect = () => {
     }, 1000)
 
     return () => clearInterval(intervalId)
-  }, [seconds])
+  }, [seconds, router])
 
   const completePayments = useCallback(async () => {
     if (!isEmpty(searchParams?.orderId)) {

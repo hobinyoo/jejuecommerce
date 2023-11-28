@@ -1,5 +1,5 @@
 export const calculateTotalPrice = (quantities: number[], uid?: string) => {
-  const prices = [12000, 13000, 18000, 16000]
+  const prices = [13000, 12000, 18000]
   if (quantities.length !== prices.length) {
     throw new Error('Quantities and prices arrays must have the same length.')
   }
@@ -9,5 +9,5 @@ export const calculateTotalPrice = (quantities: number[], uid?: string) => {
     totalPrice += quantities[i] * prices[i]
   }
 
-  return uid ? totalPrice * 0.9 : totalPrice
+  return uid ? totalPrice * 0.95 : totalPrice
 }

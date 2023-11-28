@@ -30,8 +30,9 @@ const PackageMethod = () => {
       >
         {`육수를 급냉한 후 스티로폼 박스에 고기와 같이 넣어\n 배송하면 주문 후 3일 이내에 받으시 수 있습니다.`}
       </CSText>
-      <AutoSizeImage src={'/images/packing_1.jpeg'} full />
-      <AutoSizeImage src={'/images/packing_2.jpeg'} full />
+      <AutoSizeImage src={'/images/packing_2.png'} full />
+      <AutoSizeImage src={'/images/packing_1.png'} full />
+      <AutoSizeImage src={'/images/packing_3.png'} full />
       <div
         css={[
           packageProcess,

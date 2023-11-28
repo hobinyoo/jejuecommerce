@@ -5,23 +5,14 @@ import React from 'react'
 
 const HistoryEffect = () => {
   const Feature = [
-    { title: `온 가족이\n 함께즐겨요`, src: '/images/history1.png' },
-    { title: `건강한 맛\n 건강한 재료`, src: '/images/history1.png' },
-    { title: `물 맛 좋은\n 청정 제주`, src: '/images/history1.png' },
+    { title: `물 맛 좋은\n 청정 제주`, src: '/images/history3.png' },
+    { title: `신선하고\n 건강한 재료`, src: '/images/history2.png' },
+    { title: `hand made\n 제품`, src: '/images/history1.png' },
   ]
 
   return (
     <div css={container}>
-      <div
-        css={[
-          containerInner,
-          {
-            width: 'calc(100% - 4rem)',
-            height: 'calc(100% - 6rem)',
-            whiteSpace: 'pre-line',
-          },
-        ]}
-      >
+      <div css={containerInner}>
         <CSText
           size={2.4}
           fontFamily={'SeoulHangangEB'}
@@ -30,20 +21,20 @@ const HistoryEffect = () => {
           lineHeight={0.83}
           textAlignCenter
         >
-          달인의 가마솥 목표
+          달인의 가마솥은?
         </CSText>
-        <CSText
-          size={1.3}
-          color={'#818181'}
-          marginTop={3}
-          lineHeight={1.62}
-          textAlignCenter
-        >
-          {`달인의 가마솥은 "물 맛 좋은 제주"에서 만듭니다. 또\n 한 "100% 한우 또는 국내산 육우"와 "신선하고 좋\n 은 재료"를 사용한 안심 먹거리 입니다
-            밀키트 제품이 아닌 달인이 만드는 "hand made\n  제품"으로 맛을 보장합니다
-            `}
-        </CSText>
-
+        <div>
+          <CSText size={1.3} color={'#818181'} marginTop={3} lineHeight={1.62}>
+            1. 달인의 가마솥은 "물 맛 좋은 제주"에서 만듭니다.
+          </CSText>
+          <CSText size={1.3} color={'#818181'} lineHeight={1.62}>
+            2. "100% 한우"와 신선하고 좋은 재료를 사용한 안심 먹거리 입니다.
+          </CSText>
+          <CSText size={1.3} color={'#818181'} lineHeight={1.62}>
+            3. 밀키트 제품이 아닌 달인이 만드는 "hand made 제품"으로 맛을
+            보장합니다.
+          </CSText>
+        </div>
         <CSText
           size={1.3}
           color={'#818181'}
@@ -100,8 +91,6 @@ const HistoryEffect = () => {
         <div
           css={{
             display: 'flex',
-            paddingRight: '3.5rem',
-            paddingLeft: '3.5rem',
             justifyContent: 'space-between',
             marginTop: '3rem',
           }}
@@ -117,7 +106,7 @@ const HistoryEffect = () => {
             >
               <AutoSizeImage src={src} width={6} height={6} />
               <CSText
-                size={1}
+                size={1.1}
                 lineHeight={1.3}
                 marginTop={1.8}
                 fontFamily="PretendardBold"
@@ -148,6 +137,11 @@ const containerInner = css`
   z-index: 1;
   color: white;
   background-color: white;
+  width: calc(100% - 4rem);
+  height: calc(100% - 6rem);
+  white-space: pre-line;
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
 `
 
 export default HistoryEffect

@@ -23,10 +23,12 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const user = nookies.get(ctx)
     let data = null
+
     if (user.uid) {
       const res = await fetch(
         `${getBaseUrl}/api/get-oneUserInfo?id=${user.uid}`
       )
+
       data = await res.json()
     }
     return {
@@ -44,7 +46,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
 const Order = ({
   data,
-  uid
+  uid,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter()
 
