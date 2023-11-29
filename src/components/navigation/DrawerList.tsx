@@ -76,18 +76,17 @@ const DrawerList = ({
           <AutoSizeImage src={'/images/ico_my@3x.png'} width={2} height={2} />
         </div>
 
-        <Link href={`${isEmpty(name) && '/signIn'}`}>
-          <CSText
-            size={1.5}
-            color={'#3e3737'}
-            lineHeight={1.25}
-            marginTop={3.2}
-            marginLeft={1}
-            marginRight={2.6}
-          >
-            {isEmpty(name) ? '로그인' : name}
-          </CSText>
-        </Link>
+        <CSText
+          onClick={() => isEmpty(name) && router.push('signIn')}
+          size={1.5}
+          color={'#3e3737'}
+          lineHeight={1.25}
+          marginTop={3.2}
+          marginLeft={1}
+          marginRight={2.6}
+        >
+          {isEmpty(name) ? '로그인' : name}
+        </CSText>
 
         {isEmpty(name) ? (
           <Link href={'/signUp'} css={{ marginTop: '2.6rem' }}>
