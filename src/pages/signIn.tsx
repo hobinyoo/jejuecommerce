@@ -6,14 +6,12 @@ import { css } from '@emotion/react'
 import InputText from '@components/cs/InputText'
 import { emailValidation, passwordValidation } from 'src/function/vaildation'
 import { isEmpty } from 'lodash'
-import { useRouter } from 'next/router'
 import MainHeader from '@components/cs/MainHeader'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import Loading from '@components/Loading'
+import Link from 'next/link'
 
 const SignIn = () => {
-  const router = useRouter()
-
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
@@ -106,18 +104,19 @@ const SignIn = () => {
             >
               로그인
             </Button>
-            <Button
-              onClick={() => router.push('/signUp')}
-              btnHeight={4.6}
-              backgroundColor="#fff"
-              fontColor="#15c9de"
-              fontSize={1.4}
-              borderRadius={0.8}
-              marginTop={1}
-              borderColor="#15c9de"
-            >
-              회원가입
-            </Button>
+            <Link href={'/signUp'}>
+              <Button
+                btnHeight={4.6}
+                backgroundColor="#fff"
+                fontColor="#15c9de"
+                fontSize={1.4}
+                borderRadius={0.8}
+                marginTop={1}
+                borderColor="#15c9de"
+              >
+                회원가입
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

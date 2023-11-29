@@ -4,7 +4,7 @@ import CSText from './CSText'
 
 interface Props {
   children: ReactNode
-  onClick: () => void
+  onClick?: () => void
   id?: string
   marginTop?: number
   btnWidth?: number

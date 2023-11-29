@@ -9,6 +9,7 @@ import CSText from '@components/cs/CSText'
 import { css } from '@emotion/react'
 import AutoSizeImage from '@components/cs/AutoSizeImage'
 import nookies from 'nookies'
+import Link from 'next/link'
 
 interface Props {
   uid: string
@@ -74,7 +75,8 @@ const DrawerList = ({
         <div css={{ marginTop: '3rem' }}>
           <AutoSizeImage src={'/images/ico_my@3x.png'} width={2} height={2} />
         </div>
-        <div onClick={() => isEmpty(name) && router.push('/signIn')}>
+
+        <Link href={`${isEmpty(name) && '/signIn'}`}>
           <CSText
             size={1.5}
             color={'#3e3737'}
@@ -85,12 +87,11 @@ const DrawerList = ({
           >
             {isEmpty(name) ? '로그인' : name}
           </CSText>
-        </div>
+        </Link>
 
         {isEmpty(name) ? (
-          <div css={{ marginTop: '2.6rem' }}>
+          <Link href={'/signUp'} css={{ marginTop: '2.6rem' }}>
             <Button
-              onClick={() => router.push('/signUp')}
               btnWidth={8}
               btnHeight={3}
               fontColor="#fff"
@@ -103,7 +104,7 @@ const DrawerList = ({
                 회원가입
               </CSText>
             </Button>
-          </div>
+          </Link>
         ) : (
           <div css={{ marginTop: '2.6rem' }}>
             <Button
@@ -155,36 +156,37 @@ const DrawerList = ({
         </CSText>
       </div>
       <Divider />
-
-      <div
-        onClick={() => router.push('/admin')}
-        css={[
-          content,
-          {
-            height: '5.8rem',
-            padding: '0 2rem',
-          },
-        ]}
-      >
-        <div css={{ marginTop: '2rem' }}>
-          <AutoSizeImage
-            src={'/images/ico_setting@3x.png'}
-            width={1.9}
-            height={2}
-          />
-        </div>
-
-        <CSText
-          size={1.5}
-          color={'#3e3737'}
-          lineHeight={1.25}
-          marginTop={2}
-          marginLeft={1}
-          marginRight={2.6}
+      <Link href={'/admin'}>
+        <div
+          css={[
+            content,
+            {
+              height: '5.8rem',
+              padding: '0 2rem',
+            },
+          ]}
         >
-          관리자
-        </CSText>
-      </div>
+          <div css={{ marginTop: '2rem' }}>
+            <AutoSizeImage
+              src={'/images/ico_setting@3x.png'}
+              width={1.9}
+              height={2}
+            />
+          </div>
+
+          <CSText
+            size={1.5}
+            color={'#3e3737'}
+            lineHeight={1.25}
+            marginTop={2}
+            marginLeft={1}
+            marginRight={2.6}
+          >
+            관리자
+          </CSText>
+        </div>
+      </Link>
+
       <Divider />
       <div
         css={{

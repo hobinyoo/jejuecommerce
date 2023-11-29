@@ -9,6 +9,7 @@ import InputText from '@components/cs/InputText'
 import { isEmpty } from 'lodash'
 import CSSpan from '@components/cs/CSSpan'
 import { setOrdersInfo } from 'src/store/features/paymentSlice'
+import Link from 'next/link'
 
 interface Props {
   setOrderDetailVisible: Dispatch<SetStateAction<boolean>>
@@ -38,7 +39,7 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
         .then((res) => res.json())
         .then((data) => {
           if (isEmpty(data.items)) {
-            alert('해당 정보를 찾을 수 없습니다.')
+            return alert('해당 정보를 찾을 수 없습니다.')
           }
 
           dispatch(setOrdersInfo(data.items))
@@ -120,14 +121,11 @@ const OrderDetailModal = ({ setOrderDetailVisible }: Props) => {
             lineHeight={1.15}
           >
             회원이신가요?{' '}
-            <CSSpan
-              size={1.2}
-              lineHeight={1.15}
-              textDecoration
-              onClick={() => router.push('/signIn')}
-            >
-              로그인하러 가기
-            </CSSpan>
+            <Link href={'/signIn'}>
+              <CSSpan size={1.2} lineHeight={1.15} textDecoration>
+                로그인하러 가기
+              </CSSpan>
+            </Link>
           </CSText>
         </div>
       </div>

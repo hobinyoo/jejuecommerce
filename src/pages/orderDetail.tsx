@@ -170,20 +170,23 @@ const OrderDetail = () => {
                   </div>
 
                   <div css={[btnWrapper, { marginTop: '3rem' }]}>
-                    <Button
-                      btnHeight={4.6}
-                      fontSize={1.4}
-                      backgroundColor={value.content ? '#818181' : '#15c9de'}
-                      borderColor={value.content ? '#818181' : '#15c9de'}
-                      fontColor="#fff"
-                      borderRadius={0.8}
-                      onClick={() =>
-                        !value.content &&
-                        router.push(`/comment?orderId=${value.id}`)
-                      }
+                    <Link
+                      href={`${
+                        !value.content && `/comment?orderId=${value.id}`
+                      }`}
+                      css={{ width: '100%' }}
                     >
-                      {value.content ? '작성 완료' : '후기작성'}
-                    </Button>
+                      <Button
+                        btnHeight={4.6}
+                        fontSize={1.4}
+                        backgroundColor={value.content ? '#818181' : '#15c9de'}
+                        borderColor={value.content ? '#818181' : '#15c9de'}
+                        fontColor="#fff"
+                        borderRadius={0.8}
+                      >
+                        {value.content ? '작성 완료' : '후기작성'}
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
