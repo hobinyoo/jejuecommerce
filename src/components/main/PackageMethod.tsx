@@ -63,6 +63,9 @@ const PackageMethod = () => {
           height={2.85}
         />
       </div>
+      <CSText size={1.2} color="#818181" lineHeight={1.38} marginTop={1}>
+        * 배송기간은 3일에서 최대 7일 소요됩니다.
+      </CSText>
     </section>
   )
 }
