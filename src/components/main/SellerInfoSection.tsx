@@ -9,7 +9,7 @@ const SellerInfoSection = () => {
     { title: '매장주소', content: '제주시 달마루길 20-7' },
     { title: '대표전화', content: '064-711-6465' },
     { title: '팩스번호', content: '064-711-6468' },
-    { title: '사업자등록 번호', content: '258-05-02641' },
+    { title: '사업자등록 번호', content: '258-08-02641' },
     { title: '통신판매업등록 번호', content: '제주2023-0907754' },
     { title: '즉석판매제조가공업\n등록번호', content: '제주2023-0907754' },
     { title: '대표', content: '백인규' },
